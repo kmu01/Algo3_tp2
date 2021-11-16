@@ -7,9 +7,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo {N}
 
 * **Federico Camurri** - [kmu01](https://github.com/kmu01)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
+* **Martín Reimundo** - [mreimundo](https://github.com/mreimundo)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Integrante 5** - [integrante5](https://github.com/integrante5)
 
 Corrector: **{Corrector}**
 
