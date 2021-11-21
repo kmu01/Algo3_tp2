@@ -10,7 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Martín Reimundo** - [mreimundo](https://github.com/mreimundo)
 * **Nicolás Martino** - [NicolasMaartino](https://github.com/NicolasMaartino)
 * **integrante 4** - [CarlosOrqueda](https://github.com/CarlosOrqueda)
-* **integrante 5** - [integrante5](https://github.com/integrante5)
+* **Enrique Morici** - [emorici](https://github.com/EMorici)
 
 Corrector: **{Corrector}**
 
