@@ -1,0 +1,24 @@
+@startuml
+actor "jugador" as AlgoThief
+participant ":Partida" as Partida
+participant ":Policia" as Policia
+participant ":Ciudad" as Ciudad
+participant "LugarDeInteres" as LugarDeInteres
+participant ":Pista" as Pista
+AlgoThief--> Partida: viajar(ciudadSeleccionada)
+Partida--> Policia: viajar(ciudadSeleccionada)
+activate Policia
+Policia--> Policia: ciudad = viajar(ciudadSelecionada)
+deactivate Policia
+AlgoThief--> Partida: entrarEdificio(lugarSeleccionado)
+Partida-> Policia: pista = entrarEdificio(lugarSeleccionado)
+Policia-> Ciudad: visitar(lugarSeleccionado,gradoDePolicia)
+
+Ciudad-->LugarDeInteres: visitar(gradoDePolicia)
+LugarDeInteres-->Pista: obtenerPista(gradoDePolicia)
+
+
+
+
+
+@enduml
