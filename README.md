@@ -4,15 +4,15 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 6
 
-* **Federico Camurri** - [kmu01](https://github.com/kmu01)
+* **106359 - Federico Camurri** - [kmu01](https://github.com/kmu01)
 * **106716 - Martín Reimundo** - [mreimundo](https://github.com/mreimundo)
-* **Nicolás Martino** - [NicolasMaartino](https://github.com/NicolasMaartino)
-* **Carlos Orqueda** - [CarlosOrqueda](https://github.com/CarlosOrqueda)
+* **105217 - Nicolás Martino** - [NicolasMaartino](https://github.com/NicolasMaartino)
+* **101806 - Carlos Orqueda** - [CarlosOrqueda](https://github.com/CarlosOrqueda)
 * **107115 - Enrique Morici** - [emorici](https://github.com/EMorici)
 
-Corrector: **{Corrector}**
+Corrector: **Diego Sánchez**
 
 ## Aplicación
 
