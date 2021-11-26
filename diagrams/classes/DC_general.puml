@@ -1,0 +1,75 @@
+@startuml 
+title Diagrama General
+
+
+class Ciudad{
+    - nombre : String
+    - kilometrosDeDistancia : int
+    + visitar(grado, lugar) : Pista
+
+}
+class Partida{
+    - policiaACargo : Policia
+    - ladronBuscado : Ladron
+    + {static} registrarPoliciaACargo()
+    + {static} registrarLadron()
+    + comenzarPartida()
+    + viajar(ciudad)
+    + mostrarPista()
+    + entrarEdificio(lugar)
+}
+
+class Comisaria{
+    + ordenDeArresto(sospechoso)
+    + atrapado(sospechoso) : boolean
+}
+class Ladron{
+    - descripcion : String
+    + comparar(sospechoso) : boolean
+}
+
+class Policia{
+    - grado : GradoDePolicia
+    - sospechoso : Ladron
+    - ciudadActual : Ciudad
+    + viajar(ciudad) : Ciudad
+    + entrarEdificio(lugar) : Pista
+    + ordenDeArresto()
+    + capturar() : boolean
+
+}
+interface GradoDePolicia{
+    + calcularTiempoDeViaje(kilometros) : int
+}
+
+interface LugaresDeInteres{
+    + buscarPista(grado) : Pista
+}
+
+interface Pista{
+    + obtenerPista() : Pista
+}
+
+interface ObjetoRobado{
+    - cantidadPaises : int
+	+ obtenerObjeto() : Objeto
+}
+
+class Tiempo{
+    - tiempo : int
+    + tiempoTotal(tiempo) : int
+}
+
+
+Partida "1" --o "1..*" Ladron
+Partida"1" --* "1"Policia
+Policia --* GradoDePolicia
+Policia --o Tiempo
+Policia --> Comisaria
+Policia "1" --o "1..*" Ciudad
+Ciudad "1" --> "1..5"LugaresDeInteres
+LugaresDeInteres "1" --o "1..*" Pista
+Ladron --* "1..*" ObjetoRobado
+Comisaria --o "*" Ladron
+
+@enduml

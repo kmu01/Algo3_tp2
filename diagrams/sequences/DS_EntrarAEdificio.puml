@@ -1,0 +1,40 @@
+@startuml
+title El detective visita por primera vez un Edificio
+
+actor "Jugador" as AlgoThief
+participant ":Partida" as Partida
+participant ":Policia" as Policia
+participant ":Ciudad" as Ciudad
+participant "GradoDePolicia" as GradoDePolicia
+participant ":Tiempo" as Tiempo
+participant "LugarDeInteres" as LugarDeInteres
+participant ":Pista" as Pista
+
+AlgoThief ->> Partida: viajar(ciudadSeleccionada)
+Partida ->> Policia: viajar(ciudadSeleccionada)
+activate Policia
+Policia ->> Policia: viajar(ciudadSelecionada)
+Policia ->> GradoDePolicia : calcularTiempoDeViaje(kilometros)
+GradoDePolicia ->> Tiempo : tiempoTotal(tiempo)
+Tiempo --> GradoDePolicia : [tiempo]
+GradoDePolicia --> Policia : [tiempo]
+deactivate Policia
+Policia --> AlgoThief : [tiempo]
+AlgoThief ->> Partida: entrarEdificio(lugarSeleccionado)
+Partida ->> Policia: entrarEdificio(lugarSeleccionado)
+Policia ->> Ciudad: visitar(lugarSeleccionado,gradoDePolicia)
+
+Ciudad ->> LugarDeInteres: visitar(gradoDePolicia)
+loop [se busca en todas las pistas]
+	LugarDeInteres ->> Pista: buscarPista(gradoDePolicia)
+end
+Pista --> LugarDeInteres : [Pista]
+LugarDeInteres --> Ciudad : [Pista]
+Ciudad --> Policia : [Pista]
+Policia --> Partida : [Pista]
+Partida --> AlgoThief : [Pista]
+
+
+
+
+@enduml
