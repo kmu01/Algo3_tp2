@@ -4,8 +4,8 @@ title Diagrama General
 
 class Ciudad{
     - nombre : String
-    - kilometrosDeDistancia : int
     + visitar(grado, lugar) : Pista
+    + nombre() : String
 
 }
 class Partida{
@@ -32,12 +32,18 @@ class Policia{
     - grado : GradoDePolicia
     - sospechoso : Ladron
     - ciudadActual : Ciudad
+    - cantLugaresVisitados : Integer
     + viajar(ciudad) : Ciudad
     + entrarEdificio(lugar) : Pista
     + ordenDeArresto()
     + capturar() : boolean
-
 }
+
+abstract Mapa{
+    -posicionesDeCiudades[]
+    +obtenerPosicion(): Posicion
+}
+
 interface GradoDePolicia{
     + calcularTiempoDeViaje(kilometros) : int
 }
@@ -55,7 +61,7 @@ interface ObjetoRobado{
 	+ obtenerObjeto() : Objeto
 }
 
-class Tiempo{
+interface Tiempo{
     - tiempo : int
     + tiempoTotal(tiempo) : int
 }
@@ -63,10 +69,12 @@ class Tiempo{
 
 Partida "1" --o "1..*" Ladron
 Partida"1" --* "1"Policia
+Partida --o Tiempo
 Policia --* GradoDePolicia
-Policia --o Tiempo
 Policia --> Comisaria
-Policia "1" --o "1..*" Ciudad
+Policia --> Mapa
+Partida "1" --* "1..*" Ciudad
+Policia --> Ciudad
 Ciudad "1" --> "1..5"LugaresDeInteres
 LugaresDeInteres "1" --o "1..*" Pista
 Ladron --* "1..*" ObjetoRobado
