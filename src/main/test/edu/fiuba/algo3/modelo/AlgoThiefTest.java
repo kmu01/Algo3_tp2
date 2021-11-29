@@ -5,55 +5,57 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AlgoThiefTest {
+    private Policia policia;
+
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
-        Policia policia = new Novato();
-        AlgoThief juego = new AlgoThief();
-        juego.ladronABuscar('Tesoro nacional de Montreal');//Acá se supone busca a un ladron del archivo de texto
-        // y se le pasa por parámetro el objetoRobado
-        juego.inscribirPolicia(policia, 'Montreal')//Montreal es la ciudad donde arranca
-        juego.anotarDescripcion('Femenino');
-        String pista = juego.entrarEdificio(new Banco());
-        assertEquals('Aca va la pista que debe devolver', pista.mostrarPista());
-        int horasFaltantes = 100;
-        assertEquals(horasFaltantes, policia.mostrarTiempo());
+        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
+        policia.anotarGenero("Femenino");
+        String pista = policia.entrarEdificio("banco");
+        assertEquals("pista1banco", pista);
     }
 
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
-        Policia policia = new Novato();
-        AlgoThief juego = new AlgoThief();
-        juego.ladronABuscar('Tesoro nacional de Montreal');
-        juego.inscribirPolicia(policia, 'Montreal');
-        juego.anotarDescripcion('Femenino');
-        juego.anotarDescripcion('Pelo morocho');
-        Pista textoDeLaPista = juego.entrarEdificio(new Banco());
-        assertEquals('Aca va la pista que debe devolver',textoDeLaPista.mostrarPista());
-        textoDeLaPista = juego.entrarEdificio(new Biblioteca());
-        assertEquals('Aca va la poista que debe devolver',textoDeLaPista.mostrarPista());
-        int hora = "Lunes 7:00"; // numero magico..hay que fijarse cual iria y reemplazar
-        assertEquals(hora,policia.mostrarTiempo());
+        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
+        String pista = policia.entrarEdificio("banco");
+        assertEquals("pista1banco",pista);
+        pista = policia.entrarEdificio("banco");
+        assertEquals("pista1banco",pista);
+        pista = policia.entrarEdificio("biblioteca");
+        assertEquals("pista1Biblioteca",pista);
+
+    }
+
+
+       @Test
+    public void elDetectiveViajaDeMontrealACiudadDeMexico(){
+        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
+        policia.viajar(new Ciudad("Ciudad de Mexico"));
+        assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
+
     }
 
     @Test
-    public void elDetectiveViajaDeMontrealACiudadDeMexico(){
-        Policia policia = new Novato("Montreal");
-        policia.viajar('Ciudad de Mexico');
-        assertEquals('Ciudad de Mexico',policia.mostrarCiudadActual());
-        int hora = "Lunes 12:00";
-        assertEquals(hora,policia.mostrarTiempo());
+
+    public void visita3VecesAeropuertoY55VecesPuerto(){
+        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
+        String pista = policia.entrarEdificio("aeropuerto");
+        assertEquals("pista1aeropuerto",pista);
+        pista = policia.entrarEdificio("aeropuerto");
+        assertEquals("pista1aeropuerto",pista);
+        pista = policia.entrarEdificio("puerto");
+        assertEquals("pista1puerto",pista);
+
     }
 
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
-
-        Policia policia = new Novato();
-        policia.herirConCuchillo();
-        String hora = "Lunes 8:00";
-        assertEquals(hora,policia.mostrarTiempo());
-        policia.dormir();
-        String horaDespuesDeDormir = "Lunes 16:00";
-        assertEquals(HoraDespuesDeDormir,policia.mostrarTiempo());
-
+        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
+        Ladron ladron = new Ladron("Tesoro nacional de Montreal", policia.obtenerArrestos());
+        int restarTiempoAcuchillado = ladron.acuchillar(policia);
+        assertEquals(1,restarTiempoAcuchillado);
+        int restarHorasQueTardaEnDormir = policia.dormir();
+        assertEquals(8,restarHorasQueTardaEnDormir);
     }
 }
