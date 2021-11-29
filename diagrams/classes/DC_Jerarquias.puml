@@ -1,0 +1,60 @@
+@startuml
+title Jerarquias de Interfaces
+interface GradoDePolicia{
+    + calcularTiempoDeViaje(kilometros) : int
+    + consultarNivelDePistaDisponible() : String
+}
+class Novato{}
+class Detective{}
+class Investigador{}
+class Sargento{}
+
+
+interface LugarDeInteres{
+    + visitar(grado) : Pista
+}
+
+class Banco{}
+class Bolsa{}
+class Biblioteca{}
+class Aeropuerto{}
+class Puerto{}
+
+interface Pista{
+    + buscarPista() : Pista
+    + mostrarPista() : String
+    + consultarEstado(grado) : boolean
+}
+class PistaFacil{}
+class PistaMedia{}
+class PistaDificil{}
+
+interface ObjetoRobado{
+    - cantidadPaises : int
+	+ obtenerObjeto() : Objeto
+}
+
+class ObjetoComun{}
+class ObjetoValioso{}
+class ObjetoMuyValioso{}
+
+GradoDePolicia <|.. Novato
+GradoDePolicia <|.. Detective
+GradoDePolicia <|.. Investigador
+GradoDePolicia <|.. Sargento
+
+Pista <|.. PistaFacil
+Pista <|.. PistaMedia
+Pista <|.. PistaDificil
+
+LugarDeInteres <|.. Banco
+LugarDeInteres <|.. Bolsa
+LugarDeInteres <|.. Biblioteca
+LugarDeInteres <|.. Aeropuerto
+LugarDeInteres <|.. Puerto
+
+ObjetoRobado <|.. ObjetoComun
+ObjetoRobado <|.. ObjetoValioso
+ObjetoRobado <|.. ObjetoMuyValioso
+
+@enduml

@@ -4,6 +4,7 @@ title Diagrama General
 
 class Ciudad{
     - nombre : String
+    - lugares{String, LugarDeInteres} : HashMap
     + visitar(grado, lugar) : Pista
     + nombre() : String
 
@@ -24,36 +25,55 @@ class Comisaria{
     + atrapado(sospechoso) : boolean
 }
 class Ladron{
-    - descripcion : String
+    - sexo : String
+    - hobbie : String
+    - cabello : String
+    - seña : String
+    - vehiculo : String
+    - objetoRobado : ObjetoRobado
+    + {static} registro(objetoRobado, cantidadArrestos)
+    + {static} registroEspecifico(cantidadArrestos, objetoRobado, sexo, hobbie, seña, vehiculo)
+    + anotarGenero(genero) : String
     + comparar(sospechoso) : boolean
+    + acuchillar(Policia) : int
 }
 
 class Policia{
     - grado : GradoDePolicia
     - sospechoso : Ladron
     - ciudadActual : Ciudad
-    - cantLugaresVisitados : Integer
+    - cantLugaresVisitados : int
+    - cantidadArrestos : int
+    + {static} registro(objetoRobado, cantidadArrestos, Ciudad)
     + viajar(ciudad) : Ciudad
     + entrarEdificio(lugar) : Pista
+    + anotarGenero(genero)
     + ordenDeArresto()
     + capturar() : boolean
+    + recibirCuchillazo() : int
+    + dormir() : int
+    + tiempoDeVisita(cantLugaresVisitados) : int
 }
 
 abstract Mapa{
-    -posicionesDeCiudades[]
-    +obtenerPosicion(): Posicion
+    - posicionesDeCiudades[]
+    + obtenerPosicion(): Posicion
+    + calcularDistancia(ciudad, ciudad) : int
 }
 
 interface GradoDePolicia{
     + calcularTiempoDeViaje(kilometros) : int
+    + consultarNivelDePistaDisponible() : String
 }
 
-interface LugaresDeInteres{
-    + buscarPista(grado) : Pista
+interface LugarDeInteres{
+    + visitar(grado) : Pista
 }
 
 interface Pista{
-    + obtenerPista() : Pista
+    + buscarPista() : Pista
+    + mostrarPista() : String
+    + consultarEstado(grado) : boolean
 }
 
 interface ObjetoRobado{
@@ -75,8 +95,8 @@ Policia --> Comisaria
 Policia --> Mapa
 Partida "1" --* "1..*" Ciudad
 Policia --> Ciudad
-Ciudad "1" --> "1..5"LugaresDeInteres
-LugaresDeInteres "1" --o "1..*" Pista
+Ciudad "1" --> "1..5"LugarDeInteres
+LugarDeInteres "1" --o "1..*" Pista
 Ladron --* "1..*" ObjetoRobado
 Comisaria --o "*" Ladron
 

@@ -16,7 +16,7 @@ activate Policia
 
 Policia ->> Mapa: calcularDistancia(ciudadActual, ciudadDestino)
 Policia <-- Mapa: [kms]
-Policia ->> GradoDePolicia: calcularTiempo(kms)
+Policia ->> GradoDePolicia: calcularTiempoDeViaje(kms)
 Policia <-- GradoDePolicia: [tiempo]
 return [tiempo]
 deactivate Policia
