@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import java.util.HashMap;
 
 public interface LugarDeInteres {
-    String visitar(GradoDePolicia grado);
+    void visitar(GradoDePolicia grado);
     Pista obtenerPista(GradoDePolicia grado);
+    void agregarPista(String dificultad,String descripcion);
 }

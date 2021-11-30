@@ -25,6 +25,7 @@ public class Ladron {
     }
 
     public int acuchillar(Policia policiaAcuchillado){
+
         return policiaAcuchillado.recibirCuchillazo();
     }
 }

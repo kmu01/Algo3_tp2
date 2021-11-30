@@ -5,14 +5,27 @@ import java.util.HashMap;
 
 
 public class Banco implements LugarDeInteres {
-    private Pista pista;
-    public Banco(){
-        this.pista = new PistaFacil("pista1banco");
+
+    private HashMap<String,Pista> pistas;
+
+    public Banco() {
+
+        this.pistas = new HashMap<String, Pista>();
     }
 
     @Override
-    public String visitar(GradoDePolicia grado){
+    public void visitar(GradoDePolicia grado){
 
-        return this.obtenerPista(grado).mostrarPista();
+        this.obtenerPista(grado).mostrarPista();
+    }
+
+    @Override
+    public Pista obtenerPista(GradoDePolicia grado){
+
+        return grado.buscarPista(this.pistas);
+    }
+    @Override
+    public void agregarPista(String dificultad, String descripcion){
+        this.pistas.put(dificultad, new PistaFacil(descripcion));
     }
 }

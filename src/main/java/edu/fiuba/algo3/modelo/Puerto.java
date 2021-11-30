@@ -8,12 +8,11 @@ public class Puerto implements LugarDeInteres{
 
     public Puerto(){
         this.pistas = new HashMap<String, Pista>();
-        this.pistas.put("novato", new PistaFacil("pistaNovatoPuerto"));
     }
     @Override
-    public String visitar(GradoDePolicia grado){
+    public void visitar(GradoDePolicia grado){
 
-        return this.obtenerPista(grado).mostrarPista();
+        this.obtenerPista(grado).mostrarPista();
     }
 
     @Override
@@ -21,5 +20,8 @@ public class Puerto implements LugarDeInteres{
 
         return grado.buscarPista(this.pistas);
     }
-
+    @Override
+    public void agregarPista(String dificultad, String descripcion){
+        this.pistas.put(dificultad, new PistaFacil(descripcion));
+    }
 }

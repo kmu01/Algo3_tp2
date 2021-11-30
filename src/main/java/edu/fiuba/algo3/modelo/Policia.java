@@ -6,12 +6,14 @@ public class Policia {
     private Ciudad ciudadActual;
     private int cantLugaresVisitados;
     private int cantidadArrestos;
-    public Policia(String objetoRobado, int cantidadArrestos, Ciudad ciudadInicial){
+    private Mapa mapa;
+    public Policia(String objetoRobado, int cantidadArrestos, Ciudad ciudadInicial,Mapa mapa){
         this.grado = new Novato();
         this.sospechoso = new Ladron(objetoRobado,cantidadArrestos);
         this.ciudadActual = ciudadInicial;
         this.cantLugaresVisitados = 0;
         this.cantidadArrestos = cantidadArrestos;
+        this.mapa = mapa;
     }
 
     public int obtenerArrestos(){
@@ -22,12 +24,17 @@ public class Policia {
         this.sospechoso.anotarGenero(genero);
     }
 
-    public String entrarEdificio(String lugarSeleccionado){
-        return (this.ciudadActual.visitar(lugarSeleccionado,this.grado));
+    public int entrarEdificio(String lugarSeleccionado){
+        this.ciudadActual.visitar(lugarSeleccionado,this.grado);
+        return (this.cantLugaresVisitados < 3 ? ++this.cantLugaresVisitados : this.cantLugaresVisitados);
     }
 
-    public void viajar(Ciudad ciudadSeleccionada){
+    public int viajar(Ciudad ciudadSeleccionada){
+
         this.ciudadActual = ciudadSeleccionada;
+        int distancia = mapa.calcularDistancia(ciudadSeleccionada.nombre(),this.ciudadActual.nombre());
+        int tiempoDeViaje = grado.calcularTiempoDeViaje(distancia);
+        return tiempoDeViaje;
     }
     public String mostrarCiudadActual(){
         return (this.ciudadActual.nombre());

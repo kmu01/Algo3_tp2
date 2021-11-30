@@ -11,17 +11,21 @@ public class Bolsa implements LugarDeInteres {
 
     public Bolsa(){
         this.pistas = new HashMap<String, Pista>();
-        this.pistas.put("novato", new PistaFacil("pistaNovatoBolsa"));
+
     }
 
     @Override
-    public String visitar(GradoDePolicia grado){
-
-        return this.obtenerPista(grado).mostrarPista();
+    public void visitar(GradoDePolicia grado){
+        this.obtenerPista(grado).mostrarPista();
     }
 
     @Override
     public Pista obtenerPista(GradoDePolicia grado){
         return grado.buscarPista(this.pistas);
     }
+    @Override
+    public void agregarPista(String dificultad, String descripcion){
+        this.pistas.put(dificultad, new PistaFacil(descripcion));
+    }
+
 }

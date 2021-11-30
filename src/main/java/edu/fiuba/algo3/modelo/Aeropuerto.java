@@ -1,11 +1,28 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.HashMap;
+
 public class Aeropuerto implements LugarDeInteres{
-    private Pista pista;
+
+    private HashMap<String,Pista> pistas;
+
     public Aeropuerto(){
-        this.pista = new PistaFacil("pista1aeropuerto");
+
+        this.pistas = new HashMap<String, Pista>();
     }
-    public String visitar(GradoDePolicia grado){
-        return (this.pista.mostrarPista());
+
+    @Override
+    public void visitar(GradoDePolicia grado){
+        this.obtenerPista(grado).mostrarPista();
+    }
+
+    @Override
+    public Pista obtenerPista(GradoDePolicia grado){
+
+        return grado.buscarPista(this.pistas);
+    }
+    @Override
+    public void agregarPista(String dificultad, String descripcion){
+        this.pistas.put(dificultad, new PistaFacil(descripcion));
     }
 }
