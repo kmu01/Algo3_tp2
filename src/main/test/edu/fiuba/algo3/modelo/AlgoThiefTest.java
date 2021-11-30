@@ -12,18 +12,18 @@ public class AlgoThiefTest {
         Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
         policia.anotarGenero("Femenino");
         String pista = policia.entrarEdificio("banco");
-        assertEquals("pista1banco", pista);
+        assertEquals("pistaNovatoBanco", pista);
     }
 
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
         Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"));
         String pista = policia.entrarEdificio("banco");
-        assertEquals("pista1banco",pista);
+        assertEquals("pistaNovatoBanco", pista);
         pista = policia.entrarEdificio("banco");
-        assertEquals("pista1banco",pista);
+        assertEquals("pistaNovatoBanco",pista);
         pista = policia.entrarEdificio("biblioteca");
-        assertEquals("pista1Biblioteca",pista);
+        assertEquals("pistaNovatoBiblioteca",pista);
 
     }
 
@@ -45,7 +45,7 @@ public class AlgoThiefTest {
         pista = policia.entrarEdificio("aeropuerto");
         assertEquals("pista1aeropuerto",pista);
         pista = policia.entrarEdificio("puerto");
-        assertEquals("pista1puerto",pista);
+        assertEquals("pistaNovatoPuerto",pista);
 
     }
 

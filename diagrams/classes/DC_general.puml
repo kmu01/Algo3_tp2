@@ -4,7 +4,7 @@ title Diagrama General
 
 class Ciudad{
     - nombre : String
-    - lugares{String, LugarDeInteres} : HashMap
+    - lugares{String, LugarDeInteres}
     + visitar(grado, lugar) : Pista
     + nombre() : String
 
@@ -45,7 +45,7 @@ class Policia{
     - cantLugaresVisitados : int
     - cantidadArrestos : int
     + {static} registro(objetoRobado, cantidadArrestos, Ciudad)
-    + viajar(ciudad) : Ciudad
+    + viajar(ciudad) : int
     + entrarEdificio(lugar) : Pista
     + anotarGenero(genero)
     + ordenDeArresto()
@@ -71,8 +71,9 @@ interface LugarDeInteres{
 }
 
 interface Pista{
+    - descripcion : String
     + buscarPista() : Pista
-    + mostrarPista() : String
+    + mostrarPista()
     + consultarEstado(grado) : boolean
 }
 

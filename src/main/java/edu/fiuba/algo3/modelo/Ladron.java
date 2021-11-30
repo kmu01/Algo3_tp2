@@ -12,7 +12,7 @@ public class Ladron {
         this.objetoRobado = new ObjetoComun(objetoRobado);
     }
 
-    public Ladron(int cantidadArrestos,String objetoRobado, String sexo,String hobbie,String cabello,String seña,String vehiculo){
+    public Ladron (int cantidadArrestos,String objetoRobado, String sexo,String hobbie,String cabello,String seña,String vehiculo){
         this.cabello = cabello;
         this.hobbie = hobbie;
         this.sexo = sexo;
