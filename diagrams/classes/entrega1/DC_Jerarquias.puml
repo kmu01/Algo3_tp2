@@ -2,7 +2,7 @@
 title Jerarquias de Interfaces
 interface GradoDePolicia{
     + calcularTiempoDeViaje(kilometros) : int
-    + consultarNivelDePistaDisponible() : String
+    + buscarPista(pistas{String, Pista}) : Pista
 }
 class Novato{}
 class Detective{}
@@ -10,8 +10,11 @@ class Investigador{}
 class Sargento{}
 
 
-interface LugarDeInteres{
-    + visitar(grado) : Pista
+class LugarDeInteres{
+    + # pistas{String, Pista}
+    + visitar(grado)
+    + obtenerPista(grado) : Pista
+    + agregarPista(dificultad, descripcion)
 }
 
 class Banco{}
@@ -21,17 +24,14 @@ class Aeropuerto{}
 class Puerto{}
 
 interface Pista{
-    + buscarPista() : Pista
-    + mostrarPista() : String
-    + consultarEstado(grado) : boolean
+    + mostrarPista()
 }
 class PistaFacil{}
 class PistaMedia{}
 class PistaDificil{}
 
 interface ObjetoRobado{
-    - cantidadPaises : int
-	+ obtenerObjeto() : Objeto
+    + mostrarNombre() : String
 }
 
 class ObjetoComun{}
@@ -47,11 +47,11 @@ Pista <|.. PistaFacil
 Pista <|.. PistaMedia
 Pista <|.. PistaDificil
 
-LugarDeInteres <|.. Banco
-LugarDeInteres <|.. Bolsa
-LugarDeInteres <|.. Biblioteca
-LugarDeInteres <|.. Aeropuerto
-LugarDeInteres <|.. Puerto
+LugarDeInteres <|-- Banco
+LugarDeInteres <|-- Bolsa
+LugarDeInteres <|-- Biblioteca
+LugarDeInteres <|-- Aeropuerto
+LugarDeInteres <|-- Puerto
 
 ObjetoRobado <|.. ObjetoComun
 ObjetoRobado <|.. ObjetoValioso
