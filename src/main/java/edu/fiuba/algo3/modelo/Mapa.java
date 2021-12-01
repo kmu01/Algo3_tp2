@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import javafx.util.Pair;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +15,10 @@ public class Mapa {
     }
 
     public int calcularDistancia(String ciudadSeleccionada,String ciudadActual){
-        int latitudActual = posiciones.get(ciudadActual).getLatitud();
-        int longitudActual = posiciones.get(ciudadActual).getLongitud();
-        int latitudSeleccionada = posiciones.get(ciudadSeleccionada).getLatitud();
-        int longitudSeleccionada = posiciones.get(ciudadSeleccionada).getLongitud();
+        int latitudActual = posiciones.get(ciudadActual).obtenerLatitud();
+        int longitudActual = posiciones.get(ciudadActual).obtenerLongitud();
+        int latitudSeleccionada = posiciones.get(ciudadSeleccionada).obtenerLatitud();
+        int longitudSeleccionada = posiciones.get(ciudadSeleccionada).obtenerLongitud();
 
         return (int) sqrt(pow((longitudSeleccionada-longitudActual),2)+pow((latitudSeleccionada-latitudActual),2));
     }

@@ -32,7 +32,7 @@ public class Partida {
             acuchillar();
         }
     }
-    public void entrarEdificip(String lugarSeleccionado){
+    public void entrarEdificio(String lugarSeleccionado){
 
         int tiempo = this.policia.entrarEdificio(lugarSeleccionado);
         sumarTiempo(tiempo);
