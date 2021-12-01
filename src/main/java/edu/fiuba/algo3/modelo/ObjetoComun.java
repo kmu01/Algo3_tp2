@@ -7,6 +7,6 @@ public class ObjetoComun implements ObjetoRobado {
         this.nombre = nombre;
     }
     public String mostrarNombre(){
-        return mostrarNombre();
+        return this.nombre;
     }
 }
