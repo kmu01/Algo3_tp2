@@ -6,7 +6,7 @@ public class PistaFacil implements Pista{
         this.descripcion = descripcion;
     }
     public void mostrarPista(){
-        //(this.descripcion);
+        System.out.println(this.descripcion);
     }
 
 }

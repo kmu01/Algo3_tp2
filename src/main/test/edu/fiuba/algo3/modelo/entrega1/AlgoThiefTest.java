@@ -2,17 +2,16 @@ package edu.fiuba.algo3.modelo.entrega1;
 
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
-
+import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AlgoThiefTest {
-    private Policia policia;
 
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
         Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil","hola","banco");
+        ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
         Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad, new Mapa());
 
         policia.anotarGenero("Femenino");
@@ -23,8 +22,8 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
         Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil","aa","banco");
-        ciudad.agregarPista("facil","aas","biblioteca");
+        ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
+        ciudad.agregarPista("facil","Se despliega la pista de biblioteca","biblioteca");
         Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad,new Mapa());
         int tiempo = policia.entrarEdificio("banco");
         assertEquals(1, tiempo);
@@ -34,7 +33,6 @@ public class AlgoThiefTest {
         assertEquals(3,tiempo);
 
     }
-
 
        @Test
     public void elDetectiveViajaDeMontrealACiudadDeMexico(){
@@ -49,34 +47,23 @@ public class AlgoThiefTest {
     }
 
     @Test
+    public void visita3VecesAeropuertoY55VecesPuerto() {
 
-    public void visita3VecesAeropuertoY55VecesPuerto() throws Exception {
-        Tiempo tiempo = new Tiempo();
-        Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil","da","aeropuerto");
-        ciudad.agregarPista("facil","das","puerto");
-        Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad,new Mapa());
-        int tiempoQueSeVaADescontar = policia.entrarEdificio("aeropuerto");
-        assertEquals(1,tiempoQueSeVaADescontar);
-        tiempoQueSeVaADescontar = policia.entrarEdificio("aeropuerto");
-        assertEquals(2,tiempoQueSeVaADescontar);
-        tiempoQueSeVaADescontar = policia.entrarEdificio("aeropuerto");
-        assertEquals(3,tiempoQueSeVaADescontar);
+        Policia mockPolicia = Mockito.mock(Policia.class);
+
+        mockPolicia.entrarEdificio("aeropuerto");
+
+        mockPolicia.entrarEdificio("aeropuerto");
+
+        mockPolicia.entrarEdificio("aeropuerto");
+        verify(mockPolicia,times(3)).entrarEdificio("aeropuerto");
 
         for(int i = 0; i < 55; i++){
-            tiempoQueSeVaADescontar = policia.entrarEdificio("puerto");
-            try{
-                tiempo.agregarTiempo(tiempoQueSeVaADescontar);
-            }catch(Exception e){
-                tiempoQueSeVaADescontar = 168;
-            }
-        }
-        assertEquals(168,tiempoQueSeVaADescontar);
-        /*assertThrows(Exception.class, () -> (for(int i = 0; i < 55; i++){
-            tiempoQueSeVaADescontar = policia.entrarEdificio("puerto");
-            tiempo.agregarTiempo(tiempoQueSeVaADescontar);
 
-        }))*/
+            mockPolicia.entrarEdificio("puerto");
+
+        }
+        verify(mockPolicia,times(55)).entrarEdificio("puerto");
     }
 
     @Test
