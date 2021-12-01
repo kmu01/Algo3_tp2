@@ -7,7 +7,7 @@ public class Tiempo {
         this.hora = 0;
 
     }
-    public void agregarTiempo(int tiempoDeLaAccion ) throws Exception {
+    public void agregarTiempo(float tiempoDeLaAccion ) throws Exception {
         this.hora += tiempoDeLaAccion;
         if(controlarLimite()){
             throw new Exception("Termino el juego");

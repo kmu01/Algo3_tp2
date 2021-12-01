@@ -1,0 +1,16 @@
+@startuml
+title Detective viaja de Montreal a Mexico
+actor "Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant ":Mapa" as Mapa
+participant ":Detective" as Grado
+
+AlgoThief ->> Policia : viajar(Ciudad de Mexico)
+activate Policia
+Policia ->> Mapa : calcularDistancia(Montreal, Ciudad de Mexico)
+Mapa --> Policia : [600]
+Policia ->> Grado : calcularTiempoDeViaje(600)
+Grado --> Policia : [0.545]
+deactivate Policia
+
+@enduml

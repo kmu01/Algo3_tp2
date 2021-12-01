@@ -43,7 +43,6 @@ public class AlgoThiefTest {
         policia.viajar(new Ciudad("Ciudad de Mexico"));
 
         assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
-
     }
 
     @Test

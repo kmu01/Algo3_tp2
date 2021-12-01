@@ -29,11 +29,11 @@ public class Policia {
         return (this.cantLugaresVisitados < 3 ? ++this.cantLugaresVisitados : this.cantLugaresVisitados);
     }
 
-    public int viajar(Ciudad ciudadSeleccionada){
+    public float viajar(Ciudad ciudadSeleccionada){
 
         this.ciudadActual = ciudadSeleccionada;
         int distancia = mapa.calcularDistancia(ciudadSeleccionada.nombre(),this.ciudadActual.nombre());
-        int tiempoDeViaje = grado.calcularTiempoDeViaje(distancia);
+        float tiempoDeViaje = grado.calcularTiempoDeViaje(distancia);
         return tiempoDeViaje;
     }
     public String mostrarCiudadActual(){

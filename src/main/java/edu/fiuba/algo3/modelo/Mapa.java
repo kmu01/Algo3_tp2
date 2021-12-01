@@ -6,7 +6,6 @@ import java.util.Map;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
-
 public class Mapa {
     private Map<String, Posicion> posiciones;
 

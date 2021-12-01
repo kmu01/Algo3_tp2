@@ -16,7 +16,7 @@ public class Partida {
         this.tiempoDeLaPartida = new Tiempo();
     }
 
-    public void sumarTiempo(int tiempoASumar) {
+    public void sumarTiempo(float tiempoASumar) {
         try {
             this.tiempoDeLaPartida.agregarTiempo(tiempoASumar);
         } catch (Exception e) {
@@ -25,7 +25,7 @@ public class Partida {
     }
     public void viajar(String ciudadSeleccionada){
         Ciudad ciudad = new Ciudad("hola");
-        int tiempo = this.policia.viajar(ciudad);
+        float tiempo = this.policia.viajar(ciudad);
         sumarTiempo(tiempo);
         int numero = (int) Math.floor(Math.random()*10+1);
         if (numero == 1){
