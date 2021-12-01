@@ -1,5 +1,5 @@
 @startuml
-title El detective comienza en Montreal, entra al banco y pide una pista
+title El detective comienza en Montreal, entra a banco y pide una pista, entra a biblioteca y pide una pista
 
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
@@ -9,17 +9,27 @@ participant "sospechoso:Ladron" as Ladron
 
 AlgoThief ->> Ciudad : registroCiudad("Montreal")
 AlgoThief ->> Ciudad : agregarPista("facil", "Se despliega la pista de banco", "banco")
+AlgoThief ->> Ciudad : agregarPista("facil", "Se despliega la pista de biblioteca", "biblioteca")
+
 AlgoThief ->> Policia : registroPolicia("Tesoro nacional de Montreal", 0, Montreal, Mapa : new)
 activate Policia
 Policia ->> Grado : new()
 Policia ->> Ladron : new("Tesoro Nacional de Montreal", 0)
 deactivate Policia
 AlgoThief ->> Policia : anotarGenero("Femenino")
+loop entra dos veces al banco
 AlgoThief ->> Policia : entrarEdificio("banco")
 activate Policia
 Policia ->> Ciudad : visitar("banco", Detective)
 return [1]
+end
 deactivate Policia
-AlgoThief ->> AlgoThief : assertEquals(1, tiempoDeEntrarEdificio)
+AlgoThief ->> AlgoThief : assertEquals(2, tiempoEsperado)
+AlgoThief ->> Policia : entrarEdificio("biblioteca")
+activate Policia
+Policia ->> Ciudad : visitar("biblioteca", Detective)
+return [3]
+deactivate Policia
+AlgoThief ->> AlgoThief : assertEquals(3, tiempoEsperado)
 note across: El resultado es el tiempo medido en horas
 @enduml

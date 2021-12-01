@@ -25,12 +25,12 @@ public class AlgoThiefTest {
         ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
         ciudad.agregarPista("facil","Se despliega la pista de biblioteca","biblioteca");
         Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad,new Mapa());
-        int tiempo = policia.entrarEdificio("banco");
-        assertEquals(1, tiempo);
-        tiempo = policia.entrarEdificio("banco");
-        assertEquals(2,tiempo);
-        tiempo = policia.entrarEdificio("biblioteca");
-        assertEquals(3,tiempo);
+        int tiempoEsperado = policia.entrarEdificio("banco");
+        assertEquals(1, tiempoEsperado);
+        tiempoEsperado = policia.entrarEdificio("banco");
+        assertEquals(2,tiempoEsperado);
+        tiempoEsperado = policia.entrarEdificio("biblioteca");
+        assertEquals(3,tiempoEsperado);
 
     }
 
