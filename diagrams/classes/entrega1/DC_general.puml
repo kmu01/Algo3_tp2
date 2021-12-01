@@ -5,6 +5,7 @@ title Diagrama General
 class Ciudad{
     - nombre : String
     - lugares{String, LugarDeInteres}
+    + {static} registroCiudad(nombre)
     + visitar(grado, lugar) : Pista
     + nombre() : String
     + agregarPista(dificultad, descripcion, lugarElegido)
@@ -17,9 +18,6 @@ class Partida{
     - ladrones[String]
     - ciudades[Ciudad]
     - objetosRobados[String]
-    + {static} registrarPoliciaACargo()
-    + {static} registrarLadron()
-    + {static} inicializarTiempo()
     + viajar(ciudad)
     + entrarEdificio(lugar)
     + sumarTiempo(tiempoASumar)
@@ -47,7 +45,7 @@ class Policia{
     - cantLugaresVisitados : int
     - cantidadArrestos : int
     - mapa : Mapa
-    + {static} registro(objetoRobado, cantidadArrestos, ciudadInicial, mapa)
+    + {static} registroPolicia(objetoRobado, cantidadArrestos, ciudadInicial, mapa)
     + viajar(ciudad) : int
     + entrarEdificio(lugar) : Pista
     + mostrarCiudadActual() : String
@@ -112,7 +110,7 @@ Policia --> Ciudad
 Ciudad "1" --> "1..5"LugarDeInteres
 LugarDeInteres "1" --o "1..*" Pista
 Ladron --* "1..*" ObjetoRobado
-Ciudad --* Posicion
-Mapa --o Posicion
+Ciudad"1" --* "1"Posicion
+Mapa"1" --o "*"Posicion
 
 @enduml

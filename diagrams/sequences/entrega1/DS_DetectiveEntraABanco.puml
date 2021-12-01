@@ -1,0 +1,24 @@
+@startuml
+title El detective comienza en Montreal, entra al banco y pide una pista
+
+actor "Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant "Montreal:Ciudad" as Ciudad
+participant ":Detective" as Grado
+participant "sospechoso:Ladron" as Ladron
+
+AlgoThief ->> Ciudad : registroCiudad("Montreal")
+AlgoThief ->> Ciudad : agregarPista("facil", "Se despliega la pista de banco", "banco")
+AlgoThief ->> Policia : registroPolicia("Tesoro nacional de Montreal", 0, Montreal, Mapa : new)
+activate Policia
+Policia ->> Grado : new()
+Policia ->> Ladron : new("Tesoro Nacional de Montreal", 0)
+deactivate Policia
+AlgoThief ->> Policia : anotarGenero("Femenino")
+AlgoThief ->> Policia : entrarEdificio("banco")
+activate Policia
+Policia ->> Ciudad : visitar("banco", Detective)
+return [1]
+note across: El resultado es el tiempo medido en horas
+deactivate Policia
+@enduml
