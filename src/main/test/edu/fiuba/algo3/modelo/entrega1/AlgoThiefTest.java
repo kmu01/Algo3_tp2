@@ -68,7 +68,7 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
         Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"),new Mapa());
-        Ladron ladron = new Ladron("Tesoro nacional de Montreal", policia.obtenerArrestos());
+        Ladron ladron = new Ladron("Tesoro nacional de Montreal");
         int restarTiempoAcuchillado = ladron.acuchillar(policia);
         assertEquals(1,restarTiempoAcuchillado);
         int restarHorasQueTardaEnDormir = policia.dormir();

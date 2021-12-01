@@ -12,5 +12,8 @@ Mapa --> Policia : [600]
 Policia ->> Grado : calcularTiempoDeViaje(600)
 Grado --> Policia : [0.545]
 deactivate Policia
+AlgoThief ->> Policia : mostrarCiudadActual()
+return["Ciudad de Mexico"]
 
+AlgoThief ->> AlgoThief : assertEquals("Ciudad de Mexico", ciudadEsperada)
 @enduml

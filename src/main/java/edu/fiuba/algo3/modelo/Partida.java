@@ -11,8 +11,6 @@ public class Partida {
     private List<String> objetosRobados;
 
     public Partida(){
-       this.policia = new Policia("asda",0,new Ciudad("Montreal"),new Mapa());
-        this.ladron = new Ladron(0,"asda","femenino","ajedrez","rubio","joya","auto");
         this.tiempoDeLaPartida = new Tiempo();
     }
 
@@ -24,7 +22,7 @@ public class Partida {
         }
     }
     public void viajar(String ciudadSeleccionada){
-        Ciudad ciudad = new Ciudad("hola");
+        Ciudad ciudad = new Ciudad(ciudadSeleccionada);
         float tiempo = this.policia.viajar(ciudad);
         sumarTiempo(tiempo);
         int numero = (int) Math.floor(Math.random()*10+1);

@@ -7,14 +7,11 @@ participant "Montreal:Ciudad" as Ciudad
 participant ":Detective" as Grado
 participant "sospechoso:Ladron" as Ladron
 
-AlgoThief ->> Ciudad : registroCiudad("Montreal")
-AlgoThief ->> Ciudad : agregarPista("facil", "Se despliega la pista de banco", "banco")
-AlgoThief ->> Ciudad : agregarPista("facil", "Se despliega la pista de biblioteca", "biblioteca")
 
-AlgoThief ->> Policia : registroPolicia("Tesoro nacional de Montreal", 0, Montreal, Mapa : new)
+AlgoThief ->> Policia : registroPolicia("Tesoro nacional de Montreal", cantidadArrestos, Montreal, mapa)
 activate Policia
 Policia ->> Grado : new()
-Policia ->> Ladron : new("Tesoro Nacional de Montreal", 0)
+Policia ->> Ladron : new("Tesoro Nacional de Montreal")
 deactivate Policia
 AlgoThief ->> Policia : anotarGenero("Femenino")
 loop entra dos veces al banco
