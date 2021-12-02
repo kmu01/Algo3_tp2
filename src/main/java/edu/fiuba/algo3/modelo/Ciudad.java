@@ -15,10 +15,10 @@ public class Ciudad {
         this.lugares = new HashMap<String, LugarDeInteres>();
 
         lugares.put("banco",new Banco());
-        lugares.put("biblioteca",new Biblioteca());
-        lugares.put("aeropuerto",new Aeropuerto());
-        lugares.put("puerto",new Puerto());
-        lugares.put("bolsa",new Bolsa());
+        lugares.put("biblioteca",new Banco());
+        lugares.put("aeropuerto",new Banco());
+        lugares.put("puerto",new Banco());
+        lugares.put("bolsa",new Banco());
 
     }
 

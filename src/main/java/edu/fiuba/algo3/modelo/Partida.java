@@ -11,9 +11,12 @@ public class Partida {
     private List<String> objetosRobados;
 
     public Partida(){
+
         this.tiempoDeLaPartida = new Tiempo();
     }
-
+    public String mostrarCiudadActual(){
+        return (this.policia.mostrarCiudadActual());
+    }
     public void sumarTiempo(float tiempoASumar) {
         try {
             this.tiempoDeLaPartida.agregarTiempo(tiempoASumar);
