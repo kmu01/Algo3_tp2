@@ -12,12 +12,7 @@ class Ciudad{
 
 }
 class Partida{
-    - policiaACargo : Policia
-    - ladronBuscado : Ladron
-    - tiempoDeLaPartida : Tiempo
-    - ladrones[String]
-    - ciudades[Ciudad]
-    - objetosRobados[String]
+   
     + viajar(ciudad)
     + entrarEdificio(lugar)
     + sumarTiempo(tiempoASumar)
@@ -64,13 +59,6 @@ class Mapa{
     + agregarCiudad(nombreCiudad, latitud, longitud)
 }
 
-class Posicion{
-    - latitud : int
-    - longitud: int
-    + obtenerLatitud() : int
-    + obtenerLongitud() : int
-}
-
 interface GradoDePolicia{
     + calcularTiempoDeViaje(kilometros) : int
     + buscarPista(pistas{String, Pista}) : Pista
@@ -110,7 +98,6 @@ Policia --> Ciudad
 Ciudad "1" --> "1..5"LugarDeInteres
 LugarDeInteres "1" --o "1..*" Pista
 Ladron --* "1..*" ObjetoRobado
-Ciudad"1" --* "1"Posicion
-Mapa"1" --o "*"Posicion
+
 
 @enduml

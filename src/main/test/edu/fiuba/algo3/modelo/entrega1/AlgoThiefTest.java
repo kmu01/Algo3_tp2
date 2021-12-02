@@ -13,8 +13,8 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
         Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
-        Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad, new Mapa());
+        ciudad.agregarPista("medio","Se despliega la pista de banco","banco");
+        Policia policia = new Policia("Tesoro nacional de Montreal",7, ciudad, new Mapa());
 
         policia.anotarGenero("Femenino");
         int tiempoDeEntrarEdificio = policia.entrarEdificio("banco");
@@ -26,7 +26,7 @@ public class AlgoThiefTest {
         Ciudad ciudad = new Ciudad("Montreal");
         ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
         ciudad.agregarPista("facil","Se despliega la pista de biblioteca","biblioteca");
-        Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad,new Mapa());
+        Policia policia = new Policia("Tesoro nacional de Montreal",3, ciudad,new Mapa());
         int tiempoEsperado = policia.entrarEdificio("banco");
         assertEquals(1, tiempoEsperado);
         tiempoEsperado = policia.entrarEdificio("banco");
@@ -67,22 +67,24 @@ public class AlgoThiefTest {
         verify(mockPolicia,times(55)).entrarEdificio("puerto");
     }
     @Test
-    public void visita55VecesBancoYDevuelveExcepcion(){
+    public void visita55VecesBancoYDevuelveExcepcion() {
         Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
-        Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad,new Mapa());
-        try{
-        for(int i = 0; i < 55; i++){
-
-                policia.entrarEdificio("banco");
-
-
-        }}catch(Exception e){
-            assertThrows(Exception.class,()->{policia.entrarEdificio("banco");});
+        ciudad.agregarPista("facil", "Se despliega la pista de banco", "banco");
+        Policia policia = new Policia("Tesoro nacional de Montreal", 0, ciudad, new Mapa());
+        Tiempo tiempo = new Tiempo();
+        try {
+            for (int i = 0; i < 55; i++) {
+                int tiempoDescontado = policia.entrarEdificio("banco");
+                tiempo.agregarTiempo(tiempoDescontado);
+            }}
+        catch(Exception e){
+                assertThrows(Exception.class, () -> {
+                    tiempo.agregarTiempo(1);
+                });
+            }
         }
-    }
 
-    @Test
+        @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
         Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"),new Mapa());
         Ladron ladron = new Ladron("Tesoro nacional de Montreal");
