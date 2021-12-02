@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.entrega1;
 import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,6 +65,21 @@ public class AlgoThiefTest {
 
         }
         verify(mockPolicia,times(55)).entrarEdificio("puerto");
+    }
+    @Test
+    public void visita55VecesBancoYDevuelveExcepcion(){
+        Ciudad ciudad = new Ciudad("Montreal");
+        ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
+        Policia policia = new Policia("Tesoro nacional de Montreal",0, ciudad,new Mapa());
+        try{
+        for(int i = 0; i < 55; i++){
+
+                policia.entrarEdificio("banco");
+
+
+        }}catch(Exception e){
+            assertThrows(Exception.class,()->{policia.entrarEdificio("banco");});
+        }
     }
 
     @Test
