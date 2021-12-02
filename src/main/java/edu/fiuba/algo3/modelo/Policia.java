@@ -8,7 +8,7 @@ public class Policia {
     private int cantidadArrestos;
     private Mapa mapa;
     public Policia(String objetoRobado, int cantidadArrestos, Ciudad ciudadInicial,Mapa mapa){
-        this.grado = asignarGrado(cantidadArrestos);
+        asignarGrado(cantidadArrestos);
         this.sospechoso = new Ladron(objetoRobado);
         this.ciudadActual = ciudadInicial;
         this.cantLugaresVisitados = 0;
@@ -16,17 +16,16 @@ public class Policia {
         this.mapa = mapa;
     }
 
-    private GradoDePolicia asignarGrado(int cantidadArrestos){
+    private void asignarGrado(int cantidadArrestos){
         if (cantidadArrestos >= 0 && cantidadArrestos <= 5){
-            return new Novato();
-        } else if (cantidadArrestos > 5 && cantidadArrestos <= 10){
-            return new Detective();
-        }else if (cantidadArrestos > 10 && cantidadArrestos <= 15){
-            return new Investigador();
-        }else if (cantidadArrestos > 15){
-            return new Sargento();
+            this.grado =  new Novato();
+        } else if (cantidadArrestos <= 10){
+            this.grado = new Detective();
+        }else if (cantidadArrestos <= 15){
+            this.grado = new Investigador();
+        }else{
+            this.grado = new Sargento();
         }
-        return new Novato();
     }
 
     public int obtenerArrestos(){
