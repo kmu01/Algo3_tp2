@@ -13,7 +13,8 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
         Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("medio","Se despliega la pista de banco","banco");
+        Pista pista = new Pista(new Medio(),"Se despliega la pista de banco","banco");
+        ciudad.agregarPista(pista);
         Policia policia = new Policia("Tesoro nacional de Montreal",7, ciudad, new Mapa());
 
         policia.anotarGenero("Femenino");

@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface GradoDePolicia {
     int calcularTiempoDeViaje(int kilometros);
-    Pista buscarPista(HashMap<String, Pista> pistas);
+    Pista buscarPista(List<Pista> pistas,String nombreLugar);
 }

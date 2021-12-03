@@ -3,34 +3,37 @@ package edu.fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import java.util.List;
 import java.util.Map;
 
 public class Ciudad {
     private String nombre;
-    private Map<String,LugarDeInteres> lugares;
-
+    //private List<Lugar> lugares;
+    protected List<Pista> pistas;
     public Ciudad(String nombre){
 
         this.nombre = nombre;
-        this.lugares = new HashMap<String, LugarDeInteres>();
+        this.pistas = new ArrayList<Pista>();
+        //this.lugares = new HashMap<String, LugarDeInteres>();
+        //this.lugares = new ArrayList<Lugar>();
 
-        lugares.put("banco",new Banco());
+        /*lugares.put("banco",new Banco());
         lugares.put("biblioteca",new Banco());
         lugares.put("aeropuerto",new Banco());
         lugares.put("puerto",new Banco());
         lugares.put("bolsa",new Banco());
-
+        */
     }
 
-    public void visitar(String lugarSeleccionado, GradoDePolicia grado){
-        this.lugares.get(lugarSeleccionado).visitar(grado);
+    public Evidencia visitar(Lugar lugarSeleccionado, GradoDePolicia grado){
+        return lugarSeleccionado.visitar(grado,this.pistas);
     }
     public String nombre(){
         return (this.nombre);
     }
 
-    public void agregarPista(String dificultad,String descripcion,String lugarElegido){
-        this.lugares.get(lugarElegido).agregarPista(dificultad,descripcion);
+    public void agregarPista(Pista pista){
+        this.pistas.add(pista);
     }
 
 }

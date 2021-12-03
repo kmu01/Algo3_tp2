@@ -36,7 +36,7 @@ public class Policia {
         this.sospechoso.anotarGenero(genero);
     }
 
-    public int entrarEdificio(String lugarSeleccionado){
+    public int entrarEdificio(Lugar lugarSeleccionado){
         this.ciudadActual.visitar(lugarSeleccionado,this.grado);
         return (this.cantLugaresVisitados < 3 ? ++this.cantLugaresVisitados : this.cantLugaresVisitados);
     }

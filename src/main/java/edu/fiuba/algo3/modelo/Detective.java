@@ -1,10 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Detective implements GradoDePolicia {
     private final int tiempoDeViaje = 1100;
-    private final String nivelDePistaDisponible = "medio";
+    private final NivelDePista nivelDePistaDisponible = new Medio();
     public Detective(){
     }
 
@@ -15,7 +16,15 @@ public class Detective implements GradoDePolicia {
 
 
     @Override
-    public Pista buscarPista(HashMap<String, Pista> pistas){
-        return pistas.get(this.nivelDePistaDisponible);
+    public Pista buscarPista(List<Pista> pistas, String nombreLugar){
+
+        Pista pistaSeleccionada = null;
+        for (int i = 0 ; i < pistas.size() ; i++){
+            Pista pista = pistas.get(i);
+            if(pista.esPista(this.nivelDePistaDisponible,nombreLugar)){
+                pistaSeleccionada = pista;
+            };
+        }
+        return pistaSeleccionada;
     }
 }
