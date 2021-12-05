@@ -14,14 +14,27 @@ public class Pista {
     }
 
     public boolean esPista(NivelDePista nivel ,String nombreLugar){
-        return ((this.nivel == nivel) && (nombreLugar == this.lugarCorrespondiente));
+
+        return ((this.nivel.esNivel(nivel)) && (this.lugarCorrespondiente.equals(nombreLugar)));
+
     }
 
+    private void calcularTiempoEnObtenerLaPista (Cronometro cronometro){
 
-    public Evidencia pedirEvidencia(){
+        cronometro.calcularTiempoEnObtenerLaPista(this.cantDeVisitas);
+
+    }
+
+    public Pista obtenerPista(Cronometro cronometro){
         this.cantDeVisitas++;
-        Evidencia evidencia = new Evidencia();
-        evidencia.entradaAlEdificio(this.cantDeVisitas,this);
-        return evidencia;
+        this.calcularTiempoEnObtenerLaPista(cronometro);
+        return this;
     }
+
+    public String descripcion (){
+
+        return this.descripcion;
+
+    }
+
 }

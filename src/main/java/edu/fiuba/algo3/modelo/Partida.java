@@ -14,7 +14,7 @@ public class Partida {
 
         this.tiempoDeLaPartida = new Tiempo();
     }
-    public String mostrarCiudadActual(){
+    /*public String mostrarCiudadActual(){
         return (this.policia.mostrarCiudadActual());
     }
     public void sumarTiempo(float tiempoASumar) {
@@ -43,6 +43,6 @@ public class Partida {
         int tiempo = this.ladron.acuchillar(this.policia);
         sumarTiempo(tiempo);
 
-    }
+    }*/
 
 }

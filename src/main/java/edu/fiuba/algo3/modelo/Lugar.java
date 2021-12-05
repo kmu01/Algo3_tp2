@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Lugar {
@@ -9,8 +7,8 @@ public class Lugar {
     public Lugar(String nombre){
         this.nombre = nombre;
     }
-    public Evidencia visitar(GradoDePolicia grado,List<Pista> pistas){
-        return (this.obtenerPista(grado,pistas).pedirEvidencia());
+    public Pista visitar(GradoDePolicia grado,List<Pista> pistas, Cronometro cronometro){
+        return (this.obtenerPista(grado,pistas).obtenerPista(cronometro));
 
     }
     private Pista obtenerPista(GradoDePolicia grado, List<Pista> pistas){

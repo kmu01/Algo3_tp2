@@ -1,97 +1,122 @@
 package edu.fiuba.algo3.modelo.entrega1;
 
 import edu.fiuba.algo3.modelo.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoThiefTest {
 
+    List<Pista> pistas = new ArrayList<Pista>();
+    Ciudad ciudad;
+    Tiempo tiempo;
+    Cronometro cronometro;
+
+    @BeforeEach
+    public void setUp(){
+
+        List<String> nombresDeLugares = new ArrayList<String>();
+        nombresDeLugares.add("banco");
+        nombresDeLugares.add("bolsa");
+        nombresDeLugares.add("biblioteca");
+        nombresDeLugares.add("puerto");
+        nombresDeLugares.add("aeropuerto");
+
+        HashMap<String, String> descripciones = new HashMap<String, String>();
+        descripciones.put("banco", "Se despliega la pista de banco");
+        descripciones.put("bolsa", "Se despliega la pista de bolsa");
+        descripciones.put("biblioteca", "Se despliega la pista de biblioteca");
+        descripciones.put("puerto", "Se despliega la pista de puerto");
+        descripciones.put("aeropuerto", "Se despliega la pista de aeropuerto");
+
+        descripciones.forEach((lugar, description) -> pistas.add(new Pista(new Medio(), description, lugar)));
+
+        tiempo = new Tiempo();
+        cronometro = new Cronometro(tiempo);
+
+        ciudad = new Ciudad("Montreal", pistas);
+
+    }
+
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
-        Ciudad ciudad = new Ciudad("Montreal");
-        Pista pista = new Pista(new Medio(),"Se despliega la pista de banco","banco");
-        ciudad.agregarPista(pista);
-        Policia policia = new Policia("Tesoro nacional de Montreal",7, ciudad, new Mapa());
+
+        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Investigador(), ciudad);
 
         policia.anotarGenero("Femenino");
-        int tiempoDeEntrarEdificio = policia.entrarEdificio("banco");
-        assertEquals(1, tiempoDeEntrarEdificio);
+
+        Pista pista = policia.entrarEdificio(new Lugar("banco"), cronometro);
+        assertEquals("Se despliega la pista de banco", pista.descripcion());
+        assertEquals(1,tiempo.tiempoRestante());
+
     }
 
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
-        Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil","Se despliega la pista de banco","banco");
-        ciudad.agregarPista("facil","Se despliega la pista de biblioteca","biblioteca");
-        Policia policia = new Policia("Tesoro nacional de Montreal",3, ciudad,new Mapa());
-        int tiempoEsperado = policia.entrarEdificio("banco");
-        assertEquals(1, tiempoEsperado);
-        tiempoEsperado = policia.entrarEdificio("banco");
-        assertEquals(2,tiempoEsperado);
-        tiempoEsperado = policia.entrarEdificio("biblioteca");
-        assertEquals(3,tiempoEsperado);
+
+        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
+
+        Pista pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro);
+        assertEquals("Se despliega la pista de banco", pistaPrimerBanco.descripcion());
+        Pista pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro);
+        assertEquals("Se despliega la pista de banco", pistaSegundoBanco.descripcion());
+        assertEquals(3,tiempo.tiempoRestante());
+        Pista pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro);
+        assertEquals("Se despliega la pista de biblioteca", pistaBliblioteca.descripcion());
+        assertEquals(4,tiempo.tiempoRestante());
 
     }
 
-       @Test
+    @Test
     public void elDetectiveViajaDeMontrealACiudadDeMexico(){
+
         Mapa mapa = new Mapa();
-        mapa.agregarCiudad("Montreal",100,100);
+        mapa.agregarCiudad("Montreal",2000,1500);
         mapa.agregarCiudad("Ciudad de Mexico",700,250);
-        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"),mapa);
-        policia.viajar(new Ciudad("Ciudad de Mexico"));
+
+        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
+        policia.viajar(new Ciudad("Ciudad de Mexico"), mapa, cronometro);
 
         assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
+        assertEquals((1),tiempo.tiempoRestante());
+
     }
 
     @Test
     public void visita3VecesAeropuertoY55VecesPuerto() {
 
-        Policia mockPolicia = Mockito.mock(Policia.class);
+        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
 
-        mockPolicia.entrarEdificio("aeropuerto");
+        for(int i = 0; i < 3; i++){
 
-        mockPolicia.entrarEdificio("aeropuerto");
+            policia.entrarEdificio(new Lugar("aeropuerto"), cronometro);
+            assertFalse(tiempo.finalizado());
 
-        mockPolicia.entrarEdificio("aeropuerto");
-        verify(mockPolicia,times(3)).entrarEdificio("aeropuerto");
+        }
 
         for(int i = 0; i < 55; i++){
 
-            mockPolicia.entrarEdificio("puerto");
+            policia.entrarEdificio(new Lugar("puerto"), cronometro);
 
         }
-        verify(mockPolicia,times(55)).entrarEdificio("puerto");
+
+        assertTrue(tiempo.finalizado());
+
     }
-    @Test
-    public void visita55VecesBancoYDevuelveExcepcion() {
-        Ciudad ciudad = new Ciudad("Montreal");
-        ciudad.agregarPista("facil", "Se despliega la pista de banco", "banco");
-        Policia policia = new Policia("Tesoro nacional de Montreal", 0, ciudad, new Mapa());
-        Tiempo tiempo = new Tiempo();
-        try {
-            for (int i = 0; i < 55; i++) {
-                int tiempoDescontado = policia.entrarEdificio("banco");
-                tiempo.agregarTiempo(tiempoDescontado);
-            }}
-        catch(Exception e){
-                assertThrows(Exception.class, () -> {
-                    tiempo.agregarTiempo(1);
-                });
-            }
-        }
 
-        @Test
+    @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
-        Policia policia = new Policia("Tesoro nacional de Montreal",0, new Ciudad("Montreal"),new Mapa());
-        Ladron ladron = new Ladron("Tesoro nacional de Montreal");
-        int restarTiempoAcuchillado = ladron.acuchillar(policia);
-        assertEquals(1,restarTiempoAcuchillado);
-        int restarHorasQueTardaEnDormir = policia.dormir();
-        assertEquals(8,restarHorasQueTardaEnDormir);
+
+        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
+
+        policia.recibirCuchillazo(cronometro);
+        assertEquals(2, tiempo.tiempoRestante());
+        policia.dormir(cronometro);
+        assertEquals(10, tiempo.tiempoRestante());
+
     }
 }

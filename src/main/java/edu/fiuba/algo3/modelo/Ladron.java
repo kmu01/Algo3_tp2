@@ -1,31 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
-public class Ladron {
-    private String genero;
-    private String hobbie;
-    private String cabello;
-    private String seña;
-    private String vehiculo;
-    private ObjetoRobado objetoRobado;
-    public Ladron(String objetoRobado){
+public class Ladron extends MiembroDeBanda{
 
-        this.objetoRobado = new ObjetoComun(objetoRobado);
-    }
+    public Ladron (ObjetoRobado objetoRobado, String genero, String hobbie, String cabello, String senia, String vehiculo, Ciudad ciudad){
 
-    public Ladron (String objetoRobado, String genero,String hobbie,String cabello,String seña,String vehiculo){
         this.cabello = cabello;
         this.hobbie = hobbie;
         this.genero = genero;
-        this.seña = seña;
+        this.senia = senia;
         this.vehiculo = vehiculo;
-        this.objetoRobado = new ObjetoComun(objetoRobado);
-    }
-    public void anotarGenero(String genero){
-        this.genero = genero;
+        this.objetoRobado = objetoRobado;
+        this.ciudad = ciudad;
+
     }
 
-    public int acuchillar(Policia policiaAcuchillado){
-
-        return policiaAcuchillado.recibirCuchillazo();
-    }
 }
