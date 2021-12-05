@@ -10,9 +10,9 @@ public class Cronometro {
 
     }
 
-    public void calcularTiempoDeViaje(int distancia, int tiempoDeViaje) {
+    public void calcularTiempoDeViaje(float distancia, int tiempoDeViaje) {
 
-        this.tiempo.agregarTiempo(distancia/(tiempoDeViaje));
+        this.tiempo.agregarTiempo((int) Math.floor(distancia/(tiempoDeViaje)));
 
     }
 

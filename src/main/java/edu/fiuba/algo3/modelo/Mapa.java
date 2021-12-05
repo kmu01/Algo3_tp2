@@ -8,7 +8,7 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 public class Mapa {
 
-    private Map<String, Posicion> posiciones;
+    private Map<Ciudad, Posicion> posiciones;
 
     public Mapa(){
 
@@ -16,20 +16,20 @@ public class Mapa {
 
     }
 
-    public int calcularDistancia (String ciudadSeleccionada,String ciudadActual){
+    public float calcularDistancia (Ciudad ciudadSeleccionada,Ciudad ciudadActual){
 
-        int latitudActual = posiciones.get(ciudadActual).latitud();
-        int longitudActual = posiciones.get(ciudadActual).longitud();
-        int latitudSeleccionada = posiciones.get(ciudadSeleccionada).latitud();
-        int longitudSeleccionada = posiciones.get(ciudadSeleccionada).longitud();
+        float latitudActual = posiciones.get(ciudadActual).latitud();
+        float longitudActual = posiciones.get(ciudadActual).longitud();
+        float latitudSeleccionada = posiciones.get(ciudadSeleccionada).latitud();
+        float longitudSeleccionada = posiciones.get(ciudadSeleccionada).longitud();
 
-        return (int) sqrt(pow((longitudSeleccionada-longitudActual),2)+pow((latitudSeleccionada-latitudActual),2));
+        return (float) sqrt(pow((longitudSeleccionada-longitudActual),2)+pow((latitudSeleccionada-latitudActual),2));
 
     }
 
-    public void agregarCiudad (String nombreCiudad, int latitud, int longitud){
+    public void agregarCiudad (Ciudad ciudad, float latitud, float longitud){
 
-        this.posiciones.put(nombreCiudad,new Posicion(latitud,longitud));
+        this.posiciones.put(ciudad,new Posicion(latitud,longitud));
 
     }
 

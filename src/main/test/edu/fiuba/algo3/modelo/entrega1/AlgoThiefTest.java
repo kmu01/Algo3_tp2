@@ -75,11 +75,13 @@ public class AlgoThiefTest {
     public void elDetectiveViajaDeMontrealACiudadDeMexico(){
 
         Mapa mapa = new Mapa();
-        mapa.agregarCiudad("Montreal",2000,1500);
-        mapa.agregarCiudad("Ciudad de Mexico",700,250);
+        Ciudad actual = new Ciudad("Montreal");
+        Ciudad destino = new Ciudad("Ciudad de Mexico");
+        mapa.agregarCiudad(actual,2000,1500);
+        mapa.agregarCiudad(destino,700,250);
 
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
-        policia.viajar(new Ciudad("Ciudad de Mexico"), mapa, cronometro);
+        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), actual);
+        policia.viajar(destino, mapa, cronometro);
 
         assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
         assertEquals((1),tiempo.tiempoRestante());

@@ -31,7 +31,7 @@ public class Policia {
     public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) {
 
 
-        int distancia = mapa.calcularDistancia(ciudadSeleccionada.nombre(),this.ciudadActual.nombre());
+        float distancia = mapa.calcularDistancia(ciudadSeleccionada,this.ciudadActual);
         this.grado.calcularTiempoDeViaje(distancia, cronometro);
         this.ciudadActual = ciudadSeleccionada;
 

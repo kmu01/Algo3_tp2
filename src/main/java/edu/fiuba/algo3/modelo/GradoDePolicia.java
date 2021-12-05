@@ -10,7 +10,7 @@ public class GradoDePolicia {
 
     public GradoDePolicia (){}
 
-    public void calcularTiempoDeViaje(int distancia, Cronometro cronometro) {
+    public void calcularTiempoDeViaje(float distancia, Cronometro cronometro) {
 
         cronometro.calcularTiempoDeViaje(distancia, this.tiempoDeViaje);
 

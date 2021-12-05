@@ -1,17 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
 public class Posicion {
-    private int latitud;
-    private int longitud;
+    private float latitud;
+    private float longitud;
 
-    public Posicion(int latitud, int longitud){
+    public Posicion(float latitud, float longitud){
         this.latitud = latitud;
         this.longitud = longitud;
     }
-    public int latitud(){
+    public float latitud(){
         return (this.latitud);
     }
-    public int longitud(){
+    public float longitud(){
         return(this.longitud);
     }
 }

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class MiembroDeBanda {
 
+    protected String nombre;
     protected String genero;
     protected String hobbie;
     protected String cabello;
