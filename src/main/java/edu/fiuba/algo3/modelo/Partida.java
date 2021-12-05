@@ -18,7 +18,6 @@ public class Partida {
         cargarLadrones();
         cargarCiudades();
         cargarObjetosRobados();
-        cargarMapa();
 
         GradoDePolicia grado = pedirDatosDelJugador();
         ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
@@ -34,7 +33,6 @@ public class Partida {
     private void cargarLadrones(){this.ladrones = null;}
     private void cargarCiudades(){this.ciudades = null;}
     private void cargarObjetosRobados(){this.objetosRobados = null;}
-    private void cargarMapa(){this.mapa = null;}
 
     public GradoDePolicia pedirDatosDelJugador() {
         //Pedir datos y determinar el grado
