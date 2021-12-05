@@ -12,16 +12,16 @@ public class Mapa {
 
     public Mapa(){
 
-        this.posiciones = new HashMap<String, Posicion>();
+        this.posiciones = new HashMap<>();
 
     }
 
     public int calcularDistancia (String ciudadSeleccionada,String ciudadActual){
 
-        int latitudActual = posiciones.get(ciudadActual).obtenerLatitud();
-        int longitudActual = posiciones.get(ciudadActual).obtenerLongitud();
-        int latitudSeleccionada = posiciones.get(ciudadSeleccionada).obtenerLatitud();
-        int longitudSeleccionada = posiciones.get(ciudadSeleccionada).obtenerLongitud();
+        int latitudActual = posiciones.get(ciudadActual).latitud();
+        int longitudActual = posiciones.get(ciudadActual).longitud();
+        int latitudSeleccionada = posiciones.get(ciudadSeleccionada).latitud();
+        int longitudSeleccionada = posiciones.get(ciudadSeleccionada).longitud();
 
         return (int) sqrt(pow((longitudSeleccionada-longitudActual),2)+pow((latitudSeleccionada-latitudActual),2));
 

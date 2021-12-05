@@ -8,10 +8,10 @@ public class Posicion {
         this.latitud = latitud;
         this.longitud = longitud;
     }
-    public int obtenerLatitud(){
+    public int latitud(){
         return (this.latitud);
     }
-    public int obtenerLongitud(){
+    public int longitud(){
         return(this.longitud);
     }
 }

@@ -6,7 +6,7 @@ public class Investigador extends GradoDePolicia {
         super();
         this.tiempoDeViaje = 1300;
         this.tiempoDeDescanso = 8;
-        this.nivelDePistaDisponible = new Medio();
+        this.dificultad = new Dificultad("Medio");
 
     }
 

@@ -1,21 +1,21 @@
 package edu.fiuba.algo3.modelo;
 
 public class Pista {
-    private NivelDePista nivel;
+    private Dificultad dificultad;
     private String descripcion;
     private String lugarCorrespondiente;
     private int cantDeVisitas;
 
-    public Pista(NivelDePista nivel,String descripcion, String lugarCorrespondiente){
+    public Pista(Dificultad dificultad, String descripcion, String lugarCorrespondiente){
         this.cantDeVisitas = 0;
-        this.nivel = nivel;
+        this.dificultad = dificultad;
         this.descripcion = descripcion;
         this.lugarCorrespondiente = lugarCorrespondiente;
     }
 
-    public boolean esPista(NivelDePista nivel ,String nombreLugar){
+    public boolean esPista(Dificultad dificultad, String nombreLugar){
 
-        return ((this.nivel.esNivel(nivel)) && (this.lugarCorrespondiente.equals(nombreLugar)));
+        return ((this.dificultad.obtenerDificultad().equals(dificultad.obtenerDificultad())) && (this.lugarCorrespondiente.equals(nombreLugar)));
 
     }
 

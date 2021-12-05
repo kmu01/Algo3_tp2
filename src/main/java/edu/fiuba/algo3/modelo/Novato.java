@@ -7,7 +7,7 @@ public class Novato extends GradoDePolicia {
 
         this.tiempoDeViaje = 900;
         this.tiempoDeDescanso = 8;
-        this.nivelDePistaDisponible = new Facil();
+        this.dificultad = new Dificultad("facil");
     }
 
 }

@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-public class ObjetoComun implements ObjetoRobado{
+public class ObjetoMuyValioso implements ObjetoRobado {
 
-    private final int cantidadPaises = 4;
+    private final int cantidadPaises = 7;
     private final String nombre;
 
-    public ObjetoComun(String nombre){
+    public ObjetoMuyValioso(String nombre){
 
         this.nombre = nombre;
 
@@ -16,5 +16,4 @@ public class ObjetoComun implements ObjetoRobado{
         return this.nombre;
 
     }
-
 }

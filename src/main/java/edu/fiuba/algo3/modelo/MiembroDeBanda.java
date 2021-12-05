@@ -12,7 +12,9 @@ public abstract class MiembroDeBanda {
 
     public MiembroDeBanda (){}
 
-    public void objetoRobado (){
+    public ObjetoRobado objetoRobado (){
+
+        return objetoRobado;
 
     }
 

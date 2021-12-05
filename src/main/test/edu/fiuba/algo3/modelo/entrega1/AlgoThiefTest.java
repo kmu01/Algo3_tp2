@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoThiefTest {
 
-    List<Pista> pistas = new ArrayList<Pista>();
+    List<Pista> pistas = new ArrayList<>();
     Ciudad ciudad;
     Tiempo tiempo;
     Cronometro cronometro;
@@ -19,21 +19,21 @@ public class AlgoThiefTest {
     @BeforeEach
     public void setUp(){
 
-        List<String> nombresDeLugares = new ArrayList<String>();
+        List<String> nombresDeLugares = new ArrayList<>();
         nombresDeLugares.add("banco");
         nombresDeLugares.add("bolsa");
         nombresDeLugares.add("biblioteca");
         nombresDeLugares.add("puerto");
         nombresDeLugares.add("aeropuerto");
 
-        HashMap<String, String> descripciones = new HashMap<String, String>();
+        HashMap<String, String> descripciones = new HashMap<>();
         descripciones.put("banco", "Se despliega la pista de banco");
         descripciones.put("bolsa", "Se despliega la pista de bolsa");
         descripciones.put("biblioteca", "Se despliega la pista de biblioteca");
         descripciones.put("puerto", "Se despliega la pista de puerto");
         descripciones.put("aeropuerto", "Se despliega la pista de aeropuerto");
 
-        descripciones.forEach((lugar, description) -> pistas.add(new Pista(new Medio(), description, lugar)));
+        descripciones.forEach((lugar, description) -> pistas.add(new Pista(new Dificultad("Medio"), description, lugar)));
 
         tiempo = new Tiempo();
         cronometro = new Cronometro(tiempo);

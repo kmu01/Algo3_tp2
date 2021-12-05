@@ -7,7 +7,7 @@ public class Detective extends GradoDePolicia {
 
         this.tiempoDeViaje = 1100;
         this.tiempoDeDescanso = 8;
-        this.nivelDePistaDisponible = new Medio();
+        this.dificultad = new Dificultad("Medio");
 
     }
 }

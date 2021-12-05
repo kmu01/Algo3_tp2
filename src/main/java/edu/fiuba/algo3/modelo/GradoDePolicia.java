@@ -6,7 +6,7 @@ public class GradoDePolicia {
 
     protected int tiempoDeViaje;
     protected int tiempoDeDescanso;
-    protected NivelDePista nivelDePistaDisponible;
+    protected Dificultad dificultad;
 
     public GradoDePolicia (){}
 
@@ -26,7 +26,7 @@ public class GradoDePolicia {
         Pista pistaSeleccionada = null;
         for (int i = 0 ; i < pistas.size() ; i++){
             Pista pista = pistas.get(i);
-            if(pista.esPista(this.nivelDePistaDisponible,nombreLugar)){
+            if(pista.esPista(this.dificultad,nombreLugar)){
                 pistaSeleccionada = pista;
             };
         }
