@@ -22,7 +22,7 @@ public class Partida {
     private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
     private final String RUTA_PISTAS_LUGARES = "src/main/java/edu/fiuba/algo3/modelo/archivos/cargarPistasDeCiudades.csv";
-    private final String RUTA_PISTAS_LADRONES = "";
+    private final String RUTA_PISTAS_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/pistasLadrones.csv";
     private final String RUTA_CIUDADES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ciudades.csv";
     private final String RUTA_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ladrones.csv";
     private final String RUTA_OBJETOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/objetos.csv";
@@ -81,7 +81,9 @@ public class Partida {
                 Pista pista = new Pista(new Dificultad(dificultad),descripcion,lugar);
                 Ciudad ciudadActual = this.ciudades.get(ciudad);
                 ciudadActual.agregarPista(pista);
+
             }
+            System.out.println("Cargo las pistas de lugares");
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -101,6 +103,7 @@ public class Partida {
                 Ladron actual = new Ladron(nombre, sexo, hobby, pelo, senia, vehiculo);
                 ladrones.add(actual);
             }
+            System.out.println("Cargo los ladrones");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,6 +121,7 @@ public class Partida {
                 this.ciudades.put(nombreCiudad, actual);
                 this.mapa.agregarCiudad(actual, latitud, longitud);
             }
+            System.out.println("Cargo las ciudades");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -143,6 +147,7 @@ public class Partida {
                 }
                 this.objetosRobados.add(actual);
             }
+            System.out.println("Cargo los objetos robados");
         } catch (IOException e) {
             e.printStackTrace();
         }
