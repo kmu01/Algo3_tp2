@@ -14,6 +14,7 @@ import org.apache.commons.csv.*;
 public class Partida {
 
     private Policia policia;
+    private Comisaria comisaria;
     private Ladron ladron;
     private Tiempo tiempo;
     private Mapa mapa;
@@ -28,6 +29,7 @@ public class Partida {
     private final String RUTA_OBJETOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/objetos.csv";
 
     public Partida() {
+
         this.pistasDelLadron = new ArrayList<>();
         this.ciudades = new HashMap<>();
         this.mapa = new Mapa();
@@ -37,6 +39,7 @@ public class Partida {
         cargarCiudades();
         cargarPistasLugares();
         cargarLadrones();
+        this.comisaria = new Comisaria(this.ladrones);
         cargarObjetosRobados();
 
         GradoDePolicia grado = pedirDatosDelJugador();

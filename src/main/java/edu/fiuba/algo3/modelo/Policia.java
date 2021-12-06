@@ -69,4 +69,7 @@ public class Policia {
         this.grado.calcularTiempoDurmiendo(cronometro);
 
     }
+    public void cargarDatos(Comisaria comisaria){
+        comisaria.cargarDatos(this.sospechoso);
+    }
 }
