@@ -5,6 +5,7 @@ public class ObjetoComun implements ObjetoRobado{
     private final int cantidadPaises = 4;
     private final String nombre;
     private Ciudad ciudad;
+    private final String rareza = "comun";
 
     public ObjetoComun(String nombre, Ciudad ciudad){
 
@@ -24,5 +25,13 @@ public class ObjetoComun implements ObjetoRobado{
         return this.nombre;
 
     }
+    @Override
+    public Ciudad ciudad(){
+        return this.ciudad;
+    }
 
+    @Override
+    public String rareza(){
+        return this.rareza;
+    }
 }

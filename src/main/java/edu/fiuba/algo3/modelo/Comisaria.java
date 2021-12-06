@@ -13,10 +13,12 @@ public class Comisaria {
     public void cargarDatos(Sospechoso sospechoso){
         List<Ladron> ladrones = new ArrayList<Ladron>();
         for (Ladron ladron:this.sospechosos) {
-            if (ladron.obtenerPelo().equals(sospechoso.obtenerPelo() || (sospechoso.obtenerPelo()==null)){
+            if (ladron.equals(sospechoso)){
                 ladrones.add(ladron);
             }
         }
 
     }
+
+
 }

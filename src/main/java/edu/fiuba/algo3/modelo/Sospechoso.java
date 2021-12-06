@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public class Sospechoso extends MiembroDeBanda{
 
-    public Sospechoso (ObjetoRobado objetoRobado){
+    public Sospechoso (){
 
         super();
 
@@ -11,7 +11,6 @@ public class Sospechoso extends MiembroDeBanda{
         this.cabello = "";
         this.senia = "";
         this.vehiculo = "";
-        this.objetoRobado = objetoRobado;
         this.ciudad = null;
 
     }

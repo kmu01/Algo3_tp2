@@ -5,6 +5,7 @@ public class ObjetoMuyValioso implements ObjetoRobado {
     private final int cantidadPaises = 7;
     private final String nombre;
     private Ciudad ciudad;
+    private final String rareza = "muy valioso";
 
     public ObjetoMuyValioso(String nombre, Ciudad ciudad){
 
@@ -23,5 +24,15 @@ public class ObjetoMuyValioso implements ObjetoRobado {
 
         return this.nombre;
 
+    }
+
+    @Override
+    public Ciudad ciudad(){
+        return this.ciudad;
+    }
+
+    @Override
+    public String rareza(){
+        return this.rareza;
     }
 }

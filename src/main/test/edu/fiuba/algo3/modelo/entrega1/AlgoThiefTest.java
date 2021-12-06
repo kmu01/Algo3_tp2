@@ -45,7 +45,7 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
 
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Investigador(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Investigador(), ciudad);
 
         policia.anotarGenero("Femenino");
 
@@ -58,7 +58,7 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
 
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
         Pista pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro);
         assertEquals("Se despliega la pista de banco", pistaPrimerBanco.descripcion());
@@ -80,7 +80,7 @@ public class AlgoThiefTest {
         mapa.agregarCiudad(actual,2000,1500);
         mapa.agregarCiudad(destino,700,250);
 
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), actual);
+        Policia policia = new Policia(new Sospechoso(), new Detective(), actual);
         policia.viajar(destino, mapa, cronometro);
 
         assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
@@ -91,7 +91,7 @@ public class AlgoThiefTest {
     @Test
     public void visita3VecesAeropuertoY55VecesPuerto() {
 
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
         for(int i = 0; i < 3; i++){
 
@@ -113,7 +113,7 @@ public class AlgoThiefTest {
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
 
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("Tesoro de Montreal")), new Detective(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
         policia.recibirCuchillazo(cronometro);
         assertEquals(2, tiempo.tiempoRestante());

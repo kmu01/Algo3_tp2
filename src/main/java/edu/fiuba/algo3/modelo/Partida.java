@@ -44,13 +44,13 @@ public class Partida {
 
         GradoDePolicia grado = pedirDatosDelJugador();
         ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
-        Ciudad ciudadInicial = seleccionarCiudadInicial();
+        Ciudad ciudadInicial = seleccionarCiudadInicial(objetoRobado);
         this.ladron = seleccionarLadron(objetoRobado);
         cargarPistasDescripcionLadron();
 
-        this.tiempo = new Tiempo();
-        this.policia = new Policia(new Sospechoso(objetoRobado), grado, ciudadInicial);
 
+        this.policia = new Policia(new Sospechoso(), grado, ciudadInicial);
+        this.tiempo = new Tiempo();
     }
 
     //Cargar datos
@@ -162,17 +162,17 @@ public class Partida {
         return new Novato();
     }
 
+
     private ObjetoRobado seleccionarObjetoRobado(GradoDePolicia grado){
         //Seleccionar el objeto en base del grado del policia
-
+        ObjetoRobado obj = grado.elegirObjeto(objetosRobados);
         return new ObjetoComun("Nombre del objeto robado");
-
     }
 
-    private Ciudad seleccionarCiudadInicial() {
+    private Ciudad seleccionarCiudadInicial(ObjetoRobado objetoRobado) {
         //Seleccionar ciudad donde comienza el policia
 
-        return ciudades.get(0);
+        return objetoRobado.ciudad();
 
     }
 
@@ -214,5 +214,6 @@ public class Partida {
             this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
         }
     }
+
 
 }
