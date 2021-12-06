@@ -6,6 +6,7 @@ public class GradoDePolicia {
 
     protected int tiempoDeViaje;
     protected int tiempoDeDescanso;
+    protected int tiempoDeHeridaDeBala;
     protected Dificultad dificultad;
 
     public GradoDePolicia (){}
@@ -14,6 +15,10 @@ public class GradoDePolicia {
 
         cronometro.calcularTiempoDeViaje(distancia, this.tiempoDeViaje);
 
+    }
+
+    public void calcularTiempoDeBalazo(Cronometro cronometro){
+        cronometro.calcularTiempoDeBalazo(this.tiempoDeHeridaDeBala);
     }
 
     public void calcularTiempoDurmiendo(Cronometro cronometro) {

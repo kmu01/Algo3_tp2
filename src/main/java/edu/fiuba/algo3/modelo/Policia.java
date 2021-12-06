@@ -22,6 +22,20 @@ public class Policia {
 
     }
 
+    public void anotarCabello(String colorDePelo){
+        this.sospechoso.anotarCabello(colorDePelo);
+    }
+    public void anotarHobbie(String hobbie){
+        this.sospechoso.anotarHobbie(hobbie);
+    }
+
+    public void anotarVehiculo(String vehiculo){
+        this.sospechoso.anotarVehiculo(vehiculo);
+    }
+    public void anotarSenia(String senia){
+        this.sospechoso.anotarSenia(senia);
+    }
+
     public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro){
 
         return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro);
@@ -45,6 +59,9 @@ public class Policia {
 
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
 
+    }
+    public void recibirHeridaDeBala(Cronometro cronometro){
+        this.grado.calcularTiempoDeBalazo(cronometro);
     }
 
     public void dormir(Cronometro cronometro){

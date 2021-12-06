@@ -40,4 +40,8 @@ public class Cronometro {
             this.tiempo.agregarTiempo(3);
         }
     }
+
+    public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) {
+        this.tiempo.agregarTiempo(tiempoDeHeridaDeBala);
+    }
 }

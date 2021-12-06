@@ -21,6 +21,10 @@ public class Ciudad {
 
     }
 
+    public Ciudad() {
+
+    }
+
     public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro){
 
         return lugarSeleccionado.visitar(grado,this.pistas, cronometro);
