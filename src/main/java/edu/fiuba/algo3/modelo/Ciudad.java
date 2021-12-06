@@ -16,7 +16,7 @@ public class Ciudad {
     }
 
     public Ciudad (String nombre){
-
+        this.pistas = new ArrayList<>();
         this.nombre = nombre;
 
     }

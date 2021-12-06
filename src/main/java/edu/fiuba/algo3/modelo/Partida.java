@@ -19,25 +19,31 @@ public class Partida {
     private Mapa mapa;
     private List<Ladron> ladrones;
     private Map<String,Ciudad> ciudades;
+    private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
+    private final String RUTA_PISTAS_LUGARES = "src/main/java/edu/fiuba/algo3/modelo/archivos/cargarPistasDeCiudades.csv";
+    private final String RUTA_PISTAS_LADRONES = "";
     private final String RUTA_CIUDADES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ciudades.csv";
     private final String RUTA_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ladrones.csv";
     private final String RUTA_OBJETOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/objetos.csv";
 
     public Partida() {
-
-        ciudades = new HashMap<>();
-        mapa = new Mapa();
-        ladrones = new ArrayList<>();
-        objetosRobados = new ArrayList<>();
+        this.pistasDelLadron = new ArrayList<>();
+        this.ciudades = new HashMap<>();
+        this.mapa = new Mapa();
+        this.ladrones = new ArrayList<>();
+        this.objetosRobados = new ArrayList<>();
         cargarLadrones();
         cargarCiudades();
+        cargarPistasLugares();
+        cargarLadrones();
         cargarObjetosRobados();
 
         GradoDePolicia grado = pedirDatosDelJugador();
         ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
         Ciudad ciudadInicial = seleccionarCiudadInicial();
         this.ladron = seleccionarLadron(objetoRobado);
+        cargarPistasDescripcionLadron();
 
         this.tiempo = new Tiempo();
         this.policia = new Policia(new Sospechoso(objetoRobado), grado, ciudadInicial);
@@ -45,6 +51,42 @@ public class Partida {
     }
 
     //Cargar datos
+    private void cargarPistasDescripcionLadron(){
+        try{
+            Reader in = new FileReader(RUTA_PISTAS_LADRONES);
+            Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
+            for (CSVRecord linea:texto) {
+                String descripcion = linea.get("Pista");
+                String ladron = linea.get("Ladron");
+                if (ladron.equals(this.ladron)){
+                    this.pistasDelLadron.add(descripcion);
+                }
+
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarPistasLugares(){
+        try{
+            Reader in = new FileReader(RUTA_PISTAS_LUGARES);
+            Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
+            for (CSVRecord linea:texto) {
+                String descripcion = linea.get("Pista");
+                String ciudad = linea.get("Ciudad");
+                String dificultad = linea.get("Dificultad");
+                String lugar = linea.get("Lugar");
+
+                Pista pista = new Pista(new Dificultad(dificultad),descripcion,lugar);
+                Ciudad ciudadActual = this.ciudades.get(ciudad);
+                ciudadActual.agregarPista(pista);
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
     private void cargarLadrones(){
         try {
             Reader in = new FileReader(RUTA_LADRONES);
