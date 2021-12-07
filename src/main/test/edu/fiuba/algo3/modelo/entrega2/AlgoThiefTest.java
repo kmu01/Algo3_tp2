@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgoThiefTest {
 
-    /*@Test
+    @Test
     public void losDatosSeCarganCorrectamente() {
         Partida partida = new Partida();
-    }*/
+    }
 
     @Test
     public void ladronesConCaracteristicasIgualesSonEquivalentes(){

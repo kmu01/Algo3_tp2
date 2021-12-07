@@ -140,13 +140,14 @@ public class Partida {
                 String valor = linea.get("Valor");
                 ObjetoRobado actual = null;
                 Ciudad ciudadInicial = ciudades.get(ciudad);
-                switch (valor){
-                    case "Comun":
-                        actual = new ObjetoComun(tesoro,ciudadInicial);
-                    case "Valioso":
-                        actual = new ObjetoValioso(tesoro,ciudadInicial);
-                    case "Muy Valioso":
-                        actual = new ObjetoMuyValioso(tesoro,ciudadInicial);
+                if (valor.equals("Comun")){
+                    actual = new ObjetoComun(tesoro,ciudadInicial);
+                }
+                else if (valor.equals("Valioso")){
+                    actual = new ObjetoValioso(tesoro,ciudadInicial);
+                }
+                else {
+                    actual = new ObjetoMuyValioso(tesoro,ciudadInicial);
                 }
                 this.objetosRobados.add(actual);
             }

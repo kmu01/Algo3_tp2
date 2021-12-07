@@ -1,12 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public abstract class GradoDePolicia {
 
@@ -14,6 +9,8 @@ public abstract class GradoDePolicia {
     protected int tiempoDeDescanso;
     protected int tiempoDeHeridaDeBala;
     protected Dificultad dificultad;
+    protected String rarezaMasFrecuente;
+    protected String rarezaMenosFrecuente;
 
     public GradoDePolicia (){}
 
@@ -49,22 +46,22 @@ public abstract class GradoDePolicia {
         int dificultad = (int)Math.floor(Math.random()*(3)+1);
         int dado = 0;
         ObjetoRobado objeto = null;
-
+        List<ObjetoRobado> objetosFiltrados;
         switch (dificultad){
             case 1:
-                List<ObjetoRobado> comunes = objetosRobados.stream().filter(obj -> obj.rareza().equals("comun")).collect(Collectors.toList());
-                dado = (int)Math.floor(Math.random()*((int)comunes.size()));
-                objeto = comunes.get(dado);
+                objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
+                dado = (int)Math.floor(Math.random()*((int)objetosFiltrados.size()));
+                objeto = objetosFiltrados.get(dado);
 
             case 2:
-                List<ObjetoRobado> valiosos = objetosRobados.stream().filter(obj -> obj.rareza().equals("valioso")).collect(Collectors.toList());
-                dado = (int)Math.floor(Math.random()*((int)valiosos.size()));
-                objeto = valiosos.get(dado);
+                objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
+                dado = (int)Math.floor(Math.random()*((int)objetosFiltrados.size()));
+                objeto = objetosFiltrados.get(dado);
 
             case 3:
-                List<ObjetoRobado> muyValiosos = objetosRobados.stream().filter(obj -> obj.rareza().equals("muy valioso")).collect(Collectors.toList());
-                dado = (int)Math.floor(Math.random()*((int)muyValiosos.size()));
-                objeto = muyValiosos.get(dado);
+                objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMenosFrecuente)).collect(Collectors.toList());
+                dado = (int)Math.floor(Math.random()*((int)objetosFiltrados.size()));
+                objeto = objetosFiltrados.get(dado);
         }
         return objeto;
     }
