@@ -25,22 +25,23 @@ public class Ladron extends MiembroDeBanda{
     }
 
 
-    public boolean equals(Ladron ladron)
-    {
-        if (ladron == this) {
+    public boolean esIgual(Sospechoso ladron) {
+
+        /*if (ladron == this) {
             return true;
         }
 
         if (ladron == null || ladron.getClass() != getClass()) {
             return false;
-        }
+        }*/
 
 
-        return Objects.equals(this.cabello, ladron.cabello) &&
-                Objects.equals(this.hobbie, ladron.hobbie) &&
-                Objects.equals(this.genero, ladron.genero) &&
-                Objects.equals(this.senia, ladron.senia) &&
+        return Objects.equals(this.cabello, ladron.cabello) ||
+                Objects.equals(this.hobbie, ladron.hobbie) ||
+                Objects.equals(this.genero, ladron.genero) ||
+                Objects.equals(this.senia, ladron.senia) ||
                 Objects.equals(this.vehiculo, ladron.vehiculo);
+
     }
 
     @Override

@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Novato extends GradoDePolicia {
 
     public Novato(){

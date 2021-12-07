@@ -1,23 +1,22 @@
 package edu.fiuba.algo3.modelo;
 
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.csv.*;
 
 public class Partida {
 
+    private Random dado;
     private Policia policia;
     private Comisaria comisaria;
     private Ladron ladron;
     private Tiempo tiempo;
     private Mapa mapa;
+    private boolean ordenDeArresto;
     private List<Ladron> ladrones;
     private Map<String,Ciudad> ciudades;
     private List<String> pistasDelLadron;
@@ -30,6 +29,8 @@ public class Partida {
 
     public Partida() {
 
+        this.tiempo = new Tiempo();
+        this.dado = new Random();
         this.pistasDelLadron = new ArrayList<>();
         this.ciudades = new HashMap<>();
         this.mapa = new Mapa();
@@ -38,19 +39,9 @@ public class Partida {
         cargarLadrones();
         cargarCiudades();
         cargarPistasLugares();
-        cargarLadrones();
         this.comisaria = new Comisaria(this.ladrones);
         cargarObjetosRobados();
 
-        GradoDePolicia grado = pedirDatosDelJugador();
-        ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
-        Ciudad ciudadInicial = seleccionarCiudadInicial(objetoRobado);
-        this.ladron = seleccionarLadron(objetoRobado);
-        cargarPistasDescripcionLadron();
-
-
-        this.policia = new Policia(new Sospechoso(), grado, ciudadInicial);
-        this.tiempo = new Tiempo();
     }
 
     //Cargar datos
@@ -157,17 +148,27 @@ public class Partida {
         }
     }
 
-    public GradoDePolicia pedirDatosDelJugador() {
-        //Pedir datos y determinar el grado
+    public GradoDePolicia asignarGradoDePolicia(int cantidadDeArrestos) {
 
-        return new Novato();
+        GradoDePolicia grado = new Novato();
+        switch (cantidadDeArrestos){
+            case 5:
+                grado = new Detective();
+                break;
+            case 10:
+                grado = new Investigador();
+                break;
+            default:
+                grado = new Sargento();
+        }
+        return grado;
+
     }
-
 
     private ObjetoRobado seleccionarObjetoRobado(GradoDePolicia grado){
         //Seleccionar el objeto en base del grado del policia
-        ObjetoRobado obj = grado.elegirObjeto(objetosRobados);
-        return new ObjetoComun("Nombre del objeto robado");
+        return grado.elegirObjeto(this.objetosRobados);
+
     }
 
     private Ciudad seleccionarCiudadInicial(ObjetoRobado objetoRobado) {
@@ -180,7 +181,9 @@ public class Partida {
     private Ladron seleccionarLadron(ObjetoRobado objetoRobado) {
         //Seleccionar ladron seteando el objeto robado
 
-        return new Ladron("nombre","genero", "hobbie", "cabello", "senia", "vehiculo");
+        Ladron ladron = ladrones.get(dado.nextInt(ladrones.size()));
+        ladron.asignarObjetoRobado(objetoRobado);
+        return ladron;
 
     }
 
@@ -199,7 +202,7 @@ public class Partida {
     }
 
     public void entrarEdificio(String lugarSeleccionado) {
-
+        //if(cantidadDePaisesVisitados == this.ladron.objetoRobado.cantidadDePaises && this.ladron.ciudad() == this.policia.ciudad() && this.ladron.escondite()==lugarSeleccionado){this.atrapar();}
         if (!this.tiempo.finalizado()){
             this.mostrarPista(this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo)));
         }
@@ -216,5 +219,28 @@ public class Partida {
         }
     }
 
+    public void nuevoCaso(int cantidadDeArrestos) {
 
+        GradoDePolicia grado = asignarGradoDePolicia(cantidadDeArrestos);
+        ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
+        Ciudad ciudadInicial = seleccionarCiudadInicial(objetoRobado);
+        this.ladron = seleccionarLadron(objetoRobado);
+        cargarPistasDescripcionLadron();
+        this.policia = new Policia(new Sospechoso(), grado, ciudadInicial);
+
+    }
+
+    public void anotarGenero(String genero) {
+        this.policia.anotarGenero(genero);
+    }
+
+    public List<Ladron> emitirOrderDeArresto() {
+        List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
+        this.ordenDeArresto = (ladrones.size() == 1);
+        return ladrones;
+    }
+
+    public boolean atrapar() {
+        return (ordenDeArresto && this.policia.atrapar(this.ladron));
+    }
 }

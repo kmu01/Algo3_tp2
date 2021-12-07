@@ -34,35 +34,41 @@ public abstract class GradoDePolicia {
     }
 
     public Pista buscarPista(List<Pista> pistas,String nombreLugar){
-        int dificultad = r.nextInt(3+1);
+        int dificultad = r.nextInt(3);
         Pista pista = null;
         switch (dificultad){
+            case 0:
+                pista = pistas.stream().filter(p -> p.esPista(dificultadMasFrecuente, nombreLugar)).findAny().orElse(null);
+                break;
+
             case 1:
                 pista = pistas.stream().filter(p -> p.esPista(dificultadMasFrecuente, nombreLugar)).findAny().orElse(null);
+                break;
 
             case 2:
-                pista = pistas.stream().filter(p -> p.esPista(dificultadMasFrecuente, nombreLugar)).findAny().orElse(null);
-
-            case 3:
                 pista = pistas.stream().filter(p -> p.esPista(dificultadMenosFrecuente, nombreLugar)).findAny().orElse(null);
         }
         return pista;
     }
 
     public ObjetoRobado elegirObjeto(List<ObjetoRobado> objetosRobados) {
-        int dificultad = r.nextInt(3+1);
+
+        int dificultad = r.nextInt(3);
+        System.out.println(dificultad);
         ObjetoRobado objeto = null;
         List<ObjetoRobado> objetosFiltrados;
         switch (dificultad){
+            case 0:
+                objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
+                objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));
+                break;
+
             case 1:
                 objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
                 objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));
+                break;
 
             case 2:
-                objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
-                objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));
-
-            case 3:
                 objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMenosFrecuente)).collect(Collectors.toList());
                 objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));
         }

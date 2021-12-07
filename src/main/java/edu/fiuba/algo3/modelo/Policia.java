@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.List;
+
 public class Policia {
 
     private GradoDePolicia grado;
@@ -69,7 +71,11 @@ public class Policia {
         this.grado.calcularTiempoDurmiendo(cronometro);
 
     }
-    public void cargarDatos(Comisaria comisaria){
-        comisaria.cargarDatos(this.sospechoso);
+    public List<Ladron> cargarDatos(Comisaria comisaria){
+        return comisaria.cargarDatos(this.sospechoso);
+    }
+
+    public boolean atrapar(Ladron ladron) {
+        return (this.ciudadActual == ladron.ciudad);
     }
 }

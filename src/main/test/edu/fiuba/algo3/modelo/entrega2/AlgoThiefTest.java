@@ -18,16 +18,6 @@ public class AlgoThiefTest {
     }
 
     @Test
-    public void ladronesConCaracteristicasIgualesSonEquivalentes(){
-        Ladron ladron1 = new Ladron("Fede", "Masculino", "pc", "Rubio", "Tatuaje", "Tesla");
-        Ladron ladron2 = new Ladron("Charly", "Masculino", "pc", "Rubio", "Tatuaje", "Tesla");
-
-        assert(ladron1.equals(ladron2));
-
-    }
-
-
-    @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
         Tiempo tiempo = new Tiempo();
         Cronometro cronometro = new Cronometro(tiempo);
@@ -40,41 +30,46 @@ public class AlgoThiefTest {
         assertEquals(10, tiempo.tiempoRestante());
 
     }
-    /*@Test
+
+    @Test
     public void investigadorTomaCasoYViajaDeMontrealAMexico(){
-        Partida partida = new Partida();
-        //partida.nuevoCaso("Montreal", new Policia(new Sospechoso(), new Investigador(), new Ciudad("Montreal")));
 
+        Tiempo tiempo = new Tiempo();
+        Cronometro cronometro = new Cronometro(tiempo);
+        Mapa mapa = new Mapa();
+        Ciudad actual = new Ciudad("Montreal");
+        Ciudad destino = new Ciudad("Ciudad de Mexico");
+        mapa.agregarCiudad(actual,2000,1500);
+        mapa.agregarCiudad(destino,700,250);
 
+        Policia policia = new Policia(new Sospechoso(), new Detective(), actual);
+        policia.viajar(destino, mapa, cronometro);
 
-    }*/
+        assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
+        assertEquals((1),tiempo.tiempoRestante());
 
-    /*@Test
+    }
+
+    @Test
     public void cargarInformacionRecopiladaYBuscarSospechosos(){
-        Policia policia = new Policia(new Sospechoso(),new Detective(),new Ciudad("Montreal"));
-        policia.anotarGenero("Femenino");
-        policia.cargarDatos();
-        policia.emitirOrdenDeArresto(); //va a devolver en que estado está la posibilidad de hacer un arresto,
 
-        assertFalse(policia.emitirOrderDeArresto());
+        Partida partida = new Partida();
+        partida.nuevoCaso(2);
+        partida.anotarGenero("Femenino");
 
-    }/*
+        assertEquals(5,partida.emitirOrderDeArresto().size());
+
+    }
+
     @Test
     public void intentaAtraparSospechosoSinLaOrden(){
-        Policia policia = new Policia(new Sospechoso(new ObjetoComun("tesoro de montreal")),new Detective(),new Ciudad("Montreal"));
-        Ladron ladron = new Ladron("Carmen Sandiego","Femenino","Tenis","Marron","Joyas","Depotivo");
-        policia.anotarVehiculo("Deportivo");
-        policia.anotarGenero("Femenino");
-         Cuando hacemos cargarDatos() deberia habilitar un atributo
-         en policia que permita o no, hacer un arresto a tal ladron. Si cargarDatos() no encuentra un solo sospechoso,
-         va a mostrar por el juego la lista de sospechosos.
+        Partida partida = new Partida();
+        partida.nuevoCaso(2);
+        partida.anotarGenero("Femenino");
+        partida.emitirOrderDeArresto();
 
-        policia.cargarDatos();
-        Depende de si este atributo lo permite o no,
-        va a poder atraparlo.
-
-        assertFalse(policia.atrapar(ladron));
-    }*/
+        assertFalse(partida.atrapar());
+    }
 
 
 
