@@ -9,7 +9,8 @@ public class Investigador extends GradoDePolicia {
         super();
         this.tiempoDeViaje = 1300;
         this.tiempoDeDescanso = 8;
-        this.dificultad = new Dificultad("Medio");
+        this.dificultadMasFrecuente = new Dificultad("Medio");
+        this.dificultadMenosFrecuente = new Dificultad("Dificil");
         this.rarezaMasFrecuente = "valioso";
         this.rarezaMenosFrecuente = "muy valioso";
     }

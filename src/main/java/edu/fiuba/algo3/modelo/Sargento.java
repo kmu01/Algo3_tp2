@@ -10,7 +10,8 @@ public class Sargento extends GradoDePolicia {
 
         this.tiempoDeViaje = 1500;
         this.tiempoDeDescanso = 8;
-        this.dificultad = new Dificultad("Dificil");
+        this.dificultadMasFrecuente = new Dificultad("Dificl");
+        this.dificultadMenosFrecuente = new Dificultad("Medio");
         this.rarezaMasFrecuente = "muy valioso";
         this.rarezaMenosFrecuente = "valioso";
     }
