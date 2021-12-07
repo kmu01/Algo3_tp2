@@ -4,17 +4,19 @@ import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AlgoThiefTest {
 
     @Test
     public void losDatosSeCarganCorrectamente() {
-        Partida partida = new Partida();
+        InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
+        Random dado = new Random();
+        Partida partida = new Partida(inicializadorDeArchivos,dado);
     }
 
     @Test
@@ -52,8 +54,9 @@ public class AlgoThiefTest {
 
     @Test
     public void cargarInformacionRecopiladaYBuscarSospechosos(){
-
-        Partida partida = new Partida();
+        InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
+        Random dado = new Random();
+        Partida partida = new Partida(inicializadorDeArchivos,dado);
         partida.nuevoCaso(2);
         partida.anotarGenero("Femenino");
 
@@ -63,14 +66,53 @@ public class AlgoThiefTest {
 
     @Test
     public void intentaAtraparSospechosoSinLaOrden(){
-        Partida partida = new Partida();
+        InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
+        Random dado = new Random();
+        Partida partida = new Partida(inicializadorDeArchivos,dado);
         partida.nuevoCaso(2);
         partida.anotarGenero("Femenino");
         partida.emitirOrderDeArresto();
 
         assertFalse(partida.atrapar());
     }
+    @Test
+    public void investigacionCompleta(){
+        List<Ladron> ladrones = new ArrayList<>();
+        Map<String,Ciudad> ciudades = new HashMap<>();
+        Mapa mapa = new Mapa();
+        Ciudad ciudad = new Ciudad("Ciudad de Mexico");
+        ciudades.put("Ciudad de Mexico",ciudad);
+        mapa.agregarCiudad(ciudad,100,100);
+
+        Random mockDado = mock(Random.class);
+        List<ObjetoRobado> objetosRobados = new ArrayList<>();
+        objetosRobados.add(new ObjetoValioso("Incan Gold Mask",new Ciudad("Ciudad de Mexico")));
+        Ladron ladron = new Ladron("Nicokai","Masculino","Correr","Castaño","Anteojos","Comun");
+        ladrones.add(ladron);
+
+        when(mockDado.nextInt(3)).thenReturn(1);
+        InicializadorDeArchivos mockInicializador = mock(InicializadorDeArchivos.class);
+        when(mockInicializador.cargarCiudades()).thenReturn(ciudades);
+        when(mockInicializador.cargarMapa()).thenReturn(mapa);
+        when(mockInicializador.cargarLadrones()).thenReturn(ladrones);
+        when(mockInicializador.cargarObjetosRobados()).thenReturn(objetosRobados);
 
 
+        Partida partida = new Partida(mockInicializador,mockDado);
+        partida.nuevoCaso(6);
+        partida.anotarGenero("Masculino");
+        //partida.viajar("Ciudad de ");
+        partida.anotarSenia("Anteojos");
+        List<Ladron> listaDeSospechosos = partida.emitirOrderDeArresto();
+        assertEquals(1,listaDeSospechosos.size());
+        assertEquals("Nicokai",listaDeSospechosos.get(0).nombre());
+
+        assertTrue(partida.atrapar());
+
+
+
+
+
+    }
 
 }

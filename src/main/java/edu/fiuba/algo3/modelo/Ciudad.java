@@ -1,10 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Ciudad {
     private String nombre;
@@ -25,9 +21,9 @@ public class Ciudad {
 
     }
 
-    public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro){
+    public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado){
 
-        return lugarSeleccionado.visitar(grado,this.pistas, cronometro);
+        return lugarSeleccionado.visitar(grado,this.pistas, cronometro,dado);
 
     }
     public String nombre(){

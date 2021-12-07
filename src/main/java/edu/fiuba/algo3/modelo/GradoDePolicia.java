@@ -13,7 +13,6 @@ public abstract class GradoDePolicia {
     protected Dificultad dificultadMenosFrecuente;
     protected String rarezaMasFrecuente;
     protected String rarezaMenosFrecuente;
-    protected Random r = new Random();
 
     public GradoDePolicia (){}
 
@@ -33,8 +32,8 @@ public abstract class GradoDePolicia {
 
     }
 
-    public Pista buscarPista(List<Pista> pistas,String nombreLugar){
-        int dificultad = r.nextInt(3);
+    public Pista buscarPista(List<Pista> pistas,String nombreLugar,Random dado){
+        int dificultad = dado.nextInt(3);
         Pista pista = null;
         switch (dificultad){
             case 0:
@@ -51,10 +50,9 @@ public abstract class GradoDePolicia {
         return pista;
     }
 
-    public ObjetoRobado elegirObjeto(List<ObjetoRobado> objetosRobados) {
+    public ObjetoRobado elegirObjeto(List<ObjetoRobado> objetosRobados,Random r) {
 
         int dificultad = r.nextInt(3);
-        System.out.println(dificultad);
         ObjetoRobado objeto = null;
         List<ObjetoRobado> objetosFiltrados;
         switch (dificultad){

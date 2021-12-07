@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.List;
+import java.util.Random;
 
 public class Policia {
 
@@ -38,9 +39,9 @@ public class Policia {
         this.sospechoso.anotarSenia(senia);
     }
 
-    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro){
+    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado){
 
-        return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro);
+        return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro,dado);
 
     }
 
@@ -76,6 +77,6 @@ public class Policia {
     }
 
     public boolean atrapar(Ladron ladron) {
-        return (this.ciudadActual == ladron.ciudad);
+        return ((this.ciudadActual.nombre()).equals(ladron.ciudad().nombre()));
     }
 }

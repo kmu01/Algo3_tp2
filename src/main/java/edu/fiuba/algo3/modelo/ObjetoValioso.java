@@ -14,11 +14,6 @@ public class ObjetoValioso implements ObjetoRobado {
 
     }
 
-    public ObjetoValioso(String nombre){
-
-        this.nombre = nombre;
-
-    }
 
     public String mostrarNombre(){
 

@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class AlgoThiefTest {
 
@@ -44,12 +47,13 @@ public class AlgoThiefTest {
 
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
-
+        Random mockDado = mock(Random.class);
+        when( mockDado.nextInt(3)).thenReturn(1);
         Policia policia = new Policia(new Sospechoso(), new Investigador(), ciudad);
 
         policia.anotarGenero("Femenino");
 
-        Pista pista = policia.entrarEdificio(new Lugar("banco"), cronometro);
+        Pista pista = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
         assertEquals("Se despliega la pista de banco", pista.descripcion());
         assertEquals(1,tiempo.tiempoRestante());
 
@@ -57,15 +61,16 @@ public class AlgoThiefTest {
 
     @Test
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
-
+        Random mockDado = mock(Random.class);
+        when( mockDado.nextInt(3)).thenReturn(1);
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
-        Pista pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro);
+        Pista pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
         assertEquals("Se despliega la pista de banco", pistaPrimerBanco.descripcion());
-        Pista pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro);
+        Pista pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
         assertEquals("Se despliega la pista de banco", pistaSegundoBanco.descripcion());
         assertEquals(3,tiempo.tiempoRestante());
-        Pista pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro);
+        Pista pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro,mockDado);
         assertEquals("Se despliega la pista de biblioteca", pistaBliblioteca.descripcion());
         assertEquals(4,tiempo.tiempoRestante());
 
@@ -90,19 +95,20 @@ public class AlgoThiefTest {
 
     @Test
     public void visita3VecesAeropuertoY55VecesPuerto() {
-
+        Random mockDado = mock(Random.class);
+        when( mockDado.nextInt(3)).thenReturn(1);
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
         for(int i = 0; i < 3; i++){
 
-            policia.entrarEdificio(new Lugar("aeropuerto"), cronometro);
+            policia.entrarEdificio(new Lugar("aeropuerto"), cronometro,mockDado);
             assertFalse(tiempo.finalizado());
 
         }
 
         for(int i = 0; i < 55; i++){
 
-            policia.entrarEdificio(new Lugar("puerto"), cronometro);
+            policia.entrarEdificio(new Lugar("puerto"), cronometro,mockDado);
 
         }
 
