@@ -22,7 +22,7 @@ public class Mapa {
         float longitudActual = posiciones.get(ciudadActual).longitud();
         float latitudSeleccionada = posiciones.get(ciudadSeleccionada).latitud();
         float longitudSeleccionada = posiciones.get(ciudadSeleccionada).longitud();
-
+        System.out.println();
         return (float) sqrt(pow((longitudSeleccionada-longitudActual),2)+pow((latitudSeleccionada-latitudActual),2));
 
     }

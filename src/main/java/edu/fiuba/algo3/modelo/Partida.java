@@ -22,6 +22,7 @@ public class Partida {
     private Map<String,Ciudad> ciudades;
     private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
+    private int cantidadDePaisesVisitados = 0;
 
     public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado) {
         this.inicializadorDeArchivos = inicializadorDeArchivos;
@@ -43,7 +44,7 @@ public class Partida {
     }
 
     private void cargarMapa() {
-        this.mapa = this.inicializadorDeArchivos.cargarMapa();;
+        this.mapa = this.inicializadorDeArchivos.cargarMapa(this.ciudades);;
     }
 
     private void cargarPistasDescripcionLadron(){
@@ -63,7 +64,7 @@ public class Partida {
     }
 
     private void cargarObjetosRobados(){
-        this.objetosRobados = this.inicializadorDeArchivos.cargarObjetosRobados();
+        this.objetosRobados = this.inicializadorDeArchivos.cargarObjetosRobados(this.ciudades);
     }
 
     public GradoDePolicia asignarGradoDePolicia(int cantidadDeArrestos) {
@@ -116,27 +117,31 @@ public class Partida {
     public void viajar(String ciudadSeleccionada){
 
         if(!this.tiempo.finalizado()) {
-            Ciudad ciudad = new Ciudad(ciudadSeleccionada);
+            Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
+            System.out.println(ciudad.nombre());
             this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
+            this.cantidadDePaisesVisitados++;
         }
 
     }
 
-    public void entrarEdificio(String lugarSeleccionado) {
+    public Pista entrarEdificio(String lugarSeleccionado) {
 
-        //if(cantidadDePaisesVisitados == this.ladron.objetoRobado.cantidadDePaises && this.ladron.ciudad() == this.policia.ciudad() && this.ladron.escondite()==lugarSeleccionado){this.atrapar();}
-        /*Random r = new Random();
-        int dado = r.nextInt(7);
-        if (dado == 5){
+        if(cantidadDePaisesVisitados == this.ladron.objetoRobado.cantidadPaises() &&
+                this.ladron.ciudad().nombre().equals(this.policia.mostrarCiudadActual()))
+        {this.atrapar();}
+
+        int numero = this.dado.nextInt(7);
+        if (numero == 5){
             this.acuchillar();
-        }*/
-        this.mostrarPista(this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
+        }
+        return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
 
     }
 
-    private String mostrarPista(Pista pista) {
+    /*private String mostrarPista(Pista pista) {
         return pista.descripcion();
-    }
+    }*/
 
     public void acuchillar(){
 
@@ -172,5 +177,13 @@ public class Partida {
 
     public void anotarSenia(String senia) {
         this.policia.anotarSenia(senia);
+    }
+
+    public int hora() {
+        return (this.tiempo.tiempoRestante());
+    }
+
+    public void dormir() {
+        this.policia.dormir(new Cronometro(this.tiempo));
     }
 }

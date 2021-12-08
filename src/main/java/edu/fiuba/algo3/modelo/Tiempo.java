@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 public class Tiempo {
 
-    private float hora;
-    private final float tiempoLimite = 158;
+    private int hora;
+    private final int tiempoLimite = 158;
 
     public Tiempo(){
 
@@ -20,7 +20,7 @@ public class Tiempo {
         return (this.hora >= this.tiempoLimite);
     }
 
-    public float tiempoRestante() {
+    public int tiempoRestante() {
 
         return this.hora;
 

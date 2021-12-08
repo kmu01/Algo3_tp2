@@ -6,4 +6,6 @@ public interface ObjetoRobado {
     Ciudad ciudad();
 
     String rareza();
+
+    int cantidadPaises();
 }

@@ -26,7 +26,7 @@ public class Pista {
     }
 
     public Pista obtenerPista(Cronometro cronometro){
-        this.cantDeVisitas++;
+        ++this.cantDeVisitas;
         this.calcularTiempoEnObtenerLaPista(cronometro);
         return this;
     }

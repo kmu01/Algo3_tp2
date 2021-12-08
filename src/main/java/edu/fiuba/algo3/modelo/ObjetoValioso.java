@@ -20,6 +20,7 @@ public class ObjetoValioso implements ObjetoRobado {
         return this.nombre;
 
     }
+    public int cantidadPaises(){return this.cantidadPaises;}
 
     @Override
     public Ciudad ciudad(){

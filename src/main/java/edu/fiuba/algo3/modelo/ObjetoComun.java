@@ -19,6 +19,7 @@ public class ObjetoComun implements ObjetoRobado{
         this.nombre = nombre;
 
     }
+    public int cantidadPaises(){return this.cantidadPaises;}
 
     public String mostrarNombre(){
 

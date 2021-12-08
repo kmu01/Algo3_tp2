@@ -29,16 +29,17 @@ public class Cronometro {
     }
 
     public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) {
+        switch (cantidadDeVisitas){
+            case 1:
+                this.tiempo.agregarTiempo(1);
+                break;
+            case 2:
+                this.tiempo.agregarTiempo(2);
+                break;
+            default:
+                this.tiempo.agregarTiempo(3);
+        }
 
-        if (cantidadDeVisitas == 1){
-            this.tiempo.agregarTiempo(1);
-        }
-        else if  (cantidadDeVisitas == 2){
-            this.tiempo.agregarTiempo(2);
-        }
-        else {
-            this.tiempo.agregarTiempo(3);
-        }
     }
 
     public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) {

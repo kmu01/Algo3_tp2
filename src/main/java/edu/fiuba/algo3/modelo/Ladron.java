@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Ladron extends MiembroDeBanda{
-
     public Ladron (String nombre, String genero, String hobbie, String cabello, String senia, String vehiculo,Ciudad ciudadFinal){
 
         this.nombre = nombre;
@@ -39,24 +40,27 @@ public class Ladron extends MiembroDeBanda{
         return (this.nombre);
     }
 
+    List<String> crearListaDeAtributos(){
+        List<String> listaAtributos = new ArrayList<>();
+        listaAtributos.add(nombre);
+        listaAtributos.add(cabello);
+        listaAtributos.add(hobbie);
+        listaAtributos.add(genero);
+        listaAtributos.add(senia);
+        listaAtributos.add(vehiculo);
+        return listaAtributos;
+    }
 
-    public boolean esIgual(Sospechoso ladron) {
+    public int esIgual(Sospechoso ladron) {
 
-        /*if (ladron == this) {
-            return true;
-        }
+        int cantidadDeAtributosIguales = 0 ;
+        cantidadDeAtributosIguales = (this.cabello.equals(ladron.cabello))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
+        cantidadDeAtributosIguales = (this.hobbie.equals(ladron.hobbie))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
+        cantidadDeAtributosIguales = (this.genero.equals(ladron.genero))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
+        cantidadDeAtributosIguales = (this.senia.equals((ladron.senia)))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
+        cantidadDeAtributosIguales = (this.vehiculo.equals(ladron.vehiculo))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
 
-        if (ladron == null || ladron.getClass() != getClass()) {
-            return false;
-        }*/
-
-
-        return Objects.equals(this.cabello, ladron.cabello) ||
-                Objects.equals(this.hobbie, ladron.hobbie) ||
-                Objects.equals(this.genero, ladron.genero) ||
-                Objects.equals(this.senia, ladron.senia) ||
-                Objects.equals(this.vehiculo, ladron.vehiculo);
-
+        return cantidadDeAtributosIguales;
     }
 
     @Override

@@ -120,7 +120,6 @@ public class AlgoThiefTest {
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
 
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
-
         policia.recibirCuchillazo(cronometro);
         assertEquals(2, tiempo.tiempoRestante());
         policia.dormir(cronometro);

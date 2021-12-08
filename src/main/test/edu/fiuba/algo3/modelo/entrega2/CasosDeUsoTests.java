@@ -10,14 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class AlgoThiefTest {
-
-    @Test
-    public void losDatosSeCarganCorrectamente() {
-        InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
-        Random dado = new Random();
-        Partida partida = new Partida(inicializadorDeArchivos,dado);
-    }
+public class CasosDeUsoTests {
 
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
@@ -88,31 +81,29 @@ public class AlgoThiefTest {
         List<ObjetoRobado> objetosRobados = new ArrayList<>();
         objetosRobados.add(new ObjetoValioso("Incan Gold Mask",new Ciudad("Ciudad de Mexico")));
         Ladron ladron = new Ladron("Nicokai","Masculino","Correr","Castaño","Anteojos","Comun");
-        ladrones.add(ladron);
+        Ladron segundoLadron = new Ladron("Jorge Caicedo","Masculino","Tenis","Rubio","Tatuaje","Convertible");
+        ladrones.add(ladron);ladrones.add(segundoLadron);
 
         when(mockDado.nextInt(3)).thenReturn(1);
         InicializadorDeArchivos mockInicializador = mock(InicializadorDeArchivos.class);
         when(mockInicializador.cargarCiudades()).thenReturn(ciudades);
-        when(mockInicializador.cargarMapa()).thenReturn(mapa);
+        when(mockInicializador.cargarMapa(ciudades)).thenReturn(mapa);
         when(mockInicializador.cargarLadrones()).thenReturn(ladrones);
-        when(mockInicializador.cargarObjetosRobados()).thenReturn(objetosRobados);
+        when(mockInicializador.cargarObjetosRobados(ciudades)).thenReturn(objetosRobados);
 
 
         Partida partida = new Partida(mockInicializador,mockDado);
         partida.nuevoCaso(6);
         partida.anotarGenero("Masculino");
-        //partida.viajar("Ciudad de ");
-        partida.anotarSenia("Anteojos");
         List<Ladron> listaDeSospechosos = partida.emitirOrderDeArresto();
+        assertEquals(2,listaDeSospechosos.size());
+        assertFalse(partida.atrapar());
+        partida.anotarSenia("Anteojos");
+        listaDeSospechosos = partida.emitirOrderDeArresto();
         assertEquals(1,listaDeSospechosos.size());
         assertEquals("Nicokai",listaDeSospechosos.get(0).nombre());
 
         assertTrue(partida.atrapar());
 
-
-
-
-
     }
-
 }

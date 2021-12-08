@@ -63,7 +63,7 @@ public class InicializadorDeArchivos {
         return ciudades;
 
     }
-    public Mapa cargarMapa () {
+    public Mapa cargarMapa (Map<String,Ciudad>ciudades) {
         Mapa mapa = new Mapa();
         try {
             Reader in = new FileReader(RUTA_CIUDADES);
@@ -72,7 +72,7 @@ public class InicializadorDeArchivos {
                 String nombreCiudad = linea.get("Ciudad");
                 float latitud = Float.parseFloat(linea.get("Latitud"));
                 float longitud = Float.parseFloat(linea.get("Longitud"));
-                Ciudad actual = new Ciudad(nombreCiudad);
+                Ciudad actual = ciudades.get(nombreCiudad);
                 mapa.agregarCiudad(actual, latitud, longitud);
             }
             System.out.println("Cargo las ciudades");
@@ -104,7 +104,7 @@ public class InicializadorDeArchivos {
         return ciudades;
     }
 
-    public List<ObjetoRobado> cargarObjetosRobados(){
+    public List<ObjetoRobado> cargarObjetosRobados(Map<String,Ciudad> ciudades){
         List<ObjetoRobado> objetosRobados = new ArrayList<>();
         try {
             Reader in = new FileReader(RUTA_OBJETOS);
@@ -114,15 +114,15 @@ public class InicializadorDeArchivos {
                 String ciudad = linea.get("Ciudad");
                 String valor = linea.get("Valor");
                 ObjetoRobado actual = null;
-                //Ciudad ciudadInicial = ciudades.get(ciudad);
+                Ciudad ciudadInicial = ciudades.get(ciudad);
                 if(valor.equals("Comun")){
-                    actual = new ObjetoComun(tesoro, new Ciudad(ciudad));
+                    actual = new ObjetoComun(tesoro, ciudadInicial);
                 }
                 else if(valor.equals("Valioso")){
-                    actual = new ObjetoValioso(tesoro, new Ciudad(ciudad));
+                    actual = new ObjetoValioso(tesoro, ciudadInicial);
                 }
                 else{
-                actual = new ObjetoMuyValioso(tesoro, new Ciudad(ciudad));
+                actual = new ObjetoMuyValioso(tesoro, ciudadInicial);
                 }
                 objetosRobados.add(actual);
             }
