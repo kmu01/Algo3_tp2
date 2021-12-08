@@ -70,18 +70,14 @@ public class Partida {
     public GradoDePolicia asignarGradoDePolicia(int cantidadDeArrestos) {
 
         GradoDePolicia grado;
-        switch (cantidadDeArrestos){
-            case 0: case 1: case 2: case 3: case 4:
-                grado = new Novato();
-                break;
-            case 5:case 6:case 7: case 8: case 9:
-                grado = new Detective();
-                break;
-            case 10:case 11:case 12: case 13: case 14:case 15: case 16: case 17: case 18: case 19:
-                grado = new Investigador();
-                break;
-            default:
-                grado = new Sargento();
+        if (cantidadDeArrestos >= 0 && cantidadDeArrestos < 5){
+            grado = new Novato();
+        } else if (cantidadDeArrestos >= 5 && cantidadDeArrestos < 10){
+            grado = new Detective();
+        } else if(cantidadDeArrestos >= 10 && cantidadDeArrestos < 20) {
+            grado = new Investigador();
+        } else {
+            grado = new Sargento();
         }
         return grado;
 

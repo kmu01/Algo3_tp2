@@ -27,9 +27,9 @@ public class PartidaTests
         assertEquals(3,partida.hora());
         partida.viajar("Ciudad de Mexico");
         assertEquals("Ciudad de Mexico",partida.mostrarCiudadActual());
-        assertEquals(3,partida.hora());
+        assertEquals(10,partida.hora());
         partida.dormir();
-        assertEquals(11,partida.hora());
+        assertEquals(18,partida.hora());
 
     }
 }
