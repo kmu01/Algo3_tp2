@@ -114,7 +114,6 @@ public class Partida {
 
         if(!this.tiempo.finalizado()) {
             Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
-            System.out.println(ciudad.nombre());
             this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
             this.cantidadDePaisesVisitados++;
         }

@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.entrega2;
 
 import edu.fiuba.algo3.modelo.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,19 +27,39 @@ public class CasosDeUsoTests {
     @Test
     public void investigadorTomaCasoYViajaDeMontrealAMexico(){
 
-        Tiempo tiempo = new Tiempo();
-        Cronometro cronometro = new Cronometro(tiempo);
+        List<ObjetoRobado> objetosRobados = new ArrayList<>();
+        List<Ladron> ladrones = new ArrayList<>();
+        Map<String,Ciudad> ciudades = new HashMap<>();
         Mapa mapa = new Mapa();
-        Ciudad actual = new Ciudad("Montreal");
-        Ciudad destino = new Ciudad("Ciudad de Mexico");
-        mapa.agregarCiudad(actual,2000,1500);
-        mapa.agregarCiudad(destino,700,250);
+        Ciudad montreal = new Ciudad("Montreal");
+        Ciudad mexico = new Ciudad("Ciudad de Mexico");
+        ciudades.put("Montreal",montreal);
+        ciudades.put("Ciudad de Mexico",mexico);
+        mapa.agregarCiudad(montreal,100,125);
+        mapa.agregarCiudad(mexico,70,20);
 
-        Policia policia = new Policia(new Sospechoso(), new Detective(), actual);
-        policia.viajar(destino, mapa, cronometro);
+        InicializadorDeArchivos mockInicializador = mock(InicializadorDeArchivos.class);
+        Random mockDado = mock(Random.class);
 
-        assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
-        assertEquals((1),tiempo.tiempoRestante());
+
+        objetosRobados.add(new ObjetoValioso("Incan Gold Mask",montreal));
+        Ladron ladron = new Ladron("Nicokai","Masculino","Correr","Castaño","Anteojos","Comun");
+        Ladron segundoLadron = new Ladron("Jorge Caicedo","Masculino","Tenis","Rubio","Tatuaje","Convertible");
+        ladrones.add(ladron);ladrones.add(segundoLadron);
+
+        when(mockDado.nextInt(3)).thenReturn(1);
+        when(mockInicializador.cargarLadrones()).thenReturn(ladrones);
+        when(mockInicializador.cargarCiudades()).thenReturn(ciudades);
+        when(mockInicializador.cargarPistasLugares(ciudades)).thenReturn(ciudades);
+        when(mockInicializador.cargarMapa(ciudades)).thenReturn(mapa);
+        when(mockInicializador.cargarObjetosRobados(ciudades)).thenReturn(objetosRobados);
+
+        Partida partida = new Partida(mockInicializador,mockDado);
+        partida.nuevoCaso(6);
+        partida.viajar("Ciudad de Mexico");
+
+        assertEquals("Ciudad de Mexico",partida.mostrarCiudadActual());
+        assertEquals((9),partida.hora());
 
     }
 
@@ -87,6 +105,7 @@ public class CasosDeUsoTests {
         when(mockDado.nextInt(3)).thenReturn(1);
         InicializadorDeArchivos mockInicializador = mock(InicializadorDeArchivos.class);
         when(mockInicializador.cargarCiudades()).thenReturn(ciudades);
+        when(mockInicializador.cargarPistasLugares(ciudades)).thenReturn(ciudades);
         when(mockInicializador.cargarMapa(ciudades)).thenReturn(mapa);
         when(mockInicializador.cargarLadrones()).thenReturn(ladrones);
         when(mockInicializador.cargarObjetosRobados(ciudades)).thenReturn(objetosRobados);

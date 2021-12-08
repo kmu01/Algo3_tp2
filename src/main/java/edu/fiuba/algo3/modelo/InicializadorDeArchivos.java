@@ -36,7 +36,6 @@ public class InicializadorDeArchivos {
                 Ladron actual = new Ladron(nombre, sexo, hobby, pelo, senia, vehiculo);
                 ladrones.add(actual);
             }
-            System.out.println("Cargo los ladrones");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +54,6 @@ public class InicializadorDeArchivos {
                 Ciudad actual = new Ciudad(nombreCiudad);
                 ciudades.put(nombreCiudad, actual);
             }
-            System.out.println("Cargo las ciudades");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,7 +73,6 @@ public class InicializadorDeArchivos {
                 Ciudad actual = ciudades.get(nombreCiudad);
                 mapa.agregarCiudad(actual, latitud, longitud);
             }
-            System.out.println("Cargo las ciudades");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,7 +94,6 @@ public class InicializadorDeArchivos {
                 ciudadActual.agregarPista(pista);
 
             }
-            System.out.println("Cargo las pistas de lugares");
         }catch(IOException e){
             e.printStackTrace();
         }
