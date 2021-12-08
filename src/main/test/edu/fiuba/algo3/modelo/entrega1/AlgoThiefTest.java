@@ -82,8 +82,8 @@ public class AlgoThiefTest {
         Mapa mapa = new Mapa();
         Ciudad actual = new Ciudad("Montreal");
         Ciudad destino = new Ciudad("Ciudad de Mexico");
-        mapa.agregarCiudad(actual,2000,1500);
-        mapa.agregarCiudad(destino,700,250);
+        mapa.agregarCiudad(actual,20,15);
+        mapa.agregarCiudad(destino,7, 2.5F);
 
         Policia policia = new Policia(new Sospechoso(), new Detective(), actual);
         policia.viajar(destino, mapa, cronometro);

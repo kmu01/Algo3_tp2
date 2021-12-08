@@ -9,7 +9,7 @@ import static java.lang.Math.pow;
 public class Mapa {
 
     private Map<Ciudad, Posicion> posiciones;
-
+    private final int factorAKm = 100;
     public Mapa(){
 
         this.posiciones = new HashMap<>();
@@ -18,12 +18,12 @@ public class Mapa {
 
     public float calcularDistancia (Ciudad ciudadSeleccionada,Ciudad ciudadActual){
 
-        float latitudActual = posiciones.get(ciudadActual).latitud();
-        float longitudActual = posiciones.get(ciudadActual).longitud();
-        float latitudSeleccionada = posiciones.get(ciudadSeleccionada).latitud();
-        float longitudSeleccionada = posiciones.get(ciudadSeleccionada).longitud();
+        float latitudEnKmActual = posiciones.get(ciudadActual).latitud()*factorAKm;
+        float longitudEnKmActual = posiciones.get(ciudadActual).longitud()*factorAKm;
+        float latitudEnKmSeleccionada = posiciones.get(ciudadSeleccionada).latitud()*factorAKm;
+        float longitudEnKmSeleccionada = posiciones.get(ciudadSeleccionada).longitud()*factorAKm;
         System.out.println();
-        return (float) sqrt(pow((longitudSeleccionada-longitudActual),2)+pow((latitudSeleccionada-latitudActual),2));
+        return (float) sqrt(pow((longitudEnKmSeleccionada-longitudEnKmActual),2)+pow((latitudEnKmSeleccionada-latitudEnKmActual),2));
 
     }
 
