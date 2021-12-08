@@ -1,0 +1,35 @@
+@startuml
+title Cargar datos recopilados en la computadora y buscar sospechosos
+
+actor "Jugador" as AlgoThief
+participant ":Partida" as Partida
+participant ":Novato" as Grado
+participant ":ObjetoComun" as ObjetoRobado
+participant "ciudadInicial:Ciudad" as Ciudad
+participant ":Ladron" as Ladron
+participant ":Policia" as Policia
+
+AlgoThief ->> Partida : nuevoCaso(2)
+activate Partida
+    Partida ->> Grado : new()
+    Partida ->> ObjetoRobado : new()
+    Partida ->> ObjetoRobado : ciudad()
+    ObjetoRobado --> Partida : [ciudadInicial]
+    Partida ->> Ciudad : new()
+    Partida ->> Ladron : new()
+    Partida ->> Ladron : asignarObjetoRobado(ObjetoComun)
+    Partida ->> Policia : registroPolicia(Sospechoso, Novato, ciudadInicial)
+deactivate Partida
+
+AlgoThief ->> Partida : anotarGenero("Femenino")
+activate Partida
+Partida ->> Policia : anotarGenero("Femenino")
+deactivate Partida
+AlgoThief ->> Partida : emitirOrdenDeArresto().size()
+return[cantidadDeSospechosos]
+AlgoThief ->> AlgoThief : assertEquals(5, cantidadDeSospechosos)
+
+note across: "Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino"
+
+
+@enduml

@@ -177,8 +177,9 @@ Partida "1" --* "1..*" Ciudad
 Policia --> Ciudad
 Ciudad "1" --> "1..5"Lugar
 Lugar "1" --o "1..*" Pista
+
 MiembroDeBanda --* "1..*" ObjetoRobado
-Policia --> Comisaria
+Partida --> Comisaria
 Cronometro ..> Tiempo
 Partida --> Cronometro
 
