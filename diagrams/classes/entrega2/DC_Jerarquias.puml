@@ -1,0 +1,60 @@
+@startuml
+title Jerarquias de Interfaces
+abstract class GradoDePolicia{
+    # tiempoDeViaje : int
+    # tiempoDeDescanso : int
+    # dificultadMasFrecuente : Dificultad
+    # dificultadMenosFrecuente : Dificultad
+    # rarezaMasFrecuente : String
+    # rarezaMenosFrecuente : String
+    + calcularTiempoDeViaje(distancia, cronometro)
+    + calcularTiempoDeBalazo(cronometro)
+    + calcularTiempoDurmiendo(cronometro)
+    + buscarPista(pistas[Pista], nombreLugar, dado) : Pista
+    + elegirObjeto(objetosRobados[ObjetoRobado], random) : ObjetoRobado
+}
+class Novato{}
+class Detective{}
+class Investigador{}
+class Sargento{}
+
+
+abstract class MiembroDeBanda{
+    - genero : String
+    - hobbie : String
+    - cabello : String
+    - senia : String
+    - vehiculo : String
+    - objetoRobado : ObjetoRobado
+    - ciudad : Ciudad
+    + objetoRobado() : ObjetoRobado
+    + ciudadActual() : Ciudad
+}
+
+class Ladron{}
+class Sospechoso{}
+
+interface ObjetoRobado{
+    + mostrarNombre() : String
+    + ciudad() : Ciudad
+    + rareza() : String
+}
+
+class ObjetoComun{}
+class ObjetoValioso{}
+class ObjetoMuyValioso{}
+
+GradoDePolicia <|.. Novato
+GradoDePolicia <|.. Detective
+GradoDePolicia <|.. Investigador
+GradoDePolicia <|.. Sargento
+
+MiembroDeBanda <|.. Ladron
+MiembroDeBanda <|.. Sospechoso
+
+ObjetoRobado <|.. ObjetoComun
+ObjetoRobado <|.. ObjetoValioso
+ObjetoRobado <|.. ObjetoMuyValioso
+
+
+@enduml
