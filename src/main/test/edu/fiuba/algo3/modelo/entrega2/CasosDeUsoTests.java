@@ -55,11 +55,11 @@ public class CasosDeUsoTests {
         when(mockInicializador.cargarObjetosRobados(ciudades)).thenReturn(objetosRobados);
 
         Partida partida = new Partida(mockInicializador,mockDado);
-        partida.nuevoCaso(6);
+        partida.nuevoCaso(12);
         partida.viajar("Ciudad de Mexico");
 
         assertEquals("Ciudad de Mexico",partida.mostrarCiudadActual());
-        assertEquals((9),partida.hora());
+        assertEquals((8),partida.hora());
 
     }
 
