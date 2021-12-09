@@ -18,9 +18,9 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
         policia.recibirCuchillazo(cronometro);
-        assertEquals(2, tiempo.tiempoRestante());
+        assertEquals(2, tiempo.tiempoTranscurrido());
         policia.dormir(cronometro);
-        assertEquals(10, tiempo.tiempoRestante());
+        assertEquals(10, tiempo.tiempoTranscurrido());
 
     }
 

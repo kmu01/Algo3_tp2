@@ -55,7 +55,7 @@ public class CasosDeUsoTests {
 
         Pista pista = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
         assertEquals("Se despliega la pista de banco", pista.descripcion());
-        assertEquals(1,tiempo.tiempoRestante());
+        assertEquals(1,tiempo.tiempoTranscurrido());
 
     }
 
@@ -69,10 +69,10 @@ public class CasosDeUsoTests {
         assertEquals("Se despliega la pista de banco", pistaPrimerBanco.descripcion());
         Pista pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
         assertEquals("Se despliega la pista de banco", pistaSegundoBanco.descripcion());
-        assertEquals(3,tiempo.tiempoRestante());
+        assertEquals(3,tiempo.tiempoTranscurrido());
         Pista pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro,mockDado);
         assertEquals("Se despliega la pista de biblioteca", pistaBliblioteca.descripcion());
-        assertEquals(4,tiempo.tiempoRestante());
+        assertEquals(4,tiempo.tiempoTranscurrido());
 
     }
 
@@ -89,7 +89,7 @@ public class CasosDeUsoTests {
         policia.viajar(destino, mapa, cronometro);
 
         assertEquals("Ciudad de Mexico",policia.mostrarCiudadActual());
-        assertEquals((1),tiempo.tiempoRestante());
+        assertEquals((1),tiempo.tiempoTranscurrido());
 
     }
 
@@ -121,9 +121,9 @@ public class CasosDeUsoTests {
 
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
         policia.recibirCuchillazo(cronometro);
-        assertEquals(2, tiempo.tiempoRestante());
+        assertEquals(2, tiempo.tiempoTranscurrido());
         policia.dormir(cronometro);
-        assertEquals(10, tiempo.tiempoRestante());
+        assertEquals(10, tiempo.tiempoTranscurrido());
 
     }
 }

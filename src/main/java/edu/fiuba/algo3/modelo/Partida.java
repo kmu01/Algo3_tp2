@@ -1,12 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.*;
-
-import org.apache.commons.csv.*;
 
 public class Partida {
 
@@ -175,7 +170,7 @@ public class Partida {
     }
 
     public int hora() {
-        return (this.tiempo.tiempoRestante());
+        return (this.tiempo.tiempoTranscurrido());
     }
 
     public void dormir() {
