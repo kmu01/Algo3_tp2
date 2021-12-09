@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.entrega1;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.grados.Detective;
+import edu.fiuba.algo3.modelo.grados.Investigador;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

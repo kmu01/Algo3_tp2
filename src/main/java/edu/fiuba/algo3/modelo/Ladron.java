@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import java.util.Objects;
 
 public class Ladron extends MiembroDeBanda{
@@ -38,17 +37,6 @@ public class Ladron extends MiembroDeBanda{
 
     public String nombre() {
         return (this.nombre);
-    }
-
-    List<String> crearListaDeAtributos(){
-        List<String> listaAtributos = new ArrayList<>();
-        listaAtributos.add(nombre);
-        listaAtributos.add(cabello);
-        listaAtributos.add(hobbie);
-        listaAtributos.add(genero);
-        listaAtributos.add(senia);
-        listaAtributos.add(vehiculo);
-        return listaAtributos;
     }
 
     public int esIgual(Sospechoso ladron) {

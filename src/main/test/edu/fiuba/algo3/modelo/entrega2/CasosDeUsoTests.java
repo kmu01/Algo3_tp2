@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.entrega2;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.grados.Detective;
+import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 

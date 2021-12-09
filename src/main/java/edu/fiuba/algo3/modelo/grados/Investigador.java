@@ -1,7 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.grados;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import edu.fiuba.algo3.modelo.Dificultad;
 
 public class Investigador extends GradoDePolicia {
 

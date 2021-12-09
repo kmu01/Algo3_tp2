@@ -32,5 +32,6 @@ public class PartidaTests
         assertEquals(18,partida.hora());
 
     }
+
 }
 

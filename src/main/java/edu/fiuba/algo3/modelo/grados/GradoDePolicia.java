@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.grados;
+
+import edu.fiuba.algo3.modelo.Cronometro;
+import edu.fiuba.algo3.modelo.Dificultad;
+import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.Pista;
 
 import java.util.List;
 import java.util.Random;
@@ -32,7 +37,7 @@ public abstract class GradoDePolicia {
 
     }
 
-    public Pista buscarPista(List<Pista> pistas,String nombreLugar,Random dado){
+    public Pista buscarPista(List<Pista> pistas, String nombreLugar, Random dado){
         int dificultad = dado.nextInt(3);
         Pista pista = null;
         switch (dificultad){
@@ -50,7 +55,7 @@ public abstract class GradoDePolicia {
         return pista;
     }
 
-    public ObjetoRobado elegirObjeto(List<ObjetoRobado> objetosRobados,Random r) {
+    public ObjetoRobado elegirObjeto(List<ObjetoRobado> objetosRobados, Random r) {
 
         int dificultad = r.nextInt(3);
         ObjetoRobado objeto = null;

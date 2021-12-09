@@ -1,5 +1,5 @@
 package edu.fiuba.algo3.modelo;
-
+/*
 public class Localize {
     protected final String esContent;
     protected final String usContent;
@@ -17,4 +17,4 @@ public class Localize {
         return esContent;
     }
 
-}
+}*/

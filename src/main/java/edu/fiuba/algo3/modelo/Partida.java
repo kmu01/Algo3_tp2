@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.util.*;
+import edu.fiuba.algo3.modelo.grados.*;
+import edu.fiuba.algo3.modelo.objetos.*;
 
-import org.apache.commons.csv.*;
 
 public class Partida {
 

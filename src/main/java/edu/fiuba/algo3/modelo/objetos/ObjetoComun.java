@@ -1,26 +1,26 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.objetos;
 
-public class ObjetoMuyValioso implements ObjetoRobado {
+import edu.fiuba.algo3.modelo.Ciudad;
 
-    private final int cantidadPaises = 7;
+public class ObjetoComun implements ObjetoRobado{
+
+    private final int cantidadPaises = 4;
     private final String nombre;
     private Ciudad ciudad;
-    private final String rareza = "muy valioso";
+    private final String rareza = "comun";
 
-    public ObjetoMuyValioso(String nombre, Ciudad ciudad){
+    public ObjetoComun(String nombre, Ciudad ciudad){
 
         this.nombre = nombre;
         this.ciudad = ciudad;
 
     }
 
-
-    public ObjetoMuyValioso(String nombre){
+    public ObjetoComun(String nombre){
 
         this.nombre = nombre;
 
     }
-
     public int cantidadPaises(){return this.cantidadPaises;}
 
     public String mostrarNombre(){
@@ -28,7 +28,6 @@ public class ObjetoMuyValioso implements ObjetoRobado {
         return this.nombre;
 
     }
-
     @Override
     public Ciudad ciudad(){
         return this.ciudad;
