@@ -23,7 +23,7 @@ public class PoliciaTests {
         policia.recibirHeridaDeBala(cronometro);
         policia.viajar(destino,mapa,cronometro);
 
-        assertEquals(5,tiempo.tiempoRestante());
+        assertEquals(5,tiempo.tiempoTranscurrido());
     }
     @Test
     public void creoUnPoliciaConGradoSargentoYLeAnotoAtributosYCargoDatos(){
