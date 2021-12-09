@@ -25,7 +25,7 @@ AlgoThief ->> Partida : anotarGenero("Femenino")
 activate Partida
 Partida ->> Policia : anotarGenero("Femenino")
 deactivate Partida
-AlgoThief ->> Partida : emitirOrdenDeArresto().size()
+AlgoThief ->> Partida : cantidadSospechososPosibles()
 return[cantidadDeSospechosos]
 AlgoThief ->> AlgoThief : assertEquals(5, cantidadDeSospechosos)
 

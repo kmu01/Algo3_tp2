@@ -161,6 +161,11 @@ public class Partida {
         return ladrones;
     }
 
+    public int cantidadSospechososPosibles() {
+        List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
+        return ladrones.size();
+    }
+
     public boolean atrapar() {
         return (ordenDeArresto && this.policia.atrapar(this.ladron));
     }

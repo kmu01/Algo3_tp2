@@ -71,7 +71,7 @@ public class CasosDeUsoTests {
         partida.nuevoCaso(2);
         partida.anotarGenero("Femenino");
 
-        assertEquals(5,partida.emitirOrderDeArresto().size());
+        assertEquals(5,partida.cantidadSospechososPosibles());
 
     }
 
