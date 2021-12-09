@@ -43,16 +43,6 @@ class Partida{
     - pistasDelLadron[String]
     - objetosRobados[ObjetoRobado]
     + {static} crearPartida(inicializadorDeArchivos, dado)
-    - cargarMapa()
-    - cargarPistasDescripcionLadron()
-    - cargarPistasLugares()
-    - cargarLadrones() : [Ladron]
-    - cargarCiudades()
-    - cargarObjetosRobados()
-    - seleccionarObjetoRobado(grado) : ObjetoRobado
-    - seleccionarCiudadInicial(objetoRobado) : Ciudad
-    - seleccionarLadron(objetoRobado) : Ladron
-    - mostrarPista(pista) : String
     + viajar(ciudadSeleccionada)
     + nuevoCaso(cantidadDeArrestos)
     + anotarGenero(genero)

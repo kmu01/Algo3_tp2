@@ -21,9 +21,9 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
         policia.recibirCuchillazo(cronometro);
-        assertEquals(2, tiempo.tiempoRestante());
+        assertEquals(2, tiempo.tiempoTranscurrido());
         policia.dormir(cronometro);
-        assertEquals(10, tiempo.tiempoRestante());
+        assertEquals(10, tiempo.tiempoTranscurrido());
 
     }
 
@@ -74,7 +74,7 @@ public class CasosDeUsoTests {
         partida.nuevoCaso(2);
         partida.anotarGenero("Femenino");
 
-        assertEquals(5,partida.emitirOrderDeArresto().size());
+        assertEquals(5,partida.cantidadSospechososPosibles());
 
     }
 

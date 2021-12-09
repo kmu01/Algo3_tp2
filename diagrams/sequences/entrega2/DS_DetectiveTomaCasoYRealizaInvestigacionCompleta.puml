@@ -35,10 +35,10 @@ Policia ->> Comisaria : cargarDatos(Sospechoso)
 Comisaria --> Policia : [Ladrones]
 deactivate Policia
 Policia --> Partida : [Ladrones]
+Partida --> AlgoThief : [Ladrones]
 deactivate Partida
-AlgoThief ->> Partida : [Ladrones].size()
-return[cantLadrones]
-AlgoThief ->> AlgoThief : assertEquals(2, cantLadrones)
+
+AlgoThief ->> AlgoThief : assertEquals(2, Ladrones.size())
 AlgoThief ->> Partida : atrapar()
 activate Partida
 Partida ->> Policia : atrapar(Ladron)
@@ -58,10 +58,9 @@ Policia ->> Comisaria : cargarDatos(Sospechoso)
 Comisaria --> Policia : [Ladrones]
 deactivate Policia
 Policia --> Partida : [Ladrones]
+Partida --> AlgoThief : [Ladrones]
 deactivate Partida
-AlgoThief ->> Partida : [Ladrones].size()
-return[cantLadrones]
-AlgoThief ->> AlgoThief : assertEquals(1, cantLadrones)
+AlgoThief ->> AlgoThief : assertEquals(1, Ladrones.size())
 AlgoThief ->> AlgoThief : assertEquals("Nicokai", nombreLadron)
 AlgoThief ->> Partida : atrapar()
 activate Partida

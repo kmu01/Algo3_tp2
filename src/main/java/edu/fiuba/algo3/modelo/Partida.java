@@ -4,7 +4,6 @@ import java.util.*;
 import edu.fiuba.algo3.modelo.grados.*;
 import edu.fiuba.algo3.modelo.objetos.*;
 
-
 public class Partida {
 
     private Random dado;
@@ -131,9 +130,6 @@ public class Partida {
 
     }
 
-    /*private String mostrarPista(Pista pista) {
-        return pista.descripcion();
-    }*/
 
     public void acuchillar(){
 
@@ -163,6 +159,11 @@ public class Partida {
         return ladrones;
     }
 
+    public int cantidadSospechososPosibles() {
+        List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
+        return ladrones.size();
+    }
+
     public boolean atrapar() {
         return (ordenDeArresto && this.policia.atrapar(this.ladron));
     }
@@ -172,7 +173,7 @@ public class Partida {
     }
 
     public int hora() {
-        return (this.tiempo.tiempoRestante());
+        return (this.tiempo.tiempoTranscurrido());
     }
 
     public void dormir() {

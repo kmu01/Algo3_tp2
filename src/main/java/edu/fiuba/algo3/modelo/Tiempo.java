@@ -20,7 +20,7 @@ public class Tiempo {
         return (this.hora >= this.tiempoLimite);
     }
 
-    public int tiempoRestante() {
+    public int tiempoTranscurrido() {
 
         return this.hora;
 
