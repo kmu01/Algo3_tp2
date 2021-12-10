@@ -13,8 +13,8 @@ public class Sospechoso {
 
     }
 
-    public void anotar(Cualidad cualidad){
-        cualidades.add(cualidad);
+    public void anotarCualidad(Cualidad cualidad){
+        this.cualidades.add(cualidad);
     }
 
     public int esIgual(List<Cualidad> cualidades) {

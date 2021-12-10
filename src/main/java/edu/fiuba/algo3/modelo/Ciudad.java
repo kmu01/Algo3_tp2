@@ -20,7 +20,6 @@ public class Ciudad {
     }
 
     public Ciudad() {
-
     }
 
     public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado){
@@ -28,12 +27,15 @@ public class Ciudad {
         return lugarSeleccionado.visitar(grado,this.pistas, cronometro,dado);
 
     }
-    public String nombre(){
-        return (this.nombre);
-    }
 
     public void agregarPista(Pista pista){
         this.pistas.add(pista);
     }
 
+    public boolean esCiudad(Ciudad ciudadFinal) {
+        return ciudadFinal.esCiudad(this.nombre);
+    }
+    public boolean esCiudad(String ciudadFinal){
+        return (ciudadFinal.equals(this.nombre));
+    }
 }

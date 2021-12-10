@@ -34,11 +34,8 @@ public class InicializadorDeArchivos {
                 String senia = linea.get("Senia");
                 String vehiculo = linea.get("Vehiculo");
                 List<Cualidad> cualidades = new ArrayList<>();
-                cualidades.add(new Cualidad(sexo));
-                cualidades.add(new Cualidad(hobby));
-                cualidades.add(new Cualidad(pelo));
-                cualidades.add(new Cualidad(senia));
-                cualidades.add(new Cualidad(vehiculo));
+                cualidades.add(new Cualidad(sexo));cualidades.add(new Cualidad(hobby));cualidades.add(new Cualidad(pelo));
+                cualidades.add(new Cualidad(senia));cualidades.add(new Cualidad(vehiculo));
                 Ladron actual = new Ladron(nombre, cualidades);
                 ladrones.add(actual);
             }

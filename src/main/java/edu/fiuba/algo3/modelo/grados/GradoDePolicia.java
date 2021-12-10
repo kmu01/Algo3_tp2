@@ -45,11 +45,6 @@ public abstract class GradoDePolicia {
             case 0:
                 pista = pistas.stream().filter(p -> p.esPista(dificultadMasFrecuente, nombreLugar)).findAny().orElse(null);
                 break;
-
-            case 1:
-                pista = pistas.stream().filter(p -> p.esPista(dificultadMasFrecuente, nombreLugar)).findAny().orElse(null);
-                break;
-
             case 2:
                 pista = pistas.stream().filter(p -> p.esPista(dificultadMenosFrecuente, nombreLugar)).findAny().orElse(null);
         }
@@ -62,16 +57,10 @@ public abstract class GradoDePolicia {
         ObjetoRobado objeto = null;
         List<ObjetoRobado> objetosFiltrados;
         switch (dificultad){
-            case 0:
+            case 0: case 1:
                 objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
                 objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));
                 break;
-
-            case 1:
-                objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMasFrecuente)).collect(Collectors.toList());
-                objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));
-                break;
-
             case 2:
                 objetosFiltrados = objetosRobados.stream().filter(obj -> obj.rareza().equals(rarezaMenosFrecuente)).collect(Collectors.toList());
                 objeto = objetosFiltrados.get(r.nextInt(objetosFiltrados.size()));

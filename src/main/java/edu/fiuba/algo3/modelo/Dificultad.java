@@ -10,5 +10,11 @@ public class Dificultad {
 
     }
 
-    public String obtenerDificultad() { return this.dificultad; };
+    public boolean esDificultad( Dificultad dificultad){
+        return dificultad.esDificultad(this.dificultad);
+    }
+
+    public boolean esDificultad(String dificultad){
+        return (this.dificultad.equals(dificultad));
+    }
 }

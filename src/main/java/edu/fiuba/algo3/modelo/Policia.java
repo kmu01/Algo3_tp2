@@ -12,7 +12,7 @@ public class Policia {
     private Ciudad ciudadActual;
     private int cantidadDeVecesAcuchillado;
 
-    public Policia(Sospechoso sospechoso, GradoDePolicia grado, Ciudad ciudadInicial){
+    public Policia(Sospechoso sospechoso, GradoDePolicia grado,Ciudad ciudadInicial){
 
         this.grado = grado;
         this.sospechoso = sospechoso;
@@ -21,32 +21,13 @@ public class Policia {
 
     }
 
-    public void anotarGenero(String genero){
-
-        this.sospechoso.anotarGenero(genero);
-
-    }
-
-    public void anotarCabello(String colorDePelo){
-        this.sospechoso.anotarCabello(colorDePelo);
-    }
-    public void anotarHobbie(String hobbie){
-        this.sospechoso.anotarHobbie(hobbie);
-    }
-
-    public void anotarVehiculo(String vehiculo){
-        this.sospechoso.anotarVehiculo(vehiculo);
-    }
-    public void anotarSenia(String senia){
-        this.sospechoso.anotarSenia(senia);
+    public void anotarCualidad(Cualidad cualidad){
+        this.sospechoso.anotarCualidad(cualidad);
     }
 
     public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado){
-
         return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro,dado);
-
     }
-
     public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) throws GameOverException {
 
 
@@ -54,10 +35,6 @@ public class Policia {
         this.grado.calcularTiempoDeViaje(distancia, cronometro);
         this.ciudadActual = ciudadSeleccionada;
 
-    }
-
-    public String mostrarCiudadActual(){
-        return (this.ciudadActual.nombre());
     }
 
     public void recibirCuchillazo(Cronometro cronometro){
@@ -78,7 +55,7 @@ public class Policia {
         return comisaria.cargarDatos(this.sospechoso);
     }
 
-    public boolean atrapar(Ladron ladron) {
-        return ((this.ciudadActual.nombre()).equals(ladron.ciudad().nombre()));
+    public boolean atrapar(Ladron ladron,int cantidadDePaisesVisitados) {
+        return ladron.esAtrapado(this.ciudadActual,cantidadDePaisesVisitados);
     }
 }

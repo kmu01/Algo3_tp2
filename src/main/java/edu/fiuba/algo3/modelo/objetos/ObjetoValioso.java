@@ -16,12 +16,6 @@ public class ObjetoValioso implements ObjetoRobado {
 
     }
 
-
-    public String mostrarNombre(){
-
-        return this.nombre;
-
-    }
     public int cantidadPaises(){return this.cantidadPaises;}
 
     @Override
@@ -32,5 +26,10 @@ public class ObjetoValioso implements ObjetoRobado {
     @Override
     public String rareza(){
         return this.rareza;
+    }
+
+    @Override
+    public boolean verificarLimitePaises(int cantidadDePaisesVisitados){
+        return (cantidadDePaisesVisitados == this.cantidadPaises);
     }
 }

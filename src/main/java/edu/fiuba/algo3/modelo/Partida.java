@@ -13,24 +13,29 @@ public class Partida {
     private Ladron ladron;
     private Tiempo tiempo;
     private Mapa mapa;
-    private boolean ordenDeArresto;
+    private OrdenDeArresto ordenDeArresto;
     private List<Ladron> ladrones;
     private Map<String,Ciudad> ciudades;
     private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
     private int cantidadDePaisesVisitados = 0;
+    private Ciudad ciudadSiguiente;
+    private Ciudad ciudadActual;
+
 
 
     public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado) {
         this.inicializadorDeArchivos = inicializadorDeArchivos;
         this.tiempo = new Tiempo();
         this.dado = dado;
+
         this.pistasDelLadron = new ArrayList<>();
         this.ciudades = new HashMap<>();
         this.mapa = new Mapa();
         this.ladrones = new ArrayList<>();
         this.objetosRobados = new ArrayList<>();
         this.ladrones = cargarLadrones();
+        this.ordenDeArresto = new OrdenSinEmitir();
         cargarCiudades();
         cargarObjetosRobados();
         cargarMapa();
@@ -129,20 +134,27 @@ public class Partida {
     public void viajar(String ciudadSeleccionada){
 
         try {
-
             Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
+            /*if (ciudadSiguiente.esCiudad(ciudadSeleccionada)){
+                ciudadSiguiente = desapilo();
+                ciudadActual = ciudad;
+            }else{
+                se apila ciudadSiguiente;
+                ciudadSiguiente = ciudadActual; //Debo recordar cual es el camino correcto
+                ciudadActual = ciudad;
+            }*/
             this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
             this.cantidadDePaisesVisitados++;
 
-        } catch (GameOverException e) {
+        }catch(GameOverException e){
 
         }
 
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
-
-        this.ladron.esAtrapado(this.policia, cantidadDePaisesVisitados);
+        this.atrapar();
+        //this.ladron.esAtrapado(this.policia, cantidadDePaisesVisitados);
         if(cantidadDePaisesVisitados == this.ladron.objetoRobado.cantidadPaises() &&
                 this.ladron.ciudad().nombre().equals(this.policia.mostrarCiudadActual()))
         {
@@ -160,9 +172,7 @@ public class Partida {
 
     public void acuchillar(){
 
-        if(!this.tiempo.finalizado()) {
             this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
-        }
     }
 
     public void nuevoCaso(int cantidadDeArrestos) {
@@ -176,27 +186,26 @@ public class Partida {
 
     }
 
-    public void anotarGenero(String genero) {
-        this.policia.anotarGenero(genero);
+    public void anotarCualidad(String atributo) {
+        Cualidad cualidad = new Cualidad(atributo);
+        this.policia.anotarCualidad(cualidad);
     }
-
-    public List<Ladron> emitirOrderDeArresto() {
+    public void cargarDatos(){
         List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
-        this.ordenDeArresto = (ladrones.size() == 1);
-        return ladrones;
+        this.emitirOrden(ladrones);
     }
 
-    public int cantidadSospechososPosibles() {
+    private void emitirOrden(List<Ladron> ladrones){
+        this.ordenDeArresto = this.ordenDeArresto.emitir(ladrones);
+    }
+
+    public int cantidadSospechososPosibles(){
         List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
         return ladrones.size();
     }
 
     public boolean atrapar() {
-        return (ordenDeArresto && this.policia.atrapar(this.ladron));
-    }
-
-    public void anotarSenia(String senia) {
-        this.policia.anotarSenia(senia);
+        return (ordenDeArresto.emitida() && this.policia.atrapar(this.ladron,cantidadDePaisesVisitados));
     }
 
     public int hora() {

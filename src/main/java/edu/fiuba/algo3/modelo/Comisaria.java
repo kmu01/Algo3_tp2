@@ -25,7 +25,6 @@ public class Comisaria {
                 ladrones.add(ladron);
             }
         }
-
         return ladrones;
     }
 

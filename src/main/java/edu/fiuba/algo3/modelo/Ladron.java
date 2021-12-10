@@ -10,7 +10,7 @@ public class Ladron{
     private String nombre;
     private List<Cualidad> cualidades;
     private ObjetoRobado objetoRobado;
-    private Ciudad ciudadSiguiente;
+    private Ciudad ciudadFinal;
 
     public Ladron (String nombre, List<Cualidad> cualidades){
 
@@ -36,8 +36,8 @@ public class Ladron{
         }
     }
 
-    public void esAtrapado(Policia policia, int cantidadDePaisesVisitados) {
-        this.objetoRobado.atrapar(policia, cantidadDePaisesVisitados);
+    public boolean esAtrapado(Ciudad ciudadActual, int cantidadDePaisesVisitados) {
+        return ((ciudadActual.esCiudad(this.ciudadFinal)) && (this.objetoRobado.verificarLimitePaises(cantidadDePaisesVisitados)));
     }
 }
 
