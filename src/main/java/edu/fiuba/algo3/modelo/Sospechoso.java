@@ -21,7 +21,7 @@ public class Sospechoso {
         int cantidadDeAtributosIguales = 0;
         for (int i = 0; i < this.cualidades.size(); i++) {
             for (Cualidad cualidad: cualidades) {
-                cualidad.esCualidad(cualidades.get(i),cantidadDeAtributosIguales);
+                if (cualidad.esCualidad(cualidades.get(i))) cantidadDeAtributosIguales++;
             }
         }
         return cantidadDeAtributosIguales;

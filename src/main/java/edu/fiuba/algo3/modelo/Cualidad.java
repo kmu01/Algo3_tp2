@@ -8,11 +8,11 @@ public class Cualidad{
         this.cualidad = cualidad;
     }
 
-    public int esCualidad(Cualidad cualidad, int contador){
-        if(this.cualidad.equals(cualidad.cualidad)){
-            contador++;
-        }
-        return  contador;
+    public Boolean esCualidad(Cualidad cualidad){
+        return cualidad.compararCualidades(this.cualidad);
     }
 
+    public Boolean compararCualidades(String cualidad){
+        return this.cualidad.equals(cualidad);
+    }
 }

@@ -124,11 +124,6 @@ public class Partida {
 
     }
 
-    public String mostrarCiudadActual(){
-
-        return this.policia.mostrarCiudadActual();
-
-    }
 
 
     public void viajar(String ciudadSeleccionada){
@@ -155,18 +150,12 @@ public class Partida {
     public Pista entrarEdificio(String lugarSeleccionado) {
         this.atrapar();
         //this.ladron.esAtrapado(this.policia, cantidadDePaisesVisitados);
-        if(cantidadDePaisesVisitados == this.ladron.objetoRobado.cantidadPaises() &&
-                this.ladron.ciudad().nombre().equals(this.policia.mostrarCiudadActual()))
-        {
-            this.atrapar();
-        }
 
         int numero = this.dado.nextInt(7);
         if (numero == 5){
             this.acuchillar();
         }
         return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
-
     }
 
 
