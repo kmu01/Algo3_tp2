@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class Pista {
+
     private Dificultad dificultad;
     private String descripcion;
     private String lugarCorrespondiente;

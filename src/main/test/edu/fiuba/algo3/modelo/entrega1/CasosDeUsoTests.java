@@ -79,7 +79,7 @@ public class CasosDeUsoTests {
     }
 
     @Test
-    public void elDetectiveViajaDeMontrealACiudadDeMexico(){
+    public void elDetectiveViajaDeMontrealACiudadDeMexico() throws GameOverException {
 
         Mapa mapa = new Mapa();
         Ciudad actual = new Ciudad("Montreal");

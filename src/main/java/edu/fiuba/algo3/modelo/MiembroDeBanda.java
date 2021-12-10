@@ -1,28 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import java.util.List;
 
-public abstract class MiembroDeBanda {
+public interface MiembroDeBanda {
 
-    protected String nombre;
-    protected String genero;
-    protected String hobbie;
-    protected String cabello;
-    protected String senia;
-    protected String vehiculo;
-    protected ObjetoRobado objetoRobado;
-    protected Ciudad ciudad;
-
-    public MiembroDeBanda (){}
-
-    public ObjetoRobado objetoRobado (){
-
-        return objetoRobado;
-
-    }
-
-    public Ciudad ciudadActual (){
-        return this.ciudad;
-    }
+    int esIgual(List<Cualidad> cualidades);
 
 }

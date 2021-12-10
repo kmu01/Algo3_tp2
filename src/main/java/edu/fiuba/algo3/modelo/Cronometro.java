@@ -10,7 +10,7 @@ public class Cronometro {
 
     }
 
-    public void calcularTiempoDeViaje(float distancia, int tiempoDeViaje) {
+    public void calcularTiempoDeViaje(float distancia, int tiempoDeViaje) throws GameOverException {
 
         this.tiempo.agregarTiempo((int) Math.floor(distancia/(tiempoDeViaje)));
 

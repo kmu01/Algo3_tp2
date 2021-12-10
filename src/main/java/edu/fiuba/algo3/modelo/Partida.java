@@ -20,6 +20,7 @@ public class Partida {
     private List<ObjetoRobado> objetosRobados;
     private int cantidadDePaisesVisitados = 0;
 
+
     public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado) {
         this.inicializadorDeArchivos = inicializadorDeArchivos;
         this.tiempo = new Tiempo();
@@ -40,27 +41,39 @@ public class Partida {
     }
 
     private void cargarMapa() {
-        this.mapa = this.inicializadorDeArchivos.cargarMapa(this.ciudades);;
+
+        this.mapa = this.inicializadorDeArchivos.cargarMapa(this.ciudades);
+
     }
 
     private void cargarPistasDescripcionLadron(){
+
         this.pistasDelLadron = this.inicializadorDeArchivos.cargarPistasDescripcionLadron(this.pistasDelLadron,this.ladron);
+
     }
 
     private void cargarPistasLugares(){
+
         this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades);
+
     }
 
     private List<Ladron> cargarLadrones(){
+
         return this.inicializadorDeArchivos.cargarLadrones();
+
     }
 
     private void cargarCiudades(){
+
         this.ciudades = this.inicializadorDeArchivos.cargarCiudades();
+
     }
 
     private void cargarObjetosRobados(){
+
         this.objetosRobados = this.inicializadorDeArchivos.cargarObjetosRobados(this.ciudades);
+
     }
 
     public GradoDePolicia asignarGradoDePolicia(int cantidadDeArrestos) {
@@ -83,19 +96,21 @@ public class Partida {
     }
 
     private ObjetoRobado seleccionarObjetoRobado(GradoDePolicia grado){
+
         //Seleccionar el objeto en base del grado del policia
         return grado.elegirObjeto(this.objetosRobados,this.dado);
 
     }
 
     private Ciudad seleccionarCiudadInicial(ObjetoRobado objetoRobado) {
-        //Seleccionar ciudad donde comienza el policia
 
+        //Seleccionar ciudad donde comienza el policia
         return objetoRobado.ciudad();
 
     }
 
     private Ladron seleccionarLadron(ObjetoRobado objetoRobado) {
+
         //Seleccionar ladron seteando el objeto robado
 
         Ladron ladron = ladrones.get(dado.nextInt(ladrones.size()));
@@ -105,25 +120,34 @@ public class Partida {
     }
 
     public String mostrarCiudadActual(){
+
         return this.policia.mostrarCiudadActual();
+
     }
 
 
     public void viajar(String ciudadSeleccionada){
 
-        if(!this.tiempo.finalizado()) {
+        try {
+
             Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
             this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
             this.cantidadDePaisesVisitados++;
+
+        } catch (GameOverException e) {
+
         }
 
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
 
+        this.ladron.esAtrapado(this.policia, cantidadDePaisesVisitados);
         if(cantidadDePaisesVisitados == this.ladron.objetoRobado.cantidadPaises() &&
                 this.ladron.ciudad().nombre().equals(this.policia.mostrarCiudadActual()))
-        {this.atrapar();}
+        {
+            this.atrapar();
+        }
 
         int numero = this.dado.nextInt(7);
         if (numero == 5){

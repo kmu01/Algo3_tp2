@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.objetos;
 
+
 import edu.fiuba.algo3.modelo.Ciudad;
 
 public interface ObjetoRobado {
@@ -10,4 +11,6 @@ public interface ObjetoRobado {
     String rareza();
 
     int cantidadPaises();
+
+    void atrapar();
 }

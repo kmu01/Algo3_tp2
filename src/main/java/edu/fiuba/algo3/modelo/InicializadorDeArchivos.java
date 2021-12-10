@@ -33,7 +33,13 @@ public class InicializadorDeArchivos {
                 String pelo = linea.get("Pelo");
                 String senia = linea.get("Senia");
                 String vehiculo = linea.get("Vehiculo");
-                Ladron actual = new Ladron(nombre, sexo, hobby, pelo, senia, vehiculo);
+                List<Cualidad> cualidades = new ArrayList<>();
+                cualidades.add(new Cualidad(sexo));
+                cualidades.add(new Cualidad(hobby));
+                cualidades.add(new Cualidad(pelo));
+                cualidades.add(new Cualidad(senia));
+                cualidades.add(new Cualidad(vehiculo));
+                Ladron actual = new Ladron(nombre, cualidades);
                 ladrones.add(actual);
             }
         } catch (IOException e) {
@@ -136,9 +142,7 @@ public class InicializadorDeArchivos {
             for (CSVRecord linea:texto) {
                 String descripcion = linea.get("Pista");
                 String ladronArchivo = linea.get("Ladron");
-                if (ladronArchivo.equals(ladron.nombre())){
-                    pistasDelLadron.add(descripcion);
-                }
+                ladron.chequearPistas(pistasDelLadron, descripcion, ladronArchivo);
             }
         }catch(IOException e){
             e.printStackTrace();

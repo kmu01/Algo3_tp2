@@ -47,7 +47,7 @@ public class Policia {
 
     }
 
-    public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) {
+    public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) throws GameOverException {
 
 
         float distancia = mapa.calcularDistancia(ciudadSeleccionada,this.ciudadActual);

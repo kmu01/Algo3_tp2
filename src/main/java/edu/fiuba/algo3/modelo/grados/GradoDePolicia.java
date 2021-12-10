@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.grados;
 
 import edu.fiuba.algo3.modelo.Cronometro;
 import edu.fiuba.algo3.modelo.Dificultad;
+import edu.fiuba.algo3.modelo.GameOverException;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.Pista;
 
@@ -21,7 +22,7 @@ public abstract class GradoDePolicia {
 
     public GradoDePolicia (){}
 
-    public void calcularTiempoDeViaje(float distancia, Cronometro cronometro) {
+    public void calcularTiempoDeViaje(float distancia, Cronometro cronometro) throws GameOverException {
 
         cronometro.calcularTiempoDeViaje(distancia, this.tiempoDeViaje);
 

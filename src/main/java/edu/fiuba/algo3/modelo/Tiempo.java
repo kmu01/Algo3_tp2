@@ -10,13 +10,16 @@ public class Tiempo {
         this.hora = 0;
 
     }
-    public void agregarTiempo(float tiempoDeLaAccion) {
+    public void agregarTiempo(float tiempoDeLaAccion) throws GameOverException {
 
         this.hora += tiempoDeLaAccion;
 
+        if (this.finalizado()){
+            throw new GameOverException();
+        }
     }
 
-    public boolean finalizado(){
+    private boolean finalizado(){
         return (this.hora >= this.tiempoLimite);
     }
 

@@ -1,34 +1,29 @@
 package edu.fiuba.algo3.modelo;
 
-public class Sospechoso extends MiembroDeBanda{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Sospechoso {
+
+    private List<Cualidad> cualidades;
 
     public Sospechoso (){
 
-        super();
-
-        this.genero = "";
-        this.hobbie = "";
-        this.cabello = "";
-        this.senia = "";
-        this.vehiculo = "";
-        this.ciudad = null;
+        this.cualidades = new ArrayList<>();
 
     }
 
-    public void anotarGenero (String genero){
-        this.genero = genero;
-    }
-    public void anotarHobbie (String hobbie){
-        this.hobbie = hobbie;
-    }
-    public void anotarCabello (String cabello){
-        this.cabello = cabello;
-    }
-    public void anotarSenia (String senia){
-        this.senia = senia;
-    }
-    public void anotarVehiculo (String vehiculo){
-        this.vehiculo = vehiculo;
+    public void anotar(Cualidad cualidad){
+        cualidades.add(cualidad);
     }
 
+    public int esIgual(List<Cualidad> cualidades) {
+        int cantidadDeAtributosIguales = 0;
+        for (int i = 0; i < this.cualidades.size(); i++) {
+            for (Cualidad cualidad: cualidades) {
+                cualidad.esCualidad(cualidades.get(i),cantidadDeAtributosIguales);
+            }
+        }
+        return cantidadDeAtributosIguales;
+    }
 }

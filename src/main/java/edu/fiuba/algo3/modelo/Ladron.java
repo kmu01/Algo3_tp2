@@ -1,57 +1,43 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+
+import java.util.List;
 import java.util.Objects;
 
-public class Ladron extends MiembroDeBanda{
-    public Ladron (String nombre, String genero, String hobbie, String cabello, String senia, String vehiculo,Ciudad ciudadFinal){
+public class Ladron{
 
+    private String nombre;
+    private List<Cualidad> cualidades;
+    private ObjetoRobado objetoRobado;
+    private Ciudad ciudadSiguiente;
+
+    public Ladron (String nombre, List<Cualidad> cualidades){
+
+        this.cualidades = cualidades;
         this.nombre = nombre;
-        this.cabello = cabello;
-        this.hobbie = hobbie;
-        this.genero = genero;
-        this.senia = senia;
-        this.vehiculo = vehiculo;
-        this.ciudad = ciudadFinal;
 
     }
-
-    public Ladron (String nombre, String genero, String hobbie, String cabello, String senia, String vehiculo){
-
-        this.nombre = nombre;
-        this.cabello = cabello;
-        this.hobbie = hobbie;
-        this.genero = genero;
-        this.senia = senia;
-        this.vehiculo = vehiculo;
-        this.ciudad = null;
-
-    }
-
-    public Ciudad ciudad(){return (this.ciudad);}
 
     public void asignarObjetoRobado(ObjetoRobado objeto){
+
         this.objetoRobado = objeto;
-        this.ciudad = objeto.ciudad();
+
     }
 
-    public String nombre() {
-        return (this.nombre);
+
+    public int esIgual(Sospechoso sospechoso) {
+        return sospechoso.esIgual(this.cualidades);
     }
 
-    public int esIgual(Sospechoso ladron) {
-
-        int cantidadDeAtributosIguales = 0 ;
-        cantidadDeAtributosIguales = (this.cabello.equals(ladron.cabello))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
-        cantidadDeAtributosIguales = (this.hobbie.equals(ladron.hobbie))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
-        cantidadDeAtributosIguales = (this.genero.equals(ladron.genero))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
-        cantidadDeAtributosIguales = (this.senia.equals((ladron.senia)))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
-        cantidadDeAtributosIguales = (this.vehiculo.equals(ladron.vehiculo))?++cantidadDeAtributosIguales:cantidadDeAtributosIguales;
-
-        return cantidadDeAtributosIguales;
+    public void chequearPistas(List<String> pistasDelLadron, String descripcion, String nombreDelLadron) {
+        if (this.nombre.equals(nombreDelLadron)){
+            pistasDelLadron.add(descripcion);
+        }
     }
 
-    @Override
-    public int hashCode() {return Objects.hash(this.cabello, this.hobbie, this.genero, this.senia, this.vehiculo);}
+    public void esAtrapado(Policia policia, int cantidadDePaisesVisitados) {
+        this.objetoRobado.atrapar(policia, cantidadDePaisesVisitados);
+    }
 }
 

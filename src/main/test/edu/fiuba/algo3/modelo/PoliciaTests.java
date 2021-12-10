@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PoliciaTests {
     @Test
-    public void creoUnPoliciaConGradoSargentoLeDanUnDisparoYViajaDeMontrealAMexico(){
+    public void creoUnPoliciaConGradoSargentoLeDanUnDisparoYViajaDeMontrealAMexico() throws GameOverException {
         Tiempo tiempo = new Tiempo();
         Cronometro cronometro = new Cronometro(tiempo);
         Mapa mapa = new Mapa();
@@ -27,10 +27,24 @@ public class PoliciaTests {
     }
     @Test
     public void creoUnPoliciaConGradoSargentoYLeAnotoAtributosYCargoDatos(){
+        List<Cualidad> cualidadesNicolas = new ArrayList<>();
+        cualidadesNicolas.add(new Cualidad("Masculino"));
+        cualidadesNicolas.add(new Cualidad("Futbol"));
+        cualidadesNicolas.add(new Cualidad("Rubio"));
+        cualidadesNicolas.add(new Cualidad("Tatuaje"));
+        cualidadesNicolas.add(new Cualidad("Deportivo"));
+
+        List<Cualidad> cualidadesDiego = new ArrayList<>();
+        cualidadesDiego.add(new Cualidad("Masculino"));
+        cualidadesDiego.add(new Cualidad("Futbol"));
+        cualidadesDiego.add(new Cualidad("Rubio"));
+        cualidadesDiego.add(new Cualidad("Cicatriz"));
+        cualidadesDiego.add(new Cualidad("Limusina"));
+
 
         List<Ladron> ladrones = new ArrayList<>();
-        ladrones.add(new Ladron("Nicolas","Masculino","Futbol","Rubio","Tatuaje","Deportivo"));
-        ladrones.add(new Ladron("Diego","Masculino","Futbol","Rubio","Cicatriz","Limusina"));
+        ladrones.add(new Ladron("Nicolas",cualidadesNicolas));
+        ladrones.add(new Ladron("Diego",cualidadesDiego));
         Comisaria comisaria = new Comisaria(ladrones);
 
         Policia policia = new Policia(new Sospechoso(),new Sargento(),new  Ciudad("Ciudad de Mexico"));
