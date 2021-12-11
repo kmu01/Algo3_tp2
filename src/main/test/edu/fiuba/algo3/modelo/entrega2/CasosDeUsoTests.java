@@ -87,7 +87,6 @@ public class CasosDeUsoTests {
         partida.nuevoCaso(12);
         partida.viajar("Ciudad de Mexico");
 
-        assertEquals("Ciudad de Mexico",partida.mostrarCiudadActual());
         assertEquals((8),partida.hora());
 
     }
@@ -98,9 +97,9 @@ public class CasosDeUsoTests {
         Random dado = new Random();
         Partida partida = new Partida(inicializadorDeArchivos,dado);
         partida.nuevoCaso(2);
-        partida.anotarGenero("Femenino");
+        partida.anotarCualidad("Femenino");
 
-        assertEquals(5,partida.cantidadSospechososPosibles());
+        assertEquals({},partida.cargarDatos());
 
     }
 
@@ -110,8 +109,8 @@ public class CasosDeUsoTests {
         Random dado = new Random();
         Partida partida = new Partida(inicializadorDeArchivos,dado);
         partida.nuevoCaso(2);
-        partida.anotarGenero("Femenino");
-        partida.emitirOrderDeArresto();
+        partida.anotarCualidad("Femenino");
+        partida.cargarDatos();
 
         assertFalse(partida.atrapar());
     }
@@ -142,12 +141,12 @@ public class CasosDeUsoTests {
 
         Partida partida = new Partida(mockInicializador,mockDado);
         partida.nuevoCaso(6);
-        partida.anotarGenero("Masculino");
-        List<Ladron> listaDeSospechosos = partida.emitirOrderDeArresto();
-        assertEquals(2,listaDeSospechosos.size());
+        partida.anotarCualidad("Masculino");
+        assertEquals({},partida.cargarDatos());
         assertFalse(partida.atrapar());
-        partida.anotarSenia("Anteojos");
-        listaDeSospechosos = partida.emitirOrderDeArresto();
+        partida.anotarCualidad("Anteojos");
+        assertEquals({},partida.cargarDatos());
+
 
         assertTrue(partida.atrapar());
 

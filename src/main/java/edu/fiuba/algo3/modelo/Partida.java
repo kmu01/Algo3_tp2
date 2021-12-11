@@ -179,12 +179,13 @@ public class Partida {
         Cualidad cualidad = new Cualidad(atributo);
         this.policia.anotarCualidad(cualidad);
     }
-    public void cargarDatos(){
+    public List<Ladron> cargarDatos(){
         List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
         this.emitirOrden(ladrones);
+        return ladrones;
     }
 
-    private void emitirOrden(List<Ladron> ladrones){
+    public void emitirOrden(List<Ladron> ladrones){
         this.ordenDeArresto = this.ordenDeArresto.emitir(ladrones);
     }
 
