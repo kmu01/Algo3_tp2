@@ -12,7 +12,7 @@ public class PartidaTests
 {
 
     @Test
-    public void creoUnaPartidaYPidoDosPistaLuegoViajaAMexicoYDuerme(){
+    public void creoUnaPartidaYPidoDosPistaLuegoViajaAMexicoYDuerme() throws GameOverException {
         InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
         Random mockDado = mock(Random.class);
         when(mockDado.nextInt(3)).thenReturn(1);
@@ -26,8 +26,8 @@ public class PartidaTests
         assertEquals("Cambio sus monedas a pesos argentinos",pista.descripcion());
         assertEquals(3,partida.hora());
         partida.viajar("Ciudad de Mexico");
-        assertEquals("Ciudad de Mexico",partida.mostrarCiudadActual());
         assertEquals(10,partida.hora());
+
         partida.dormir();
         assertEquals(18,partida.hora());
 

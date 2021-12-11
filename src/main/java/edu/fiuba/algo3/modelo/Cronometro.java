@@ -16,19 +16,19 @@ public class Cronometro {
 
     }
 
-    public void calcularTiempoDeCuchillazo(int cantidadDeVecesAcuchillado) {
+    public void calcularTiempoDeCuchillazo(int cantidadDeVecesAcuchillado) throws GameOverException {
 
         this.tiempo.agregarTiempo(cantidadDeVecesAcuchillado == 1 ? 2 : 1);
 
     }
 
-    public void calcularTiempoDurmiendo(int tiempoDeDescanso) {
+    public void calcularTiempoDurmiendo(int tiempoDeDescanso) throws GameOverException {
 
         this.tiempo.agregarTiempo(tiempoDeDescanso);
 
     }
 
-    public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) {
+    public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) throws GameOverException {
         switch (cantidadDeVisitas){
             case 1:
                 this.tiempo.agregarTiempo(1);
@@ -42,7 +42,7 @@ public class Cronometro {
 
     }
 
-    public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) {
+    public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) throws GameOverException {
         this.tiempo.agregarTiempo(tiempoDeHeridaDeBala);
     }
 }

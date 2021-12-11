@@ -28,11 +28,11 @@ public abstract class GradoDePolicia {
 
     }
 
-    public void calcularTiempoDeBalazo(Cronometro cronometro){
+    public void calcularTiempoDeBalazo(Cronometro cronometro) throws GameOverException {
         cronometro.calcularTiempoDeBalazo(this.tiempoDeHeridaDeBala);
     }
 
-    public void calcularTiempoDurmiendo(Cronometro cronometro) {
+    public void calcularTiempoDurmiendo(Cronometro cronometro) throws GameOverException {
 
         cronometro.calcularTiempoDurmiendo(this.tiempoDeDescanso);
 

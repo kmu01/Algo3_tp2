@@ -14,19 +14,23 @@ public class Pista {
         this.lugarCorrespondiente = lugarCorrespondiente;
     }
 
+    public Pista() {
+
+    }
+
     public boolean esPista(Dificultad dificultad, String nombreLugar){
 
         return ((this.dificultad.esDificultad(dificultad)) && (this.lugarCorrespondiente.equals(nombreLugar)));
 
     }
 
-    private void calcularTiempoEnObtenerLaPista (Cronometro cronometro){
+    private void calcularTiempoEnObtenerLaPista (Cronometro cronometro) throws GameOverException {
 
         cronometro.calcularTiempoEnObtenerLaPista(this.cantDeVisitas);
 
     }
 
-    public Pista obtenerPista(Cronometro cronometro){
+    public Pista obtenerPista(Cronometro cronometro) throws GameOverException {
         ++this.cantDeVisitas;
         this.calcularTiempoEnObtenerLaPista(cronometro);
         return this;

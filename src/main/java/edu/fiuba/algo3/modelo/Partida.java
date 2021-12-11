@@ -155,13 +155,22 @@ public class Partida {
         if (numero == 5){
             this.acuchillar();
         }
-        return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
+        try {
+            return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
+        return new Pista();
     }
 
 
-    public void acuchillar(){
+    public void acuchillar() {
 
+        try {
             this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
     }
 
     public void nuevoCaso(int cantidadDeArrestos) {
@@ -202,7 +211,7 @@ public class Partida {
         return (this.tiempo.tiempoTranscurrido());
     }
 
-    public void dormir() {
+    public void dormir() throws GameOverException {
         this.policia.dormir(new Cronometro(this.tiempo));
     }
 }

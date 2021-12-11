@@ -44,9 +44,17 @@ public class CasosDeUsoTests {
         Ciudad ciudad = new Ciudad();
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
-        policia.recibirCuchillazo(cronometro);
+        try {
+            policia.recibirCuchillazo(cronometro);
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
         assertEquals(2, tiempo.tiempoTranscurrido());
-        policia.dormir(cronometro);
+        try {
+            policia.dormir(cronometro);
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
         assertEquals(10, tiempo.tiempoTranscurrido());
 
     }
@@ -98,8 +106,8 @@ public class CasosDeUsoTests {
         Partida partida = new Partida(inicializadorDeArchivos,dado);
         partida.nuevoCaso(2);
         partida.anotarCualidad("Femenino");
-
-        assertEquals({},partida.cargarDatos());
+        List<Ladron> ladrones = partida.cargarDatos();
+        assertEquals(Arrays.asList(),ladrones);
 
     }
 
@@ -142,10 +150,10 @@ public class CasosDeUsoTests {
         Partida partida = new Partida(mockInicializador,mockDado);
         partida.nuevoCaso(6);
         partida.anotarCualidad("Masculino");
-        assertEquals({},partida.cargarDatos());
+        assertEquals(Arrays.asList(ladron,segundoLadron),partida.cargarDatos());
         assertFalse(partida.atrapar());
         partida.anotarCualidad("Anteojos");
-        assertEquals({},partida.cargarDatos());
+        assertEquals(Arrays.asList(ladron),partida.cargarDatos());
 
 
         assertTrue(partida.atrapar());

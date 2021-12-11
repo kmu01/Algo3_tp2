@@ -22,7 +22,7 @@ public class Ciudad {
     public Ciudad() {
     }
 
-    public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado){
+    public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado) throws GameOverException {
 
         return lugarSeleccionado.visitar(grado,this.pistas, cronometro,dado);
 

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.entrega2.CasosDeUsoTests;
 import edu.fiuba.algo3.modelo.grados.Sargento;
 import org.junit.jupiter.api.Test;
 
@@ -49,14 +50,14 @@ public class PoliciaTests {
 
         Policia policia = new Policia(new Sospechoso(),new Sargento(),new  Ciudad("Ciudad de Mexico"));
 
-        policia.anotarGenero("Masculino");
-        policia.anotarHobbie("Futbol");
+        policia.anotarCualidad(new Cualidad("Masculino"));
+        policia.anotarCualidad(new Cualidad("Futbol"));
 
         assertEquals(2,policia.cargarDatos(comisaria).size());
 
-        policia.anotarSenia("Tatuaje");
-        policia.anotarVehiculo("Deportivo");
-        policia.anotarCabello("Rubio");
+        policia.anotarCualidad(new Cualidad("Tatuaje"));
+        policia.anotarCualidad(new Cualidad("Deportivo"));
+        policia.anotarCualidad(new Cualidad("Rubio"));
 
         assertEquals(1,policia.cargarDatos(comisaria).size());
     }

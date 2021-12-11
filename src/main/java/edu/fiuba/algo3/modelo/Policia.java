@@ -25,7 +25,7 @@ public class Policia {
         this.sospechoso.anotarCualidad(cualidad);
     }
 
-    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado){
+    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado) throws GameOverException {
         return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro,dado);
     }
     public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) throws GameOverException {
@@ -37,16 +37,16 @@ public class Policia {
 
     }
 
-    public void recibirCuchillazo(Cronometro cronometro){
+    public void recibirCuchillazo(Cronometro cronometro) throws GameOverException {
 
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
 
     }
-    public void recibirHeridaDeBala(Cronometro cronometro){
+    public void recibirHeridaDeBala(Cronometro cronometro) throws GameOverException {
         this.grado.calcularTiempoDeBalazo(cronometro);
     }
 
-    public void dormir(Cronometro cronometro){
+    public void dormir(Cronometro cronometro) throws GameOverException {
 
         this.grado.calcularTiempoDurmiendo(cronometro);
 

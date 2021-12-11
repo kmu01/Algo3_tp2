@@ -10,7 +10,7 @@ public class Lugar {
     public Lugar(String nombre){
         this.nombre = nombre;
     }
-    public Pista visitar(GradoDePolicia grado, List<Pista> pistas, Cronometro cronometro, Random dado){
+    public Pista visitar(GradoDePolicia grado, List<Pista> pistas, Cronometro cronometro, Random dado) throws GameOverException {
         return (this.obtenerPista(grado,pistas,dado).obtenerPista(cronometro));
 
     }
