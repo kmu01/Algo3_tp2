@@ -11,7 +11,7 @@ public class Comisaria {
         this.ladronesBuscados = ladrones;
     }
 
-    public List<Ladron> cargarDatos(Sospechoso sospechoso){
+    public List<Ladron> buscarLadrones(Sospechoso sospechoso){
 
         List<Ladron> ladrones = new ArrayList<>();
         int mayorAtributosIguales = 0;

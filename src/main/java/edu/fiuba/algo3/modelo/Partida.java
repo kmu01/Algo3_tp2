@@ -190,17 +190,16 @@ public class Partida {
     }
     public List<Ladron> buscarLadrones(){
 
-        List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
+        List<Ladron> ladrones = this.policia.buscarLadrones(this.comisaria);
         return ladrones;
     }
-
 
     private boolean atrapar() {
         return (this.policia.atrapar());
     }
 
-    public int hora() {
-        return (this.tiempo.tiempoTranscurrido());
+    public String hora() {
+        return (this.tiempo.tiempoFormateado());
     }
 
     public void dormir() throws GameOverException {

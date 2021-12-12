@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.entrega2.CasosDeUsoTests;
 import edu.fiuba.algo3.modelo.grados.Sargento;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +24,7 @@ public class PoliciaTests {
         policia.viajar(destino,mapa,cronometro);
 
         assertEquals(5,tiempo.tiempoTranscurrido());
+        assertEquals("lunes, 12 Hs.", tiempo.tiempoFormateado());
     }
     @Test
     public void creoUnPoliciaConGradoSargentoYLeAnotoAtributosYCargoDatos(){
@@ -53,12 +53,12 @@ public class PoliciaTests {
         policia.anotarCualidad(new Cualidad("Masculino"));
         policia.anotarCualidad(new Cualidad("Futbol"));
 
-        assertEquals(2,policia.cargarDatos(comisaria).size());
+        assertEquals(2,policia.buscarLadrones(comisaria).size());
 
         policia.anotarCualidad(new Cualidad("Tatuaje"));
         policia.anotarCualidad(new Cualidad("Deportivo"));
         policia.anotarCualidad(new Cualidad("Rubio"));
 
-        assertEquals(1,policia.cargarDatos(comisaria).size());
+        assertEquals(1,policia.buscarLadrones(comisaria).size());
     }
 }

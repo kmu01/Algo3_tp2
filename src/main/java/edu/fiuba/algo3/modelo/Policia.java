@@ -54,8 +54,8 @@ public class Policia {
 
     }
 
-    public List<Ladron> cargarDatos(Comisaria comisaria){
-        List<Ladron> ladrones = comisaria.cargarDatos(this.sospechoso);
+    public List<Ladron> buscarLadrones(Comisaria comisaria){
+        List<Ladron> ladrones = comisaria.buscarLadrones(this.sospechoso);
         this.ordenDeArresto = this.emitirOrden(ladrones);
         return ladrones;
     }

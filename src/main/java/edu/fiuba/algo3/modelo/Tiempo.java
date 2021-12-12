@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class Tiempo {
 
     private int hora;
-    private final int tiempoLimite = 178;
-    private final LocalDateTime tiempoInicio = LocalDateTime.parse("2021-12-12T07:00:00");
+    private final int tiempoLimite = 154;
+    private final LocalDateTime tiempoInicio = LocalDateTime.parse("2021-12-13T07:00:00");
     private final String formato = "cccc', 'kk' Hs'.";
     public Tiempo(){
 

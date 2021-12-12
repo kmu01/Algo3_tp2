@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.entrega2;
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
-import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -77,12 +76,14 @@ public class CasosDeUsoTests {
             e.printStackTrace();
         }
         assertEquals(2, tiempo.tiempoTranscurrido());
+        assertEquals("lunes, 09 Hs.", tiempo.tiempoFormateado());
         try {
             policia.dormir(cronometro);
         } catch (GameOverException e) {
             e.printStackTrace();
         }
         assertEquals(10, tiempo.tiempoTranscurrido());
+        assertEquals("lunes, 17 Hs.", tiempo.tiempoFormateado());
 
     }
 
@@ -97,6 +98,8 @@ public class CasosDeUsoTests {
         }
 
         assertEquals(8, tiempo.tiempoTranscurrido());
+        assertEquals("lunes, 15 Hs.", tiempo.tiempoFormateado());
+
 
     }
 
@@ -115,7 +118,7 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
         policia.anotarCualidad(new Cualidad("Femenino"));
 
-        assertEquals(Arrays.asList(marcela),policia.cargarDatos(comisaria));
+        assertEquals(Arrays.asList(marcela),policia.buscarLadrones(comisaria));
 
     }
 
@@ -133,7 +136,7 @@ public class CasosDeUsoTests {
 
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
 
-        policia.cargarDatos(comisaria);
+        policia.buscarLadrones(comisaria);
         assertFalse(policia.atrapar());
 
     }
@@ -168,13 +171,15 @@ public class CasosDeUsoTests {
         } catch (GameOverException e){
             e.printStackTrace();
         }
+        policia.anotarCualidad(new Cualidad("Femenino"));
+        policia.buscarLadrones(comisaria);
 
-        policia.cargarDatos(comisaria);
 
+
+        assertTrue(policia.atrapar());
         assertEquals("Pista Media", pistaObtenidaDelBanco.descripcion());
         assertEquals(10, tiempo.tiempoTranscurrido());
-
-
+        assertEquals("lunes, 17 Hs.",tiempo.tiempoFormateado());
 
     }
 }
