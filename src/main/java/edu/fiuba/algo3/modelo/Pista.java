@@ -14,10 +14,6 @@ public class Pista {
         this.lugarCorrespondiente = lugarCorrespondiente;
     }
 
-    public Pista() {
-
-    }
-
     public boolean esPista(Dificultad dificultad, String nombreLugar){
 
         return ((this.dificultad.esDificultad(dificultad)) && (this.lugarCorrespondiente.equals(nombreLugar)));

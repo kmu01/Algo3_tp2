@@ -10,7 +10,7 @@ public class OrdenSinEmitir implements OrdenDeArresto{
         if(ladronesPosibles.size() == 1){
             return (new OrdenEmitida(ladronesPosibles.get(0)));
         }
-        return (new OrdenSinEmitir());
+        return (this);
     }
 
     public boolean emitida(){

@@ -13,7 +13,6 @@ public class Partida {
     private Ladron ladron;
     private Tiempo tiempo;
     private Mapa mapa;
-    private OrdenDeArresto ordenDeArresto;
     private List<Ladron> ladrones;
     private Map<String,Ciudad> ciudades;
     private List<String> pistasDelLadron;
@@ -35,7 +34,6 @@ public class Partida {
         this.ladrones = new ArrayList<>();
         this.objetosRobados = new ArrayList<>();
         this.ladrones = cargarLadrones();
-        this.ordenDeArresto = new OrdenSinEmitir();
         cargarCiudades();
         cargarObjetosRobados();
         cargarMapa();
@@ -124,8 +122,6 @@ public class Partida {
 
     }
 
-
-
     public void viajar(String ciudadSeleccionada){
 
         try {
@@ -148,21 +144,25 @@ public class Partida {
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
-        this.atrapar();
-        //this.ladron.esAtrapado(this.policia, cantidadDePaisesVisitados);
 
+        //Chequear que las colas esten vacías y si es así llamar a this.policiar.atrapar();
+        /*
+        * if(cola.estaVacia()){this.policia.atrapar()}
+        * */
+
+        this.atrapar();
+        Pista pistaObtenida = null;
         int numero = this.dado.nextInt(7);
         if (numero == 5){
             this.acuchillar();
         }
         try {
-            return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
+            pistaObtenida = (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
         } catch (GameOverException e) {
             e.printStackTrace();
         }
-        return new Pista();
+        return pistaObtenida;
     }
-
 
     public void acuchillar() {
 
@@ -188,23 +188,15 @@ public class Partida {
         Cualidad cualidad = new Cualidad(atributo);
         this.policia.anotarCualidad(cualidad);
     }
-    public List<Ladron> cargarDatos(){
+    public List<Ladron> buscarLadrones(){
+
         List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
-        this.emitirOrden(ladrones);
         return ladrones;
     }
 
-    public void emitirOrden(List<Ladron> ladrones){
-        this.ordenDeArresto = this.ordenDeArresto.emitir(ladrones);
-    }
 
-    public int cantidadSospechososPosibles(){
-        List<Ladron> ladrones = this.policia.cargarDatos(this.comisaria);
-        return ladrones.size();
-    }
-
-    public boolean atrapar() {
-        return (ordenDeArresto.emitida() && this.policia.atrapar(this.ladron,cantidadDePaisesVisitados));
+    private boolean atrapar() {
+        return (this.policia.atrapar());
     }
 
     public int hora() {
@@ -214,4 +206,5 @@ public class Partida {
     public void dormir() throws GameOverException {
         this.policia.dormir(new Cronometro(this.tiempo));
     }
+
 }

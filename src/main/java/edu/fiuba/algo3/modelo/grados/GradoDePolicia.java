@@ -42,7 +42,7 @@ public abstract class GradoDePolicia {
         int dificultad = dado.nextInt(3);
         Pista pista = null;
         switch (dificultad){
-            case 0:
+            case 0: case 1:
                 pista = pistas.stream().filter(p -> p.esPista(dificultadMasFrecuente, nombreLugar)).findAny().orElse(null);
                 break;
             case 2:

@@ -36,6 +36,7 @@ public class Ladron{
         }
     }
 
+    //Borrar cuando esten las colas
     public boolean esAtrapado(Ciudad ciudadActual, int cantidadDePaisesVisitados) {
         return ((ciudadActual.esCiudad(this.ciudadFinal)) && (this.objetoRobado.verificarLimitePaises(cantidadDePaisesVisitados)));
     }

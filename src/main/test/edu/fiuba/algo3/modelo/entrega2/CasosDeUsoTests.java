@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.entrega2;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.grados.Detective;
+import edu.fiuba.algo3.modelo.grados.Investigador;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,15 @@ public class CasosDeUsoTests {
 
     List<Cualidad> cualidadesPrimerLadron = new ArrayList<>();
     List<Cualidad> cualidadesSegundoLadron = new ArrayList<>();
+    List<Cualidad> cualidadesTercerLadron = new ArrayList<>();
+    Map<String,Ciudad> ciudades = new HashMap<>();
+    Tiempo tiempo;
+    Cronometro cronometro;
+    Mapa mapa;
+    Ciudad montreal;
+    Ciudad ciudadDeMexico;
+    Random dado;
+
 
 
     @BeforeEach
@@ -35,12 +45,29 @@ public class CasosDeUsoTests {
         cualidadesSegundoLadron.add(new Cualidad("Tatuaje"));
         cualidadesSegundoLadron.add(new Cualidad("Convertible"));
 
+        cualidadesTercerLadron.add(new Cualidad("Femenino"));
+        cualidadesTercerLadron.add(new Cualidad("Alpinismo"));
+        cualidadesTercerLadron.add(new Cualidad("Castaño"));
+        cualidadesTercerLadron.add(new Cualidad("Tatuaje"));
+        cualidadesTercerLadron.add(new Cualidad("Moto"));
+
+        tiempo = new Tiempo();
+        cronometro = new Cronometro(tiempo);
+
+        mapa = new Mapa();
+        montreal = new Ciudad("Montreal");
+        ciudadDeMexico = new Ciudad("Ciudad de Mexico");
+        ciudades.put("Montreal",montreal);
+        ciudades.put("Ciudad de Mexico",ciudadDeMexico);
+        mapa.agregarCiudad(montreal,100,125);
+        mapa.agregarCiudad(ciudadDeMexico,70,20);
+        dado = mock(Random.class);
+        when(dado.nextInt(3)).thenReturn(1);
+
     }
 
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
-        Tiempo tiempo = new Tiempo();
-        Cronometro cronometro = new Cronometro(tiempo);
         Ciudad ciudad = new Ciudad();
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
@@ -62,101 +89,92 @@ public class CasosDeUsoTests {
     @Test
     public void investigadorTomaCasoYViajaDeMontrealAMexico(){
 
-        List<ObjetoRobado> objetosRobados = new ArrayList<>();
-        List<Ladron> ladrones = new ArrayList<>();
-        Map<String,Ciudad> ciudades = new HashMap<>();
-        Mapa mapa = new Mapa();
-        Ciudad montreal = new Ciudad("Montreal");
-        Ciudad mexico = new Ciudad("Ciudad de Mexico");
-        ciudades.put("Montreal",montreal);
-        ciudades.put("Ciudad de Mexico",mexico);
-        mapa.agregarCiudad(montreal,100,125);
-        mapa.agregarCiudad(mexico,70,20);
+        Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
+        try {
+            policia.viajar(ciudadDeMexico, mapa, cronometro);
+        } catch (GameOverException e){
+            e.printStackTrace();
+        }
 
-        InicializadorDeArchivos mockInicializador = mock(InicializadorDeArchivos.class);
-        Random mockDado = mock(Random.class);
-
-
-
-
-        objetosRobados.add(new ObjetoValioso("Incan Gold Mask",montreal));
-        Ladron ladron = new Ladron("Nicokai", cualidadesPrimerLadron);
-        Ladron segundoLadron = new Ladron("Jorge Caicedo", cualidadesSegundoLadron);
-        ladrones.add(ladron);ladrones.add(segundoLadron);
-
-        when(mockDado.nextInt(3)).thenReturn(1);
-        when(mockInicializador.cargarLadrones()).thenReturn(ladrones);
-        when(mockInicializador.cargarCiudades()).thenReturn(ciudades);
-        when(mockInicializador.cargarPistasLugares(ciudades)).thenReturn(ciudades);
-        when(mockInicializador.cargarMapa(ciudades)).thenReturn(mapa);
-        when(mockInicializador.cargarObjetosRobados(ciudades)).thenReturn(objetosRobados);
-
-        Partida partida = new Partida(mockInicializador,mockDado);
-        partida.nuevoCaso(12);
-        partida.viajar("Ciudad de Mexico");
-
-        assertEquals((8),partida.hora());
+        assertEquals(8, tiempo.tiempoTranscurrido());
 
     }
 
     @Test
     public void cargarInformacionRecopiladaYBuscarSospechosos(){
-        InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
-        Random dado = new Random();
-        Partida partida = new Partida(inicializadorDeArchivos,dado);
-        partida.nuevoCaso(2);
-        partida.anotarCualidad("Femenino");
-        List<Ladron> ladrones = partida.cargarDatos();
-        assertEquals(Arrays.asList(),ladrones);
+
+        List<Ladron> ladrones = new ArrayList<>();
+        Ladron nicokai = new Ladron("Nicokai", cualidadesPrimerLadron);
+        Ladron jorgeCaicedo = new Ladron("Jorge Caicedo", cualidadesSegundoLadron);
+        Ladron marcela = new Ladron("Marcela", cualidadesTercerLadron);
+
+        ladrones.add(nicokai);ladrones.add(jorgeCaicedo);ladrones.add(marcela);
+
+        Comisaria comisaria = new Comisaria(ladrones);
+
+        Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
+        policia.anotarCualidad(new Cualidad("Femenino"));
+
+        assertEquals(Arrays.asList(marcela),policia.cargarDatos(comisaria));
 
     }
 
     @Test
     public void intentaAtraparSospechosoSinLaOrden(){
-        InicializadorDeArchivos inicializadorDeArchivos = new InicializadorDeArchivos();
-        Random dado = new Random();
-        Partida partida = new Partida(inicializadorDeArchivos,dado);
-        partida.nuevoCaso(2);
-        partida.anotarCualidad("Femenino");
-        partida.cargarDatos();
 
-        assertFalse(partida.atrapar());
+        List<Ladron> ladrones = new ArrayList<>();
+        Ladron nicokai = new Ladron("Nicokai", cualidadesPrimerLadron);
+        Ladron jorgeCaicedo = new Ladron("Jorge Caicedo", cualidadesSegundoLadron);
+        Ladron marcela = new Ladron("Marcela", cualidadesTercerLadron);
+
+        ladrones.add(nicokai);ladrones.add(jorgeCaicedo);ladrones.add(marcela);
+
+        Comisaria comisaria = new Comisaria(ladrones);
+
+        Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
+
+        policia.cargarDatos(comisaria);
+        assertFalse(policia.atrapar());
+
     }
+
     @Test
     public void investigacionCompleta(){
+
+        Ciudad lima = new Ciudad("Lima");
+        lima.agregarPista(new Pista(new Dificultad("Medio"), "Pista Media", "banco"));
+        mapa.agregarCiudad(lima,70,20);
+        ciudades.put("Lima", lima);
+
         List<Ladron> ladrones = new ArrayList<>();
-        Map<String,Ciudad> ciudades = new HashMap<>();
-        Mapa mapa = new Mapa();
-        Ciudad ciudad = new Ciudad("Ciudad de Mexico");
-        ciudades.put("Ciudad de Mexico",ciudad);
-        mapa.agregarCiudad(ciudad,100,100);
+        Ladron nicokai = new Ladron("Nicokai", cualidadesPrimerLadron);
+        Ladron jorgeCaicedo = new Ladron("Jorge Caicedo", cualidadesSegundoLadron);
+        Ladron marcela = new Ladron("Marcela", cualidadesTercerLadron);
+        marcela.asignarObjetoRobado(new ObjetoValioso("Inka Golden Mask", lima));
+        ladrones.add(nicokai);ladrones.add(jorgeCaicedo);ladrones.add(marcela);
 
-        Random mockDado = mock(Random.class);
-        List<ObjetoRobado> objetosRobados = new ArrayList<>();
-        objetosRobados.add(new ObjetoValioso("Incan Gold Mask",new Ciudad("Ciudad de Mexico")));
-        Ladron ladron = new Ladron("Nicokai", cualidadesPrimerLadron);
-        Ladron segundoLadron = new Ladron("Jorge Caicedo", cualidadesSegundoLadron);
-        ladrones.add(ladron);ladrones.add(segundoLadron);
+        Pista pistaObtenidaDelBanco = null;
+        Comisaria comisaria = new Comisaria(ladrones);
+        Policia policia = new Policia(new Sospechoso(), new Detective(), lima);
 
-        when(mockDado.nextInt(3)).thenReturn(1);
-        InicializadorDeArchivos mockInicializador = mock(InicializadorDeArchivos.class);
-        when(mockInicializador.cargarCiudades()).thenReturn(ciudades);
-        when(mockInicializador.cargarPistasLugares(ciudades)).thenReturn(ciudades);
-        when(mockInicializador.cargarMapa(ciudades)).thenReturn(mapa);
-        when(mockInicializador.cargarLadrones()).thenReturn(ladrones);
-        when(mockInicializador.cargarObjetosRobados(ciudades)).thenReturn(objetosRobados);
+        try {
+            pistaObtenidaDelBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, dado);
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
 
+        try {
+            policia.viajar(montreal, mapa, cronometro);
+        } catch (GameOverException e){
+            e.printStackTrace();
+        }
 
-        Partida partida = new Partida(mockInicializador,mockDado);
-        partida.nuevoCaso(6);
-        partida.anotarCualidad("Masculino");
-        assertEquals(Arrays.asList(ladron,segundoLadron),partida.cargarDatos());
-        assertFalse(partida.atrapar());
-        partida.anotarCualidad("Anteojos");
-        assertEquals(Arrays.asList(ladron),partida.cargarDatos());
+        policia.cargarDatos(comisaria);
+
+        assertEquals("Pista Media", pistaObtenidaDelBanco.descripcion());
+        assertEquals(10, tiempo.tiempoTranscurrido());
 
 
-        assertTrue(partida.atrapar());
 
     }
 }
