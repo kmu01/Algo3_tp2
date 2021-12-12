@@ -53,6 +53,7 @@ public class Policia {
         this.grado.calcularTiempoDurmiendo(cronometro);
 
     }
+
     public List<Ladron> cargarDatos(Comisaria comisaria){
         List<Ladron> ladrones = comisaria.cargarDatos(this.sospechoso);
         this.ordenDeArresto = this.emitirOrden(ladrones);
