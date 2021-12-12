@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 
 import java.util.*;
@@ -32,6 +33,7 @@ public class Ciudad {
         this.pistas.add(pista);
     }
 
+    //todo sacar a futuro
     public boolean esCiudad(Ciudad ciudadFinal) {
         return ciudadFinal.esCiudad(this.nombre);
     }

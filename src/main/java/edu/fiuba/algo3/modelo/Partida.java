@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.*;
+
+import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.grados.*;
 import edu.fiuba.algo3.modelo.objetos.*;
 
@@ -121,8 +123,29 @@ public class Partida {
         return ladron;
 
     }
+    public void mostrarPosiblesDestinos(){
+
+    }
 
     public void viajar(String ciudadSeleccionada){
+        /*Cola colaRutaLadron;
+        Pila pilaDestinos;
+        cola = definoRutaLadron(colaRutaLadron);
+        ciudadSiguiente = colaRutaLadron.desacolar();
+        if (ciudadSiguiente != ciudadElegida){
+            pilaDestinos.apilar(ciudadSiguiente);
+            ciudadSiguiente = ciudadActual;
+            ciudadActual = ciudadElegida;
+        }else{// Si acerto el destino
+            if(pilaDestinos.estaVacia()){
+                ciudadSiguiente = cola.desacolar();
+                ciudadActual = ciudadElegida;
+            }
+            ciudadActual = ciudadElegida;
+            ciudadSiguiente = pilaDestinos.desapilar();
+
+        }*/
+
 
         try {
             Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
@@ -140,17 +163,51 @@ public class Partida {
         }catch(GameOverException e){
 
         }
+        try {
+            this.policia.dormir(new Cronometro(this.tiempo));
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
 
         //Chequear que las colas esten vacías y si es así llamar a this.policiar.atrapar();
-        /*
-        * if(cola.estaVacia()){this.policia.atrapar()}
+        /*ciudadCorrecta = null;
+        * proximaCiudadCorrecta = japon;
+        * ciudadActual = mexico;
+        * ultimaCiudadCorrecta = mexico;
+        *
+        * mexico-> japon;
+        * mexico viaja a italia
+        * si acerto:
+        * ultimaCiudadCorrecta = ciudadActual;
+        * ciudadActual = proximaCiudadCorrecta
+        * proximaCiudadCorrecta = random();
+        *
+
+        *si se equivoco:
+        * rellenar pistas falsas
+        * ciudadActual = ciudadElegida;
+        * agregarUltimaCiudadCorrectaAPosiblesDestinos
+        *
+        * italia->mexico
+        * italia viaja a china
+        * china-> italia
+        * posibles destinos china son: italia,mexico,buenos aires y rio
+        *
+        * this.policia.atrapar()
+        *
+        * }
         * */
 
         this.atrapar();
+        try {
+            this.policia.dormir(new Cronometro(this.tiempo));
+        } catch (GameOverException e) {
+            e.printStackTrace();
+        }
         Pista pistaObtenida = null;
         int numero = this.dado.nextInt(7);
         if (numero == 5){
@@ -200,10 +257,6 @@ public class Partida {
 
     public String hora() {
         return (this.tiempo.tiempoFormateado());
-    }
-
-    public void dormir() throws GameOverException {
-        this.policia.dormir(new Cronometro(this.tiempo));
     }
 
 }

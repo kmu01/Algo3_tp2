@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -18,9 +20,15 @@ public class Tiempo {
     public void agregarHoras(float tiempoDeLaAccion) throws GameOverException {
 
         this.hora += tiempoDeLaAccion;
-
         if (this.finalizado()){
             throw new GameOverException();
+        }
+    }
+
+    public void debeDormir(int tiempoDeDescanso) throws GameOverException {
+        int horaActual = tiempoInicio.plusHours(this.hora).getHour();
+        if (horaActual > 20){
+            this.agregarHoras(8);
         }
     }
 

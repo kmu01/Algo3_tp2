@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.grados;
 
 import edu.fiuba.algo3.modelo.Cronometro;
 import edu.fiuba.algo3.modelo.Dificultad;
-import edu.fiuba.algo3.modelo.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.Pista;
 

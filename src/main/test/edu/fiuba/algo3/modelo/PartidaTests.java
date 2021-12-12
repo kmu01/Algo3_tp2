@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -25,8 +26,7 @@ public class PartidaTests
         assertEquals("Cambio sus monedas a pesos argentinos",pista.descripcion());
         partida.viajar("Ciudad de Mexico");
 
-        partida.dormir();
-        assertEquals("Tuesday, 01 Hs.",partida.hora());
+        assertEquals("Monday, 17 Hs.",partida.hora());
 
     }
 

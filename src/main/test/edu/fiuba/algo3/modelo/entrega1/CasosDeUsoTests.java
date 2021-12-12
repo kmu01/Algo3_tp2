@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.entrega1;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
 import org.junit.jupiter.api.BeforeEach;
@@ -166,7 +167,7 @@ public class CasosDeUsoTests {
         } catch (GameOverException e) {
             e.printStackTrace();
         }
-        assertEquals(10, tiempo.tiempoTranscurrido());
+        assertEquals(2, tiempo.tiempoTranscurrido());
 
     }
 }
