@@ -21,12 +21,9 @@ public class PartidaTests
         partida.nuevoCaso(3);
         Pista pista = partida.entrarEdificio("Banco");
         assertEquals("Cambio sus monedas a pesos argentinos",pista.descripcion());
-        assertEquals("lunes, 08 Hs.",partida.hora());
         pista = partida.entrarEdificio("Banco");
         assertEquals("Cambio sus monedas a pesos argentinos",pista.descripcion());
-        assertEquals("lunes, 10 Hs.",partida.hora());
         partida.viajar("Ciudad de Mexico");
-        assertEquals("lunes, 17 Hs.",partida.hora());
 
         partida.dormir();
         assertEquals("martes, 01 Hs.",partida.hora());

@@ -24,7 +24,6 @@ public class PoliciaTests {
         policia.viajar(destino,mapa,cronometro);
 
         assertEquals(5,tiempo.tiempoTranscurrido());
-        assertEquals("lunes, 12 Hs.", tiempo.tiempoFormateado());
     }
     @Test
     public void creoUnPoliciaConGradoSargentoYLeAnotoAtributosYCargoDatos(){

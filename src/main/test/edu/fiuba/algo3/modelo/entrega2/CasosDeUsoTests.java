@@ -83,7 +83,6 @@ public class CasosDeUsoTests {
             e.printStackTrace();
         }
         assertEquals(10, tiempo.tiempoTranscurrido());
-        assertEquals("lunes, 17 Hs.", tiempo.tiempoFormateado());
 
     }
 
@@ -98,9 +97,6 @@ public class CasosDeUsoTests {
         }
 
         assertEquals(8, tiempo.tiempoTranscurrido());
-        assertEquals("lunes, 15 Hs.", tiempo.tiempoFormateado());
-
-
     }
 
     @Test
@@ -178,8 +174,6 @@ public class CasosDeUsoTests {
 
         assertTrue(policia.atrapar());
         assertEquals("Pista Media", pistaObtenidaDelBanco.descripcion());
-        assertEquals(10, tiempo.tiempoTranscurrido());
-        assertEquals("lunes, 17 Hs.",tiempo.tiempoFormateado());
 
     }
 }
