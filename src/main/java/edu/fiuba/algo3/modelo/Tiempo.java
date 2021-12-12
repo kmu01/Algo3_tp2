@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Tiempo {
 
@@ -36,8 +37,8 @@ public class Tiempo {
     public String tiempoFormateado(){
         String hora = new String();
         LocalDateTime tiempoActual = tiempoInicio.plusHours(this.hora);
-        DateTimeFormatter formatoDiaHs = DateTimeFormatter.ofPattern(formato);
-
+        DateTimeFormatter formatoDiaHs = DateTimeFormatter.ofPattern(formato).withLocale(
+                new Locale("en", "IN"));
         return tiempoActual.format(formatoDiaHs);
     }
 }

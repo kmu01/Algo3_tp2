@@ -26,7 +26,7 @@ public class PartidaTests
         partida.viajar("Ciudad de Mexico");
 
         partida.dormir();
-        assertEquals("martes, 01 Hs.",partida.hora());
+        assertEquals("Tuesday, 01 Hs.",partida.hora());
 
     }
 

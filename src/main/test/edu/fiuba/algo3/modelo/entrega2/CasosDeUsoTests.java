@@ -76,7 +76,7 @@ public class CasosDeUsoTests {
             e.printStackTrace();
         }
         assertEquals(2, tiempo.tiempoTranscurrido());
-        assertEquals("lunes, 09 Hs.", tiempo.tiempoFormateado());
+        assertEquals("Monday, 09 Hs.", tiempo.tiempoFormateado());
         try {
             policia.dormir(cronometro);
         } catch (GameOverException e) {

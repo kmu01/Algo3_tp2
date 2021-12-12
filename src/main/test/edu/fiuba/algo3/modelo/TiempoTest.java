@@ -9,7 +9,7 @@ public class TiempoTest {
     @Test
     public void creoInstanciaTiempoYPidoFechaActual(){
         Tiempo t = new Tiempo();
-        String fechaEsperada = "lunes, 07 Hs.";
+        String fechaEsperada = "Monday, 07 Hs.";
         assertEquals(fechaEsperada,t.tiempoFormateado());
     }
 
@@ -17,7 +17,7 @@ public class TiempoTest {
     public void agregoTiempoYPidoFechaActual() throws GameOverException {
         Tiempo t = new Tiempo();
         t.agregarHoras(10);
-        String fechaEsperada = "lunes, 17 Hs.";
+        String fechaEsperada = "Monday, 17 Hs.";
         assertEquals(fechaEsperada,t.tiempoFormateado());
     }
 
@@ -25,7 +25,7 @@ public class TiempoTest {
     public void agrego24HsYPidoFechaActual() throws GameOverException {
         Tiempo t = new Tiempo();
         t.agregarHoras(24);
-        String fechaEsperada = "martes, 07 Hs.";
+        String fechaEsperada = "Tuesday, 07 Hs.";
         assertEquals(fechaEsperada,t.tiempoFormateado());
     }
 
@@ -33,7 +33,7 @@ public class TiempoTest {
     public void avanzoMuyCercaDelFinalYPidoFecha() throws GameOverException {
         Tiempo t = new Tiempo();
         t.agregarHoras(153);
-        String fechaEsperada = "domingo, 16 Hs.";
+        String fechaEsperada = "Sunday, 16 Hs.";
         assertEquals(fechaEsperada,t.tiempoFormateado());
     }
 
