@@ -35,12 +35,93 @@ Montreal,Llevaba consigo una bandera rojo y blanca,Puerto,Dificil
 Montreal,La vi comprando dólares coloridos,Banco,Facil
 Montreal,La vi comprando dólares,Banco,Medio
 Montreal,La vi comprando billetes coloridos,Banco,Dificil
-Ciudad de Mexico,Investigo acerca de los Mayas,Biblioteca,Facil
-Ciudad de Mexico,Investigo sobre las famosas tribus de centroamerica,Biblioteca,Medio
-Ciudad de Mexico,Investigo sobre las triubs,Biblioteca,Dificil
+Ciudad de Mexico,Investigó acerca de los Mayas,Biblioteca,Facil
+Ciudad de Mexico,Investigó sobre las famosas tribus de centroamerica,Biblioteca,Medio
+Ciudad de Mexico,Investigó sobre las triubs,Biblioteca,Dificil
 Ciudad de Mexico,Dijo que queria visitar el Monte Popocatepetl,Aeropuerto,Facil
 Ciudad de Mexico,Dijo que queria visitar un famoso monte de centroamerica,Aeropuerto,Medio
 Ciudad de Mexico,Dijo que queria visitar centroamerica,Aeropuerto,Dificil
 Ciudad de Mexico,La vi comprando pesos centroamericanos,Banco,Facil
 Ciudad de Mexico,La vi comprando pesos coloridos,Banco,Medio
 Ciudad de Mexico,La vi comprando pesos,Banco,Dificil
+Atenas,Investigó acerca de los Espartanos,Biblioteca,Facil
+Atenas,Investigó sobre famosos guerreros Europeos,Biblioteca,Medio
+Atenas,Investigó sobre guerreros,Biblioteca,Dificil
+Atenas,Invirtio en el cultivo del olivo en Europa,Bolsa,Facil
+Atenas,Invirtio en un cultivo de Europa,Bolsa,Medio
+Atenas,Invirtio en un cultivo,Bolsa,Dificil
+Atenas,Hablo sobre visitar el Mar Egeo,Aeropuerto,Facil
+Atenas,Hablo sobre visitar un país con bandera azul y blanca,Aeropuerto,Medio
+Atenas,Hablo sobre visitar Europa,Aeropuerto,Dificil
+Oslo,Se intereso en los Vikingos,Biblioteca,Facil
+Oslo,Se intereso en famosos guerreros Europeos,Biblioteca,Medio
+Oslo,Se intereso en guerreros,Biblioteca,Dificil
+Oslo,Invirtio en la industria hidroelectrica de Europa,Bolsa,Facil
+Oslo,Invirtio en la industria hidroelectrica,Bolsa,Medio
+Oslo,Invirtio en Europa,Bolsa,Dificil
+Oslo,Hablo sobre visitar un país con bandera roja y cruz azul,Aeropuerto,Facil
+Oslo,Hablo sobre visitar los fiordos europeos,Aeropuerto,Medio
+Oslo,Hablo sobre visitar un país con rey,Aeropuerto,Dificil
+Nueva York,Leyo sobre Henry Hudson,Biblioteca,Facil
+Nueva York,Leyo sobre un navegante que llego a America,Biblioteca,Medio
+Nueva York,Leyo sobre un navegante,Biblioteca,Dificil
+Nueva York,Invirtio en la principal bolsa mundial,Bolsa,Facil
+Nueva York,Invirtio en una famosa bolsa,Bolsa,Medio
+Nueva York,Invirtio en un país americano,Bolsa,Dificil
+Nueva York,Dijo que visitaria la tumba del general Grant,Aeropuerto,Facil
+Nueva York,Dijo que visitaria la tumba de un famoso general americano,Aeropuerto,Medio
+Nueva York,Dijo que visitaria la tumba de un general,Aeropuerto,Dificil
+Londres,Investigó sobre el Lago Ness,Biblioteca,Facil
+Londres,Investigó sobre un gran reloj europeo,Biblioteca,Medio
+Londres,Investigó sobre un lago europeo,Biblioteca,Dificil
+Londres,Intercambio sus divisas a libras,Banco,Facil
+Londres,Intercambio sus divisas a una de alto valor,Banco,Medio
+Londres,Intercambio sus divisas,Banco,Dificil
+Londres,Dijo que visitaria a un primer ministro europeo,Aeropuerto,Facil
+Londres,Dijo que visitaria a un primer ministro,Aeropuerto,Medio
+Londres,Dijo que visitaria a un personaje político,Aeropuerto,Dificil
+Paris,Leyó sobre María Antonietta,Biblioteca,Facil
+Paris,Leyó sobre la realeza europea,Biblioteca,Medio
+Paris,Leyó sobre la realeza,Biblioteca,Dificil
+Paris,Invirtió en la moda europea,Bolsa,Facil
+Paris,Invirtió en la moda,Bolsa,Medio
+Paris,Invirtió en Europa,Bolsa,Dificil
+Paris,Tenía muchas ganas de visitar el Río Sena,Puerto,Facil
+Paris,Tenía muchas ganas de visitar un famoso río europeo,Puerto,Medio
+Paris,Tenía muchas ganas de visitar un famoso río,Puerto,Dificil
+Roma,Investigó sobre Leonardo Da Vinci,Biblioteca,Facil
+Roma,Investigó sobre grandes artistas europeos,Biblioteca,Medio
+Roma,Investigó sobre las obras antiguas,Biblioteca,Dificil
+Roma,Invirtió en la pintura renacentista,Bolsa,Facil
+Roma,Invirtió en la industria textil europea,Bolsa,Medio
+Roma,Invirtió en obras artísticas,Bolsa,Dificil
+Roma,Se interesó en el Coliseo,Puerto,Facil
+Roma,Se interesó en un famoso anfiteatro,Puerto,Medio
+Roma,Se interesó en una edificación antigua,Puerto,Dificil
+Tokio,Investigó sobre el sintoísmo,Biblioteca,Facil
+Tokio,Investigó sobre una religión asiática,Biblioteca,Medio
+Tokio,Investigó sobre los automóviles,Biblioteca,Dificil
+Tokio,Invirtió en la industria automóvil asiática,Bolsa,Facil
+Tokio,Invirtió en una moneda del norte de Asia,Bolsa,Medio
+Tokio,Invirtió en la industria automóvil,Bolsa,Dificil
+Tokio,Quería escalar el Monte Fuji,Puerto,Facil
+Tokio,Quería escalar un famoso monte asiático,Puerto,Medio
+Tokio,Quería escalar un famoso monte,Puerto,Dificil
+Sydney,Investigó la anatomía de los Koalas,Biblioteca,Facil
+Sydney,Investigó sobre la biodiversidad de Oceanía,Biblioteca,Medio
+Sydney,Investigó sobre la biodiversidad,Biblioteca,Dificil
+Sydney,Se interesó en invertir en la industria maderera de Oceanía,Bolsa,Facil
+Sydney,Se interesó en invertir en la industria maderera,Bolsa,Medio
+Sydney,Se interesó en invertir en un país con abundante naturaleza,Bolsa,Dificil
+Sydney,Le gustaba la Casa de Opera de Oceanía,Puerto,Facil
+Sydney,Le gustaba la arquitectura de Oceanía,Puerto,Medio
+Sydney,Le gustaba la arquitectura,Puerto,Dificil
+Reikiavik,Leyó sobre los volcanes nórdicos,Biblioteca,Facil
+Reikiavik,Leyó sobre los volcanes de Europa,Biblioteca,Medio
+Reikiavik,Leyó sobre los volcanes,Biblioteca,Dificil
+Reikiavik,Cambió sus divisas a Kronur,Banco,Facil
+Reikiavik,Cambió sus divisas a una nórdica,Banco,Medio
+Reikiavik,Cambió sus divisas a una europea,Banco,Dificil
+Reikiavik,Fue a visitar un país europeo cuya bandera es roja y azul,Aeropuerto,Facil
+Reikiavik,Fue a visitar un país nórdico,Aeropuerto,Medio
+Reikiavik,Fue a visitar un país donde hace frío,Aeropuerto,Dificil
