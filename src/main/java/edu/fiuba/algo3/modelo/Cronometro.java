@@ -12,37 +12,37 @@ public class Cronometro {
 
     public void calcularTiempoDeViaje(float distancia, int tiempoDeViaje) throws GameOverException {
 
-        this.tiempo.agregarTiempo((int) Math.floor(distancia/(tiempoDeViaje)));
+        this.tiempo.agregarHoras((int) Math.floor(distancia/(tiempoDeViaje)));
 
     }
 
     public void calcularTiempoDeCuchillazo(int cantidadDeVecesAcuchillado) throws GameOverException {
 
-        this.tiempo.agregarTiempo(cantidadDeVecesAcuchillado == 1 ? 2 : 1);
+        this.tiempo.agregarHoras(cantidadDeVecesAcuchillado == 1 ? 2 : 1);
 
     }
 
     public void calcularTiempoDurmiendo(int tiempoDeDescanso) throws GameOverException {
 
-        this.tiempo.agregarTiempo(tiempoDeDescanso);
+        this.tiempo.agregarHoras(tiempoDeDescanso);
 
     }
 
     public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) throws GameOverException {
         switch (cantidadDeVisitas){
             case 1:
-                this.tiempo.agregarTiempo(1);
+                this.tiempo.agregarHoras(1);
                 break;
             case 2:
-                this.tiempo.agregarTiempo(2);
+                this.tiempo.agregarHoras(2);
                 break;
             default:
-                this.tiempo.agregarTiempo(3);
+                this.tiempo.agregarHoras(3);
         }
 
     }
 
     public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) throws GameOverException {
-        this.tiempo.agregarTiempo(tiempoDeHeridaDeBala);
+        this.tiempo.agregarHoras(tiempoDeHeridaDeBala);
     }
 }
