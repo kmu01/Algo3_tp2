@@ -31,12 +31,13 @@ public class Partida {
         this.dado = dado;
 
         this.pistasDelLadron = new ArrayList<>();
-        this.ciudades = new HashMap<>();
-        this.mapa = new Mapa();
-        this.ladrones = new ArrayList<>();
-        this.objetosRobados = new ArrayList<>();
+        this.ciudades = null;
+        this.mapa = null;
+        this.ladrones = null;
+        this.objetosRobados = null;
         this.ladrones = cargarLadrones();
         cargarCiudades();
+        System.out.println("Cargan las ciudades bien,"+ this.ciudades.size());
         cargarObjetosRobados();
         cargarMapa();
         cargarPistasLugares();
