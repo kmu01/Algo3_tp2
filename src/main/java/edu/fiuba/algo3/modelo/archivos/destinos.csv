@@ -1,0 +1,31 @@
+Ciudad,Destino1,Destino2,Destino3
+Atenas,Oslo,Bangkok,Reikiavik
+Bagdad,Puerto Moresby,Moscú,Sydney
+Bamako,Tokio,Montreal,Moroni
+Bangkok,Budapest,Roma,Lima
+Budapest,Colombo,Katmandu,Nueva York
+Buenos Aires,Budapest,Ciudad de Mexico,Oslo
+El Cairo,Paris,Kigali,Nueva Delhi
+Colombo,Estambul,Bagdad,Katmandu
+Estambul,Pekín,Rio de Janeiro,Tokio
+Katmandu,Atenas,Singapur,Londres
+Kigali,Bangkok,Lima,El Cairo
+Lima,Sydney,Kigali,San Marino
+Londres,Ciudad de Mexico,Reikiavik,Roma
+Ciudad de Mexico,Londres,Tokio,Buenos Aires
+Montreal,Reikiavik,Bamako,San Marino
+Moroni,Moscú,Nueva Delhi,Bamako
+Moscú,Moroni,Bagdad,Singapur
+Nueva Delhi,Nueva York,Estambul,Moroni
+Nueva York,Atenas,Rio de Janerio,Sydney
+Oslo,Moscú,Paris,Buenos Aires
+Paris,El Cairo,Roma,Oslo
+Pekín,Rio de Janerio,Buenos Aires,Puerto Moresby
+Puerto Moresby,Bagdad,El Cairo,Pekín
+Reikiavik,Londres,Colombo,Atenas
+Rio de Janeiro,Bamako,Bangkok,Kigali
+Roma,Budapest,Estambul,Rio de Janeiro
+San Marino,Singapur,Lima,Montreal
+Singapur,San Marino,Rio de Janeiro,Moscú
+Sydney,Ciudad de Mexico,Paris,Montreal
+Tokio,Pekín,Nueva York,Puerto Moresby
