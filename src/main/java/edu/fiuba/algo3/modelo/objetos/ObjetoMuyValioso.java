@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.objetos;
 
 import edu.fiuba.algo3.modelo.Ciudad;
+import edu.fiuba.algo3.modelo.Policia;
+import edu.fiuba.algo3.modelo.Sospechoso;
+import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 
 public class ObjetoMuyValioso implements ObjetoRobado {
 
@@ -20,8 +23,8 @@ public class ObjetoMuyValioso implements ObjetoRobado {
     public int cantidadPaises(){return this.cantidadPaises;}
 
     @Override
-    public Ciudad ciudad(){
-        return this.ciudad;
+    public Policia crearPoliciaConCiudadInicial(GradoDePolicia grado){
+        return (new Policia(new Sospechoso(),grado,this.ciudad));
     }
 
     @Override

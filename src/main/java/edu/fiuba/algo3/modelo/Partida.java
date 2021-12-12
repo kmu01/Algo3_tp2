@@ -108,10 +108,10 @@ public class Partida {
 
     }
 
-    private Ciudad seleccionarCiudadInicial(ObjetoRobado objetoRobado) {
+    private Policia inicializarPolicia(ObjetoRobado objetoRobado,GradoDePolicia grado) {
 
         //Seleccionar ciudad donde comienza el policia
-        return objetoRobado.ciudad();
+        return objetoRobado.crearPoliciaConCiudadInicial(grado);
 
     }
 
@@ -235,10 +235,9 @@ public class Partida {
 
         GradoDePolicia grado = asignarGradoDePolicia(cantidadDeArrestos);
         ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
-        Ciudad ciudadInicial = seleccionarCiudadInicial(objetoRobado);
         this.ladron = seleccionarLadron(objetoRobado);
         cargarPistasDescripcionLadron();
-        this.policia = new Policia(new Sospechoso(), grado, ciudadInicial);
+        this.policia = this.inicializarPolicia(objetoRobado,grado);
 
     }
 
