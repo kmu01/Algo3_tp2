@@ -17,12 +17,6 @@ public class ObjetoMuyValioso implements ObjetoRobado {
     }
 
 
-    public ObjetoMuyValioso(String nombre){
-
-        this.nombre = nombre;
-
-    }
-
     public int cantidadPaises(){return this.cantidadPaises;}
 
     @Override

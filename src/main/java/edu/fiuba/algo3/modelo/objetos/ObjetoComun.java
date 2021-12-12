@@ -16,11 +16,6 @@ public class ObjetoComun implements ObjetoRobado{
 
     }
 
-    public ObjetoComun(String nombre){
-
-        this.nombre = nombre;
-
-    }
     public int cantidadPaises(){return this.cantidadPaises;}
 
     @Override
