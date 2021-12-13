@@ -19,9 +19,9 @@ public class Partida {
     private Map<String,Ciudad> ciudades;
     private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
-    private int cantidadDePaisesVisitados = 0;
-    private Ciudad ciudadSiguiente;
-    private Ciudad ciudadActual;
+    //private int cantidadDePaisesVisitados = 0;
+    //private Ciudad ciudadSiguiente;
+    //private Ciudad ciudadActual;
 
 
 
@@ -156,7 +156,7 @@ public class Partida {
                 ciudadActual = ciudad;
             }*/
             this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
-            this.cantidadDePaisesVisitados++;
+           //this.cantidadDePaisesVisitados++;
 
         }catch(GameOverException e){
 
