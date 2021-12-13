@@ -22,8 +22,8 @@ public class OrdenDeArrestoTests {
         cualidesLadron1.add(new Cualidad("morocho"));
         cualidesLadron1.add(new Cualidad("Masculino"));
 
-        Ladron ladron1 = new Ladron("Nicokai",cualidesLadron1);
-        Ladron ladron2 = new Ladron("Gabriel",cualidadesLadron2);
+        ladron1 = new Ladron("Nicokai",cualidesLadron1);
+        ladron2 = new Ladron("Gabriel",cualidadesLadron2);
     }
 
     @Test

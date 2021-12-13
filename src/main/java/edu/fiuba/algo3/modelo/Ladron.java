@@ -3,14 +3,12 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Ladron{
 
     private String nombre;
     private List<Cualidad> cualidades;
     private ObjetoRobado objetoRobado;
-    private Ciudad ciudadFinal;
 
     public Ladron (String nombre, List<Cualidad> cualidades){
 
@@ -37,8 +35,8 @@ public class Ladron{
     }
 
     //todo borrar cuando esten las colas
-    public boolean esAtrapado(Ciudad ciudadActual, int cantidadDePaisesVisitados) {
+    /*public boolean esAtrapado(Ciudad ciudadActual, int cantidadDePaisesVisitados) {
         return ((ciudadActual.esCiudad(this.ciudadFinal)) && (this.objetoRobado.verificarLimitePaises(cantidadDePaisesVisitados)));
-    }
+    }*/
 }
 

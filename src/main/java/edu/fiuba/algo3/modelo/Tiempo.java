@@ -28,7 +28,7 @@ public class Tiempo {
     public void debeDormir(int tiempoDeDescanso) throws GameOverException {
         int horaActual = tiempoInicio.plusHours(this.hora).getHour();
         if (horaActual > 20){
-            this.agregarHoras(8);
+            this.agregarHoras(tiempoDeDescanso);
         }
     }
 
@@ -43,7 +43,6 @@ public class Tiempo {
     }
 
     public String tiempoFormateado(){
-        String hora = new String();
         LocalDateTime tiempoActual = tiempoInicio.plusHours(this.hora);
         DateTimeFormatter formatoDiaHs = DateTimeFormatter.ofPattern(formato).withLocale(
                 new Locale("en", "IN"));

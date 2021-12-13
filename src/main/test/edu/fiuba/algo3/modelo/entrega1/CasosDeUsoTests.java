@@ -131,7 +131,6 @@ public class CasosDeUsoTests {
             try {
                 policia.entrarEdificio(new Lugar("aeropuerto"), cronometro,mockDado);
             } catch (GameOverException e) {
-                e.printStackTrace();
             }
 
             //assertFalse(tiempo.finalizado());
@@ -142,7 +141,6 @@ public class CasosDeUsoTests {
             try {
                 policia.entrarEdificio(new Lugar("puerto"), cronometro,mockDado);
             } catch (GameOverException e) {
-                e.printStackTrace();
             }
 
 

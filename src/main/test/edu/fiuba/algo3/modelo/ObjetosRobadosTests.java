@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-
-import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
-import edu.fiuba.algo3.modelo.grados.Novato;
 import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoMuyValioso;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
@@ -32,7 +29,6 @@ public class ObjetosRobadosTests {
     @Test
     public void lePasoUnNumeroAlAzarYVerificaSiObjetoComunTieneEsaCantidadDePaises(){
         ObjetoRobado objetoRobado = new ObjetoComun("Tesoro de caba",ciudad);
-        GradoDePolicia grado = new Novato();
         int numero = 5;
 
         assertEquals(objetoRobado.cantidadPaises(),4);

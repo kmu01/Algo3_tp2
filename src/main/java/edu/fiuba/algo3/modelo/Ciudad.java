@@ -34,10 +34,10 @@ public class Ciudad {
     }
 
     //todo sacar a futuro
-    public boolean esCiudad(Ciudad ciudadFinal) {
+    /*public boolean esCiudad(Ciudad ciudadFinal) {
         return ciudadFinal.esCiudad(this.nombre);
     }
     public boolean esCiudad(String ciudadFinal){
         return (ciudadFinal.equals(this.nombre));
-    }
+    }*/
 }

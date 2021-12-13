@@ -124,9 +124,6 @@ public class Partida {
         return ladron;
 
     }
-    public void mostrarPosiblesDestinos(){
-
-    }
 
     public void viajar(String ciudadSeleccionada){
         /*Cola colaRutaLadron;
@@ -222,7 +219,7 @@ public class Partida {
         return pistaObtenida;
     }
 
-    public void acuchillar() {
+    private void acuchillar() {
 
         try {
             this.policia.recibirCuchillazo(new Cronometro(this.tiempo));

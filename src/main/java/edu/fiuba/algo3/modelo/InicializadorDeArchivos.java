@@ -52,8 +52,8 @@ public class InicializadorDeArchivos {
             Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
             for (CSVRecord linea : texto) {
                 String nombreCiudad = linea.get("Ciudad");
-                float latitud = Float.parseFloat(linea.get("Latitud"));
-                float longitud = Float.parseFloat(linea.get("Longitud"));
+                //float latitud = Float.parseFloat(linea.get("Latitud"));
+                //float longitud = Float.parseFloat(linea.get("Longitud"));
                 Ciudad actual = new Ciudad(nombreCiudad);
                 ciudades.put(nombreCiudad, actual);
             }
