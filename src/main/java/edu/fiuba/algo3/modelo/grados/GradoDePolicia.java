@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.grados;
 
 import edu.fiuba.algo3.modelo.Cronometro;
 import edu.fiuba.algo3.modelo.Dificultad;
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.Pista;
 
@@ -20,17 +20,17 @@ public abstract class GradoDePolicia {
     protected String rarezaMasFrecuente;
     protected String rarezaMenosFrecuente;
 
-    public void calcularTiempoDeViaje(float distancia, Cronometro cronometro) throws GameOverException {
+    public void calcularTiempoDeViaje(float distancia, Cronometro cronometro) {
 
         cronometro.calcularTiempoDeViaje(distancia, this.tiempoDeViaje);
 
     }
 
-    public void calcularTiempoDeBalazo(Cronometro cronometro) throws GameOverException {
+    public void calcularTiempoDeBalazo(Cronometro cronometro) {
         cronometro.calcularTiempoDeBalazo(this.tiempoDeHeridaDeBala);
     }
 
-    public void calcularTiempoDurmiendo(Cronometro cronometro) throws GameOverException {
+    public void calcularTiempoDurmiendo(Cronometro cronometro) {
 
         cronometro.calcularTiempoDurmiendo(this.tiempoDeDescanso);
 

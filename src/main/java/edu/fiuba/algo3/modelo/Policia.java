@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
@@ -30,10 +29,10 @@ public class Policia {
         this.sospechoso.anotarCualidad(cualidad);
     }
 
-    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado) throws GameOverException {
+    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado) {
         return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro,dado);
     }
-    public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) throws GameOverException {
+    public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) {
 
         float distancia = mapa.calcularDistancia(ciudadSeleccionada,this.ciudadActual);
         this.grado.calcularTiempoDeViaje(distancia, cronometro);
@@ -41,23 +40,23 @@ public class Policia {
 
     }
 
-    public void recibirCuchillazo(Cronometro cronometro) throws GameOverException {
+    public void recibirCuchillazo(Cronometro cronometro) {
 
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
 
     }
 
-    public void recibirHeridaDeBala(Cronometro cronometro) throws GameOverException {
+    public void recibirHeridaDeBala(Cronometro cronometro) {
         this.grado.calcularTiempoDeBalazo(cronometro);
     }
 
-    public void dormir(Cronometro cronometro) throws GameOverException {
+    public void dormir(Cronometro cronometro) {
 
         this.grado.calcularTiempoDurmiendo(cronometro);
 
     }
 
-    public List<Ladron> buscarLadrones(Comisaria comisaria){
+    public List<Ladron> buscarLadrones(Comisaria comisaria) {
         List<Ladron> ladrones = comisaria.buscarLadrones(this.sospechoso);
         this.ordenDeArresto = this.emitirOrden(ladrones);
         return ladrones;
@@ -67,7 +66,7 @@ public class Policia {
         return (this.ordenDeArresto.emitida());
     }
 
-    private OrdenDeArresto emitirOrden(List<Ladron> ladrones){
+    private OrdenDeArresto emitirOrden(List<Ladron> ladrones) {
         return ordenDeArresto.emitir(ladrones);
     }
 }

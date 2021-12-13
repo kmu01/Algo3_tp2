@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.entrega1;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,7 +60,7 @@ public class CasosDeUsoTests {
 
         try {
             pista = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
-        } catch (GameOverException e) {
+        } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
 
@@ -78,7 +78,7 @@ public class CasosDeUsoTests {
         Pista pistaPrimerBanco = null;
         try {
             pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
-        } catch (GameOverException e) {
+        } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
 
@@ -87,7 +87,7 @@ public class CasosDeUsoTests {
 
         try {
             pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
-        } catch (GameOverException e) {
+        } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
         assertEquals("Se despliega la pista de banco", pistaSegundoBanco.descripcion());
@@ -95,7 +95,7 @@ public class CasosDeUsoTests {
         Pista pistaBliblioteca = null;
         try {
             pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro,mockDado);
-        } catch (GameOverException e) {
+        } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
 
@@ -105,7 +105,7 @@ public class CasosDeUsoTests {
     }
 
     @Test
-    public void elDetectiveViajaDeMontrealACiudadDeMexico() throws GameOverException {
+    public void elDetectiveViajaDeMontrealACiudadDeMexico() throws TiempoTerminadoException {
 
         Mapa mapa = new Mapa();
         Ciudad actual = new Ciudad("Montreal");
@@ -130,7 +130,7 @@ public class CasosDeUsoTests {
 
             try {
                 policia.entrarEdificio(new Lugar("aeropuerto"), cronometro,mockDado);
-            } catch (GameOverException e) {
+            } catch (TiempoTerminadoException e) {
             }
 
             //assertFalse(tiempo.finalizado());
@@ -140,7 +140,7 @@ public class CasosDeUsoTests {
         for(int i = 0; i < 55; i++){
             try {
                 policia.entrarEdificio(new Lugar("puerto"), cronometro,mockDado);
-            } catch (GameOverException e) {
+            } catch (TiempoTerminadoException e) {
             }
 
 
@@ -156,13 +156,13 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
         try {
             policia.recibirCuchillazo(cronometro);
-        } catch (GameOverException e) {
+        } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
         assertEquals(2, tiempo.tiempoTranscurrido());
         try {
             policia.dormir(cronometro);
-        } catch (GameOverException e) {
+        } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
         assertEquals(2, tiempo.tiempoTranscurrido());

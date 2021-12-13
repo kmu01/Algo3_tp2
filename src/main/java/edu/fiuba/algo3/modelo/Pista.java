@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 
 public class Pista {
 
@@ -22,13 +22,13 @@ public class Pista {
 
     }
 
-    private void calcularTiempoEnObtenerLaPista (Cronometro cronometro) throws GameOverException {
+    private void calcularTiempoEnObtenerLaPista (Cronometro cronometro) {
 
         cronometro.calcularTiempoEnObtenerLaPista(this.cantDeVisitas);
 
     }
 
-    public Pista obtenerPista(Cronometro cronometro) throws GameOverException {
+    public Pista obtenerPista(Cronometro cronometro) {
         ++this.cantDeVisitas;
         this.calcularTiempoEnObtenerLaPista(cronometro);
         return this;

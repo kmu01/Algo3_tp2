@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 
 public class Cronometro {
 
@@ -12,23 +12,23 @@ public class Cronometro {
 
     }
 
-    public void calcularTiempoDeViaje(float distancia, int tiempoDeViaje) throws GameOverException {
+    public void calcularTiempoDeViaje(float distancia, int tiempoDeViaje) {
 
         this.tiempo.agregarHoras((int) Math.floor(distancia/(tiempoDeViaje)));
 
     }
 
-    public void calcularTiempoDeCuchillazo(int cantidadDeVecesAcuchillado) throws GameOverException {
+    public void calcularTiempoDeCuchillazo(int cantidadDeVecesAcuchillado) {
 
         this.tiempo.agregarHoras(cantidadDeVecesAcuchillado == 1 ? 2 : 1);
 
     }
 
-    public void calcularTiempoDurmiendo(int tiempoDeDescanso) throws GameOverException {
+    public void calcularTiempoDurmiendo(int tiempoDeDescanso) {
         this.tiempo.debeDormir(tiempoDeDescanso);
     }
 
-    public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) throws GameOverException {
+    public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) {
         switch (cantidadDeVisitas){
             case 1:
                 this.tiempo.agregarHoras(1);
@@ -42,7 +42,7 @@ public class Cronometro {
 
     }
 
-    public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) throws GameOverException {
+    public void calcularTiempoDeBalazo(int tiempoDeHeridaDeBala) {
         this.tiempo.agregarHoras(tiempoDeHeridaDeBala);
     }
 }

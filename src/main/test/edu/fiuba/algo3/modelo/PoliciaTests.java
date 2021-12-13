@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.NoHayLadronesException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Sargento;
 import org.junit.jupiter.api.Test;
 
@@ -8,10 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PoliciaTests {
     @Test
-    public void creoUnPoliciaConGradoSargentoLeDanUnDisparoYViajaDeMontrealAMexico() throws GameOverException {
+    public void creoUnPoliciaConGradoSargentoLeDanUnDisparoYViajaDeMontrealAMexico() throws TiempoTerminadoException {
         Tiempo tiempo = new Tiempo();
         Cronometro cronometro = new Cronometro(tiempo);
         Mapa mapa = new Mapa();
@@ -55,10 +57,21 @@ public class PoliciaTests {
 
         assertEquals(2,policia.buscarLadrones(comisaria).size());
 
+
         policia.anotarCualidad(new Cualidad("Tatuaje"));
         policia.anotarCualidad(new Cualidad("Deportivo"));
         policia.anotarCualidad(new Cualidad("Rubio"));
 
+
         assertEquals(1,policia.buscarLadrones(comisaria).size());
+
+    }
+
+    @Test
+    public void buscaLadronesYDevuelveExcepcion(){
+        Comisaria comisaria = new Comisaria(new ArrayList<Ladron>());
+
+        Policia policia = new Policia(new Sospechoso(),new Sargento(),new  Ciudad("Ciudad de Mexico"));
+        assertThrows(NoHayLadronesException.class,()->{policia.buscarLadrones(comisaria);});
     }
 }

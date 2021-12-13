@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo.entrega2;
 
 import edu.fiuba.algo3.modelo.*;
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
-import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,21 +68,16 @@ public class CasosDeUsoTests {
 
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuermePeroNoPuede(){
-        Ciudad ciudad = new Ciudad();
+        Ciudad ciudad = new Ciudad("jamaica");
         Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
 
-        try {
-            policia.recibirCuchillazo(cronometro);
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
+        policia.recibirCuchillazo(cronometro);
+
         assertEquals(2, tiempo.tiempoTranscurrido());
         assertEquals("Monday, 09 Hs.", tiempo.tiempoFormateado());
-        try {
-            policia.dormir(cronometro);
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
+
+        policia.dormir(cronometro);
+
         assertEquals(2, tiempo.tiempoTranscurrido());
 
     }
@@ -93,11 +87,8 @@ public class CasosDeUsoTests {
 
 
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
-        try {
-            policia.viajar(ciudadDeMexico, mapa, cronometro);
-        } catch (GameOverException e){
-            e.printStackTrace();
-        }
+        policia.viajar(ciudadDeMexico, mapa, cronometro);
+
         assertEquals("Monday, 15 Hs.", tiempo.tiempoFormateado());
     }
 
@@ -118,6 +109,7 @@ public class CasosDeUsoTests {
 
         assertEquals(Arrays.asList(marcela),policia.buscarLadrones(comisaria));
 
+
     }
 
     @Test
@@ -134,10 +126,14 @@ public class CasosDeUsoTests {
 
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
         policia.anotarCualidad(new Cualidad("Masculino"));
+
         policia.buscarLadrones(comisaria);
 
 
+
+
         assertEquals(Arrays.asList(nicokai,jorgeCaicedo),policia.buscarLadrones(comisaria));
+
         assertFalse(policia.atrapar());
 
     }
@@ -160,20 +156,11 @@ public class CasosDeUsoTests {
         Pista pistaObtenidaDelBanco = null;
         Comisaria comisaria = new Comisaria(ladrones);
         Policia policia = new Policia(new Sospechoso(), new Detective(), lima);
-
-        try {
-            pistaObtenidaDelBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, dado);
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            policia.viajar(montreal, mapa, cronometro);
-        } catch (GameOverException e){
-            e.printStackTrace();
-        }
+        pistaObtenidaDelBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, dado);
+        policia.viajar(montreal, mapa, cronometro);
         policia.anotarCualidad(new Cualidad("Femenino"));
         policia.buscarLadrones(comisaria);
+
 
         assertTrue(policia.atrapar());
         assertEquals("Pista Media", pistaObtenidaDelBanco.descripcion());

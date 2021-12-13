@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoHayLadronesException;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenEmitida;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
@@ -35,7 +36,9 @@ public class OrdenDeArrestoTests {
         ladrones.add(ladron1);ladrones.add(ladron2);
         OrdenDeArresto ordenDeArresto = new OrdenSinEmitir();
 
+
         ordenDeArresto = ordenDeArresto.emitir(ladrones);
+
         assertFalse(ordenDeArresto.emitida());
 
     }
@@ -45,7 +48,9 @@ public class OrdenDeArrestoTests {
         ladrones.add(ladron1);
         OrdenDeArresto ordenDeArresto = new OrdenSinEmitir();
 
+
         ordenDeArresto = ordenDeArresto.emitir(ladrones);
+
         assertTrue(ordenDeArresto.emitida());
     }
     @Test
@@ -56,7 +61,9 @@ public class OrdenDeArrestoTests {
 
         assertTrue(ordenDeArresto.emitida());
 
+
         ordenDeArresto = ordenDeArresto.emitir(ladrones);
+
 
         assertTrue(ordenDeArresto.emitida());
     }

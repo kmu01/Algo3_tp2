@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import java.io.IOException;
 import java.util.*;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.*;
 import edu.fiuba.algo3.modelo.objetos.*;
 
@@ -25,7 +26,7 @@ public class Partida {
 
 
 
-    public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado) {
+    public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado) throws IOException {
         this.inicializadorDeArchivos = inicializadorDeArchivos;
         this.tiempo = new Tiempo();
         this.dado = dado;
@@ -45,37 +46,37 @@ public class Partida {
 
     }
 
-    private void cargarMapa() {
+    private void cargarMapa() throws IOException {
 
         this.mapa = this.inicializadorDeArchivos.cargarMapa(this.ciudades);
 
     }
 
-    private void cargarPistasDescripcionLadron(){
+    private void cargarPistasDescripcionLadron() throws IOException {
 
         this.pistasDelLadron = this.inicializadorDeArchivos.cargarPistasDescripcionLadron(this.pistasDelLadron,this.ladron);
 
     }
 
-    private void cargarPistasLugares(){
+    private void cargarPistasLugares() throws IOException {
 
         this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades);
 
     }
 
-    private List<Ladron> cargarLadrones(){
+    private List<Ladron> cargarLadrones() throws IOException {
 
         return this.inicializadorDeArchivos.cargarLadrones();
 
     }
 
-    private void cargarCiudades(){
+    private void cargarCiudades() throws IOException {
 
         this.ciudades = this.inicializadorDeArchivos.cargarCiudades();
 
     }
 
-    private void cargarObjetosRobados(){
+    private void cargarObjetosRobados() throws IOException {
 
         this.objetosRobados = this.inicializadorDeArchivos.cargarObjetosRobados(this.ciudades);
 
@@ -144,8 +145,8 @@ public class Partida {
         }*/
 
 
-        try {
-            Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
+
+        Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
             /*if (ciudadSiguiente.esCiudad(ciudadSeleccionada)){
                 ciudadSiguiente = desapilo();
                 ciudadActual = ciudad;
@@ -154,21 +155,14 @@ public class Partida {
                 ciudadSiguiente = ciudadActual; //Debo recordar cual es el camino correcto
                 ciudadActual = ciudad;
             }*/
-            this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
-            this.cantidadDePaisesVisitados++;
+        this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
+        this.cantidadDePaisesVisitados++;
 
-        }catch(GameOverException e){
-
-        }
-        try {
-            this.policia.dormir(new Cronometro(this.tiempo));
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
+        this.policia.dormir(new Cronometro(this.tiempo));
 
     }
 
-    public Pista entrarEdificio(String lugarSeleccionado) throws GameOverException {
+    public Pista entrarEdificio(String lugarSeleccionado) {
 
         //Chequear que las colas esten vacías y si es así llamar a this.policiar.atrapar();
         /*ciudadCorrecta = null;
@@ -199,37 +193,23 @@ public class Partida {
         * }
         * */
         if(this.atrapar()){
-            throw new GameOverException();
+            throw new TiempoTerminadoException();
         }
-
-        try {
-            this.policia.dormir(new Cronometro(this.tiempo));
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
+        this.policia.dormir(new Cronometro(this.tiempo));
         Pista pistaObtenida = null;
         int numero = this.dado.nextInt(7);
         if (numero == 5){
             this.acuchillar();
         }
-        try {
-            pistaObtenida = (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
+        pistaObtenida = (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
         return pistaObtenida;
     }
 
     private void acuchillar() {
-
-        try {
-            this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
-        } catch (GameOverException e) {
-            e.printStackTrace();
-        }
+        this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
     }
 
-    public void nuevoCaso(int cantidadDeArrestos) {
+    public void nuevoCaso(int cantidadDeArrestos) throws IOException {
 
         GradoDePolicia grado = asignarGradoDePolicia(cantidadDeArrestos);
         ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
@@ -244,9 +224,7 @@ public class Partida {
         this.policia.anotarCualidad(cualidad);
     }
     public List<Ladron> buscarLadrones(){
-
-        List<Ladron> ladrones = this.policia.buscarLadrones(this.comisaria);
-        return ladrones;
+        return this.policia.buscarLadrones(this.comisaria);
     }
 
     private boolean atrapar() {

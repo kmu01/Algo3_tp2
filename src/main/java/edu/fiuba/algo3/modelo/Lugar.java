@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class Lugar {
     public Lugar(String nombre){
         this.nombre = nombre;
     }
-    public Pista visitar(GradoDePolicia grado, List<Pista> pistas, Cronometro cronometro, Random dado) throws GameOverException {
+    public Pista visitar(GradoDePolicia grado, List<Pista> pistas, Cronometro cronometro, Random dado) throws TiempoTerminadoException {
         return (this.obtenerPista(grado,pistas,dado).obtenerPista(cronometro));
 
     }

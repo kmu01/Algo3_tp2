@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +15,7 @@ public class TiempoTest {
     }
 
     @Test
-    public void agregoTiempoYPidoFechaActual() throws GameOverException {
+    public void agregoTiempoYPidoFechaActual() throws TiempoTerminadoException {
         Tiempo t = new Tiempo();
         t.agregarHoras(10);
         String fechaEsperada = "Monday, 17 Hs.";
@@ -23,7 +23,7 @@ public class TiempoTest {
     }
 
     @Test
-    public void agrego24HsYPidoFechaActual() throws GameOverException {
+    public void agrego24HsYPidoFechaActual() throws TiempoTerminadoException {
         Tiempo t = new Tiempo();
         t.agregarHoras(24);
         String fechaEsperada = "Tuesday, 07 Hs.";
@@ -31,7 +31,7 @@ public class TiempoTest {
     }
 
     @Test
-    public void avanzoMuyCercaDelFinalYPidoFecha() throws GameOverException {
+    public void avanzoMuyCercaDelFinalYPidoFecha() throws TiempoTerminadoException {
         Tiempo t = new Tiempo();
         t.agregarHoras(153);
         String fechaEsperada = "Sunday, 16 Hs.";
@@ -41,6 +41,6 @@ public class TiempoTest {
     @Test
     public void mePasoDeTiempoYDevuelveExcepcion(){
         Tiempo t = new Tiempo();
-        assertThrows(GameOverException.class, () -> t.agregarHoras(155));
+        assertThrows(TiempoTerminadoException.class, () -> t.agregarHoras(155));
     }
 }

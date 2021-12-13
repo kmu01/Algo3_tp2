@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 
 import java.util.*;
@@ -8,6 +7,7 @@ import java.util.*;
 public class Ciudad {
     private String nombre;
     protected List<Pista> pistas;
+
     public Ciudad(String nombre, List<Pista> pistas){
 
         this.nombre = nombre;
@@ -20,10 +20,7 @@ public class Ciudad {
 
     }
 
-    public Ciudad() {
-    }
-
-    public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado) throws GameOverException {
+    public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado) {
 
         return lugarSeleccionado.visitar(grado,this.pistas, cronometro,dado);
 
