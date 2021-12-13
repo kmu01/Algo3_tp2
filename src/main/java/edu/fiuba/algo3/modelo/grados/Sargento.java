@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Dificultad;
 public class Sargento extends GradoDePolicia {
 
     public Sargento(){
-        super();
 
         this.tiempoDeViaje = 1500;
         this.tiempoDeDescanso = 8;

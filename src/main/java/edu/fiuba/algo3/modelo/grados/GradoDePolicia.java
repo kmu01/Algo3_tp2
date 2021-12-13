@@ -20,8 +20,6 @@ public abstract class GradoDePolicia {
     protected String rarezaMasFrecuente;
     protected String rarezaMenosFrecuente;
 
-    public GradoDePolicia (){}
-
     public void calcularTiempoDeViaje(float distancia, Cronometro cronometro) throws GameOverException {
 
         cronometro.calcularTiempoDeViaje(distancia, this.tiempoDeViaje);

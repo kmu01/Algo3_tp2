@@ -112,7 +112,7 @@ public class InicializadorDeArchivos {
                 String tesoro = linea.get("Tesoro");
                 String ciudad = linea.get("Ciudad");
                 String valor = linea.get("Valor");
-                ObjetoRobado actual = null;
+                ObjetoRobado actual;
                 Ciudad ciudadInicial = ciudades.get(ciudad);
                 if(valor.equals("Comun")){
                     actual = new ObjetoComun(tesoro, ciudadInicial);

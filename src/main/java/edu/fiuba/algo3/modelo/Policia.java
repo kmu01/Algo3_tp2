@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
+import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
+import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
 
 import java.util.List;
 import java.util.Random;

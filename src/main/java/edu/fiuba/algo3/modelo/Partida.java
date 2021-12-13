@@ -37,7 +37,6 @@ public class Partida {
         this.objetosRobados = null;
         this.ladrones = cargarLadrones();
         cargarCiudades();
-        System.out.println("Cargan las ciudades bien,"+ this.ciudades.size());
         cargarObjetosRobados();
         cargarMapa();
         cargarPistasLugares();
