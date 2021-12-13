@@ -51,5 +51,18 @@ public class PartidaTests
         assertThrows(GameOverException.class,()->{partida.entrarEdificio("banco");});
     }
 
+    @Test
+    public void entraAEdificioYEsAcuchillado(){
+        when(mockDado.nextInt(7)).thenReturn(5);
+        Partida partida = new Partida(inicializadorDeArchivos,mockDado);
+        partida.nuevoCaso(6);
+
+        try {
+            partida.entrarEdificio("Bolsa");
+        } catch (GameOverException e) {
+        }
+        assertEquals("Monday, 10 Hs.",partida.hora());
+    }
+
 }
 
