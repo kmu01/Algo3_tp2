@@ -6,17 +6,17 @@ import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 import java.util.*;
 
 public class Ciudad {
-    //private String nombre;
+    private String nombre;
     protected List<Pista> pistas;
     public Ciudad(String nombre, List<Pista> pistas){
 
-        //this.nombre = nombre;
+        this.nombre = nombre;
         this.pistas = pistas;
     }
 
     public Ciudad (String nombre){
         this.pistas = new ArrayList<>();
-        //this.nombre = nombre;
+        this.nombre = nombre;
 
     }
 
