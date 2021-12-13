@@ -169,7 +169,7 @@ public class Partida {
 
     }
 
-    public Pista entrarEdificio(String lugarSeleccionado) {
+    public Pista entrarEdificio(String lugarSeleccionado) throws GameOverException {
 
         //Chequear que las colas esten vacías y si es así llamar a this.policiar.atrapar();
         /*ciudadCorrecta = null;
@@ -199,8 +199,10 @@ public class Partida {
         *
         * }
         * */
+        if(this.atrapar()){
+            throw new GameOverException();
+        }
 
-        this.atrapar();
         try {
             this.policia.dormir(new Cronometro(this.tiempo));
         } catch (GameOverException e) {

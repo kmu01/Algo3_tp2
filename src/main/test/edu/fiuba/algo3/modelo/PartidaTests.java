@@ -3,12 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.GameOverException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -45,14 +41,14 @@ public class PartidaTests
 
     @Test
 
-    public void creoUnaPartidaAnotoUnaCualidadYBuscoSospechosos(){
+    public void buscoSospechososYMeDevuelveExcepcion(){
         Partida partida = new Partida(inicializadorDeArchivos,mockDado);
         partida.nuevoCaso(6);
         partida.anotarCualidad("Femenino");
         partida.anotarCualidad("Marron");
+        partida.buscarLadrones();
 
-        List<Ladron> ladrones = partida.buscarLadrones();
-        assertTrue(ladrones.size()==1);
+        assertThrows(GameOverException.class,()->{partida.entrarEdificio("banco");});
     }
 
 }
