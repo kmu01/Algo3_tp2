@@ -46,6 +46,11 @@ public class Partida {
 
     }
 
+    //hay que borrarlo o modificarlo
+    public void pedirDatos(){
+        System.out.println("Menu principal");
+    }
+
     private void cargarMapa() throws IOException {
 
         this.mapa = this.inicializadorDeArchivos.cargarMapa(this.ciudades);
