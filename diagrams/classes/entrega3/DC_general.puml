@@ -51,6 +51,8 @@ class Partida{
     - cargarPistasLugares()
     - cargarLadrones() : [Ladron]
     - cargarObjetosRobados()
+    - seleccionarObjetoRobado(grado) : ObjetoRobado
+    - inicializarPolicia(objetoRobado, grado) : Policia
     + asignarGradoDePolicia(cantidadDeArrestos) : GradoDePolicia
     + viajar(ciudadSeleccionada)
     + nuevoCaso(cantidadDeArrestos)
