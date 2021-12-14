@@ -1,0 +1,186 @@
+@startuml
+title Diagrama General
+
+
+class Ciudad{
+    - nombre : String
+    - pistas[Pista]
+    + {static} registroCiudad(nombre)
+    + {static} registroCiudadConPistas(nombre, pistas[Pista])
+    + visitar(lugarSeleccionado, grado, cronometro, dado) : Pista
+    + nombre() : String
+    + agregarPista(pista)
+
+}
+
+class Comisaria {
+    - sospechosos[Ladron]
+    + {static} inicializarComisaria(ladrones[Ladron])
+    + cargarDatos(sospechoso) : [Ladron]
+}
+
+class Cronometro {
+    - tiempo : Tiempo
+    + {static} inicializar(tiempo)
+    + calcularTiempoDeViaje(distancia, tiempoDeViaje)
+    + calcularTiempoDeCuchillazo(cantidadVecesAcuchillado)
+    + calcularTiempoDurmiendo(tiempoDeDescanso)
+    + calcularTiempoEnObtenerLaPista(cantidadDeVisitas)
+    + calcularTiempoDeBalazo(tiempoDeHeridaDeBala)
+}
+
+class Partida{
+    - dado : Random
+    - inicializadorDeArchivos : InicializadorDeArchivos
+    - policia : Policia
+    - comisaria : Comisaria
+    - ladron : Ladron
+    - tiempo : Tiempo
+    - mapa : Mapa
+    - ladrones[Ladron]
+    - ciudades{String, Ciudad}
+    - pistasDelLadron[String]
+    - objetosRobados[ObjetoRobado]
+    - cantidadPaisesVisitados : int
+    - ciudadActual : Ciudad
+    - ciudadSiguiente : Ciudad
+    + {static} crearPartida(inicializadorDeArchivos, dado)
+    + pedirDatos()
+    - cargarMapa()
+    - cargarDescripcionLadron()
+    - cargarPistasLugares()
+    - cargarLadrones() : [Ladron]
+    - cargarObjetosRobados()
+    + asignarGradoDePolicia(cantidadDeArrestos) : GradoDePolicia
+    + viajar(ciudadSeleccionada)
+    + nuevoCaso(cantidadDeArrestos)
+    + anotarGenero(genero)
+    + entrarEdificio(lugarSeleccionado)
+    + emitirOrdenDeArresto() : [Ladron]
+    + atrapar() : boolean
+    + acuchillar()
+}
+
+abstract class MiembroDeBanda{
+    - genero : String
+    - hobbie : String
+    - cabello : String
+    - senia : String
+    - vehiculo : String
+    - objetoRobado : ObjetoRobado
+    - ciudad : Ciudad
+    + objetoRobado() : ObjetoRobado
+    + ciudadActual() : Ciudad
+}
+
+/'
+class Ladron{
+    - sexo : String
+    - hobbie : String
+    - cabello : String
+    - seña : String
+    - vehiculo : String
+    - objetoRobado : ObjetoRobado
+    + {static} registro(objetoRobado, cantidadArrestos)
+    + {static} registroEspecifico(cantidadArrestos, objetoRobado, sexo, hobbie, seña, vehiculo)
+    + anotarGenero(genero) : String
+    + acuchillar(Policia) : int
+}
+'/
+
+
+class Policia{
+    - grado : GradoDePolicia
+    - sospechoso : Sospechos
+    - ciudadActual : Ciudad
+    - cantidadDeVecesAcuchillado : int
+    + {static} registroPolicia(sospechoso, grado, ciudadInicial)
+    + anotarGenero(ciudad)
+    + anotarCabello(colorDePelo)
+    + anotarHobbie(hobbie)
+    + anotarVehiculo(vehiculo)
+    + anotarSenia(senia)
+    + entrarEdificio(lugar, cronometro, dado) : Pista
+    + viajar(ciudadSeleccionada, mapa, cronometro)
+    + mostrarCiudadActual() : String
+    + recibirCuchillazo()
+    + recibirHeridaDeBala()
+    + dormir(cronometro)
+    + cargarDatos(comisaria) : [Ladron]
+    + atrapar(ladron) : boolean
+}
+
+class Mapa{
+    - posicionesDeCiudades{String, Posicion}
+    + {static} crear()
+    + obtenerPosicion(): Posicion
+    + calcularDistancia(ciudadSeleccionada, ciudadActual) : int
+    + agregarCiudad(nombreCiudad, latitud, longitud)
+}
+
+abstract class GradoDePolicia{
+    # tiempoDeViaje : int
+    # tiempoDeDescanso : int
+    # dificultadMasFrecuente : Dificultad
+    # dificultadMenosFrecuente : Dificultad
+    # rarezaMasFrecuente : String
+    # rarezaMenosFrecuente : String
+    + calcularTiempoDeViaje(distancia, cronometro)
+    + calcularTiempoDeBalazo(cronometro)
+    + calcularTiempoDurmiendo(cronometro)
+    + buscarPista(pistas[Pista], nombreLugar, dado) : Pista
+    + elegirObjeto(objetosRobados[ObjetoRobado], random) : ObjetoRobado
+}
+
+class Lugar{
+    - nombre : String
+    + {static} crear(nombre)
+    + visitar(grado, pistas[Pista], cronometro, dado) : Pista
+    + obtenerPista(grado, pistas[Pista], dado) : Pista
+}
+
+interface Pista{
+    - dificultad : Dificultad
+    - descripcion : String
+    - lugarCorrespondiente : String
+    - cantDeVisitas : int
+    + {static} inicializarPista(dificultad, descripcion, lugarCorrespondiente)
+    + esPista(dificultad, nombreLugar) : boolean
+    + obtenerPista(cronometro) : Pista
+    + descripcion() : String
+    - calcularTiempoEnObtenerLaPista(cronometro)
+}
+
+interface ObjetoRobado{
+	+ mostrarNombre() : String
+	+ ciudad() : Ciudad
+	+ rareza() : String
+}
+
+class Tiempo{
+    - hora : float
+    - tiempoLimite : float
+    + {static} inicializar()
+    + agregarTiempo(tiempoDeLaAccion)
+    + finalizado() : boolean
+    + tiempoRestante() : float
+}
+
+
+Partida "1" --o "1..*" MiembroDeBanda
+Partida"1" --* "1"Policia
+Partida --o Tiempo
+Policia --* GradoDePolicia
+Policia --> Mapa
+Partida "1" --* "1..*" Ciudad
+Policia --> Ciudad
+Ciudad "1" --> "1..5"Lugar
+Lugar "1" --o "1..*" Pista
+
+MiembroDeBanda --* "1..*" ObjetoRobado
+Partida --> Comisaria
+Cronometro ..> Tiempo
+Partida --> Cronometro
+
+
+@enduml
