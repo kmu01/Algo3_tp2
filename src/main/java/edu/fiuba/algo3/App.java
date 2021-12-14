@@ -1,60 +1,40 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.CargadorDeEscena;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.application.HostServices;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
-import javafx.scene.text.Font;
-import edu.fiuba.algo3.modelo.Partida;
-import edu.fiuba.algo3.modelo.InicializadorDeArchivos;
 
-import java.io.IOException;
-import java.util.Random;
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
+    private static Stage stage;
+    private static App app;
+
+    public static App getInstance() {
+        if (app == null) {
+            app = new App();
+        }
+        return app;
+    }
+
+
     @Override
     public void start(Stage stage) {
+        CargadorDeEscena.cargarEscena("pantallaDeInicio.fxml", stage, "AlgoThief");
+    }
 
-        stage.setTitle("AlgoThief");
-        Pane layout = new Pane();
-        Label label = new Label("Bienvenido a AlgoThief!");
-        layout.autosize();
-        label.setFont(Font.font("Segoe UI Black", 16));
-
-        label.setLayoutX(200);
-        label.setLayoutY(200);
-        layout.getChildren().add(label);
-        Button botonBienvenida = new Button();
-        botonBienvenida.setLayoutX(240);
-        botonBienvenida.setLayoutY(260);
-        botonBienvenida.setText("Empezar partida");
-
-        botonBienvenida.setOnAction(empezar -> {
-
-            try {
-                Partida p = new Partida(new InicializadorDeArchivos(), new Random());
-                p.pedirDatos();
-            }
-            catch (IOException e){
-                System.out.println("Error al cargar archivos");
-            }
-
-        });
-
-        layout.getChildren().add(botonBienvenida);
-        Scene scene = new Scene(layout, 640, 480);
-        stage.setScene(scene);
-        stage.show();
+    public static Stage devolverEscena() {
+        return stage;
     }
 
     public static void main(String[] args) {
