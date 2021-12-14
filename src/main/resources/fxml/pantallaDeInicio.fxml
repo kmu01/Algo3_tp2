@@ -14,7 +14,7 @@
                 <Image url="@../fotos/Carmen%20San%20Diego.jpeg" />
             </image>
         </ImageView>
-        <Button id="BotonComenzar" layoutX="264.0" layoutY="187.0" mnemonicParsing="false" text="Comenzar" />
+        <Button id="BotonComenzar" layoutX="264.0" layoutY="187.0" mnemonicParsing="false" onAction="#comenzar" text="Comenzar" />
         <Label id="LabelBienvenidos" layoutX="155.0" layoutY="57.0" prefHeight="115.0" prefWidth="352.0" text="Bienvenidos a AlgoThief!" textAlignment="CENTER" textFill="#44ff00">
             <font>
                 <Font size="29.0" />
