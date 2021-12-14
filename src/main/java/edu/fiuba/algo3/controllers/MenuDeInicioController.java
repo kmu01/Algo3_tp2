@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 public class MenuDeInicioController implements Initializable {
     @FXML public AnchorPane bc;
     public void comenzar(){
-        CargadorDeEscena.cargarEscena("/fxml/pedirCantidadDeArrestos.fxml", App.devolverEscena(),"Cantidad de arrestos");
+        CargadorDeEscena.cargarEscena("/fxml/pedirCantidadDeArrestos.fxml", App.devolverEscena(),"AlgoThief");
     }
 
     @Override
