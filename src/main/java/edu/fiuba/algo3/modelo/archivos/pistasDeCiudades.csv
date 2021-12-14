@@ -124,4 +124,130 @@ Reikiavik,Cambió sus divisas a una nórdica,Banco,Medio
 Reikiavik,Cambió sus divisas a una europea,Banco,Dificil
 Reikiavik,Fue a visitar un país europeo cuya bandera es roja y azul,Aeropuerto,Facil
 Reikiavik,Fue a visitar un país nórdico,Aeropuerto,Medio
-Reikiavik,Fue a visitar un país donde hace frío,Aeropuerto,Dificil
+Reikiavik,Fue a visitar un país con clima frío,Aeropuerto,Dificil
+Bagdad,Investigo la ubicación de las gazellas arábicas,Biblioteca,Facil
+Bagdad,Investigo la ubicación de las gazellas asiáticas,Biblioteca,Medio
+Bagdad,Investigo la ubicación sobre un mamífero bóvido de Asia,Biblioteca,Dificil
+Bagdad,Invirtió en el petróleo de un país de medio oriente,Bolsa,Facil
+Bagdad,Invirtió en el petróleo,Bolsa,Medio
+Bagdad,Invirtió en combustibles,Bolsa,Dificil
+Bagdad,Fue a visitar el Río Tigris,Aeropuerto,Facil
+Bagdad,Fue a visitar un país asiático y desiértico,Aeropuerto,Medio
+Bagdad,Fue a visitar un país asiático,Aeropuerto,Dificil
+Bamako,Leyó las ciudades limítrofes al Río Níger,Biblioteca,Facil
+Bamako,Leyó sobre el Río Níger,Biblioteca,Medio
+Bamako,Leyó sobre las ciudades limítrofes a un famoso río africano,Biblioteca,Dificil
+Bamako,Se interesó en la producción de arroz de un país africano,Bolsa,Facil
+Bamako,Se interesó en la producción de arroz,Bolsa,Medio
+Bamako,Se interesó en la producción de cereales,Bolsa,Dificil
+Bamako,Fue a visitar un país africano cuya bandera es verde y amarilla con rojo,Aeropuerto,Facil
+Bamako,Fue a visitar un país cuya bandera es verde y amarilla con rojo,Aeropuerto,Medio
+Bamako,Fue a visitar un país africano,Aeropuerto,Dificil
+Budapest,Estudió sobre la historia gitana en Europa,Biblioteca,Facil
+Budapest,Estudió sobre la historia gitana,Biblioteca,Medio
+Budapest,Estudió sobre una civilización dispersa en el mundo,Biblioteca,Dificil
+Budapest,Intercambió sus divisas a forintos,Banco,Facil
+Budapest,Intercambió sus divisas a la moneda corriente en Europa central,Banco,Medio
+Budapest,Intercambió sus divisas a una europea,Banco,Dificil
+Budapest,Dijo que visitaría un país europeo con bandera roja con blanco y verde,Aeropuerto,Facil
+Budapest,Dijo que visitaría el Río Danubio,Aeropuerto,Medio
+Budapest,Dijo que visitaría Europa,Aeropuerto,Dificil
+Colombo,Estudió sobre la geografía del Golfo de Mannar,Biblioteca,Facil
+Colombo,Estudió sobre la geografía de un golfo asiático,Biblioteca,Medio
+Colombo,Estudió sobre la geografía de un golfo,Biblioteca,Dificil
+Colombo,Fue a ver granjas de citronela en el sur de Asia,Bolsa,Facil
+Colombo,Fue a ver granjas de citronela en Asia,Bolsa,Medio
+Colombo,Fue a ver plantaciones en Asia,Bolsa,Dificil
+Colombo,Está viajando a un país con un dibujo de león dorado en su bandera,Puerto,Facil
+Colombo,Está viajando a un país sur asiático,Puerto,Medio
+Colombo,Está viajando a Asia,Puerto,Dificil
+Estambul,Se interesó sobre el significado de una bandera con una luna creciente y una estrella,Biblioteca,Facil
+Estambul,Se interesó sobre el significado de una bandera roja de Asia/Europa,Biblioteca,Medio
+Estambul,Se interesó sobre el significado de una bandera roja,Biblioteca,Dificil
+Estambul,Dijo que compraría Liras,Banco,Facil
+Estambul,Dijo que compraría un tipo de moneda de Asia occidental,Banco,Medio
+Estambul,Dijo que compraría un tipo de moneda en Asia,Banco,Dificil
+Estambul,Fue a observar el Mar Negro,Puerto,Facil
+Estambul,Fue a observar un famoso mar de Europa y Asia,Puerto,Medio
+Estambul,Fue a observar un famoso mar,Puerto,Dificil
+Katmandu,Leyó sobre la religión hindú,Biblioteca,Facil
+Katmandu,Leyó sobre la religión de Asia,Biblioteca,Medio
+Katmandu,Leyó sobre la religión,Biblioteca,Dificil
+Katmandu,Intercambió sus divisas a rupia,Banco,Facil
+Katmandu,Intercambió sus divisas a un tipo de moneda de un país cercano a el Tíbet,Banco,Medio
+Katmandu,Intercambió sus divisas a un tipo de moneda de Asia,Banco,Dificil
+Katmandu,Dijo que iría a un país cuya bandera tiene un triángulo doble,Aeropuerto,Facil
+Katmandu,Dijo que iría a una famosa cordillera asiática,Aeropuerto,Medio
+Katmandu,Dijo que iría a una famosa cordillera,Aeropuerto,Dificil
+Kigali,Estudió sobre la geología de los volcanes africanos,Biblioteca,Facil
+Kigali,Leyó sobre la ubicación de gorilas,Biblioteca,Medio
+Kigali,Estudió sobre la geología de los volcanes,Biblioteca,Dificil
+Kigali,Se interesó en invertir en las mineras de Estanio de Africa,Bolsa,Facil
+Kigali,Se interesó en invertir en las mineras de Estanio,Bolsa,Medio
+Kigali,Se interesó en invertir en mineras,Bolsa,Dificil
+Kigali,Visitó un país africano cuya bandera es roja con amarillo y verde,Aeropuerto,Facil
+Kigali,Visitó un país cuya bandera es roja con amarillo y verde,Aeropuerto,Medio
+Kigali,Visitó un país africano,Aeropuerto,Dificil
+Lima,Investigó sobre el turismo del Huscarán,Biblioteca,Facil
+Lima,Investigó sobre el turismo de la Cordillera de los Andes,Biblioteca,Medio
+Lima,Investigó sobre el turismo en América del Sur,Biblioteca,Dificil
+Lima,Cambió su dinero a soles,Banco,Facil
+Lima,Cambió su dinero a una moneda sudamericana,Banco,Medio
+Lima,Cambió su dinero a una de un país de América,Banco,Dificil
+Lima,Fue a un país sudamericano con bandera roja y blanca,Aeropuerto,Facil
+Lima,Fue a un país cordilleroso sudamericano,Aeropuerto,Medio
+Lima,Fue a un país sudamericano,Aeropuerto,Dificil
+Moroni,Se interesó por el bioma de los Otus Capnodes,Biblioteca,Facil
+Moroni,Se interesó por las aves del sureste africano,Biblioteca,Medio
+Moroni,Se interesó por las aves africanas,Biblioteca,Dificil
+Moroni,Invirtió en la industria del perfume en el sureste africano,Bolsa,Facil
+Moroni,Invirtió en la industria del perfume en Africa,Bolsa,Medio
+Moroni,Invirtió en la industria del perfume,Bolsa,Dificil
+Moroni,Fue a una excursión al Volcán Karthala,Aeropuerto,Facil
+Moroni,Visitó un país al sureste de Africa cuya bandera tiene colores verde y blanco,Aeropuerto,Medio
+Moroni,Visitó un país con bandera verde y blanca,Aeropuerto,Dificil
+Moscú,Fue a indagar sobre la historia de Ivan el Terrible,Biblioteca,Facil
+Moscú,Fue a indagar sobre la historia de un gran príncipe asiático,Biblioteca,Medio
+Moscú,Fue a indagar sobre la historia de un gran príncipe,Biblioteca,Dificil
+Moscú,Cambió sus divisas al rublo,Banco,Facil
+Moscú,Cambió sus divisas a una de un país de Asia Norte,Banco,Medio
+Moscú,Cambió sus divisas a una de un país de Asia,Banco,Dificil
+Moscú,Visitó el Lago Ladoga,Aeropuerto,Facil
+Moscú,Visitó una famosa ciudad y un famoso lago de agua dulce en Asia,Aeropuerto,Medio
+Moscú,Visitó una ciudad que tiene una bandera de color rojo,Aeropuerto,Dificil
+Nueva Delhi,Investigó las Echis para ir hacia su país de origen,Biblioteca,Facil
+Nueva Delhi,Investigó las serpientes asiáticas,Biblioteca,Medio
+Nueva Delhi,Investigó un tipo de animal de Asia,Biblioteca,Dificil
+Nueva Delhi,Intercambió sus divisas al rupio,Banco,Facil
+Nueva Delhi,Intercambió sus divisas a una de un país de Asia central,Banco,Medio
+Nueva Delhi,Intercambió sus divisas a una de un país de Asia,Banco,Dificil
+Nueva Delhi,Fue hacia un país donde hay Sijismo como religión,Aeropuerto,Facil
+Nueva Delhi,Fue a un país con bandera roja con blanco y verde,Aeropuerto,Medio
+Nueva Delhi,Fue a un país de Asia,Aeropuerto,Dificil
+Pekín,Leyó sobre el hábitat de osos pandas,Biblioteca,Facil
+Pekín,Leyó sobre el hábitat de un tipo de osos,Biblioteca,Medio
+Pekín,Leyó sobre el hábitat de un mamífero omnívoro,Biblioteca,Dificil
+Pekín,Intercambió sus divisas al Yuan,Banco,Facil
+Pekín,Intercambió sus divisas a una de un país de Asia Norte,Banco,Medio
+Pekín,Intercambió sus divisas a una de un país de Asia,Banco,Dificil
+Pekín,Visitó la famosa Ciudad Perdida y el Mar Amarillo,Aeropuerto,Facil
+Pekín,Visitó templos y un mar de un color poco común en Asia,Aeropuerto,Medio
+Pekín,Visitó edificaciones antiguas y un mar,Aeropuerto,Dificil
+Puerto Moresby,Dijo que se interesaba en los volcanes de Oceanía,Biblioteca,Facil
+Puerto Moresby,Se interesó en la historia del baloncesto en un país de Oceanía,Medio
+Puerto Moresby,Dijo que se interesaba en los volcanes,Biblioteca,Dificil
+Puerto Moresby,Invirtió en las minas de oro de Oceanía,Bolsa,Facil
+Puerto Moresby,Invirtió en las minas de oro,Bolsa,Medio
+Puerto Moresby,Invirtió en la minería,Bolsa,Dificil
+Puerto Moresby,Navegó hasta llegar a la Isla Karkar,Puerto,Facil
+Puerto Moresby,Navegó hasta llegar a una Isla de Oceanía,Puerto,Medio
+Puerto Moresby,Navegó hasta llegar a una Isla,Puerto,Dificil
+San Marino,Buscó el Estado más antiguo de Europa,Biblioteca,Facil
+San Marino,Buscó los Estados antiguos de Europa,Medio
+San Marino,Buscó los Estados antiguos,Biblioteca,Dificil
+San Marino,Invirtió en la alfarería de Europa,Bolsa,Facil
+San Marino,Invirtió en la alfarería,Bolsa,Medio
+San Marino,Invirtió en la manufactura,Bolsa,Dificil
+San Marino,Se dirigió hacia el Monte Titano,Aeropuerto,Facil
+San Marino,Se dirigió hacia un famoso Monte en Europa,Aeropuerto,Medio
+San Marino,Se dirigió hacia un famoso Monte,Aeropuerto,Dificil
