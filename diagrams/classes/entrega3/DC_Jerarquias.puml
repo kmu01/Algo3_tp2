@@ -3,6 +3,7 @@ title Jerarquias de Interfaces
 abstract class GradoDePolicia{
     # tiempoDeViaje : int
     # tiempoDeDescanso : int
+    # tiempoDeHeridaDeBala : int
     # dificultadMasFrecuente : Dificultad
     # dificultadMenosFrecuente : Dificultad
     # rarezaMasFrecuente : String
@@ -18,43 +19,35 @@ class Detective{}
 class Investigador{}
 class Sargento{}
 
-
-abstract class MiembroDeBanda{
-    - genero : String
-    - hobbie : String
-    - cabello : String
-    - senia : String
-    - vehiculo : String
-    - objetoRobado : ObjetoRobado
-    - ciudad : Ciudad
-    + objetoRobado() : ObjetoRobado
-    + ciudadActual() : Ciudad
-}
-
-class Ladron{}
-class Sospechoso{}
-
 interface ObjetoRobado{
-    + mostrarNombre() : String
-    + ciudad() : Ciudad
     + rareza() : String
+    + cantidadDePaises() : int
+    + verificarLimitePaises(cantPaisesVisitados) : Ciudad
+    + crearPoliciaConCiudadInicial(grado) : Policia
 }
 
 class ObjetoComun{}
 class ObjetoValioso{}
 class ObjetoMuyValioso{}
 
-GradoDePolicia <|.. Novato
-GradoDePolicia <|.. Detective
-GradoDePolicia <|.. Investigador
-GradoDePolicia <|.. Sargento
 
-MiembroDeBanda <|.. Ladron
-MiembroDeBanda <|.. Sospechoso
+interface OrdenDeArresto{
+    + emitida() : boolean
+    + emitir(ladrones [Ladron]) : OrdenDeArresto
+}
+
+class OrdenEmitida{}
+class OrdenSinEmitir{}
+
+GradoDePolicia <|-- Novato
+GradoDePolicia <|-- Detective
+GradoDePolicia <|-- Investigador
+GradoDePolicia <|-- Sargento
 
 ObjetoRobado <|.. ObjetoComun
 ObjetoRobado <|.. ObjetoValioso
 ObjetoRobado <|.. ObjetoMuyValioso
 
-
+OrdenDeArresto <|.. OrdenEmitida
+OrdenDeArresto <|.. OrdenSinEmitir
 @enduml
