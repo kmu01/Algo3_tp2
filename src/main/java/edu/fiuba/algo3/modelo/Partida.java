@@ -36,6 +36,7 @@ public class Partida {
         this.objetosRobados = null;
         this.ladrones = cargarLadrones();
         cargarCiudades();
+        cargarDestinos();
         cargarObjetosRobados();
         cargarMapa();
         cargarPistasLugares();
@@ -47,6 +48,12 @@ public class Partida {
     //hay que borrarlo o modificarlo
     public void pedirDatos(){
         System.out.println("Menu principal");
+    }
+
+    private void cargarDestinos() throws IOException {
+
+        this.inicializadorDeArchivos.cargarDestinos(this.ciudades);
+
     }
 
     private void cargarMapa() throws IOException {

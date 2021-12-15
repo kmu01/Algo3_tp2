@@ -7,6 +7,7 @@ import java.util.*;
 public class Ciudad {
     private String nombre;
     protected List<Pista> pistas;
+    private List<Ciudad> destinos;
 
     public Ciudad(String nombre, List<Pista> pistas){
 
@@ -26,15 +27,10 @@ public class Ciudad {
 
     }
 
+    public void agregarDestino(Ciudad destino) {this.destinos.add(destino);}
+
     public void agregarPista(Pista pista){
         this.pistas.add(pista);
     }
 
-    //todo sacar a futuro
-    /*public boolean esCiudad(Ciudad ciudadFinal) {
-        return ciudadFinal.esCiudad(this.nombre);
-    }
-    public boolean esCiudad(String ciudadFinal){
-        return (ciudadFinal.equals(this.nombre));
-    }*/
 }

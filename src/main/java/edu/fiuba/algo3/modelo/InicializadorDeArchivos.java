@@ -15,6 +15,7 @@ public class InicializadorDeArchivos {
     private final String RUTA_PISTAS_LUGARES = "src/main/java/edu/fiuba/algo3/modelo/archivos/pistasDeCiudades.csv";
     private final String RUTA_PISTAS_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/pistasLadrones.csv";
     private final String RUTA_CIUDADES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ciudades.csv";
+    private final String RUTA_DESTINOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/ciudades.csv";
     private final String RUTA_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ladrones.csv";
     private final String RUTA_OBJETOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/objetos.csv";
 
@@ -61,7 +62,25 @@ public class InicializadorDeArchivos {
         return ciudades;
 
     }
-    public Mapa cargarMapa (Map<String,Ciudad>ciudades) throws IOException {
+
+    public void cargarDestinos(Map<String,Ciudad>ciudades) throws IOException {
+
+
+        Reader in = new FileReader(RUTA_DESTINOS);
+        Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
+        for ( CSVRecord linea : texto ) {
+            Ciudad ciudad = ciudades.get(linea.get("Ciudad"));
+            Ciudad destino1 = ciudades.get(linea.get("Destino1"));
+            Ciudad destino2 = ciudades.get(linea.get("Destino2"));
+            Ciudad destino3 = ciudades.get(linea.get("Destino3"));
+            ciudad.agregarDestino(destino1);
+            ciudad.agregarDestino(destino2);
+            ciudad.agregarDestino(destino3);
+        }
+
+    }
+
+    public Mapa cargarMapa (Map<String,Ciudad> ciudades) throws IOException {
         Mapa mapa = new Mapa();
 
         Reader in = new FileReader(RUTA_CIUDADES);
