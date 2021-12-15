@@ -180,6 +180,7 @@ Policia --> Mapa
 Partida "1" --* "1..*" Ciudad
 Policia --> Ciudad
 Ciudad "1" --> "1..5"Lugar
+Ciudad --o "1..3" Ciudad
 Lugar "1" --o "1..*" Pista
 
 Policia ..> OrdenDeArresto
