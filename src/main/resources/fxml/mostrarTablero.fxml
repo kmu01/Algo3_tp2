@@ -42,7 +42,7 @@
             </HBox>
          </children>
       </GridPane>
-      <Pane fx:id="PanelAcciones" layoutX="150.0" layoutY="80.0" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: #080808; -fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 4; -fx-border-width: 3; -fx-background-radius: 5;">
+      <Pane fx:id="PanelAcciones" layoutX="150.0" layoutY="80.0" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: #080808; -fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 4; -fx-border-width: 3; -fx-background-radius: 5;" visible="false">
          <children>
             <HBox fx:id="CajaVisita" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                <children>
