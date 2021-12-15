@@ -15,10 +15,11 @@
             </image>
         </ImageView>
         <Button id="BotonComenzar" layoutX="264.0" layoutY="187.0" mnemonicParsing="false" onAction="#comenzar" text="Comenzar" />
-        <Label id="LabelBienvenidos" layoutX="155.0" layoutY="57.0" prefHeight="115.0" prefWidth="352.0" text="Bienvenidos a AlgoThief!" textAlignment="CENTER" textFill="#44ff00">
+        <Label id="LabelBienvenidos" layoutX="155.0" layoutY="57.0" prefHeight="115.0" prefWidth="352.0" text="Bienvenidos a AlgoThief!" textAlignment="CENTER" textFill="#f1c232">
             <font>
-                <Font size="29.0" />
+                <Font size="28.0" />
             </font>
         </Label>
+        <Button mnemonicParsing="false" layoutX="278.0" layoutY="274.0" onAction="#salir" text="Salir" />
     </children>
 </AnchorPane>

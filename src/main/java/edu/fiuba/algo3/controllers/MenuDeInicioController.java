@@ -3,6 +3,7 @@ package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -18,4 +19,5 @@ public class MenuDeInicioController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+    public void salir(){ App.devolverEscena().close(); }
 }

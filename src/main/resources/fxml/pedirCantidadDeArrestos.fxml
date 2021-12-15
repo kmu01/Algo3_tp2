@@ -15,8 +15,8 @@
          </image>
       </ImageView>
       <TextField id="TextFieldCantidadDeArrestos" fx:id="cantidadDeArrestos" layoutX="307.0" layoutY="179.0" />
-      <Label layoutX="71.0" layoutY="183.0" text="Ingrese la cantidad de arrestos  inicial:" textFill="RED" />
-      <Button id="BotonIniciar" layoutX="232.0" layoutY="259.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="26.0" prefWidth="137.0" text="Iniciar" textFill="#fc0303" />
+      <Label layoutX="71.0" layoutY="183.0" text="Ingrese la cantidad de arrestos  inicial:" textFill="#0e3939" />
+      <Button id="BotonIniciar" layoutX="232.0" layoutY="259.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="26.0" prefWidth="137.0" text="Iniciar" textFill="#0e3939" />
       <Label id="LabelCantidadDeArrestos" fx:id="datosCargados" layoutX="143.0" layoutY="303.0" />
    </children>
 </AnchorPane>
