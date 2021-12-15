@@ -106,6 +106,7 @@ public class InicializadorDeArchivos {
             pista.asignarPistaDeLadron(pistasDelLadron.get((new Random()).nextInt(pistasDelLadron.size())));
             Ciudad ciudadActual = ciudades.get(ciudad);
             ciudadActual.agregarPista(pista);
+            ciudadActual.agregarLugar(lugar);
 
             }
 

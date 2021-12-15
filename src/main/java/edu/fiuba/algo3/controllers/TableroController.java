@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Pista;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TableroController implements Initializable {
@@ -26,18 +28,27 @@ public class TableroController implements Initializable {
         BotonViajar1.setVisible(false);
         BotonViajar2.setVisible(false);
         BotonViajar3.setVisible(false);
+        List<String> lugares = Juego.obtenerInstancia().getLugares();
+        BotonLugar1.setText((lugares.get(0)));
+        BotonLugar2.setText((lugares.get(1)));
+        BotonLugar3.setText((lugares.get(2)));
         BotonLugar1.setVisible(true);
         BotonLugar2.setVisible(true);
         BotonLugar3.setVisible(true);
-    }
-    public void entraPrimerLugar(){
-    }
-    public void entraSegundoLugar(){
-    }
-    public void entraTercerLugar(){}
 
-    public void mostrarPista(){
-        //Pista pista = Juego.obtenerInstancia().entrarEdificio();
+    }
+
+    public void mostrarPistaLugar1(){
+        Pista pista = Juego.obtenerInstancia().entrarEdificio(BotonLugar1.getText());
+        CargadorDeEscena.cargarEscena("/fxml/mostrarPista.fxml", App.devolverEscena(),"AlgoThief");
+    }
+    public void mostrarPistaLugar2(){
+        Pista pista = Juego.obtenerInstancia().entrarEdificio(BotonLugar2.getText());
+        CargadorDeEscena.cargarEscena("/fxml/mostrarPista.fxml",App.devolverEscena(),"Algothief");
+    }
+    public void mostrarPistaLugar3(){
+        Pista pista = Juego.obtenerInstancia().entrarEdificio(BotonLugar3.getText());
+        CargadorDeEscena.cargarEscena("/fxml/mostrarPista.fxml",App.devolverEscena(),"Algothief");
     }
 
     public void viajar(){

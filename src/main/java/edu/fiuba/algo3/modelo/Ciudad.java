@@ -8,6 +8,7 @@ public class Ciudad {
     private String nombre;
     private List<Pista> pistas;
     private List<Ciudad> destinos;
+    private List<String> lugares;
 
     public Ciudad(String nombre, List<Pista> pistas){
 
@@ -19,6 +20,7 @@ public class Ciudad {
         this.destinos = new ArrayList<>();
         this.pistas = new ArrayList<>();
         this.nombre = nombre;
+        this.lugares = new ArrayList<>();
 
     }
 
@@ -34,4 +36,19 @@ public class Ciudad {
         this.pistas.add(pista);
     }
 
+    public void agregarLugar(String lugar) {
+        boolean existe = this.lugares.contains(lugar);
+        this.lugares = this.comprobarExistencia(existe,this.lugares,lugar);
+    }
+
+    public List<String> getListaLugares(){
+        return this.lugares;
+    }
+
+    private List<String> comprobarExistencia(boolean existencia,List<String> lista,String elemento){
+        if (!existencia){
+            lista.add(elemento);
+        }
+        return lista;
+    }
 }

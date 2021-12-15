@@ -46,6 +46,10 @@ public class Policia {
 
     }
 
+    public Ciudad obtenerCiudadActual(){
+        return this.ciudadActual;
+    }
+
     public void recibirHeridaDeBala(Cronometro cronometro) {
         this.grado.calcularTiempoDeBalazo(cronometro);
     }

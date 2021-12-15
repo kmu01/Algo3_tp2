@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.grados.Sargento;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -74,4 +75,5 @@ public class PoliciaTests {
         Policia policia = new Policia(new Sospechoso(),new Sargento(),new  Ciudad("Ciudad de Mexico"));
         assertThrows(NoHayLadronesException.class,()->{policia.buscarLadrones(comisaria);});
     }
+
 }

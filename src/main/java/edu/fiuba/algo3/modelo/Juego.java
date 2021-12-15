@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 public class Juego {
@@ -28,4 +29,17 @@ public class Juego {
     public Pista entrarEdificio(String lugarSeleccionado){
         return this.partida.entrarEdificio(lugarSeleccionado);
     }
+
+    public List<String> getLugares(){
+        return this.partida.mostrarLugares();
+    }
+
+    public void nuevoCaso(Integer cantidadDeArrestos) throws IOException {
+        this.partida.nuevoCaso(cantidadDeArrestos);
+    }
 }
+
+
+
+
+

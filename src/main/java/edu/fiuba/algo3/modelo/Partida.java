@@ -45,11 +45,6 @@ public class Partida {
 
     }
 
-    //hay que borrarlo o modificarlo
-    public void pedirDatos(){
-        System.out.println("Menu principal");
-    }
-
     private void cargarDestinos() throws IOException {
 
         this.inicializadorDeArchivos.cargarDestinos(this.ciudades);
@@ -133,8 +128,6 @@ public class Partida {
         return ladron;
 
     }
-
-    private void asignarPistasLadron(){};
 
     public void viajar(String ciudadSeleccionada){
         /*Cola colaRutaLadron;
@@ -228,7 +221,10 @@ public class Partida {
         cargarPistasDescripcionLadron();
         cargarPistasLugares();
         this.policia = this.inicializarPolicia(objetoRobado,grado);
+    }
 
+    public List<String> mostrarLugares(){
+        return this.policia.obtenerCiudadActual().getListaLugares();
     }
 
     public void anotarCualidad(String atributo) {

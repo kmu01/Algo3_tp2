@@ -2,6 +2,7 @@ package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.InicializadorDeArchivos;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Partida;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,9 +28,9 @@ public class MenuDeCantidadDeArrestosController implements Initializable {
     }
     public void iniciarJuego(){
         try {
-            Partida partida = new Partida(new InicializadorDeArchivos(),new Random());
+
             Integer numero = Integer.parseInt(cantidadDeArrestos.getText());
-            partida.nuevoCaso(numero);
+            Juego.obtenerInstancia().nuevoCaso(numero);
 
             CargadorDeEscena.cargarEscena("/fxml/mostrarTablero.fxml", App.devolverEscena(),"AlgoThief");
         } catch (IOException e){
