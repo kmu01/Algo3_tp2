@@ -6,6 +6,7 @@ public class Pista {
 
     private Dificultad dificultad;
     private String descripcion;
+    private String descripcionLadron;
     private String lugarCorrespondiente;
     private int cantDeVisitas;
 
@@ -21,6 +22,9 @@ public class Pista {
         return ((this.dificultad.esDificultad(dificultad)) && (this.lugarCorrespondiente.equals(nombreLugar)));
 
     }
+
+    public void asignarPistaDeLadron(String pistaLadron){this.descripcionLadron = pistaLadron;}
+
 
     private void calcularTiempoEnObtenerLaPista (Cronometro cronometro) {
 

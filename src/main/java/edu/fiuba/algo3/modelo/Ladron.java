@@ -34,6 +34,10 @@ public class Ladron{
         }
     }
 
+    public void alterarPistas() {
+
+    }
+
     //todo borrar cuando esten las colas
     /*public boolean esAtrapado(Ciudad ciudadActual, int cantidadDePaisesVisitados) {
         return ((ciudadActual.esCiudad(this.ciudadFinal)) && (this.objetoRobado.verificarLimitePaises(cantidadDePaisesVisitados)));

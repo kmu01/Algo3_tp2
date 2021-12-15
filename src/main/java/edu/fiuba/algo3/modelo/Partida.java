@@ -39,7 +39,7 @@ public class Partida {
         cargarDestinos();
         cargarObjetosRobados();
         cargarMapa();
-        cargarPistasLugares();
+
 
         this.comisaria = new Comisaria(this.ladrones);
 
@@ -64,13 +64,12 @@ public class Partida {
 
     private void cargarPistasDescripcionLadron() throws IOException {
 
-        this.pistasDelLadron = this.inicializadorDeArchivos.cargarPistasDescripcionLadron(this.pistasDelLadron,this.ladron);
-
+        this.pistasDelLadron = this.inicializadorDeArchivos.cargarPistasDescripcionLadron(this.ladron);
     }
 
     private void cargarPistasLugares() throws IOException {
 
-        this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades);
+        this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades, this.pistasDelLadron);
 
     }
 
@@ -125,7 +124,7 @@ public class Partida {
 
     }
 
-    private Ladron seleccionarLadron(ObjetoRobado objetoRobado) {
+    private Ladron seleccionarLadron(ObjetoRobado objetoRobado) throws IOException {
 
         //Seleccionar ladron seteando el objeto robado
 
@@ -134,6 +133,8 @@ public class Partida {
         return ladron;
 
     }
+
+    private void asignarPistasLadron(){};
 
     public void viajar(String ciudadSeleccionada){
         /*Cola colaRutaLadron;
@@ -225,6 +226,7 @@ public class Partida {
         ObjetoRobado objetoRobado = seleccionarObjetoRobado(grado);
         this.ladron = seleccionarLadron(objetoRobado);
         cargarPistasDescripcionLadron();
+        cargarPistasLugares();
         this.policia = this.inicializarPolicia(objetoRobado,grado);
 
     }

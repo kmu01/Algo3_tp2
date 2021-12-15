@@ -6,10 +6,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class InicializadorDeArchivos {
     private final String RUTA_PISTAS_LUGARES = "src/main/java/edu/fiuba/algo3/modelo/archivos/pistasDeCiudades.csv";
@@ -95,7 +92,7 @@ public class InicializadorDeArchivos {
         return mapa;
     }
 
-    public Map<String,Ciudad> cargarPistasLugares(Map<String,Ciudad>ciudades) throws IOException {
+    public Map<String,Ciudad> cargarPistasLugares(Map<String, Ciudad> ciudades, List<String> pistasDelLadron) throws IOException {
 
         Reader in = new FileReader(RUTA_PISTAS_LUGARES);
         Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
@@ -106,6 +103,7 @@ public class InicializadorDeArchivos {
             String lugar = linea.get("Lugar");
 
             Pista pista = new Pista(new Dificultad(dificultad), descripcion, lugar);
+            pista.asignarPistaDeLadron(pistasDelLadron.get((new Random()).nextInt(pistasDelLadron.size())));
             Ciudad ciudadActual = ciudades.get(ciudad);
             ciudadActual.agregarPista(pista);
 
@@ -139,10 +137,11 @@ public class InicializadorDeArchivos {
     return objetosRobados;
     }
 
-    public List<String> cargarPistasDescripcionLadron(List<String> pistasDelLadron,Ladron ladron) throws IOException {
+    public List<String> cargarPistasDescripcionLadron(Ladron ladron) throws IOException {
 
         Reader in = new FileReader(RUTA_PISTAS_LADRONES);
         Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
+        List<String> pistasDelLadron = new ArrayList<>();
         for (CSVRecord linea:texto) {
             String descripcion = linea.get("Pista");
             String ladronArchivo = linea.get("Ladron");
