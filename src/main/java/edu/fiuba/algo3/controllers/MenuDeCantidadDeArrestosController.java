@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 
 public class MenuDeCantidadDeArrestosController implements Initializable {
     @FXML private TextField cantidadDeArrestos;
-    @FXML private Label datosCargados;
 
     public MenuDeCantidadDeArrestosController() {
     }
@@ -33,7 +32,7 @@ public class MenuDeCantidadDeArrestosController implements Initializable {
             partida.nuevoCaso(numero);
 
             CargadorDeEscena.cargarEscena("/fxml/mostrarTablero.fxml", App.devolverEscena(),"AlgoThief");
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
     }

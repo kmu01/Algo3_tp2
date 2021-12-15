@@ -8,7 +8,6 @@ import edu.fiuba.algo3.modelo.grados.*;
 import edu.fiuba.algo3.modelo.objetos.*;
 
 public class Partida {
-
     private Random dado;
     private InicializadorDeArchivos inicializadorDeArchivos;
     private Policia policia;
@@ -30,7 +29,6 @@ public class Partida {
         this.inicializadorDeArchivos = inicializadorDeArchivos;
         this.tiempo = new Tiempo();
         this.dado = dado;
-
         this.pistasDelLadron = new ArrayList<>();
         this.ciudades = null;
         this.mapa = null;
@@ -87,7 +85,7 @@ public class Partida {
 
     }
 
-    public GradoDePolicia asignarGradoDePolicia(int cantidadDeArrestos) {
+    private GradoDePolicia asignarGradoDePolicia(int cantidadDeArrestos) {
 
         GradoDePolicia grado;
         switch(cantidadDeArrestos){

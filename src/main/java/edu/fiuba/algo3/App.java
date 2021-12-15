@@ -30,7 +30,6 @@ public class App extends Application {
     public void start(Stage stage){
         App.stage = stage;
         CargadorDeEscena.cargarEscena("/fxml/pantallaDeInicio.fxml",stage,"AlgoThief");
-        //ControladorDeAudio.getInstance();
     }
 
     public static Stage devolverEscena(){
