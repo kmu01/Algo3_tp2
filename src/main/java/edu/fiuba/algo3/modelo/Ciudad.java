@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Ciudad {
     private String nombre;
-    protected List<Pista> pistas;
+    private List<Pista> pistas;
     private List<Ciudad> destinos;
 
     public Ciudad(String nombre, List<Pista> pistas){
@@ -16,6 +16,7 @@ public class Ciudad {
     }
 
     public Ciudad (String nombre){
+        this.destinos = new ArrayList<>();
         this.pistas = new ArrayList<>();
         this.nombre = nombre;
 

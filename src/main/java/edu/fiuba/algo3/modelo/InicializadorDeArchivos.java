@@ -15,7 +15,7 @@ public class InicializadorDeArchivos {
     private final String RUTA_PISTAS_LUGARES = "src/main/java/edu/fiuba/algo3/modelo/archivos/pistasDeCiudades.csv";
     private final String RUTA_PISTAS_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/pistasLadrones.csv";
     private final String RUTA_CIUDADES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ciudades.csv";
-    private final String RUTA_DESTINOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/ciudades.csv";
+    private final String RUTA_DESTINOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/destinos.csv";
     private final String RUTA_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ladrones.csv";
     private final String RUTA_OBJETOS = "src/main/java/edu/fiuba/algo3/modelo/archivos/objetos.csv";
 
