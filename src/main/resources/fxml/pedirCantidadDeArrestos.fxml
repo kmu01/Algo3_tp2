@@ -7,16 +7,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.MenuDeCantidadDeArrestosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.MenuDeCantidadDeArrestosController">
    <children>
-      <ImageView fitHeight="480.0" fitWidth="600.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="401.0" fitWidth="800.0" layoutX="-78.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../fotos/fondoDeCantidadDeArrestos.png" />
          </image>
       </ImageView>
-      <TextField id="TextFieldCantidadDeArrestos" fx:id="cantidadDeArrestos" layoutX="307.0" layoutY="179.0" />
-      <Label layoutX="71.0" layoutY="183.0" text="Ingrese la cantidad de arrestos  inicial:" textFill="#0e3939" />
-      <Button id="BotonIniciar" layoutX="232.0" layoutY="259.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="26.0" prefWidth="137.0" text="Iniciar" textFill="#0e3939" />
+      <TextField id="TextFieldCantidadDeArrestos" fx:id="cantidadDeArrestos" layoutX="399.0" layoutY="179.0" />
+      <Label layoutX="162.0" layoutY="183.0" text="Ingrese la cantidad de arrestos inicial:" textFill="#0e3939" />
+      <Button id="BotonIniciar" layoutX="309.0" layoutY="259.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="26.0" prefWidth="137.0" text="Iniciar" textFill="#0e3939" />
       <Label id="LabelCantidadDeArrestos" fx:id="datosCargados" layoutX="143.0" layoutY="303.0" />
    </children>
 </AnchorPane>

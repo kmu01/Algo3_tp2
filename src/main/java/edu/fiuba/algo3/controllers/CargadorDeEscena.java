@@ -4,6 +4,8 @@ import edu.fiuba.algo3.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.net.URL;
 
@@ -16,8 +18,8 @@ public class CargadorDeEscena {
     private  CargadorDeEscena() {
     }
 
-    private static Parent cargarArchivo(String escena){
-        URL root = App.class.getResource(escena);
+    private static Parent cargarArchivo(String archivo){
+        URL root = App.class.getResource(archivo);
         FXMLLoader loader = new FXMLLoader(root);
         System.out.println(root);
         Parent mainNode = null;
@@ -43,5 +45,10 @@ public class CargadorDeEscena {
         stage.sizeToScene();
         stage.show();
 
+    }
+
+    public static void cargarPanel(String panel, GridPane grid, int fila, int columna){
+        Pane seccion = new Pane(CargadorDeEscena.cargarArchivo(panel));
+        grid.add(seccion, fila, columna);
     }
 }
