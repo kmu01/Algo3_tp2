@@ -37,6 +37,10 @@ public class Juego {
     public void nuevoCaso(Integer cantidadDeArrestos) throws IOException {
         this.partida.nuevoCaso(cantidadDeArrestos);
     }
+
+    public List<String> getDestinos(){
+        return this.partida.getListaDestinos();
+    }
 }
 
 

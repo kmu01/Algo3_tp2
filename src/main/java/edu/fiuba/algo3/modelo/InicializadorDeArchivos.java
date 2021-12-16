@@ -67,9 +67,9 @@ public class InicializadorDeArchivos {
         Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
         for ( CSVRecord linea : texto ) {
             Ciudad ciudad = ciudades.get(linea.get("Ciudad"));
-            Ciudad destino1 = ciudades.get(linea.get("Destino1"));
-            Ciudad destino2 = ciudades.get(linea.get("Destino2"));
-            Ciudad destino3 = ciudades.get(linea.get("Destino3"));
+            String destino1 = linea.get("Destino1");
+            String destino2 = linea.get("Destino2");
+            String destino3 = linea.get("Destino3");
             ciudad.agregarDestino(destino1);
             ciudad.agregarDestino(destino2);
             ciudad.agregarDestino(destino3);

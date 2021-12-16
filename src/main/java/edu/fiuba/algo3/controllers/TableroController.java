@@ -5,12 +5,15 @@ import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,6 +29,7 @@ public class TableroController implements Initializable {
     @FXML private Button BotonViajar1;
     @FXML private Button BotonViajar2;
     @FXML private Button BotonViajar3;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -41,22 +45,28 @@ public class TableroController implements Initializable {
         BotonLugar3.setText((lugares.get(2)));
     }
 
-    public void mostrarPistaLugar1(){
-        Pista pista = Juego.obtenerInstancia().entrarEdificio(BotonLugar1.getText());
-        CargadorDeEscena.cargarPanel("/fxml/mostrarPista.fxml", GridPanePrincipal,1,0);
-        PanelAcciones.setVisible(false);
+    public void mostrarPistaLugar1() throws IOException {
+        this.mostrarPista(BotonLugar1);
+
     }
-    public void mostrarPistaLugar2(){
-        Pista pista = Juego.obtenerInstancia().entrarEdificio(BotonLugar2.getText());
-        CargadorDeEscena.cargarPanel("/fxml/mostrarPista.fxml",GridPanePrincipal,1,0);
-        PanelAcciones.setVisible(false);
+    public void mostrarPistaLugar2() throws IOException {
+        this.mostrarPista(BotonLugar2);
     }
-    public void mostrarPistaLugar3(){
-        Pista pista = Juego.obtenerInstancia().entrarEdificio(BotonLugar3.getText());
-        CargadorDeEscena.cargarPanel("/fxml/mostrarPista.fxml",GridPanePrincipal,1,0);
-        PanelAcciones.setVisible(false);
+    public void mostrarPistaLugar3() throws IOException {
+        this.mostrarPista(BotonLugar3);
     }
 
+    public void mostrarPista(Button boton) throws IOException {
+        Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
+        PanelAcciones.setVisible(false);
+        CargadorDeEscena.cargarPanel("/fxml/mostrarPista.fxml",GridPanePrincipal,1,0);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarPista.fxml"));
+        Parent mainNode = loader.load();
+        MostrarPistaController pistaControlador = loader.getController();
+        Pane seccion = new Pane(mainNode);
+        GridPanePrincipal.add(seccion, 1, 0);
+        pistaControlador.mostrarPista(pista);
+    }
     public void viajar(){
         PanelAcciones.setVisible(true);
         CajaViaje.setVisible(true);

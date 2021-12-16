@@ -7,7 +7,7 @@ import java.util.*;
 public class Ciudad {
     private String nombre;
     private List<Pista> pistas;
-    private List<Ciudad> destinos;
+    private List<String> destinos;
     private List<String> lugares;
 
     public Ciudad(String nombre, List<Pista> pistas){
@@ -24,13 +24,17 @@ public class Ciudad {
 
     }
 
+    public String ciudad(){
+        return this.nombre;
+    }
+
     public Pista visitar(Lugar lugarSeleccionado, GradoDePolicia grado, Cronometro cronometro, Random dado) {
 
         return lugarSeleccionado.visitar(grado,this.pistas, cronometro,dado);
 
     }
 
-    public void agregarDestino(Ciudad destino) {this.destinos.add(destino);}
+    public void agregarDestino(String destino) {this.destinos.add(destino);}
 
     public void agregarPista(Pista pista){
         this.pistas.add(pista);
@@ -45,10 +49,23 @@ public class Ciudad {
         return this.lugares;
     }
 
+    public List<String> getListaDestinos(){
+        return this.destinos;
+    }
+
     private List<String> comprobarExistencia(boolean existencia,List<String> lista,String elemento){
         if (!existencia){
             lista.add(elemento);
         }
         return lista;
+    }
+
+    public void setearPistasFalsas() {
+        this.pistas.clear();
+        for (String lugar: this.lugares) {
+            this.pistas.add(new Pista(new Dificultad("facil"),"No lo vimos por aqui",lugar));
+            this.pistas.add(new Pista(new Dificultad("medio"),"No lo vimos por aqui",lugar));
+            this.pistas.add(new Pista(new Dificultad("dificil"),"No lo vimos por aqui",lugar));
+        }
     }
 }
