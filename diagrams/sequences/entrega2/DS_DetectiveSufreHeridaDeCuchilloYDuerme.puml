@@ -1,28 +1,22 @@
 @startuml
-title Detective sufre una herida de cuchillo, luego duerme
+title Detective sufre herida de cuchillo y luego no puede dormir
 
 actor "Jugador" as AlgoThief
-participant ":Partida" as Partida
 participant ":Policia" as Policia
-participant "Detective" as Grado
-participant ":Cronometro" as Cronometro
+participant ":Sospechoso" as Sospechoso
 participant ":Tiempo" as Tiempo
-
-Partida ->> Policia : recibirCuchillazo(Cronometro)
-Policia ->> Cronometro : calcularTiempoDeCuchillazo(cantidadDeVecesAcuchillado)
-Cronometro ->> Tiempo : agregarTiempo(2)
-
-AlgoThief ->> Tiempo : tiempoTranscurrido()
-return [tiempoTranscurrido]
+AlgoThief ->> Policia : recibirCuchillazo(cronometro)
+AlgoThief ->> Tiempo : tiempoTranscurrido
+return[tiempoTranscurrido]
 AlgoThief ->> AlgoThief : assertEquals(2, tiempoTranscurrido)
 
-Partida ->> Policia : dormir(Cronometro))
-Policia ->> Grado : calcularTiempoDurmiendo(Cronometro)
-Grado ->> Cronometro : calcularTiempoDurmiendo(8)
-Cronometro ->> Tiempo : agregarTiempo(8)
+AlgoThief ->> Tiempo : tiempoFormateado
+return[tiempoFormateado]
+AlgoThief ->> AlgoThief : assertEquals("Monday, 09 Hs", tiempoFormateado)
 
-AlgoThief ->> Tiempo : tiempoTranscurrido()
-return [tiempoTranscurrido]
-AlgoThief ->> AlgoThief : assertEquals(10, tiempoTranscurrido)
+AlgoThief ->> Policia : dormir(cronometro)
+AlgoThief ->> Tiempo : tiempoTranscurrido
+return[tiempoTranscurrido]
+AlgoThief ->> AlgoThief : assertEquals(2, tiempoTranscurrido)
 
 @enduml
