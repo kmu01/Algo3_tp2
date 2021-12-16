@@ -12,7 +12,7 @@ class Ciudad{
 }
 
 class Comisaria {
-    - ladronesBuscados[Ladron]
+    - ladronesBuscados : [Ladron]
     + {static} inicializarComisaria(ladrones[Ladron])
     + buscarLadrones(sospechoso) : [Ladron]
 }
@@ -30,61 +30,29 @@ class Cronometro {
 class Partida{
     - dado : Random
     - inicializadorDeArchivos : InicializadorDeArchivos
-    - policia : Policia
-    - comisaria : Comisaria
-    - ladron : Ladron
-    - tiempo : Tiempo
-    - mapa : Mapa
-    - ladrones[Ladron]
-    - ciudades{String, Ciudad}
-    - pistasDelLadron[String]
-    - objetosRobados[ObjetoRobado]
-    - cantidadPaisesVisitados : int
-    - ciudadActual : Ciudad
-    - ciudadSiguiente : Ciudad
-    - cargarMapa()
-    - cargarDescripcionLadron()
-    - cargarPistasLugares()
-    - cargarLadrones() : [Ladron]
-    - cargarObjetosRobados()
-    - seleccionarObjetoRobado(grado) : ObjetoRobado
-    - inicializarPolicia(objetoRobado, grado) : Policia
-    - seleccionarLadron(objetoRobado) : Ladron
     + {static} crearPartida(inicializadorDeArchivos, dado)
-    + pedirDatos()
-    + asignarGradoDePolicia(cantidadDeArrestos) : GradoDePolicia
     + buscarLadrones() : [Ladron]
     + viajar(ciudadSeleccionada)
     + entrarEdificio(lugarSeleccionado) : Pista
-    + acuchillar()
     + nuevoCaso(cantidadDeArrestos)
     + anotarCualidad(atributo)
-    + atrapar() : boolean
     + hora() : String
 }
 
 
 class Ladron{
     - nombre : String
-    - cualidades : [Cualidad]
-    - objetoRobado : ObjetoRobado
     + {static} registro(nombre, cualidades[Cualidad])
     + asignarObjetoRobado(objeto)
     + esIgual(sospechoso) : int
     + chequearPistas(pistasDelLadron[String], descripcion, nombreDelLadron)
-    '/+ acuchillar(Policia) : int/'
 }
 
 
 
 class Policia{
-    - grado : GradoDePolicia
-    - sospechoso : Sospechoso
-    - ciudadActual : Ciudad
     - cantidadDeVecesAcuchillado : int
-    - ordenDeArresto : OrdenDeArresto
-    - emitirOrden() : OrdenDeArresto
-    + {static} registroPolicia(sospechoso, grado, ciudadInicial)
+    + {static} registroPolicia(sospechoso, grado)
     + anotarCualidad(cualidad)
     + entrarEdificio(lugar, cronometro, dado) : Pista
     + viajar(ciudadSeleccionada, mapa, cronometro)
@@ -120,7 +88,6 @@ abstract class GradoDePolicia{
 
 
 class Sospechoso{
-    - cualidades : [Cualidad]
     + {static} registro()
     + anotarCualidad(cualidad)
     + esIgual(cualidades[Cualidad]) : int
@@ -128,7 +95,6 @@ class Sospechoso{
 
 class Lugar{
     - nombre : String
-    - obtenerPista(grado, pistas[Pista], dado) : Pista
     + {static} crear(nombre)
     + visitar(grado, pistas[Pista], cronometro, dado) : Pista
 }
@@ -138,7 +104,6 @@ class Pista{
     - descripcion : String
     - lugarCorrespondiente : String
     - cantDeVisitas : int
-    - calcularTiempoEnObtenerLaPista(cronometro)
     + {static} inicializarPista(dificultad, descripcion, lugar)
     + esPista(dificultad, nombreLugar) : boolean
     + obtenerPista(cronometro) : Pista
@@ -156,8 +121,6 @@ class Tiempo{
     - hora : int
     - tiempoLimite : int
     - tiempoInicio : LocalDateTime
-    - formato : String
-    - finalizado() : boolean
     + {static} inicializar()
     + agregarTiempo(tiempoDeLaAccion)
     + debeDormir(tiempoDeDescanso)
@@ -170,21 +133,29 @@ interface OrdenDeArresto{
     + emitir(ladrones [Ladron]) : OrdenDeArresto
 }
 
+class Cualidad{
+    - cualidad : String
+    + {static} darCualidad(cualidad)
+    + esCualidad(Cualidad) : boolean
+    + compararCualidades(cualidad) : boolean
+}
 
 Partida "1" --o "1..*" Ladron
 Partida "1" --o "1..*" Sospechoso
 Partida"1" --* "1"Policia
 Partida --o Tiempo
+Partida --o "1..*" ObjetoRobado
 Policia --* GradoDePolicia
 Policia --> Mapa
+Policia --> Sospechoso
 Partida "1" --* "1..*" Ciudad
-Policia --> Ciudad
+Policia ..> Ciudad
 Ciudad "1" --> "1..5"Lugar
-Ciudad --o "1..3" Ciudad
-Lugar "1" --o "1..*" Pista
-
-Policia ..> OrdenDeArresto
-Ladron --* "1..*" ObjetoRobado
+Ciudad "1" --o "1..9" Pista
+Ladron "1" --* "1..*"Cualidad
+Sospechoso "1" --o "1..*"Cualidad
+Policia --> OrdenDeArresto
+Ladron --* ObjetoRobado
 Partida --> Comisaria
 Cronometro ..> Tiempo
 Partida --> Cronometro
