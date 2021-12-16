@@ -2,12 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TableroController">
    <children>
@@ -21,6 +23,18 @@
           <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="LabelTiempo" alignment="CENTER" contentDisplay="TOP" prefHeight="43.0" prefWidth="356.0" style="-fx-font-weight: bold;" text="Time" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 5; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Button fx:id="BotonEntrarEdificio" mnemonicParsing="false" onAction="#entrarAEdificio" text="Entrar a edificio">

@@ -22,6 +22,11 @@ public class Juego {
         }
         return juego;
     }
+
+    public String hora(){
+        return this.partida.hora();
+    }
+
     public void resetear(){
         juego = null;
     }

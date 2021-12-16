@@ -39,9 +39,7 @@ public class Pista {
     }
 
     public String descripcion (){
-
         return this.descripcion;
-
     }
 
 }

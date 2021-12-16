@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -29,10 +30,11 @@ public class TableroController implements Initializable {
     @FXML private Button BotonViajar1;
     @FXML private Button BotonViajar2;
     @FXML private Button BotonViajar3;
+    @FXML private Label LabelTiempo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
     public void entrarAEdificio(){
@@ -47,19 +49,20 @@ public class TableroController implements Initializable {
 
     public void mostrarPistaLugar1() throws IOException {
         this.mostrarPista(BotonLugar1);
-
+        LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
     public void mostrarPistaLugar2() throws IOException {
         this.mostrarPista(BotonLugar2);
+        LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
     public void mostrarPistaLugar3() throws IOException {
         this.mostrarPista(BotonLugar3);
+        LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
     public void mostrarPista(Button boton) throws IOException {
         Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
         PanelAcciones.setVisible(false);
-        CargadorDeEscena.cargarPanel("/fxml/mostrarPista.fxml",GridPanePrincipal,1,0);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarPista.fxml"));
         Parent mainNode = loader.load();
         MostrarPistaController pistaControlador = loader.getController();

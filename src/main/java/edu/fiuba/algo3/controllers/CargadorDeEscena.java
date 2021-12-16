@@ -18,7 +18,7 @@ public class CargadorDeEscena {
     private  CargadorDeEscena() {
     }
 
-    private static Parent cargarArchivo(String archivo){
+    public static Parent cargarArchivo(String archivo){
         URL root = App.class.getResource(archivo);
         FXMLLoader loader = new FXMLLoader(root);
         System.out.println(root);
