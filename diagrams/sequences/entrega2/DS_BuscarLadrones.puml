@@ -1,0 +1,32 @@
+@startuml
+title Método de buscar ladrones
+actor ":Jugador" as AlgoThief
+
+participant ":Policia" as Policia
+participant ":Comisaria" as Comisaria
+participant ":Ladron" as Ladron
+participant ":Sospechoso" as Sospechoso
+participant "OrdenDeArresto" as Orden
+AlgoThief ->> Policia : buscarLadrones(comisaria)
+activate Policia
+    Policia ->> Comisaria : buscarLadrones(sospechoso)
+    activate Comisaria
+        loop para cada ladron
+            Comisaria ->> Ladron : esIgual(sospechoso)
+            activate Ladron
+                Ladron ->> Sospechoso : esIgual(List<Cualidad>)
+                Sospechoso --> Ladron : [cantidadAtributosIguales]
+            deactivate Ladron
+            Ladron --> Comisaria : [cantidadAtributosIguales]
+        end
+    deactivate Comisaria
+    Comisaria ->> Policia : [List<Ladron>]
+deactivate Policia
+    Policia ->> Policia : emitirOrden(List<Ladron>)
+activate Policia
+    Policia ->> Orden : emitir(List<Ladron>)
+    Orden --> Policia : [OrdenDeArresto]
+deactivate Policia
+Policia --> AlgoThief : List<Ladron>
+note across: Se decidió realizar este diagrama dado que se usa frecuentemente en los casos de uso
+@enduml

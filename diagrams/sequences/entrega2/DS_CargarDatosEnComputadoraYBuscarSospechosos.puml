@@ -2,32 +2,21 @@
 title Cargar datos recopilados en la computadora y buscar sospechosos
 
 actor "Jugador" as AlgoThief
-participant ":Partida" as Partida
-participant ":Novato" as Grado
-participant ":ObjetoComun" as ObjetoRobado
-participant "ciudadInicial:Ciudad" as Ciudad
-participant ":Ladron" as Ladron
+participant "femenino:Cualidad" as Cualidad
 participant ":Policia" as Policia
+participant ":Sospechoso" as Sospechoso
 
-AlgoThief ->> Partida : nuevoCaso(2)
-activate Partida
-    Partida ->> Grado : new()
-    Partida ->> ObjetoRobado : new()
-    Partida ->> ObjetoRobado : ciudad()
-    ObjetoRobado --> Partida : [ciudadInicial]
-    Partida ->> Ciudad : new()
-    Partida ->> Ladron : new()
-    Partida ->> Ladron : asignarObjetoRobado(ObjetoComun)
-    Partida ->> Policia : registroPolicia(Sospechoso, Novato, ciudadInicial)
-deactivate Partida
+AlgoThief ->> Cualidad : new("Femenino")
 
-AlgoThief ->> Partida : anotarGenero("Femenino")
-activate Partida
-Partida ->> Policia : anotarGenero("Femenino")
-deactivate Partida
-AlgoThief ->> Partida : cantidadSospechososPosibles()
-return[cantidadDeSospechosos]
-AlgoThief ->> AlgoThief : assertEquals(5, cantidadDeSospechosos)
+AlgoThief ->> Policia : anotarCualidad(femenino)
+activate Policia
+Policia ->> Sospechoso : anotarCualidad(femenino)
+deactivate Policia
+
+AlgoThief ->> Policia : buscarLadrones(comisaria)
+note across : La interacción de este método se detalla en otro diagrama aparte
+return[List<Ladron>]
+AlgoThief ->> AlgoThief : assertEquals(listaEsperada, List<Ladron>)
 
 note across: "Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino"
 
