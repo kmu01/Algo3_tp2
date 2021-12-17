@@ -85,7 +85,6 @@ public class CasosDeUsoTests {
     @Test
     public void investigadorTomaCasoYViajaDeMontrealAMexico(){
 
-
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
         policia.viajar(ciudadDeMexico, mapa, cronometro);
 
@@ -107,7 +106,7 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
         policia.anotarCualidad(new Cualidad("Femenino"));
 
-        assertEquals(Arrays.asList(marcela),policia.buscarLadrones(comisaria));
+        assertEquals(Arrays.asList(marcela), policia.buscarLadrones(comisaria));
 
 
     }
@@ -127,12 +126,10 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
         policia.anotarCualidad(new Cualidad("Masculino"));
 
-        policia.buscarLadrones(comisaria);
+        List<Ladron> ladronesObtenidos = policia.buscarLadrones(comisaria);
 
 
-
-
-        assertEquals(Arrays.asList(nicokai,jorgeCaicedo),policia.buscarLadrones(comisaria));
+        assertEquals(Arrays.asList(nicokai,jorgeCaicedo),ladronesObtenidos);
 
         assertFalse(policia.atrapar());
 

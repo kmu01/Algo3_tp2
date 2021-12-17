@@ -1,40 +1,26 @@
 @startuml
-title Investigador toma caso de robo y viaja de Montreal a Mexico
+title Investigador toma caso y viaja de Montreal a Mexico
 
 actor "Jugador" as AlgoThief
-participant ":Partida" as Partida
-participant ":Investigador" as Grado
-participant ":ObjetoValioso" as ObjetoRobado
-participant "Montreal:Ciudad" as Ciudad
-participant ":Ladron" as Ladron
 participant ":Policia" as Policia
+participant "mapa:Mapa" as Mapa
+participant ":Investigador" as Grado
+participant "cronometro:Cronometro" as Cronometro
 participant ":Tiempo" as Tiempo
-participant "Ciudad de Mexico:Ciudad" as Mexico
-participant ":Cronometro" as Cronometro
+AlgoThief ->> Policia : viajar(ciudadDeMexico, mapa, cronometro)
+activate Policia
+    Policia ->> Mapa : calcularDistancia(ciudadDeMexico, montreal)
+    Mapa --> Policia : [distancia]
+    Policia ->> Grado : calcularTiempoDeViaje(distancia, cronometro)
+    activate Grado
+        Grado ->> Cronometro : calcularTiempoDeViaje(distancia,tiempoDeViaje)
+        activate Cronometro
+            Cronometro ->> Tiempo : agregarHoras(distancia/tiempoDeViaje)
+        deactivate Cronometro
+    deactivate Grado
+deactivate Policia
+AlgoThief ->> Tiempo : tiempoFormateado()
+return[tiempoRecibido]
 
-AlgoThief ->> Partida : nuevoCaso(12)
-activate Partida
-    Partida ->> Grado : new()
-    Partida ->> ObjetoRobado : new()
-    Partida ->> ObjetoRobado : ciudad()
-    ObjetoRobado --> Partida : [ciudadInicial]
-    Partida ->> Ciudad : new()
-    Partida ->> Ladron : new()
-    Partida ->> Ladron : asignarObjetoRobado(ObjetoValioso)
-    Partida ->> Policia : registroPolicia(Sospechoso, Investigador, Montreal)
-deactivate Partida
-
-AlgoThief ->> Partida : viajar("Ciudad de Mexico")
-activate Partida
-Partida ->> Tiempo : finalizado()
-Tiempo --> Partida : [false]
-Partida ->> Mexico : new()
-Partida ->> Cronometro : new()
-Partida ->> Policia : viajar(Mexico, mapa, Cronometro)
-deactivate Partida
-AlgoThief ->> Partida : mostrarCiudadActual()
-AlgoThief ->> AlgoThief : assertEquals("Ciudad de Mexico", ciudadActual)
-AlgoThief ->> Partida : hora()
-return [hora]
-AlgoThief ->> AlgoThief : assertEquals(8, hora)
+AlgoThief ->> AlgoThief : assertEquals("Monday 15 Hs.", tiempoRecibido)
 @enduml
