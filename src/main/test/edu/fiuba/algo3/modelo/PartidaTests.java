@@ -23,18 +23,18 @@ public class PartidaTests
     }
 
     @Test
-    public void creoUnaPartidaYPidoDosPistaLuegoViajaAMexicoYDuerme() throws TiempoTerminadoException {
+    public void creoUnaPartidaYPidoDosPistasLuegoViajaAMexicoYDuerme() throws TiempoTerminadoException {
         Partida partida = null;
         try {
             partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(3);
             Pista pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Cambio sus monedas a pesos argentinos",pista.descripcion());
+            assertEquals("Cambio sus monedas a reales",pista.descripcion());
 
             pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Cambio sus monedas a pesos argentinos",pista.descripcion());
+            assertEquals("Cambio sus monedas a reales",pista.descripcion());
 
             partida.viajar("Ciudad de Mexico");
 
