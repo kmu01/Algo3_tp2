@@ -1,8 +1,14 @@
 package edu.fiuba.algo3.modelo.objetos;
 
 
+import edu.fiuba.algo3.modelo.Ciudad;
 import edu.fiuba.algo3.modelo.Policia;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Random;
 
 public interface ObjetoRobado {
 
@@ -14,4 +20,7 @@ public interface ObjetoRobado {
     boolean verificarLimitePaises(int cantidadDePaisesVisitados);
 
     Policia crearPoliciaConCiudadInicial(GradoDePolicia grado);
+
+    Queue<Ciudad> setearRutaLadron(List<String> nombresDeCiudades, Map<String, Ciudad> ciudades, Random dado, Queue<Ciudad> rutaLadron);
+
 }

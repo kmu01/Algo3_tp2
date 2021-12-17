@@ -6,6 +6,7 @@ import java.util.*;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.*;
 import edu.fiuba.algo3.modelo.objetos.*;
+import javafx.scene.control.RadioMenuItem;
 
 public class Partida {
     private Random dado;
@@ -15,27 +16,23 @@ public class Partida {
     private Ladron ladron;
     private Tiempo tiempo;
     private Mapa mapa;
-    private Queue<Ciudad> rutaLadron;
-    private Stack<String> destinosEquivocados;
+    private RutaLadron rutaLadron;
     private List<Ladron> ladrones;
     private Map<String,Ciudad> ciudades;
     private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
-    private int cantidadDePaisesVisitados = 0;
-    private Ciudad ciudadSiguiente;
-    private Ciudad ciudadActual;
+    private int cantidadDePaisesVisitados = 1;
 
 
 
-    public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado) throws IOException {
+    public Partida(InicializadorDeArchivos inicializadorDeArchivos,Random dado,RutaLadron rutaLadron) throws IOException {
         this.inicializadorDeArchivos = inicializadorDeArchivos;
         this.tiempo = new Tiempo();
         this.dado = dado;
-        this.rutaLadron = new LinkedList<>();
+        this.rutaLadron = rutaLadron;
         this.pistasDelLadron = new ArrayList<>();
         this.ciudades = null;
         this.mapa = null;
-        this.destinosEquivocados = new Stack<>();
         this.ladrones = null;
         this.objetosRobados = null;
         this.ladrones = cargarLadrones();
@@ -136,25 +133,12 @@ public class Partida {
 
     public List<String> getListaDestinos(){
         List<String> destinos = this.policia.obtenerCiudadActual().getListaDestinos();
-        if (!destinosEquivocados.isEmpty()){
-            int eliminarOpcionAlAzar = this.dado.nextInt(destinos.size());
-            destinos.add(destinosEquivocados.peek());
-            destinos.remove(eliminarOpcionAlAzar);
-        }
-        return destinos;
+        return this.rutaLadron.verificarDestinos(destinos,this.dado);
     }
 
     private void establecerRutaDeLadron(ObjetoRobado objetoRobado){
-        Ciudad ciudadInicial = this.policia.obtenerCiudadActual();
-        rutaLadron.add(ciudadInicial);
-        Integer numeroDePaises = objetoRobado.cantidadPaises();
-        List<String> nombresCiudades = this.obtenerNombresDeCiudades(ciudadInicial);
-
-        for (int i = 1;i<=numeroDePaises;i++){
-            int numeroCiudadSorteada = dado.nextInt(nombresCiudades.size());
-            Ciudad ciudadSorteada = this.ciudades.get(nombresCiudades.get(numeroCiudadSorteada));
-            rutaLadron.add(ciudadSorteada);
-        }
+        this.rutaLadron.establecerRutaLadron(objetoRobado,
+                this.obtenerNombresDeCiudades(this.policia.obtenerCiudadActual()),this.ciudades,this.dado);
     }
 
     private List<String> obtenerNombresDeCiudades(Ciudad ciudadInicial) {
@@ -167,23 +151,9 @@ public class Partida {
 
     public void viajar(String ciudadSeleccionada){
 
-        if(ciudadActual == null){
-            this.ciudadActual = this.rutaLadron.poll();
-            this.ciudadSiguiente = this.rutaLadron.poll();
-        }
-        if ((this.ciudades.get(ciudadSeleccionada) == this.ciudadSiguiente)){
-            if(!destinosEquivocados.isEmpty()){
-                destinosEquivocados.pop();
-            }
-            this.ciudadActual = this.ciudades.get(ciudadSeleccionada);
-            this.ciudadSiguiente = this.rutaLadron.poll();
-        }else{
-            this.destinosEquivocados.add(ciudadSeleccionada);
-            // ciudadSiguiente vuelve a la ciudadAnterior
-            this.ciudadSiguiente = this.ciudadActual;
-            this.ciudadSiguiente.setearPistasFalsas();
-            this.ciudadActual = this.ciudades.get(ciudadSeleccionada);
-        }
+        this.rutaLadron.verificarSiEligioElDestinoCorrecto(this.ciudades,ciudadSeleccionada);
+
+
         Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
 
         this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
@@ -195,21 +165,19 @@ public class Partida {
 
     public Pista entrarEdificio(String lugarSeleccionado) {
 
-        if(this.atrapar()){
+        if(this.policia.atrapar()){
             throw new TiempoTerminadoException();
         }
         this.policia.dormir(new Cronometro(this.tiempo));
         Pista pistaObtenida = null;
-        int numero = this.dado.nextInt(7);
+        int numero = this.dado.nextInt(11);
         if (numero == 5){
-            this.acuchillar();
+            this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
+        }else if(numero == 8){
+            this.policia.recibirHeridaDeBala(new Cronometro(this.tiempo));
         }
         pistaObtenida = (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
         return pistaObtenida;
-    }
-
-    private void acuchillar() {
-        this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
     }
 
     public void nuevoCaso(int cantidadDeArrestos) throws IOException {
@@ -221,7 +189,6 @@ public class Partida {
 
         cargarPistasDescripcionLadron();
         cargarPistasLugares();
-
     }
 
     public List<String> mostrarLugares(){
@@ -234,10 +201,6 @@ public class Partida {
     }
     public List<Ladron> buscarLadrones(){
         return this.policia.buscarLadrones(this.comisaria);
-    }
-
-    private boolean atrapar() {
-        return (this.policia.atrapar());
     }
 
     public String hora() {

@@ -26,7 +26,7 @@ public class PartidaTests
     public void creoUnaPartidaYPidoDosPistaLuegoViajaAMexicoYDuerme() throws TiempoTerminadoException {
         Partida partida = null;
         try {
-            partida = new Partida(inicializadorDeArchivos,mockDado);
+            partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(3);
             Pista pista = partida.entrarEdificio("Banco");
 
@@ -54,7 +54,7 @@ public class PartidaTests
 
         try {
             Partida partida = null;
-            partida = new Partida(inicializadorDeArchivos,mockDado);
+            partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(6);
             partida.anotarCualidad("Femenino");
             partida.anotarCualidad("Marron");
@@ -71,10 +71,10 @@ public class PartidaTests
 
     @Test
     public void entraAEdificioYEsAcuchillado(){
-        when(mockDado.nextInt(7)).thenReturn(5);
+        when(mockDado.nextInt(11)).thenReturn(5);
         Partida partida = null;
         try {
-            partida = new Partida(inicializadorDeArchivos,mockDado);
+            partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(6);
             partida.entrarEdificio("Bolsa");
             assertEquals("Monday, 10 Hs.",partida.hora());

@@ -10,7 +10,7 @@ public class Juego {
 
     public Juego(){
         try {
-            this.partida = new Partida(new InicializadorDeArchivos(),new Random());
+            this.partida = new Partida(new InicializadorDeArchivos(),new Random(),new RutaLadron());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -43,7 +43,6 @@ public class Policia {
     public void recibirCuchillazo(Cronometro cronometro) {
 
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
-
     }
 
     public Ciudad obtenerCiudadActual(){
