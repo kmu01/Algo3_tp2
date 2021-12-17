@@ -1,47 +1,15 @@
 @startuml
 title Policia intenta atrapar a un sospechoso sin emitir orden de arresto
+
 actor "Jugador" as AlgoThief
-participant ":Partida" as Partida
-participant ":Novato" as Grado
-participant ":ObjetoComun" as ObjetoRobado
-participant "ciudadInicial:Ciudad" as Ciudad
-participant ":Ladron" as Ladron
 participant ":Policia" as Policia
-participant ":Comisaria" as Comisaria
-
-AlgoThief ->> Partida : nuevoCaso(2)
-activate Partida
-    Partida ->> Grado : new()
-    Partida ->> ObjetoRobado : new()
-    Partida ->> ObjetoRobado : ciudad()
-    ObjetoRobado --> Partida : [ciudadInicial]
-    Partida ->> Ciudad : new()
-    Partida ->> Ladron : new()
-    Partida ->> Ladron : asignarObjetoRobado(ObjetoComun)
-    Partida ->> Policia : registroPolicia(Sospechoso, Novato, ciudadInicial)
-    Partida ->> Comisaria : new()
-deactivate Partida
-
-AlgoThief ->> Partida : anotarGenero("Femenino")
-activate Partida
-Partida ->> Policia : anotarGenero("Femenino")
-deactivate Partida
-
-AlgoThief ->> Partida : emitirOrdenDeArresto()
-activate Partida
-Partida ->> Policia : cargarDatos(Comisaria)
+participant "OrdenDeArresto" as Orden
+AlgoThief ->> Policia : atrapar()
 activate Policia
-Policia ->> Comisaria : cargarDatos(Sospechoso)
-Comisaria --> Policia : [Ladrones]
+    Policia ->> Orden : emitida()
+    Orden --> Policia : [resultado]
 deactivate Policia
-Policia --> Partida : [Ladrones]
-deactivate Partida
-AlgoThief ->> Partida : atrapar()
-activate Partida
-Partida ->> Policia : atrapar(Ladron)
-Policia --> Partida : [false]
-deactivate Partida
-Partida --> AlgoThief : [false]
+Policia --> AlgoThief : [resultado]
 
-AlgoThief ->> AlgoThief : assertFalse(false)
+AlgoThief ->> AlgoThief : assertFalse(resultado)
 @enduml
