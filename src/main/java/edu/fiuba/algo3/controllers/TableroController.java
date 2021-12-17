@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TableroController implements Initializable {
+public class TableroController implements Initializable{
     @FXML private Pane PanelAcciones;
     @FXML private GridPane GridPanePrincipal;
     @FXML private HBox CajaViaje;

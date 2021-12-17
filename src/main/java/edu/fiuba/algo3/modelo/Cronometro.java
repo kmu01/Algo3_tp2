@@ -21,7 +21,6 @@ public class Cronometro {
     public void calcularTiempoDeCuchillazo(int cantidadDeVecesAcuchillado) {
 
         this.tiempo.agregarHoras(cantidadDeVecesAcuchillado == 1 ? 2 : 1);
-
     }
 
     public void calcularTiempoDurmiendo(int tiempoDeDescanso) {

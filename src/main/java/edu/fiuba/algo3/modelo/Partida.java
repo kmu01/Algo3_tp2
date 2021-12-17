@@ -167,11 +167,10 @@ public class Partida {
 
     public void viajar(String ciudadSeleccionada){
 
-        if (ciudadActual == null) {
+        if(ciudadActual == null){
             this.ciudadActual = this.rutaLadron.poll();
             this.ciudadSiguiente = this.rutaLadron.poll();
         }
-
         if ((this.ciudades.get(ciudadSeleccionada) == this.ciudadSiguiente)){
             if(!destinosEquivocados.isEmpty()){
                 destinosEquivocados.pop();
@@ -184,7 +183,6 @@ public class Partida {
             this.ciudadSiguiente = this.ciudadActual;
             this.ciudadSiguiente.setearPistasFalsas();
             this.ciudadActual = this.ciudades.get(ciudadSeleccionada);
-
         }
         Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
 
