@@ -18,6 +18,7 @@ public class AudioController {
 
     private AudioController(){
         reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/simuladores.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/12monos.mp3")).toString())));
 
 
         /*Le seteo a cada media player la proxima cancion*/
