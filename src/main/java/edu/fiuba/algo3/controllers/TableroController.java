@@ -31,10 +31,30 @@ public class TableroController implements Initializable{
     @FXML private Button BotonViajar2;
     @FXML private Button BotonViajar3;
     @FXML private Label LabelTiempo;
+    @FXML private Label LabelCiudad;
+
+    private MostrarPistaController pistaControlador;
+    private FotoDeCiudadController fotoDeCiudadControlador;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
+        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual());
+        try {
+            this.cargarImagen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarImagen() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarFotoCiudad.fxml"));
+        Parent mainNode = loader.load();
+        fotoDeCiudadControlador = loader.getController();
+        Pane seccion = new Pane(mainNode);
+        GridPanePrincipal.add(seccion, 0, 0);
+        System.out.println(Juego.obtenerInstancia().getCiudadActual());
+        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
     }
 
     public void entrarAEdificio(){
@@ -46,6 +66,7 @@ public class TableroController implements Initializable{
         BotonLugar2.setText((lugares.get(1)));
         BotonLugar3.setText((lugares.get(2)));
     }
+
 
     public void mostrarPistaLugar1() throws IOException {
         this.mostrarPista(BotonLugar1);
@@ -65,7 +86,7 @@ public class TableroController implements Initializable{
         PanelAcciones.setVisible(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarPista.fxml"));
         Parent mainNode = loader.load();
-        MostrarPistaController pistaControlador = loader.getController();
+        pistaControlador = loader.getController();
         Pane seccion = new Pane(mainNode);
         GridPanePrincipal.add(seccion, 1, 0);
         pistaControlador.mostrarPista(pista);

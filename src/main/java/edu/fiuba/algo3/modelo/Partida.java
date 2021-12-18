@@ -195,6 +195,8 @@ public class Partida {
         return this.policia.obtenerCiudadActual().getListaLugares();
     }
 
+    public String obtenerCiudadActual(){return this.rutaLadron.obtenerCiudadActual();}
+
     public void anotarCualidad(String atributo) {
         Cualidad cualidad = new Cualidad(atributo);
         this.policia.anotarCualidad(cualidad);
