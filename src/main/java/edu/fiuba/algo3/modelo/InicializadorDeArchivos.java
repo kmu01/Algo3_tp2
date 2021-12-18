@@ -103,7 +103,7 @@ public class InicializadorDeArchivos {
             String lugar = linea.get("Lugar");
 
             Pista pista = new Pista(new Dificultad(dificultad), descripcion, lugar);
-            pista.asignarPistaDeLadron(pistasDelLadron.get((new Random()).nextInt(pistasDelLadron.size())));
+            pista.asignarPistaDeLadron(pistasDelLadron.get((new Random()).nextInt(pistasDelLadron.size()-1)));
             Ciudad ciudadActual = ciudades.get(ciudad);
             ciudadActual.agregarPista(pista);
             ciudadActual.agregarLugar(lugar);

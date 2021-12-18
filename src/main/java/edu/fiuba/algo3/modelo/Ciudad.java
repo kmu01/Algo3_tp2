@@ -63,9 +63,9 @@ public class Ciudad {
     public void setearPistasFalsas() {
         this.pistas.clear();
         for (String lugar: this.lugares) {
-            this.pistas.add(new Pista(new Dificultad("facil"),"No lo vimos por aqui",lugar));
-            this.pistas.add(new Pista(new Dificultad("medio"),"No lo vimos por aqui",lugar));
-            this.pistas.add(new Pista(new Dificultad("dificil"),"No lo vimos por aqui",lugar));
+            this.pistas.add(new Pista(new Dificultad("Facil"),"No lo vimos por aqui",lugar));
+            this.pistas.add(new Pista(new Dificultad("Medio"),"No lo vimos por aqui",lugar));
+            this.pistas.add(new Pista(new Dificultad("Dificil"),"No lo vimos por aqui",lugar));
         }
     }
 }

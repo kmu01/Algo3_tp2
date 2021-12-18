@@ -115,6 +115,31 @@ public class TableroController implements Initializable{
         PanelAcciones.setVisible(true);
         CajaViaje.setVisible(true);
         CajaVisita.setVisible(false);
+        buscarLadronesControlador.ocultar();;
+        List<String> destinos = Juego.obtenerInstancia().getDestinos();
+        BotonViajar1.setText(destinos.get(0));
+        BotonViajar2.setText(destinos.get(1));
+        BotonViajar3.setText(destinos.get(2));
+    }
+
+    public void viajarDestino1(){
+        this.volar(BotonViajar1);
+    }
+
+    public void volar(Button botonSeleccionado){
+        Juego.obtenerInstancia().viajar(botonSeleccionado.getText());
+        PanelAcciones.setVisible(false);
+        LabelTiempo.setText(Juego.obtenerInstancia().hora());
+        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual());
+        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
+    }
+
+    public void viajarDestino2(){
+        this.volar(BotonViajar2);
+    }
+
+    public void viajarDestino3(){
+        this.volar((BotonViajar3));
     }
 
     public void buscar(){

@@ -88,17 +88,17 @@
             </HBox>
             <HBox fx:id="CajaViaje" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                <children>
-                  <Button fx:id="BotonViajar2" mnemonicParsing="false" prefWidth="80.0" text="Button">
+                  <Button fx:id="BotonViajar2" mnemonicParsing="false" onAction="#viajarDestino2" prefWidth="80.0" text="Button">
                      <HBox.margin>
                         <Insets left="35.0" top="150.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="BotonViajar3" mnemonicParsing="false" prefWidth="80.0" text="Button">
+                  <Button fx:id="BotonViajar3" mnemonicParsing="false" onAction="#viajarDestino3" prefWidth="80.0" text="Button">
                      <HBox.margin>
                         <Insets left="25.0" top="150.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="BotonViajar1" mnemonicParsing="false" prefWidth="80.0" text="Button">
+                  <Button fx:id="BotonViajar1" mnemonicParsing="false" onAction="#viajarDestino1" prefWidth="80.0" text="Button">
                      <HBox.margin>
                         <Insets left="25.0" top="150.0" />
                      </HBox.margin>

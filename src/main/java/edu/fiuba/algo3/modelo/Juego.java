@@ -50,6 +50,10 @@ public class Juego {
     public String getCiudadActual() {
         return this.partida.obtenerCiudadActual();
     }
+
+    public void viajar(String ciudadSeleccionada) {
+        this.partida.viajar(ciudadSeleccionada);
+    }
 }
 
 
