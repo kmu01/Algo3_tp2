@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.Cualidad;
+import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Ladron;
 import javafx.fxml.Initializable;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 import org.apache.commons.csv.CSVFormat;
@@ -26,11 +28,14 @@ public class BuscarLadronesController implements Initializable {
     @FXML private ComboBox<String> CajaPelo;
     @FXML private ComboBox<String> CajaSenia;
     @FXML private ComboBox<String> CajaVehiculo;
-
+    @FXML private Button BotonBuscarLadrones;
+    private List<String> listaDeAtributos;
+    private ListaDeLadronesController listaDeLadronesController;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
+            listaDeAtributos = new ArrayList<>();
             Reader in = new FileReader(RUTA_LADRONES);
             Iterable<CSVRecord> texto = null;
             texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
@@ -53,7 +58,25 @@ public class BuscarLadronesController implements Initializable {
     public void ocultar(){
         this.PanelLadrones.setVisible(false);
     }
-    public void mostrar(){
+    public void mostrar(ListaDeLadronesController listarLadronesControlador){
+
         this.PanelLadrones.setVisible(true);
+        listarLadronesControlador.mostrar();
+        this.listaDeLadronesController = listarLadronesControlador;
+    }
+
+    public void enviarDatos(){
+        listaDeAtributos.add(CajaSexo.getValue());
+        listaDeAtributos.add(CajaPelo.getValue());
+        listaDeAtributos.add(CajaHobby.getValue());
+        listaDeAtributos.add(CajaSenia.getValue());
+        listaDeAtributos.add(CajaVehiculo.getValue());
+        for (String atributo:listaDeAtributos) {
+            if (atributo != null){
+                Juego.obtenerInstancia().anotarCualidad(atributo);
+            }
+        }
+        List<Ladron> sospechosos = Juego.obtenerInstancia().buscarLadrones();
+        listaDeLadronesController.mostrarLista(sospechosos);
     }
 }

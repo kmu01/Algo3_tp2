@@ -36,6 +36,7 @@ public class TableroController implements Initializable{
     private MostrarPistaController pistaControlador;
     private FotoDeCiudadController fotoDeCiudadControlador;
     private BuscarLadronesController buscarLadronesControlador;
+    private ListaDeLadronesController listarLadronesControlador;
     //todo una forma de hacer lo de la lista ladrones es iniciar el controlador como hice con la foto de ciudad, y mandarselo por
     // parametro en mostrar() de BuscarLadronesController, y cuando apreten buscar en el boton de busqueda de ladrones
     // simplemente este le diga a el controlador de la lista que se muestre.
@@ -49,9 +50,19 @@ public class TableroController implements Initializable{
             this.cargarPistas();
             this.cargarImagen();
             this.cargarLadrones();
+            this.cargarListarLadrones();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void cargarListarLadrones() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarListaDeLadrones.fxml"));
+        Parent mainNode = loader.load();
+        listarLadronesControlador = loader.getController();
+        Pane seccion = new Pane(mainNode);
+        GridPanePrincipal.add(seccion, 0, 0);
+        listarLadronesControlador.ocultar();
     }
 
     private void cargarLadrones() throws IOException {
@@ -81,6 +92,7 @@ public class TableroController implements Initializable{
     }
 
     public void entrarAEdificio(){
+        listarLadronesControlador.ocultar();;
         PanelAcciones.setVisible(true);
         CajaViaje.setVisible(false);
         CajaVisita.setVisible(true);
@@ -107,6 +119,8 @@ public class TableroController implements Initializable{
     public void mostrarPista(Button boton){
         Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
         PanelAcciones.setVisible(false);
+        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
+        fotoDeCiudadControlador.mostrar();
         pistaControlador.mostrar();
         buscarLadronesControlador.ocultar();
         pistaControlador.mostrarPista(pista);
@@ -128,10 +142,12 @@ public class TableroController implements Initializable{
 
     public void volar(Button botonSeleccionado){
         Juego.obtenerInstancia().viajar(botonSeleccionado.getText());
+        listarLadronesControlador.ocultar();
         PanelAcciones.setVisible(false);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
         LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual());
         fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
+        fotoDeCiudadControlador.mostrar();
     }
 
     public void viajarDestino2(){
@@ -142,10 +158,12 @@ public class TableroController implements Initializable{
         this.volar((BotonViajar3));
     }
 
-    public void buscar(){
+    public void entrarAComisaria(){
         PanelAcciones.setVisible(false);
+        fotoDeCiudadControlador.ocultar();
         pistaControlador.ocultar();
-        buscarLadronesControlador.mostrar();
+        buscarLadronesControlador.mostrar(listarLadronesControlador);
     }
+
 
 }

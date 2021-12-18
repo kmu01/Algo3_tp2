@@ -56,7 +56,7 @@
                         <Insets left="30.0" top="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="BotonBuscar" mnemonicParsing="false" onAction="#buscar" text="Buscar">
+                  <Button fx:id="BotonBuscar" mnemonicParsing="false" onAction="#entrarAComisaria" text="Buscar">
                      <HBox.margin>
                         <Insets left="30.0" top="20.0" />
                      </HBox.margin>

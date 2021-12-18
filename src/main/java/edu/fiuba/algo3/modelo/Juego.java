@@ -54,6 +54,14 @@ public class Juego {
     public void viajar(String ciudadSeleccionada) {
         this.partida.viajar(ciudadSeleccionada);
     }
+
+    public void anotarCualidad(String atributo) {
+        this.partida.anotarCualidad(atributo);
+    }
+
+    public List<Ladron> buscarLadrones() {
+        return this.partida.buscarLadrones();
+    }
 }
 
 
