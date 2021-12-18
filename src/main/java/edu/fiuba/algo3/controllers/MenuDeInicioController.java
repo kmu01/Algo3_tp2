@@ -22,5 +22,9 @@ public class MenuDeInicioController implements Initializable {
     }
     public void salir(){ App.devolverEscena().close(); }
 
+    public void backMusic() { AudioController.getInstance().back(); }
+
     public void playMusic() { AudioController.getInstance().play(); }
+
+    public void skipMusic() { AudioController.getInstance().skip(); }
 }

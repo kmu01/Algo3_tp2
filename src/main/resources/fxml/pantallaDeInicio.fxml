@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.HBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.MenuDeInicioController">
     <children>
         <ImageView id="LabelInicial" fitHeight="480.0" fitWidth="720.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
@@ -20,11 +21,25 @@
                 <Font size="28.0" />
             </font>
         </Label>
-        <Button layoutX="330.0" layoutY="290.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="20.0" prefWidth="35.0" text="⏸▶">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Button>
-        <Button layoutX="327.0" layoutY="320.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
+        <HBox layoutX="290.0" layoutY="260.0" alignment="CENTER" prefHeight="30.0" prefWidth="118.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#backMusic" prefHeight="20.0" prefWidth="35.0" text="⏮">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#playMusic" prefHeight="20.0" prefWidth="35.0" text="⏸▶">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#skipMusic" prefHeight="20.0" prefWidth="35.0" text="⏭">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <Button layoutX="327.0" layoutY="380.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
     </children>
 </AnchorPane>
