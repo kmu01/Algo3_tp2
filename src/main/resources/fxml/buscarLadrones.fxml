@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.BuscarLadronesController">
-
-</AnchorPane>
+<Pane fx:id="PanelLadrones" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="300.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.BuscarLadronesController">
+   <children>
+      <Label fx:id="LabelPista" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="30.0" prefWidth="272.0" style="-fx-font-weight: bold;" text="Ingrese descripción del ladrón." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="CajaSexo" layoutX="74.0" layoutY="50.0" prefWidth="150.0" promptText="SEXO" visibleRowCount="2" />
+      <ComboBox fx:id="CajaHobby" layoutX="74.0" layoutY="95.0" prefWidth="150.0" promptText="HOBBY" visibleRowCount="6" />
+      <ComboBox fx:id="CajaPelo" layoutX="74.0" layoutY="141.0" prefWidth="150.0" promptText="PELO" visibleRowCount="4" />
+      <ComboBox fx:id="CajaSenia" layoutX="74.0" layoutY="186.0" prefWidth="150.0" promptText="SEÑA" visibleRowCount="4" />
+      <ComboBox fx:id="CajaVehiculo" layoutX="75.0" layoutY="233.0" prefWidth="150.0" promptText="VEHÍCULO" visibleRowCount="4" />
+      <Button layoutX="124.0" layoutY="276.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="51.0" text="Buscar" />
+   </children>
+</Pane>

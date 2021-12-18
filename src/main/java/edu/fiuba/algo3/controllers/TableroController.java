@@ -35,16 +35,40 @@ public class TableroController implements Initializable{
 
     private MostrarPistaController pistaControlador;
     private FotoDeCiudadController fotoDeCiudadControlador;
+    private BuscarLadronesController buscarLadronesControlador;
+    //todo una forma de hacer lo de la lista ladrones es iniciar el controlador como hice con la foto de ciudad, y mandarselo por
+    // parametro en mostrar() de BuscarLadronesController, y cuando apreten buscar en el boton de busqueda de ladrones
+    // simplemente este le diga a el controlador de la lista que se muestre.
+    // tambien al mostrar la busqueda de ladrones podemos ocultar la ciudad, así es mas facil.
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
         LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual());
         try {
+            this.cargarPistas();
             this.cargarImagen();
+            this.cargarLadrones();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void cargarLadrones() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/buscarLadrones.fxml"));
+        Parent mainNode = loader.load();
+        buscarLadronesControlador = loader.getController();
+        Pane seccion = new Pane(mainNode);
+        GridPanePrincipal.add(seccion, 1, 0);
+        buscarLadronesControlador.ocultar();
+    }
+
+    private void cargarPistas() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarPista.fxml"));
+        Parent mainNode = loader.load();
+        pistaControlador = loader.getController();
+        Pane seccion = new Pane(mainNode);
+        GridPanePrincipal.add(seccion, 1, 0);
     }
 
     private void cargarImagen() throws IOException {
@@ -53,7 +77,6 @@ public class TableroController implements Initializable{
         fotoDeCiudadControlador = loader.getController();
         Pane seccion = new Pane(mainNode);
         GridPanePrincipal.add(seccion, 0, 0);
-        System.out.println(Juego.obtenerInstancia().getCiudadActual());
         fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
     }
 
@@ -68,27 +91,24 @@ public class TableroController implements Initializable{
     }
 
 
-    public void mostrarPistaLugar1() throws IOException {
+    public void mostrarPistaLugar1() {
         this.mostrarPista(BotonLugar1);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
-    public void mostrarPistaLugar2() throws IOException {
+    public void mostrarPistaLugar2() {
         this.mostrarPista(BotonLugar2);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
-    public void mostrarPistaLugar3() throws IOException {
+    public void mostrarPistaLugar3() {
         this.mostrarPista(BotonLugar3);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
-    public void mostrarPista(Button boton) throws IOException {
+    public void mostrarPista(Button boton){
         Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
         PanelAcciones.setVisible(false);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarPista.fxml"));
-        Parent mainNode = loader.load();
-        pistaControlador = loader.getController();
-        Pane seccion = new Pane(mainNode);
-        GridPanePrincipal.add(seccion, 1, 0);
+        pistaControlador.mostrar();
+        buscarLadronesControlador.ocultar();
         pistaControlador.mostrarPista(pista);
     }
     public void viajar(){
@@ -99,6 +119,8 @@ public class TableroController implements Initializable{
 
     public void buscar(){
         PanelAcciones.setVisible(false);
+        pistaControlador.ocultar();
+        buscarLadronesControlador.mostrar();
     }
 
 }
