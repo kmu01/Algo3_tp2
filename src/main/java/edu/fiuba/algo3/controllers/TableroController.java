@@ -159,10 +159,12 @@ public class TableroController implements Initializable{
     }
 
     public void entrarAComisaria(){
+        listarLadronesControlador.ocultar();
         PanelAcciones.setVisible(false);
         fotoDeCiudadControlador.ocultar();
         pistaControlador.ocultar();
-        buscarLadronesControlador.mostrar(listarLadronesControlador);
+        buscarLadronesControlador.mostrar(listarLadronesControlador,LabelTiempo);
+
     }
 
 

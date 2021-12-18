@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -58,11 +59,10 @@ public class BuscarLadronesController implements Initializable {
     public void ocultar(){
         this.PanelLadrones.setVisible(false);
     }
-    public void mostrar(ListaDeLadronesController listarLadronesControlador){
-
+    public void mostrar(ListaDeLadronesController listarLadronesControlador, Label labelTiempo){
         this.PanelLadrones.setVisible(true);
-        listarLadronesControlador.mostrar();
         this.listaDeLadronesController = listarLadronesControlador;
+        labelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
     public void enviarDatos(){

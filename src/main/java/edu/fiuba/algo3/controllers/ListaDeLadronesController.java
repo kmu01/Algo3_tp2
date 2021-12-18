@@ -20,7 +20,12 @@ public class ListaDeLadronesController implements Initializable {
     }
 
     public void mostrarLista(List<Ladron> ladrones){
-
+        this.mostrar();
+        String textoAMostrar = "";
+        for (Ladron ladron:ladrones) {
+            textoAMostrar += ladron.nombreLadron()+"\n";
+        }
+        LabelLadrones.setText(textoAMostrar);
     }
 
     public void ocultar() {

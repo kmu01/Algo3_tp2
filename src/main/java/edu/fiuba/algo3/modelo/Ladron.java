@@ -38,6 +38,10 @@ public class Ladron{
 
     }
 
+    public String nombreLadron() {
+        return this.nombre;
+    }
+
     //todo borrar cuando esten las colas
     /*public boolean esAtrapado(Ciudad ciudadActual, int cantidadDePaisesVisitados) {
         return ((ciudadActual.esCiudad(this.ciudadFinal)) && (this.objetoRobado.verificarLimitePaises(cantidadDePaisesVisitados)));
