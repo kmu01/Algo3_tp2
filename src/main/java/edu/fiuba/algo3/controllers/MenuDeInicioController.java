@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.App;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -20,4 +21,6 @@ public class MenuDeInicioController implements Initializable {
 
     }
     public void salir(){ App.devolverEscena().close(); }
+
+    public void playMusic() { AudioController.getInstance().play(); }
 }

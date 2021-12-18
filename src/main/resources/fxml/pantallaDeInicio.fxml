@@ -20,6 +20,11 @@
                 <Font size="28.0" />
             </font>
         </Label>
-        <Button layoutX="327.0" layoutY="296.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
+        <Button layoutX="330.0" layoutY="290.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="20.0" prefWidth="35.0" text="⏸▶">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Button>
+        <Button layoutX="327.0" layoutY="320.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
     </children>
 </AnchorPane>

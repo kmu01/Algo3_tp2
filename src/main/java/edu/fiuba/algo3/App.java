@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.controllers.AudioController;
 import edu.fiuba.algo3.controllers.CargadorDeEscena;
 import javafx.application.Application;
 import javafx.application.HostServices;
@@ -30,6 +31,7 @@ public class App extends Application {
     public void start(Stage stage){
         App.stage = stage;
         CargadorDeEscena.cargarEscena("/fxml/pantallaDeInicio.fxml",stage,"AlgoThief");
+        AudioController.getInstance();
     }
 
     public static Stage devolverEscena(){
