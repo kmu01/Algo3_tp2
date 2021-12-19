@@ -42,29 +42,6 @@ public class App extends Application {
         launch();
     }
 
-    public void abrirReglas() throws URISyntaxException {
-        URL url = getClass().getResource("");
-        assert url != null;
 
-        File file = new File(url.toURI());
-        HostServices hostServices = App.getInstance().getHostServices();
-        hostServices.showDocument(file.getAbsolutePath());
-    }
-
-    public static void acercaDe(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Acerca de...");
-        alert.setHeaderText("Acerca de la aplicacion");
-        String mensaje = "AlgoThief es un juego inspirado en 'Where in the world is Carmen Sandiego?' y desarrollado en Java, basandose en el conocimiento adquirido a lo largo" +
-                " del segundo cuatrimestre de 2021 de Algoritmos y Programación III\n\n" +
-                " Integrantes: \n" +
-                "\t\t\t> Federico Camurri \n" +
-                "\t\t\t> Martín Reimundo \n" +
-                "\t\t\t> Nicolás Martino\n" +
-                "\t\t\t> Carlos Orqueda\n" +
-                "\t\t\t> Enrique Morici\n";
-        alert.setContentText(mensaje);
-        alert.show();
-    }
 
 }
