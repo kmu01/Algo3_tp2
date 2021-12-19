@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.entrega2;
 import edu.fiuba.algo3.modelo.*;
 
 import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
+import edu.fiuba.algo3.modelo.excepciones.JuegoGanadoException;
+import edu.fiuba.algo3.modelo.excepciones.NoTieneOrdenDeArrestoException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
@@ -133,7 +135,7 @@ public class CasosDeUsoTests {
 
         assertEquals(Arrays.asList(nicokai,jorgeCaicedo),ladronesObtenidos);
 
-        assertFalse(policia.atrapar());
+        assertThrows(NoTieneOrdenDeArrestoException.class,()->{policia.comprobarVictoria(new RutaLadron());});
 
     }
 
@@ -141,7 +143,9 @@ public class CasosDeUsoTests {
     public void investigacionCompleta(){
 
         Ciudad lima = new Ciudad("Lima");
-        lima.agregarPista(new Pista(new Dificultad("Medio"), "Pista Media", "banco"));
+        Pista pista = new Pista(new Dificultad("Medio"), "Pista Media", "banco");
+        pista.asignarPistaDeLadron(".Tiene el pelo rubio");
+        lima.agregarPista(pista);
         mapa.agregarCiudad(lima,70,20);
         ciudades.put("Lima", lima);
 
@@ -161,7 +165,7 @@ public class CasosDeUsoTests {
         policia.buscarLadrones(comisaria);
 
 
-        assertTrue(policia.atrapar());
-        assertEquals("Pista Media", pistaObtenidaDelBanco.descripcion());
+        assertThrows(JuegoGanadoException.class,()->{policia.comprobarVictoria(new RutaLadron());});
+        assertEquals("Pista Media .Tiene el pelo rubio", pistaObtenidaDelBanco.descripcion());
     }
 }

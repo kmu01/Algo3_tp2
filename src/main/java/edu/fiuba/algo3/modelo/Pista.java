@@ -15,6 +15,7 @@ public class Pista {
         this.dificultad = dificultad;
         this.descripcion = descripcion;
         this.lugarCorrespondiente = lugarCorrespondiente;
+        this.descripcionLadron = "";
     }
 
     public boolean esPista(Dificultad dificultad, String nombreLugar){
@@ -38,8 +39,9 @@ public class Pista {
         return this;
     }
 
-    public String descripcion (){
-        return this.descripcion;
+    public String descripcion(){
+
+        return (this.descripcion +" "+ this.descripcionLadron);
     }
 
 }

@@ -4,6 +4,9 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Pista;
+import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
+import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -117,13 +120,22 @@ public class TableroController implements Initializable{
     }
 
     public void mostrarPista(Button boton){
-        Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
-        PanelAcciones.setVisible(false);
-        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual().ciudad());
-        fotoDeCiudadControlador.mostrar();
-        pistaControlador.mostrar();
-        buscarLadronesControlador.ocultar();
-        pistaControlador.mostrarPista(pista);
+        try {
+            Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
+            PanelAcciones.setVisible(false);
+            fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual().ciudad());
+            fotoDeCiudadControlador.mostrar();
+            pistaControlador.mostrar();
+            buscarLadronesControlador.ocultar();
+            pistaControlador.mostrarPista(pista);
+        }catch(HasSidoAcuchilladoException e){
+
+        }catch (HasSidoBaleadoException e){
+
+        }catch(TiempoTerminadoException e){
+
+        }
+
     }
     public void viajar(){
         PanelAcciones.setVisible(true);
@@ -134,6 +146,8 @@ public class TableroController implements Initializable{
         BotonViajar1.setText(destinos.get(0));
         BotonViajar2.setText(destinos.get(1));
         BotonViajar3.setText(destinos.get(2));
+
+
     }
 
     public void viajarDestino1(){
@@ -141,7 +155,11 @@ public class TableroController implements Initializable{
     }
 
     public void volar(Button botonSeleccionado){
-        Juego.obtenerInstancia().viajar(botonSeleccionado.getText());
+        try {
+            Juego.obtenerInstancia().viajar(botonSeleccionado.getText());
+        }catch(TiempoTerminadoException e){
+
+        }
         listarLadronesControlador.ocultar();
         PanelAcciones.setVisible(false);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());

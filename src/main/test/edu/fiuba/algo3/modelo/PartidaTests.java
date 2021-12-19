@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
+import edu.fiuba.algo3.modelo.excepciones.NoTieneOrdenDeArrestoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,8 @@ public class PartidaTests
         when(mockDado.nextInt(3)).thenReturn(1);
         when(mockDado.nextInt(7)).thenReturn(1);
         when(mockDado.nextInt(11)).thenReturn(2);
+        when(mockDado.nextInt(10)).thenReturn(1);
+        when(mockDado.nextInt(4)).thenReturn(1);
     }
 
     @Test
@@ -33,37 +36,15 @@ public class PartidaTests
             partida.nuevoCaso(3);
             Pista pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Intercambió sus divisas al Yuan", pista.descripcion());
+            assertEquals("Intercambió sus divisas al Yuan Es pelirrojo", pista.descripcion());
 
             pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Intercambió sus divisas al Yuan", pista.descripcion());
+            assertEquals("Intercambió sus divisas al Yuan Es pelirrojo", pista.descripcion());
 
             partida.viajar("Ciudad de Mexico");
 
-            assertEquals("Monday, 17 Hs.",partida.hora());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Test
-
-    public void buscoSospechososYMeDevuelveExcepcion(){
-
-        try {
-
-            Partida partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
-            partida.nuevoCaso(6);
-            partida.anotarCualidad("Femenino");
-            partida.anotarCualidad("Marron");
-            partida.buscarLadrones();
-
-            Partida finalPartida = partida;
-            assertThrows(TiempoTerminadoException.class,()->{
-                finalPartida.entrarEdificio("banco");});
+            assertEquals("Tuesday, 01 Hs.",partida.hora());
 
         } catch (IOException e) {
             e.printStackTrace();

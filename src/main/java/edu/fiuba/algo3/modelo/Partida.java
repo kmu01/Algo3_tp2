@@ -41,7 +41,6 @@ public class Partida {
         cargarObjetosRobados();
         cargarMapa();
 
-
         this.comisaria = new Comisaria(this.ladrones);
 
     }
@@ -64,7 +63,7 @@ public class Partida {
     }
 
     private void cargarPistasLugares() throws IOException {
-        this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades, this.pistasDelLadron);
+        this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades, this.pistasDelLadron,this.dado);
     }
 
     private List<Ladron> cargarLadrones() throws IOException {
@@ -158,6 +157,7 @@ public class Partida {
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
+        this.policia.comprobarVictoria(this.rutaLadron);
         return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado,rutaLadron.obtenerCiudadSiguiente()));
     }
 

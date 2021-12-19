@@ -3,6 +3,7 @@ package edu.fiuba.algo3.controllers;
 import edu.fiuba.algo3.modelo.Cualidad;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Ladron;
+import edu.fiuba.algo3.modelo.excepciones.SeEmitioOrdenDeArrestoException;
 import javafx.fxml.Initializable;
 
 import java.io.FileNotFoundException;
@@ -76,7 +77,12 @@ public class BuscarLadronesController implements Initializable {
                 Juego.obtenerInstancia().anotarCualidad(atributo);
             }
         }
-        List<Ladron> sospechosos = Juego.obtenerInstancia().buscarLadrones();
-        listaDeLadronesController.mostrarLista(sospechosos);
+        try {
+            List<Ladron> sospechosos = Juego.obtenerInstancia().buscarLadrones();
+            listaDeLadronesController.mostrarLista(sospechosos);
+        }catch(SeEmitioOrdenDeArrestoException e){
+
+        }
+
     }
 }

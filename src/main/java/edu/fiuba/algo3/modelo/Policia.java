@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
-import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
-import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
@@ -18,29 +16,28 @@ public class Policia {
     private OrdenDeArresto ordenDeArresto;
 
     public Policia(Sospechoso sospechoso, GradoDePolicia grado){
-
         this.grado = grado;
         this.sospechoso = sospechoso;
         this.cantidadDeVecesAcuchillado = 0;
         this.ordenDeArresto = new OrdenSinEmitir();
-
     }
 
     public void anotarCualidad(Cualidad cualidad){
         this.sospechoso.anotarCualidad(cualidad);
     }
 
+    public void comprobarVictoria(RutaLadron rutaLadron){
+        if(this.ordenDeArresto.emitida() && rutaLadron.estamosEnUltimaCiudad()){
+            throw new JuegoGanadoException();
+        }else if ((!this.ordenDeArresto.emitida()) && rutaLadron.estamosEnUltimaCiudad()){
+            throw new NoTieneOrdenDeArrestoException();
+        }
+    }
+
     public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado,Ciudad ciudadSiguiente) {
-        if(this.atrapar()){
-            throw new TiempoTerminadoException();
-        }
         this.dormir(cronometro);
-        int numero = dado.nextInt(11);
-        if (numero == 5){
-            this.recibirCuchillazo(cronometro);
-        }else if(numero == 8){
-            this.recibirHeridaDeBala(cronometro);
-        }
+        this.recibirCuchillazo(cronometro,dado);
+        this.recibirHeridaDeBala(cronometro,dado);
         return ciudadSiguiente.visitar(lugarSeleccionado, this.grado, cronometro,dado);
     }
     public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro, Ciudad ciudadActual) {
@@ -50,34 +47,31 @@ public class Policia {
 
     }
 
-    private void recibirCuchillazo(Cronometro cronometro) {
-
+    private void recibirCuchillazo(Cronometro cronometro,Random dado) {
+        int numero = dado.nextInt(11);
+        if(numero == 5){
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
-        throw new HasSidoAcuchilladoException();
+        throw new HasSidoAcuchilladoException();}
     }
 
-    private void recibirHeridaDeBala(Cronometro cronometro) {
+    private void recibirHeridaDeBala(Cronometro cronometro,Random dado) {
+        int numero = dado.nextInt(11);
+        if(numero == 8){
         this.grado.calcularTiempoDeBalazo(cronometro);
-        throw new HasSidoBaleadoException();
+        throw new HasSidoBaleadoException();}
     }
 
     public void dormir(Cronometro cronometro) {
-
         this.grado.calcularTiempoDurmiendo(cronometro);
-
     }
 
     public List<Ladron> buscarLadrones(Comisaria comisaria) {
         List<Ladron> ladrones = comisaria.buscarLadrones(this.sospechoso);
-        this.ordenDeArresto = this.emitirOrden(ladrones);
+        this.emitirOrden(ladrones);
         return ladrones;
     }
 
-    public boolean atrapar() {
-        return (this.ordenDeArresto.emitida());
-    }
-
-    private OrdenDeArresto emitirOrden(List<Ladron> ladrones) {
-        return ordenDeArresto.emitir(ladrones);
+    private void emitirOrden(List<Ladron> ladrones) {
+        this.ordenDeArresto = ordenDeArresto.emitir(ladrones);
     }
 }

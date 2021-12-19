@@ -67,7 +67,7 @@ public class CasosDeUsoTests {
             e.printStackTrace();
         }
 
-        assertEquals("Se despliega la pista de banco", pista.descripcion());
+        assertEquals("Se despliega la pista de banco ", pista.descripcion());
         assertEquals(1,tiempo.tiempoTranscurrido());
 
     }
@@ -85,7 +85,7 @@ public class CasosDeUsoTests {
             e.printStackTrace();
         }
 
-        assertEquals("Se despliega la pista de banco", pistaPrimerBanco.descripcion());
+        assertEquals("Se despliega la pista de banco ", pistaPrimerBanco.descripcion());
         Pista pistaSegundoBanco = null;
 
         try {
@@ -93,7 +93,7 @@ public class CasosDeUsoTests {
         } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
-        assertEquals("Se despliega la pista de banco", pistaSegundoBanco.descripcion());
+        assertEquals("Se despliega la pista de banco ", pistaSegundoBanco.descripcion());
         assertEquals(3,tiempo.tiempoTranscurrido());
         Pista pistaBliblioteca = null;
         try {
@@ -102,7 +102,7 @@ public class CasosDeUsoTests {
             e.printStackTrace();
         }
 
-        assertEquals("Se despliega la pista de biblioteca", pistaBliblioteca.descripcion());
+        assertEquals("Se despliega la pista de biblioteca ", pistaBliblioteca.descripcion());
         assertEquals(4,tiempo.tiempoTranscurrido());
 
     }

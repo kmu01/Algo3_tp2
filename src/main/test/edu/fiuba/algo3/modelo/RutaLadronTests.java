@@ -61,7 +61,7 @@ public class RutaLadronTests {
         when(mockDado.nextInt(2)).thenReturn(0);
         ruta.establecerRutaLadron(objetoRobado,nombresDeCiudades,ciudades,mockDado);
         ruta.verificarSiEligioElDestinoCorrecto(ciudades,"Berlin");
-        assertEquals(Arrays.asList("Kansas","Berlin"),ruta.verificarDestinos(destinos,mockDado));
+        assertEquals(Arrays.asList("Kansas","Buenos Aires"),ruta.verificarDestinos(destinos,mockDado));
 
     }
 

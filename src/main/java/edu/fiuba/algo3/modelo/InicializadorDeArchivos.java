@@ -92,7 +92,7 @@ public class InicializadorDeArchivos {
         return mapa;
     }
 
-    public Map<String,Ciudad> cargarPistasLugares(Map<String, Ciudad> ciudades, List<String> pistasDelLadron) throws IOException {
+    public Map<String,Ciudad> cargarPistasLugares(Map<String, Ciudad> ciudades, List<String> pistasDelLadron,Random dado) throws IOException {
 
         Reader in = new FileReader(RUTA_PISTAS_LUGARES);
         Iterable<CSVRecord> texto = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(in);
@@ -103,7 +103,7 @@ public class InicializadorDeArchivos {
             String lugar = linea.get("Lugar");
 
             Pista pista = new Pista(new Dificultad(dificultad), descripcion, lugar);
-            pista.asignarPistaDeLadron(pistasDelLadron.get((new Random()).nextInt(pistasDelLadron.size()-1)));
+            pista.asignarPistaDeLadron(pistasDelLadron.get(dado.nextInt(pistasDelLadron.size()-1)));
             Ciudad ciudadActual = ciudades.get(ciudad);
             ciudadActual.agregarPista(pista);
             ciudadActual.agregarLugar(lugar);

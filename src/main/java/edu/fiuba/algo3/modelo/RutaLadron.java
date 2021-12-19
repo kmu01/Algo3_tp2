@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RutaLadron {
     private Queue<Ciudad> rutaLadron;
@@ -42,14 +43,18 @@ public class RutaLadron {
             this.ciudadActual = this.rutaLadron.poll();
             this.ciudadSiguiente = this.rutaLadron.poll();
         }
+        // elegiste la correcta
         if ((ciudades.get(ciudadSeleccionada) == this.ciudadSiguiente)){
+            // si la pila no esta vacia(osea tengo que volver porque me equivoque)
             if(!destinosEquivocados.isEmpty()){
-                destinosEquivocados.pop();
+                this.ciudadSiguiente = ciudades.get(destinosEquivocados.pop());
+            }else{
+                this.ciudadSiguiente = this.rutaLadron.poll();
             }
             this.ciudadActual = ciudades.get(ciudadSeleccionada);
-            this.ciudadSiguiente = this.rutaLadron.poll();
+
         }else{
-            this.destinosEquivocados.add(this.ciudadActual.ciudad());
+            this.destinosEquivocados.add(this.ciudadSiguiente.ciudad());
             // ciudadSiguiente vuelve a la ciudadAnterior
             this.ciudadSiguiente = this.ciudadActual;
             this.ciudadSiguiente.setearPistasFalsas();
@@ -59,12 +64,14 @@ public class RutaLadron {
 
     public List<String> verificarDestinos(List<String> destinos,Random dado){
         int eliminarOpcionAlAzar = dado.nextInt(destinos.size());
-        destinos.remove(eliminarOpcionAlAzar);
-        destinos.add(ciudadSiguiente.ciudad());
-        if (!destinosEquivocados.isEmpty() && (!destinos.contains(destinosEquivocados.peek()))){
+        if(!destinos.stream().anyMatch(destino->destino.equals(this.ciudadSiguiente.ciudad()))){
             destinos.remove(eliminarOpcionAlAzar);
-            destinos.add(destinosEquivocados.pop());
+            destinos.add(ciudadSiguiente.ciudad());
         }
         return destinos;
+    }
+
+    public boolean estamosEnUltimaCiudad() {
+        return (this.rutaLadron.isEmpty());
     }
 }
