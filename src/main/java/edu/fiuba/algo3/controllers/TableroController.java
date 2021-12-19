@@ -2,9 +2,7 @@ package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pista;
-import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
-import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
-import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,7 +36,7 @@ public class TableroController implements Initializable{
     private FotoDeCiudadController fotoDeCiudadControlador;
     private BuscarLadronesController buscarLadronesControlador;
     private ListaDeLadronesController listarLadronesControlador;
-    private HerirDeArmaController heridaPorArmaControlador;
+    private ExceptionController exceptionControlador;
     //todo una forma de hacer lo de la lista ladrones es iniciar el controlador como hice con la foto de ciudad, y mandarselo por
     // parametro en mostrar() de BuscarLadronesController, y cuando apreten buscar en el boton de busqueda de ladrones
     // simplemente este le diga a el controlador de la lista que se muestre.
@@ -127,25 +125,48 @@ public class TableroController implements Initializable{
             pistaControlador.mostrar();
             buscarLadronesControlador.ocultar();
             pistaControlador.mostrarPista(pista);
-        }catch(HasSidoAcuchilladoException e){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/heridaDeArma.fxml"));
+        } catch (HasSidoAcuchilladoException e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
             Parent mainNode = loader.load();
-            heridaPorArmaControlador = loader.getController();
+            exceptionControlador = loader.getController();
             Pane seccion = new Pane(mainNode);
             GridPanePrincipal.add(seccion, 0, 0);
-            heridaPorArmaControlador.mostrarDanio(e.descripcion());
+            exceptionControlador.mostrar(e.descripcion(), e.imagen());
             PanelAcciones.setVisible(false);
-        }catch (HasSidoBaleadoException e){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/heridaDeArma.fxml"));
+        } catch (HasSidoBaleadoException e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
             Parent mainNode = loader.load();
-            heridaPorArmaControlador = loader.getController();
+            exceptionControlador = loader.getController();
             Pane seccion = new Pane(mainNode);
             GridPanePrincipal.add(seccion, 0, 0);
-            heridaPorArmaControlador.mostrarDanio(e.descripcion());
+            exceptionControlador.mostrar(e.descripcion(), e.imagen());
             PanelAcciones.setVisible(false);
-        }catch(TiempoTerminadoException e){
-
+        } catch (TiempoTerminadoException e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
+            Parent mainNode = loader.load();
+            exceptionControlador = loader.getController();
+            Pane seccion = new Pane(mainNode);
+            GridPanePrincipal.add(seccion, 0, 0);
+            exceptionControlador.mostrar(e.descripcion(), e.imagen());
+            PanelAcciones.setVisible(false);
+        } catch (JuegoGanadoException e) {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
+             Parent mainNode = loader.load();
+             exceptionControlador = loader.getController();
+             Pane seccion = new Pane(mainNode);
+             GridPanePrincipal.add(seccion, 0, 0);
+             exceptionControlador.mostrar(e.descripcion(), e.imagen());
+             PanelAcciones.setVisible(false);
+        } catch (NoTieneOrdenDeArrestoException e){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
+            Parent mainNode = loader.load();
+            exceptionControlador = loader.getController();
+            Pane seccion = new Pane(mainNode);
+            GridPanePrincipal.add(seccion, 0, 0);
+            exceptionControlador.mostrar(e.descripcion(), e.imagen());
+            PanelAcciones.setVisible(false);
         }
+
 
     }
     public void viajar(){

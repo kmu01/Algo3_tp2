@@ -6,24 +6,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HerirDeArmaController implements Initializable {
-    @FXML private Label LabelAvisoDeHerida;
-    /*@FXML private Button botonAceptar;*/
+public class ExceptionController implements Initializable {
+    @FXML private Label LabelAviso;
+    @FXML private ImageView ImagenAviso;
+    private String URL_AVISOS = "file:src/main/resources/fotos/avisos/";
+    private Image img;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    public void mostrarDanio(String descripcion) {
-        this.LabelAvisoDeHerida.setText(descripcion);
+    public void mostrar(String descripcion, Image aviso) {
+        this.LabelAviso.setText(descripcion);
+        ImagenAviso.setImage(aviso);
     }
-
     public void aceptar() {
         CargadorDeEscena.cargarEscena("/fxml/mostrarTablero.fxml", App.devolverEscena(),"AlgoThief");
     }
