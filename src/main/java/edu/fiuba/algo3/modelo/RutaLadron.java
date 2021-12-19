@@ -24,8 +24,8 @@ public class RutaLadron {
         return this.rutaLadron;
     }
 
-    public String obtenerCiudadSiguiente(){
-        return this.ciudadSiguiente.ciudad();
+    public Ciudad obtenerCiudadSiguiente(){
+        return this.ciudadSiguiente;
     }
 
     public String obtenerCiudadActual(){

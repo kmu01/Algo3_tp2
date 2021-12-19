@@ -64,15 +64,11 @@ public class Partida {
     }
 
     private void cargarPistasLugares() throws IOException {
-
         this.ciudades = this.inicializadorDeArchivos.cargarPistasLugares(this.ciudades, this.pistasDelLadron);
-
     }
 
     private List<Ladron> cargarLadrones() throws IOException {
-
         return this.inicializadorDeArchivos.cargarLadrones();
-
     }
 
     private void cargarCiudades() throws IOException {
@@ -164,20 +160,7 @@ public class Partida {
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
-
-        if(this.policia.atrapar()){
-            throw new TiempoTerminadoException();
-        }
-        this.policia.dormir(new Cronometro(this.tiempo));
-        Pista pistaObtenida = null;
-        int numero = this.dado.nextInt(11);
-        if (numero == 5){
-            this.policia.recibirCuchillazo(new Cronometro(this.tiempo));
-        }else if(numero == 8){
-            this.policia.recibirHeridaDeBala(new Cronometro(this.tiempo));
-        }
-        pistaObtenida = (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado));
-        return pistaObtenida;
+        return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado,rutaLadron.obtenerCiudadSiguiente());;
     }
 
     public void nuevoCaso(int cantidadDeArrestos) throws IOException {

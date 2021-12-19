@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
+import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
+import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
@@ -29,8 +32,18 @@ public class Policia {
         this.sospechoso.anotarCualidad(cualidad);
     }
 
-    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado) {
-        return this.ciudadActual.visitar(lugarSeleccionado, this.grado, cronometro,dado);
+    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado,Ciudad ciudadSiguiente) {
+        if(this.atrapar()){
+            throw new TiempoTerminadoException();
+        }
+        this.dormir(cronometro);
+        int numero = dado.nextInt(11);
+        if (numero == 5){
+            this.recibirCuchillazo(cronometro);
+        }else if(numero == 8){
+            this.recibirHeridaDeBala(cronometro);
+        }
+        return ciudadSiguiente.visitar(lugarSeleccionado, this.grado, cronometro,dado);
     }
     public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) {
 
@@ -40,17 +53,19 @@ public class Policia {
 
     }
 
-    public void recibirCuchillazo(Cronometro cronometro) {
+    private void recibirCuchillazo(Cronometro cronometro) {
 
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
+        throw new HasSidoAcuchilladoException();
     }
 
     public Ciudad obtenerCiudadActual(){
         return this.ciudadActual;
     }
 
-    public void recibirHeridaDeBala(Cronometro cronometro) {
+    private void recibirHeridaDeBala(Cronometro cronometro) {
         this.grado.calcularTiempoDeBalazo(cronometro);
+        throw new HasSidoBaleadoException();
     }
 
     public void dormir(Cronometro cronometro) {
