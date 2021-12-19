@@ -133,9 +133,16 @@ public class TableroController implements Initializable{
             heridaPorArmaControlador = loader.getController();
             Pane seccion = new Pane(mainNode);
             GridPanePrincipal.add(seccion, 0, 0);
-            heridaPorArmaControlador.mostrar(e.descripcion());
+            heridaPorArmaControlador.mostrarDanio(e.descripcion());
+            PanelAcciones.setVisible(false);
         }catch (HasSidoBaleadoException e){
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/heridaDeArma.fxml"));
+            Parent mainNode = loader.load();
+            heridaPorArmaControlador = loader.getController();
+            Pane seccion = new Pane(mainNode);
+            GridPanePrincipal.add(seccion, 0, 0);
+            heridaPorArmaControlador.mostrarDanio(e.descripcion());
+            PanelAcciones.setVisible(false);
         }catch(TiempoTerminadoException e){
 
         }

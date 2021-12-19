@@ -4,6 +4,6 @@ public class HasSidoAcuchilladoException extends RuntimeException {
     private static final String descripcion = "Has sido acuchillado";
 
     public String descripcion() {
-        return descripcion;
+        return this.descripcion;
     }
 }

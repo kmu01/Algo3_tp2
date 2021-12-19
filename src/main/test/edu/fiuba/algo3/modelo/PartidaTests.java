@@ -36,11 +36,11 @@ public class PartidaTests
             partida.nuevoCaso(3);
             Pista pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Intercambió sus divisas al Yuan Es pelirrojo", pista.descripcion());
+            assertEquals("Intercambió sus divisas al Yuan. Es pelirrojo", pista.descripcion());
 
             pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Intercambió sus divisas al Yuan Es pelirrojo", pista.descripcion());
+            assertEquals("Intercambió sus divisas al Yuan. Es pelirrojo", pista.descripcion());
 
             partida.viajar("Ciudad de Mexico");
 
