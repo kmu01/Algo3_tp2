@@ -9,6 +9,7 @@ public class RutaLadron {
     private Stack<String> destinosEquivocados;
     private Ciudad ciudadActual;
     private Ciudad ciudadSiguiente;
+
     public RutaLadron(){
         this.rutaLadron = new LinkedList<>();
         this.destinosEquivocados = new Stack<>();
@@ -28,9 +29,10 @@ public class RutaLadron {
         return this.ciudadSiguiente;
     }
 
-    public String obtenerCiudadActual(){
-        return this.ciudadActual.ciudad();
+    public Ciudad obtenerCiudadActual(){
+        return this.ciudadActual;
     }
+
     public List<String> obtenerDestinosEquivocados(){
         return this.destinosEquivocados;
     }
@@ -47,7 +49,7 @@ public class RutaLadron {
             this.ciudadActual = ciudades.get(ciudadSeleccionada);
             this.ciudadSiguiente = this.rutaLadron.poll();
         }else{
-            this.destinosEquivocados.add(ciudadSeleccionada);
+            this.destinosEquivocados.add(this.ciudadActual.ciudad());
             // ciudadSiguiente vuelve a la ciudadAnterior
             this.ciudadSiguiente = this.ciudadActual;
             this.ciudadSiguiente.setearPistasFalsas();
@@ -56,10 +58,12 @@ public class RutaLadron {
     }
 
     public List<String> verificarDestinos(List<String> destinos,Random dado){
-        if (!destinosEquivocados.isEmpty()){
-            int eliminarOpcionAlAzar = dado.nextInt(destinos.size());
-            destinos.add(destinosEquivocados.peek());
+        int eliminarOpcionAlAzar = dado.nextInt(destinos.size());
+        destinos.remove(eliminarOpcionAlAzar);
+        destinos.add(ciudadSiguiente.ciudad());
+        if (!destinosEquivocados.isEmpty() && (!destinos.contains(destinosEquivocados.peek()))){
             destinos.remove(eliminarOpcionAlAzar);
+            destinos.add(destinosEquivocados.pop());
         }
         return destinos;
     }

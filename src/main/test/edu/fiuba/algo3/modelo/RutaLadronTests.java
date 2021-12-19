@@ -43,16 +43,16 @@ public class RutaLadronTests {
     public void crearRutaDeLadron(){
         RutaLadron ruta = new RutaLadron();
         ruta.establecerRutaLadron(objetoRobado,nombresDeCiudades,ciudades,mockDado);
-        assertEquals("Buenos Aires",ruta.obtenerCiudadActual());
-        assertEquals("Rio",ruta.obtenerCiudadSiguiente());
+        assertEquals("Buenos Aires",ruta.obtenerCiudadActual().ciudad());
+        assertEquals("Rio",ruta.obtenerCiudadSiguiente().ciudad());
     }
     @Test
     public void crearRutaDeLadronConCiudadesDistintas(){
         RutaLadron ruta = new RutaLadron();
         when(mockDado.nextInt(nombresDeCiudades.size()-1)).thenReturn(1);
         ruta.establecerRutaLadron(objetoRobado,nombresDeCiudades,ciudades,mockDado);
-        assertEquals("Buenos Aires",ruta.obtenerCiudadActual());
-        assertEquals("Oslo",ruta.obtenerCiudadSiguiente());
+        assertEquals("Buenos Aires",ruta.obtenerCiudadActual().ciudad());
+        assertEquals("Oslo",ruta.obtenerCiudadSiguiente().ciudad());
 
     }
     @Test

@@ -28,7 +28,7 @@ public class ObjetoComun implements ObjetoRobado{
 
     @Override
     public Policia crearPoliciaConCiudadInicial(GradoDePolicia grado){
-        return (new Policia(new Sospechoso(),grado,this.ciudad));
+        return (new Policia(new Sospechoso(),grado));
     }
     @Override
     public Queue<Ciudad> setearRutaLadron(List<String> nombresDeCiudades, Map<String, Ciudad> ciudades, Random dado, Queue<Ciudad> rutaLadron) {

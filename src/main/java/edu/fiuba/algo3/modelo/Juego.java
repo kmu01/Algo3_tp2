@@ -47,7 +47,7 @@ public class Juego {
         return this.partida.getListaDestinos();
     }
 
-    public String getCiudadActual() {
+    public Ciudad getCiudadActual() {
         return this.partida.obtenerCiudadActual();
     }
 

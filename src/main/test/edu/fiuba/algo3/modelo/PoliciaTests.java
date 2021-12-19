@@ -1,20 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
 import edu.fiuba.algo3.modelo.excepciones.NoHayLadronesException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Sargento;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PoliciaTests {
     @Test
     public void creoUnPoliciaConGradoSargentoLeDanUnDisparoYViajaDeMontrealAMexico() throws TiempoTerminadoException {
+        Random dado = mock(Random.class);
         Tiempo tiempo = new Tiempo();
         Cronometro cronometro = new Cronometro(tiempo);
         Mapa mapa = new Mapa();
@@ -23,9 +27,12 @@ public class PoliciaTests {
         mapa.agregarCiudad(actual,20,15);
         mapa.agregarCiudad(destino,7, 25);
 
-        Policia policia = new Policia(new Sospechoso(),new Sargento(),actual);
-        policia.recibirHeridaDeBala(cronometro);
-        policia.viajar(destino,mapa,cronometro);
+        Policia policia = new Policia(new Sospechoso(),new Sargento());
+        when(dado.nextInt(11)).thenReturn(8);
+        assertThrows(HasSidoBaleadoException.class, () -> {
+            policia.entrarEdificio(new Lugar("banco"),cronometro,dado, destino);
+        });
+        policia.viajar(destino,mapa,cronometro, actual);
 
         assertEquals(5,tiempo.tiempoTranscurrido());
     }
@@ -51,7 +58,7 @@ public class PoliciaTests {
         ladrones.add(new Ladron("Diego",cualidadesDiego));
         Comisaria comisaria = new Comisaria(ladrones);
 
-        Policia policia = new Policia(new Sospechoso(),new Sargento(),new  Ciudad("Ciudad de Mexico"));
+        Policia policia = new Policia(new Sospechoso(),new Sargento());
 
         policia.anotarCualidad(new Cualidad("Masculino"));
         policia.anotarCualidad(new Cualidad("Futbol"));
@@ -72,7 +79,7 @@ public class PoliciaTests {
     public void buscaLadronesYDevuelveExcepcion(){
         Comisaria comisaria = new Comisaria(new ArrayList<Ladron>());
 
-        Policia policia = new Policia(new Sospechoso(),new Sargento(),new  Ciudad("Ciudad de Mexico"));
+        Policia policia = new Policia(new Sospechoso(),new Sargento());
         assertThrows(NoHayLadronesException.class,()->{policia.buscarLadrones(comisaria);});
     }
 

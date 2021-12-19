@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.entrega2;
 
 import edu.fiuba.algo3.modelo.*;
 
+import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
@@ -69,9 +70,10 @@ public class CasosDeUsoTests {
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuermePeroNoPuede(){
         Ciudad ciudad = new Ciudad("jamaica");
-        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Detective());
 
-        policia.recibirCuchillazo(cronometro);
+        when(dado.nextInt(11)).thenReturn(5);
+        assertThrows(HasSidoAcuchilladoException.class, () -> policia.entrarEdificio(new Lugar("Banco"), cronometro, dado, ciudadDeMexico));
 
         assertEquals(2, tiempo.tiempoTranscurrido());
         assertEquals("Monday, 09 Hs.", tiempo.tiempoFormateado());
@@ -85,8 +87,8 @@ public class CasosDeUsoTests {
     @Test
     public void investigadorTomaCasoYViajaDeMontrealAMexico(){
 
-        Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
-        policia.viajar(ciudadDeMexico, mapa, cronometro);
+        Policia policia = new Policia(new Sospechoso(), new Investigador());
+        policia.viajar(ciudadDeMexico, mapa, cronometro, montreal);
 
         assertEquals("Monday, 15 Hs.", tiempo.tiempoFormateado());
     }
@@ -103,7 +105,7 @@ public class CasosDeUsoTests {
 
         Comisaria comisaria = new Comisaria(ladrones);
 
-        Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
+        Policia policia = new Policia(new Sospechoso(), new Investigador());
         policia.anotarCualidad(new Cualidad("Femenino"));
 
         assertEquals(Arrays.asList(marcela), policia.buscarLadrones(comisaria));
@@ -123,7 +125,7 @@ public class CasosDeUsoTests {
 
         Comisaria comisaria = new Comisaria(ladrones);
 
-        Policia policia = new Policia(new Sospechoso(), new Investigador(), montreal);
+        Policia policia = new Policia(new Sospechoso(), new Investigador());
         policia.anotarCualidad(new Cualidad("Masculino"));
 
         List<Ladron> ladronesObtenidos = policia.buscarLadrones(comisaria);
@@ -152,9 +154,9 @@ public class CasosDeUsoTests {
 
         Pista pistaObtenidaDelBanco = null;
         Comisaria comisaria = new Comisaria(ladrones);
-        Policia policia = new Policia(new Sospechoso(), new Detective(), lima);
-        pistaObtenidaDelBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, dado);
-        policia.viajar(montreal, mapa, cronometro);
+        Policia policia = new Policia(new Sospechoso(), new Detective());
+        pistaObtenidaDelBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, dado, lima);
+        policia.viajar(montreal, mapa, cronometro,lima);
         policia.anotarCualidad(new Cualidad("Femenino"));
         policia.buscarLadrones(comisaria);
 

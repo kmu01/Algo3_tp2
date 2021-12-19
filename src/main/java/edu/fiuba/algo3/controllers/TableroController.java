@@ -45,7 +45,7 @@ public class TableroController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
-        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual());
+        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual().ciudad());
         try {
             this.cargarPistas();
             this.cargarImagen();
@@ -88,7 +88,7 @@ public class TableroController implements Initializable{
         fotoDeCiudadControlador = loader.getController();
         Pane seccion = new Pane(mainNode);
         GridPanePrincipal.add(seccion, 0, 0);
-        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
+        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual().ciudad());
     }
 
     public void entrarAEdificio(){
@@ -119,7 +119,7 @@ public class TableroController implements Initializable{
     public void mostrarPista(Button boton){
         Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
         PanelAcciones.setVisible(false);
-        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
+        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual().ciudad());
         fotoDeCiudadControlador.mostrar();
         pistaControlador.mostrar();
         buscarLadronesControlador.ocultar();
@@ -145,8 +145,8 @@ public class TableroController implements Initializable{
         listarLadronesControlador.ocultar();
         PanelAcciones.setVisible(false);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
-        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual());
-        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual());
+        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual().ciudad());
+        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual().ciudad());
         fotoDeCiudadControlador.mostrar();
     }
 

@@ -28,7 +28,7 @@ public class ObjetoValioso implements ObjetoRobado {
 
     @Override
     public Policia crearPoliciaConCiudadInicial(GradoDePolicia grado){
-        return (new Policia(new Sospechoso(),grado,this.ciudad));
+        return (new Policia(new Sospechoso(),grado));
     }
 
     @Override

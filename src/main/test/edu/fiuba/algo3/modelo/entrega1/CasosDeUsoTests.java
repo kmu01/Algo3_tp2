@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.entrega1;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
@@ -21,6 +22,7 @@ public class CasosDeUsoTests {
     Ciudad ciudad;
     Tiempo tiempo;
     Cronometro cronometro;
+    Ciudad ciudadSiguiente;
 
     @BeforeEach
     public void setUp(){
@@ -44,7 +46,8 @@ public class CasosDeUsoTests {
         tiempo = new Tiempo();
         cronometro = new Cronometro(tiempo);
 
-        ciudad = new Ciudad("Montreal", pistas);
+        ciudad = new Ciudad("Montreal");
+        ciudadSiguiente = new Ciudad("Ciudad de Mexico", pistas);
 
     }
 
@@ -52,14 +55,14 @@ public class CasosDeUsoTests {
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
         Random mockDado = mock(Random.class);
         when( mockDado.nextInt(3)).thenReturn(1);
-        Policia policia = new Policia(new Sospechoso(), new Investigador(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Investigador());
 
         policia.anotarCualidad(new Cualidad("Femenino"));
 
         Pista pista = null;
 
         try {
-            pista = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
+            pista = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado, ciudadSiguiente);
         } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
@@ -73,11 +76,11 @@ public class CasosDeUsoTests {
     public void elDetectiveComienzaEnMontrealYEntraAUnBancoYUnaBiblioteca() {
         Random mockDado = mock(Random.class);
         when( mockDado.nextInt(3)).thenReturn(1);
-        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Detective());
 
         Pista pistaPrimerBanco = null;
         try {
-            pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
+            pistaPrimerBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, mockDado, ciudadSiguiente);
         } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
@@ -86,7 +89,7 @@ public class CasosDeUsoTests {
         Pista pistaSegundoBanco = null;
 
         try {
-            pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado);
+            pistaSegundoBanco = policia.entrarEdificio(new Lugar("banco"), cronometro,mockDado, ciudadSiguiente);
         } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
@@ -94,7 +97,7 @@ public class CasosDeUsoTests {
         assertEquals(3,tiempo.tiempoTranscurrido());
         Pista pistaBliblioteca = null;
         try {
-            pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro,mockDado);
+            pistaBliblioteca = policia.entrarEdificio(new Lugar("biblioteca"), cronometro,mockDado, ciudadSiguiente);
         } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }
@@ -113,8 +116,8 @@ public class CasosDeUsoTests {
         mapa.agregarCiudad(actual,20,15);
         mapa.agregarCiudad(destino,7, 2.5F);
 
-        Policia policia = new Policia(new Sospechoso(), new Detective(), actual);
-        policia.viajar(destino, mapa, cronometro);
+        Policia policia = new Policia(new Sospechoso(), new Detective());
+        policia.viajar(destino, mapa, cronometro,actual);
 
         assertEquals((1),tiempo.tiempoTranscurrido());
 
@@ -124,38 +127,37 @@ public class CasosDeUsoTests {
     public void visita3VecesAeropuertoY55VecesPuerto() {
         Random mockDado = mock(Random.class);
         when( mockDado.nextInt(3)).thenReturn(1);
-        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
+        Policia policia = new Policia(new Sospechoso(), new Detective());
 
         for(int i = 0; i < 3; i++){
 
             try {
-                policia.entrarEdificio(new Lugar("aeropuerto"), cronometro,mockDado);
+                policia.entrarEdificio(new Lugar("aeropuerto"), cronometro,mockDado, ciudadSiguiente);
             } catch (TiempoTerminadoException e) {
             }
-
-            //assertFalse(tiempo.finalizado());
 
         }
 
         for(int i = 0; i < 55; i++){
             try {
-                policia.entrarEdificio(new Lugar("puerto"), cronometro,mockDado);
+                policia.entrarEdificio(new Lugar("puerto"), cronometro,mockDado, ciudadSiguiente);
             } catch (TiempoTerminadoException e) {
             }
 
 
         }
-
-        //assertTrue(tiempo.finalizado());
 
     }
 
     @Test
     public void elDetectiveEsAcuchilladoYLuegoDuerme(){
 
-        Policia policia = new Policia(new Sospechoso(), new Detective(), ciudad);
+        Random mockDado = mock(Random.class);
+        Policia policia = new Policia(new Sospechoso(), new Detective());
         try {
-            policia.recibirCuchillazo(cronometro);
+            when(mockDado.nextInt(11)).thenReturn(5);
+            assertThrows(HasSidoAcuchilladoException.class, () -> {policia.entrarEdificio(new Lugar("Banco"), cronometro, mockDado,ciudadSiguiente);
+                });
         } catch (TiempoTerminadoException e) {
             e.printStackTrace();
         }

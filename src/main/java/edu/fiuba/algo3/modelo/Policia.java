@@ -14,15 +14,13 @@ public class Policia {
 
     private GradoDePolicia grado;
     private Sospechoso sospechoso;
-    private Ciudad ciudadActual;
     private int cantidadDeVecesAcuchillado;
     private OrdenDeArresto ordenDeArresto;
 
-    public Policia(Sospechoso sospechoso, GradoDePolicia grado,Ciudad ciudadInicial){
+    public Policia(Sospechoso sospechoso, GradoDePolicia grado){
 
         this.grado = grado;
         this.sospechoso = sospechoso;
-        this.ciudadActual = ciudadInicial;
         this.cantidadDeVecesAcuchillado = 0;
         this.ordenDeArresto = new OrdenSinEmitir();
 
@@ -45,11 +43,10 @@ public class Policia {
         }
         return ciudadSiguiente.visitar(lugarSeleccionado, this.grado, cronometro,dado);
     }
-    public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro) {
+    public void viajar(Ciudad ciudadSeleccionada, Mapa mapa, Cronometro cronometro, Ciudad ciudadActual) {
 
-        float distancia = mapa.calcularDistancia(ciudadSeleccionada,this.ciudadActual);
+        float distancia = mapa.calcularDistancia(ciudadSeleccionada, ciudadActual);
         this.grado.calcularTiempoDeViaje(distancia, cronometro);
-        this.ciudadActual = ciudadSeleccionada;
 
     }
 
@@ -57,10 +54,6 @@ public class Policia {
 
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
         throw new HasSidoAcuchilladoException();
-    }
-
-    public Ciudad obtenerCiudadActual(){
-        return this.ciudadActual;
     }
 
     private void recibirHeridaDeBala(Cronometro cronometro) {

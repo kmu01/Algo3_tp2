@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
+import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,36 +16,36 @@ public class PartidaTests
 {
     InicializadorDeArchivos inicializadorDeArchivos;
     Random mockDado;
+
     @BeforeEach
     public void setUp(){
         inicializadorDeArchivos = new InicializadorDeArchivos();
         mockDado = mock(Random.class);
         when(mockDado.nextInt(3)).thenReturn(1);
         when(mockDado.nextInt(7)).thenReturn(1);
+        when(mockDado.nextInt(11)).thenReturn(2);
     }
 
     @Test
     public void creoUnaPartidaYPidoDosPistasLuegoViajaAMexicoYDuerme() throws TiempoTerminadoException {
-        Partida partida = null;
         try {
-            partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
+            Partida partida = new Partida(inicializadorDeArchivos, mockDado, new RutaLadron());
             partida.nuevoCaso(3);
             Pista pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Cambio sus monedas a reales",pista.descripcion());
+            assertEquals("Intercambió sus divisas al Yuan", pista.descripcion());
 
             pista = partida.entrarEdificio("Banco");
 
-            assertEquals("Cambio sus monedas a reales",pista.descripcion());
+            assertEquals("Intercambió sus divisas al Yuan", pista.descripcion());
 
             partida.viajar("Ciudad de Mexico");
 
             assertEquals("Monday, 17 Hs.",partida.hora());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
 
     }
 
@@ -51,10 +53,9 @@ public class PartidaTests
 
     public void buscoSospechososYMeDevuelveExcepcion(){
 
-
         try {
-            Partida partida = null;
-            partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
+
+            Partida partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(6);
             partida.anotarCualidad("Femenino");
             partida.anotarCualidad("Marron");
@@ -63,6 +64,7 @@ public class PartidaTests
             Partida finalPartida = partida;
             assertThrows(TiempoTerminadoException.class,()->{
                 finalPartida.entrarEdificio("banco");});
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,12 +74,11 @@ public class PartidaTests
     @Test
     public void entraAEdificioYEsAcuchillado(){
         when(mockDado.nextInt(11)).thenReturn(5);
-        Partida partida = null;
         try {
-            partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
+            Partida partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(6);
-            partida.entrarEdificio("Bolsa");
-            assertEquals("Monday, 10 Hs.",partida.hora());
+            assertThrows(HasSidoAcuchilladoException.class, () -> partida.entrarEdificio("Bolsa"));
+            assertEquals("Monday, 09 Hs.",partida.hora());
         } catch (IOException e) {
             e.printStackTrace();
         }

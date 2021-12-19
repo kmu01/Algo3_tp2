@@ -128,13 +128,13 @@ public class Partida {
     }
 
     public List<String> getListaDestinos(){
-        List<String> destinos = this.policia.obtenerCiudadActual().getListaDestinos();
+        List<String> destinos = this.rutaLadron.obtenerCiudadActual().getListaDestinos();
         return this.rutaLadron.verificarDestinos(destinos,this.dado);
     }
 
     private void establecerRutaDeLadron(ObjetoRobado objetoRobado){
         this.rutaLadron.establecerRutaLadron(objetoRobado,
-                this.obtenerNombresDeCiudades(this.policia.obtenerCiudadActual()),this.ciudades,this.dado);
+                this.obtenerNombresDeCiudades(this.rutaLadron.obtenerCiudadActual()),this.ciudades,this.dado);
     }
 
     private List<String> obtenerNombresDeCiudades(Ciudad ciudadInicial) {
@@ -147,20 +147,18 @@ public class Partida {
 
     public void viajar(String ciudadSeleccionada){
 
-        this.rutaLadron.verificarSiEligioElDestinoCorrecto(this.ciudades,ciudadSeleccionada);
-
-
         Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
 
-        this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo));
+        this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo), rutaLadron.obtenerCiudadActual());
         this.cantidadDePaisesVisitados++;
+        this.rutaLadron.verificarSiEligioElDestinoCorrecto(this.ciudades,ciudadSeleccionada);
 
         this.policia.dormir(new Cronometro(this.tiempo));
 
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
-        return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado,rutaLadron.obtenerCiudadSiguiente());;
+        return (this.policia.entrarEdificio(new Lugar(lugarSeleccionado), new Cronometro(this.tiempo),this.dado,rutaLadron.obtenerCiudadSiguiente()));
     }
 
     public void nuevoCaso(int cantidadDeArrestos) throws IOException {
@@ -175,10 +173,10 @@ public class Partida {
     }
 
     public List<String> mostrarLugares(){
-        return this.policia.obtenerCiudadActual().getListaLugares();
+        return this.rutaLadron.obtenerCiudadSiguiente().getListaLugares();
     }
 
-    public String obtenerCiudadActual(){return this.rutaLadron.obtenerCiudadActual();}
+    public Ciudad obtenerCiudadActual(){return this.rutaLadron.obtenerCiudadActual();}
 
     public void anotarCualidad(String atributo) {
         Cualidad cualidad = new Cualidad(atributo);
