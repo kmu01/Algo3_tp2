@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controllers;
 
-import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Pista;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

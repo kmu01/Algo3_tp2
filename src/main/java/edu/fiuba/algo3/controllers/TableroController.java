@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.controllers;
 
-import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Pista;
 import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
 import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
@@ -40,6 +38,7 @@ public class TableroController implements Initializable{
     private FotoDeCiudadController fotoDeCiudadControlador;
     private BuscarLadronesController buscarLadronesControlador;
     private ListaDeLadronesController listarLadronesControlador;
+    private HerirDeArmaController heridaPorArmaControlador;
     //todo una forma de hacer lo de la lista ladrones es iniciar el controlador como hice con la foto de ciudad, y mandarselo por
     // parametro en mostrar() de BuscarLadronesController, y cuando apreten buscar en el boton de busqueda de ladrones
     // simplemente este le diga a el controlador de la lista que se muestre.
@@ -106,20 +105,20 @@ public class TableroController implements Initializable{
     }
 
 
-    public void mostrarPistaLugar1() {
+    public void mostrarPistaLugar1() throws IOException {
         this.mostrarPista(BotonLugar1);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
-    public void mostrarPistaLugar2() {
+    public void mostrarPistaLugar2() throws IOException {
         this.mostrarPista(BotonLugar2);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
-    public void mostrarPistaLugar3() {
+    public void mostrarPistaLugar3() throws IOException {
         this.mostrarPista(BotonLugar3);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
-    public void mostrarPista(Button boton){
+    public void mostrarPista(Button boton) throws IOException {
         try {
             Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
             PanelAcciones.setVisible(false);
@@ -129,7 +128,12 @@ public class TableroController implements Initializable{
             buscarLadronesControlador.ocultar();
             pistaControlador.mostrarPista(pista);
         }catch(HasSidoAcuchilladoException e){
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/heridaDeArma.fxml"));
+            Parent mainNode = loader.load();
+            heridaPorArmaControlador = loader.getController();
+            Pane seccion = new Pane(mainNode);
+            GridPanePrincipal.add(seccion, 0, 0);
+            heridaPorArmaControlador.mostrar(e.descripcion());
         }catch (HasSidoBaleadoException e){
 
         }catch(TiempoTerminadoException e){
