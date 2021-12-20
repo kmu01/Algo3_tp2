@@ -4,6 +4,7 @@ import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.excepciones.JuegoException;
 import edu.fiuba.algo3.modelo.excepciones.JuegoGanadoException;
+import edu.fiuba.algo3.modelo.excepciones.NoTieneOrdenDeArrestoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,7 +35,7 @@ public class ExceptionController implements Initializable {
         ImagenAviso.setImage(img);
         this.LabelAviso.setText(descripcion);
         this.PanelAviso.setVisible(true);
-        if ((e.getClass() == TiempoTerminadoException.class || e.getClass() == JuegoGanadoException.class)) {
+        if ((e.getClass() == TiempoTerminadoException.class || e.getClass() == JuegoGanadoException.class || e.getClass() == NoTieneOrdenDeArrestoException.class)) {
             BotonAviso.setOnAction(event -> {
                 Juego.obtenerInstancia().resetear();
                 CargadorDeEscena.cargarEscena("/fxml/pedirCantidadDeArrestos.fxml", App.devolverEscena(),"AlgoThief");
