@@ -25,12 +25,10 @@ interface OrdenDeArresto{
 }
 
 class OrdenEmitida{
-    + emitida() : boolean
-    + emitir(ladrones [Ladron]) : OrdenDeArresto
+
 }
 class OrdenSinEmitir{
-    + emitida() : boolean
-    + emitir(ladrones [Ladron]) : OrdenDeArresto
+
 }
 
 GradoDePolicia <|-- Novato

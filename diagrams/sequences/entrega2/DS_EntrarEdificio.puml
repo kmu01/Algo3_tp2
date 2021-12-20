@@ -1,0 +1,27 @@
+@startuml
+title Método de entrar a un edificio
+actor "Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant ":Ciudad" as Ciudad
+participant ":Lugar" as Lugar
+participant "GradoDePolicia" as Grado
+AlgoThief ->> Policia : entrarEdificio(Lugar, cronometro, dado)
+activate Policia
+    Policia ->> Ciudad : visitar(Lugar, Grado, cronometro, dado)
+    activate Ciudad
+        Ciudad ->> Lugar : visitar(Grado, List<Pista>, cronometro, dado)
+        activate Lugar
+            Lugar ->> Lugar : obtenerPista(Grado, pistas [Pista], dado)
+            activate Lugar
+                Lugar ->> Grado : buscarPista(pistas, nombreLugar, dado)
+                Grado --> Lugar : [pistaObtenida]
+            deactivate Lugar
+            Lugar --> Ciudad : [pistaObtenida]
+        deactivate Lugar
+        Ciudad --> Policia : [pistaObtenida]
+    deactivate Ciudad
+    Policia --> AlgoThief : [pistaObtenida]
+deactivate Policia
+note across: Se decidió realizar este diagrama dado que se usa frecuentemente en los casos de uso
+
+@enduml

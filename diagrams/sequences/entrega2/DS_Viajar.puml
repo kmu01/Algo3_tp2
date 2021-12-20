@@ -1,0 +1,24 @@
+@startuml
+title Método de viaje de un Policía
+actor "Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant ":Mapa" as Mapa
+participant "Grado" as Grado
+participant ":Cronometro" as Cronometro
+participant ":Tiempo" as Tiempo
+AlgoThief ->> Policia : viajar(CiudadDestino, Mapa, Cronometro)
+activate Policia
+    Policia ->> Mapa : calcularDistancia(CiudadDestino, CiudadActual)
+    Mapa --> Policia : [distancia]
+    Policia ->> Grado : calcularTiempoDeViaje(distancia, Cronometro)
+    activate Grado
+        Grado ->> Cronometro : calcularTiempoDeViaje(distancia, tiempoDeViaje)
+        activate Cronometro
+            Cronometro ->> Tiempo : agregarHoras(distancia/tiempoDeViaje)
+        deactivate Cronometro
+    deactivate Grado
+deactivate Policia
+
+note across: Se decidió realizar este diagrama dado que se usa frecuentemente en los casos de uso
+
+@enduml

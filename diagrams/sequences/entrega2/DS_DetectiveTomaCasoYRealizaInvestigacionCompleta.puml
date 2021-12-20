@@ -2,10 +2,7 @@
 title Detective toma un caso y realiza la investigación completa
 
 actor "Jugador" as AlgoThief
-participant "femenino:Cualidad" as Cualidad
 participant ":Policia" as Policia
-participant "Lima:Ciudad" as Ciudad
-participant "Banco:Lugar" as Lugar
 participant ":Detective" as Grado
 participant ":Mapa" as Mapa
 participant ":Cronometro" as Cronometro
@@ -15,35 +12,14 @@ participant "OrdenDeArresto" as Orden
 
 
 AlgoThief ->> Policia : entrarEdificio(Banco, cronometro, dado)
-activate Policia
-    Policia ->> Ciudad : visitar(Banco, Detective, cronometro, dado)
-    activate Ciudad
-        Ciudad ->> Lugar : visitar(Detective, List<Pista>, cronometro, dado)
-        activate Lugar
-            Lugar ->> Lugar : obtenerPistas
-            activate Lugar
-                Lugar ->> Grado : buscarPista
-                Grado --> Lugar : [pistaObtenidaDelBanco]
-            deactivate Lugar
-            Lugar --> Ciudad : [pistaObtenidaDelBanco]
-        deactivate Lugar
-        Ciudad --> Policia : [pistaObtenidaDelBanco]
-    deactivate Ciudad
-    Policia --> AlgoThief : [pistaObtenidaDelBanco]
-deactivate Policia
+note across : La interacción de este método se detalla en otro diagrama aparte
+
+Policia --> AlgoThief : [pistaObtenidaDelBanco]
+
 
 AlgoThief ->> Policia : viajar(Montreal, mapa, cronometro)
-activate Policia
-    Policia ->> Mapa : calcularDistancia(Montreal, Lima)
-    Mapa --> Policia : [distancia]
-    Policia ->> Grado : calcularTiempoDeViaje(distancia, cronometro)
-    activate Grado
-        Grado ->> Cronometro : calcularTiempoDeViaje(distancia, tiempoDeViaje)
-        activate Cronometro
-            Cronometro ->> Tiempo : agregarHoras(distancia/tiempoDeViaje)
-        deactivate Cronometro
-    deactivate Grado
-deactivate Policia
+note across : La interacción de este método se detalla en otro diagrama aparte
+
 AlgoThief ->> Policia : anotarCualidad(femenino)
 activate Policia
     Policia ->> Sospechoso : anotarCualidad(femenino)
@@ -61,7 +37,7 @@ Policia --> AlgoThief : [resultado]
 AlgoThief ->> AlgoThief : assertTrue(resultado)
 AlgoThief ->> AlgoThief : assertEquals(pistaEsperada, pistaObtenidaDelBanco)
 
-note across: "Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino"
+note across: Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino
 
 
 @enduml

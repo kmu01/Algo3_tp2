@@ -18,7 +18,7 @@ note across : La interacción de este método se detalla en otro diagrama aparte
 return[List<Ladron>]
 AlgoThief ->> AlgoThief : assertEquals(listaEsperada, List<Ladron>)
 
-note across: "Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino"
+note across: Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino
 
 
 @enduml

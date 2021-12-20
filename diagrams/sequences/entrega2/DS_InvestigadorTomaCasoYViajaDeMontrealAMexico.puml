@@ -3,22 +3,11 @@ title Investigador toma caso y viaja de Montreal a Mexico
 
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
-participant "mapa:Mapa" as Mapa
-participant ":Investigador" as Grado
-participant "cronometro:Cronometro" as Cronometro
 participant ":Tiempo" as Tiempo
 AlgoThief ->> Policia : viajar(ciudadDeMexico, mapa, cronometro)
-activate Policia
-    Policia ->> Mapa : calcularDistancia(ciudadDeMexico, montreal)
-    Mapa --> Policia : [distancia]
-    Policia ->> Grado : calcularTiempoDeViaje(distancia, cronometro)
-    activate Grado
-        Grado ->> Cronometro : calcularTiempoDeViaje(distancia,tiempoDeViaje)
-        activate Cronometro
-            Cronometro ->> Tiempo : agregarHoras(distancia/tiempoDeViaje)
-        deactivate Cronometro
-    deactivate Grado
-deactivate Policia
+note across : La interacción de este método se detalla en otro diagrama aparte
+
+
 AlgoThief ->> Tiempo : tiempoFormateado()
 return[tiempoRecibido]
 
