@@ -21,7 +21,6 @@ public class CargadorDeEscena {
     public static Parent cargarArchivo(String archivo){
         URL root = App.class.getResource(archivo);
         FXMLLoader loader = new FXMLLoader(root);
-        System.out.println(root);
         Parent mainNode = null;
 
         try{
@@ -39,7 +38,6 @@ public class CargadorDeEscena {
         if(!titulo.isBlank()){
             stage.setTitle(titulo);
         }
-        //stage.getIcons().add(new Image(Objects.requireNonNull(App.class.getResourceAsStream("/images/logoYetem.png"))));
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.sizeToScene();

@@ -104,15 +104,15 @@ public class TableroController implements Initializable{
     }
 
 
-    public void mostrarPistaLugar1() throws IOException {
+    public void mostrarPistaLugar1() {
         this.mostrarPista(BotonLugar1);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
-    public void mostrarPistaLugar2() throws IOException {
+    public void mostrarPistaLugar2() {
         this.mostrarPista(BotonLugar2);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
-    public void mostrarPistaLugar3() throws IOException {
+    public void mostrarPistaLugar3() {
         this.mostrarPista(BotonLugar3);
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
@@ -138,7 +138,7 @@ public class TableroController implements Initializable{
             buscarLadronesControlador.ocultar();
             pistaControlador.mostrarPista(pista);
         } catch (JuegoException e) {
-            exceptionControlador.mostrar(e.descripcion(), e.imagen());
+            exceptionControlador.mostrar(e.descripcion(), e.imagen(), e);
             PanelAcciones.setVisible(false);
 
         }
