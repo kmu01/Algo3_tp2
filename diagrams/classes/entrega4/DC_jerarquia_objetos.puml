@@ -1,0 +1,31 @@
+@startuml
+title Jerarquia de la interfaz "ObjetoRobado"
+interface ObjetoRobado{
+    + rareza() : String
+    + cantidadDePaises() : int
+    + verificarLimitePaises(cantPaisesVisitados) : Ciudad
+    + crearPoliciaConCiudadInicial(grado) : Policia
+    + rutaLadron(nomCiudades[String], ciudades[Ciudad], dado, rutaLadron) : [Ciudad]
+}
+
+class ObjetoComun{
+    + rareza() : String
+    + cantidadDePaises() : int
+    + rutaLadron(nomCiudades[String], ciudades[Ciudad], dado, rutaLadron) : [Ciudad]
+}
+class ObjetoValioso{
+    + rareza() : String
+    + cantidadDePaises() : int
+    + rutaLadron(nomCiudades[String], ciudades[Ciudad], dado, rutaLadron) : [Ciudad]
+}
+class ObjetoMuyValioso{
+    + rareza() : String
+    + cantidadDePaises() : int
+    + rutaLadron(nomCiudades[String], ciudades[Ciudad], dado, rutaLadron) : [Ciudad]
+}
+
+ObjetoRobado <|.. ObjetoComun
+ObjetoRobado <|.. ObjetoValioso
+ObjetoRobado <|.. ObjetoMuyValioso
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+title Dependencias de las clases "Ladron" y "Sospechoso"
+
+class Ladron{
+    - nombre : String
+    + {static} registro(nombre, cualidades[Cualidad])
+    + asignarObjetoRobado(objeto)
+    + esIgual(sospechoso) : int
+    + chequearPistas(pistasLadron[String], descripcion, nombreDelLadron)
+}
+interface ObjetoRobado{
+    + rareza() : String
+    + cantidadDePaises() : int
+    + verificarLimitePaises(cantPaisesVisitados) : Ciudad
+    + crearPoliciaConCiudadInicial(grado) : Policia
+    + rutaLadron(nomCiudades[String], ciudades[Ciudad], dado, rutaLadron) : [Ciudad]
+}
+class Sospechoso{
+    + {static} registro()
+    + anotarCualidad(cualidad)
+    + esIgual(cualidades[Cualidad]) : int
+}
+class Cualidad{
+    - cualidad : String
+    + {static} darCualidad(cualidad)
+    + esCualidad(Cualidad) : boolean
+    + compararCualidades(cualidad) : boolean
+}
+
+
+/'  '/
+Ladron --o ObjetoRobado
+Ladron "1" --* "1..*" Cualidad
+Sospechoso "1" --o "1..*" Cualidad
+
+
+
+
+
+@enduml

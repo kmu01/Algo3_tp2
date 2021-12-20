@@ -1,0 +1,81 @@
+@startuml
+title Dependencias de las clases "Policía" y "Ciudad"
+
+class Ciudad{
+    - nombre : String
+    - pistas : [Pista]
+    + {static} registroCiudad(nombre)
+    + {static} registroCiudadConPistas(nombre, pistas[Pista])
+    + visitar(lugar, grado, cronometro, dado) : Pista
+    + agregarPista(pista)
+}
+class Policia{
+        - cantidadDeVecesAcuchillado : int
+        + {static} registroPolicia(sospechoso, grado)
+        + anotarCualidad(cualidad)
+        + comprobarVictoria(rutaLadron)
+        + entrarEdificio(lugar, cronometro, dado) : Pista
+        + viajar(ciudadSeleccionada, mapa, cronometro)
+        + recibirCuchillazo()
+        + recibirHeridaDeBala()
+        + dormir(cronometro)
+    }
+class Mapa{
+    - posicionesDeCiudades{Ciudad, Posicion}
+    - factorAKm : int
+    + {static} crear()
+    + calcularDistancia(ciudadSeleccionada, ciudadActual) : int
+    + agregarCiudad(Ciudad, latitud, longitud)
+}
+
+abstract class GradoDePolicia{
+    # tiempoDeViaje : int
+    # tiempoDeDescanso : int
+    # tiempoDeHeridaDeBala
+    # dificultadMasFrecuente : Dificultad
+    # dificultadMenosFrecuente : Dificultad
+    # rarezaMasFrecuente : String
+    # rarezaMenosFrecuente : String
+    + calcularTiempoDeViaje(distancia, cronometro)
+    + calcularTiempoDeBalazo(cronometro)
+    + calcularTiempoDurmiendo(cronometro)
+    + buscarPista(pistas[Pista], nombreLugar, dado) : Pista
+    + elegirObjeto(objetosRobados[ObjetoRobado], random) : ObjetoRobado
+}
+class Sospechoso{
+    - cualidades : [Cualidad]
+    + {static} registro()
+    + anotarCualidad(cualidad)
+    + esIgual(cualidades[Cualidad]) : int
+}
+class Lugar{
+    - nombre : String
+    + {static} crear(nombre)
+    + visitar(grado, pistas[Pista], cronometro, dado) : Pista
+}
+class Pista{
+    - dificultad : Dificultad
+    - descripcion : String
+    - lugarCorrespondiente : String
+    - cantDeVisitas : int
+    + {static} inicializarPista(dificultad, descripcion, lugar)
+    + esPista(dificultad, nombreLugar) : boolean
+    + obtenerPista(cronometro) : Pista
+    + descripcion() : String
+}
+interface OrdenDeArresto{
+    + emitida() : boolean
+    + emitir(ladrones [Ladron]) : OrdenDeArresto
+}
+
+GradoDePolicia *-- Policia
+Mapa <- Policia
+Policia --> OrdenDeArresto
+Policia --> Sospechoso
+Policia .> Ciudad
+Ciudad "1" --> "1..5"Lugar
+Pista "1..9" o-- "1" Ciudad
+
+
+
+@enduml

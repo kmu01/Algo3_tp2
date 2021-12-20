@@ -1,0 +1,43 @@
+@startuml
+title Jerarquias de "GradoDePolicía" y "OrdenDeArresto"
+abstract class GradoDePolicia{
+    # tiempoDeViaje : int
+    # tiempoDeDescanso : int
+    # tiempoDeHeridaDeBala : int
+    # dificultadMasFrecuente : Dificultad
+    # dificultadMenosFrecuente : Dificultad
+    # rarezaMasFrecuente : String
+    # rarezaMenosFrecuente : String
+    + calcularTiempoDeViaje(distancia, cronometro)
+    + calcularTiempoDeBalazo(cronometro)
+    + calcularTiempoDurmiendo(cronometro)
+    + buscarPista(pistas[Pista], nombreLugar, dado) : Pista
+    + elegirObjeto(objetosRobados[ObjetoRobado], random) : ObjetoRobado
+}
+class Novato{}
+class Detective{}
+class Investigador{}
+class Sargento{}
+
+interface OrdenDeArresto{
+    + emitida() : boolean
+    + emitir(ladrones [Ladron]) : OrdenDeArresto
+}
+
+class OrdenEmitida{
+    + emitida() : boolean
+    + emitir(ladrones [Ladron]) : OrdenDeArresto
+}
+class OrdenSinEmitir{
+    + emitida() : boolean
+    + emitir(ladrones [Ladron]) : OrdenDeArresto
+}
+
+GradoDePolicia <|-- Novato
+GradoDePolicia <|-- Detective
+GradoDePolicia <|-- Investigador
+GradoDePolicia <|-- Sargento
+
+OrdenDeArresto <|.. OrdenEmitida
+OrdenDeArresto <|.. OrdenSinEmitir
+@enduml
