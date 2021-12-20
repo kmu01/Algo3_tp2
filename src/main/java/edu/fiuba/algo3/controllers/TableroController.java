@@ -9,12 +9,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -26,26 +29,30 @@ public class TableroController implements Initializable{
     @FXML private Button BotonLugar1;
     @FXML private Button BotonLugar2;
     @FXML private Button BotonLugar3;
+    @FXML private ImageView ImagenLugar1;
+    @FXML private ImageView ImagenLugar2;
+    @FXML private ImageView ImagenLugar3;
     @FXML private Button BotonViajar1;
     @FXML private Button BotonViajar2;
     @FXML private Button BotonViajar3;
     @FXML private Label LabelTiempo;
     @FXML private Label LabelCiudad;
+    @FXML private Label LabelBienvenida;
 
     private MostrarPistaController pistaControlador;
     private FotoDeCiudadController fotoDeCiudadControlador;
     private BuscarLadronesController buscarLadronesControlador;
     private ListaDeLadronesController listarLadronesControlador;
     private ExceptionController exceptionControlador;
-    //todo una forma de hacer lo de la lista ladrones es iniciar el controlador como hice con la foto de ciudad, y mandarselo por
-    // parametro en mostrar() de BuscarLadronesController, y cuando apreten buscar en el boton de busqueda de ladrones
-    // simplemente este le diga a el controlador de la lista que se muestre.
-    // tambien al mostrar la busqueda de ladrones podemos ocultar la ciudad, así es mas facil.
+    private final String URL_ICONOS = "file:src/main/resources/fotos/iconos/";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
-        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual().ciudad());
+        String ciudadInicio = Juego.obtenerInstancia().getCiudadActual().ciudad();
+        LabelCiudad.setText(ciudadInicio);
+        LabelBienvenida.setText("Bienvenido "+Juego.obtenerInstancia().getGrado()+"." +
+                " Su objetivo es capturar al ladrón que se robó el tesoro de "+ ciudadInicio +".");
         try {
             this.cargarPistas();
             this.cargarImagen();
@@ -81,6 +88,7 @@ public class TableroController implements Initializable{
         pistaControlador = loader.getController();
         Pane seccion = new Pane(mainNode);
         GridPanePrincipal.add(seccion, 1, 0);
+        pistaControlador.ocultar();
     }
 
     private void cargarImagen() throws IOException {
@@ -99,8 +107,11 @@ public class TableroController implements Initializable{
         CajaVisita.setVisible(true);
         List<String> lugares = Juego.obtenerInstancia().getLugares();
         BotonLugar1.setText((lugares.get(0)));
+        ImagenLugar1.setImage(new Image(URL_ICONOS+lugares.get(0)+".png"));
         BotonLugar2.setText((lugares.get(1)));
+        ImagenLugar2.setImage(new Image(URL_ICONOS+lugares.get(1)+".png"));
         BotonLugar3.setText((lugares.get(2)));
+        ImagenLugar3.setImage(new Image(URL_ICONOS+lugares.get(2)+".png"));
     }
 
 
@@ -155,7 +166,6 @@ public class TableroController implements Initializable{
         BotonViajar2.setText(destinos.get(1));
         BotonViajar3.setText(destinos.get(2));
 
-
     }
 
     public void viajarDestino1(){
@@ -164,16 +174,21 @@ public class TableroController implements Initializable{
 
     public void volar(Button botonSeleccionado){
         try {
-            Juego.obtenerInstancia().viajar(botonSeleccionado.getText());
+            int tiempoTranscurrido = Juego.obtenerInstancia().viajar(botonSeleccionado.getText());
+            listarLadronesControlador.ocultar();
+            PanelAcciones.setVisible(false);
+            LabelTiempo.setText(Juego.obtenerInstancia().hora());
+            String ciudadActual = Juego.obtenerInstancia().getCiudadActual().ciudad();
+            LabelCiudad.setText(ciudadActual);
+            LabelBienvenida.setText("Bienvenido a " + ciudadActual + ". Su vuelo a durado "+ tiempoTranscurrido + "hs.");
+            fotoDeCiudadControlador.mostrarImagen(ciudadActual);
+            fotoDeCiudadControlador.mostrar();
+            pistaControlador.ocultar();
         }catch(TiempoTerminadoException e){
 
         }
-        listarLadronesControlador.ocultar();
-        PanelAcciones.setVisible(false);
-        LabelTiempo.setText(Juego.obtenerInstancia().hora());
-        LabelCiudad.setText(Juego.obtenerInstancia().getCiudadActual().ciudad());
-        fotoDeCiudadControlador.mostrarImagen(Juego.obtenerInstancia().getCiudadActual().ciudad());
-        fotoDeCiudadControlador.mostrar();
+
+
     }
 
     public void viajarDestino2(){

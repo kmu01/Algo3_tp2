@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="PanelLista" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="272.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ListaDeLadronesController">
+
+<Pane fx:id="PanelLista" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="300.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ListaDeLadronesController">
    <children>
-      <Label fx:id="LabelLadrones" layoutX="14.0" layoutY="7.0" prefHeight="214.0" prefWidth="193.0" text="Label" textAlignment="JUSTIFY" textFill="WHITE" />
+      <Label fx:id="LabelLadrones" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" lineSpacing="1.0" prefHeight="290.0" prefWidth="273.0" text="Label" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
    </children>
-</AnchorPane>
+</Pane>

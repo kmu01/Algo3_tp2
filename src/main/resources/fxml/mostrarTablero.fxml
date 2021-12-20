@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -24,6 +25,7 @@
           <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Pane prefHeight="320.0" prefWidth="300.0" style="-fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" />
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 2; -fx-border-insets: 5;" GridPane.rowIndex="1">
                <children>
                   <Label fx:id="LabelCiudad" alignment="CENTER" contentDisplay="TOP" prefHeight="20.0" prefWidth="357.0" text="Lugar" textFill="WHITE">
@@ -63,44 +65,89 @@
                   </Button>
                </children>
             </HBox>
+            <Pane prefHeight="320.0" prefWidth="300.0" style="-fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="LabelBienvenida" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="104.0" prefWidth="276.0" text="Bienvenido" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Times New Roman" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </GridPane>
-      <Pane fx:id="PanelAcciones" layoutX="150.0" layoutY="80.0" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: #080808; -fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 4; -fx-border-width: 3; -fx-background-radius: 5;" visible="false">
+      <Pane fx:id="PanelAcciones" layoutX="35.0" layoutY="68.0" prefHeight="252.0" prefWidth="523.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 4; -fx-border-width: 3; -fx-background-radius: 5;" visible="false">
          <children>
-            <HBox fx:id="CajaVisita" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+            <HBox fx:id="CajaVisita" prefHeight="252.0" prefWidth="517.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                <children>
-                  <Button fx:id="BotonLugar1" mnemonicParsing="false" onAction="#mostrarPistaLugar1" prefWidth="80.0" text="Button">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="ImagenLugar1" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Button fx:id="BotonLugar1" mnemonicParsing="false" onAction="#mostrarPistaLugar1" prefWidth="120.0" text="Button">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
                      <HBox.margin>
-                        <Insets left="35.0" top="150.0" />
+                        <Insets left="35.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button fx:id="BotonLugar2" mnemonicParsing="false" onAction="#mostrarPistaLugar2" prefWidth="80.0" text="Button">
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="ImagenLugar3" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Button fx:id="BotonLugar3" mnemonicParsing="false" onAction="#mostrarPistaLugar3" prefWidth="125.0" text="Button">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
                      <HBox.margin>
-                        <Insets left="25.0" top="150.0" />
+                        <Insets left="35.0" />
                      </HBox.margin>
-                  </Button>
-                  <Button fx:id="BotonLugar3" mnemonicParsing="false" onAction="#mostrarPistaLugar3" prefWidth="80.0" text="Button">
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="ImagenLugar2" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Button fx:id="BotonLugar2" mnemonicParsing="false" onAction="#mostrarPistaLugar2" prefWidth="125.0" text="Button">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
                      <HBox.margin>
-                        <Insets left="25.0" top="150.0" />
+                        <Insets left="35.0" />
                      </HBox.margin>
-                  </Button>
+                  </VBox>
                </children>
             </HBox>
-            <HBox fx:id="CajaViaje" prefHeight="240.0" prefWidth="360.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+            <HBox fx:id="CajaViaje" prefHeight="240.0" prefWidth="517.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                <children>
-                  <Button fx:id="BotonViajar2" mnemonicParsing="false" onAction="#viajarDestino2" prefWidth="80.0" text="Button">
+                  <Button fx:id="BotonViajar2" mnemonicParsing="false" onAction="#viajarDestino2" prefWidth="125.0" text="Button">
                      <HBox.margin>
                         <Insets left="35.0" top="150.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="BotonViajar3" mnemonicParsing="false" onAction="#viajarDestino3" prefWidth="80.0" text="Button">
+                  <Button fx:id="BotonViajar3" mnemonicParsing="false" onAction="#viajarDestino3" prefWidth="125.0" text="Button">
                      <HBox.margin>
-                        <Insets left="25.0" top="150.0" />
+                        <Insets left="35.0" top="150.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="BotonViajar1" mnemonicParsing="false" onAction="#viajarDestino1" prefWidth="80.0" text="Button">
+                  <Button fx:id="BotonViajar1" mnemonicParsing="false" onAction="#viajarDestino1" prefWidth="125.0" text="Button">
                      <HBox.margin>
-                        <Insets left="25.0" top="150.0" />
+                        <Insets left="35.0" top="150.0" />
                      </HBox.margin>
                   </Button>
                </children>

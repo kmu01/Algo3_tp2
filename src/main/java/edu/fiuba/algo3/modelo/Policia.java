@@ -74,4 +74,6 @@ public class Policia {
     private void emitirOrden(List<Ladron> ladrones) {
         this.ordenDeArresto = ordenDeArresto.emitir(ladrones);
     }
+
+    public String obtenerRango() {return this.grado.getClass().getSimpleName();}
 }

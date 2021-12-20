@@ -65,4 +65,5 @@ public abstract class GradoDePolicia {
         }
         return objeto;
     }
+
 }

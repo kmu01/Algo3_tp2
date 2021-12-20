@@ -51,8 +51,8 @@ public class Juego {
         return this.partida.obtenerCiudadActual();
     }
 
-    public void viajar(String ciudadSeleccionada) {
-        this.partida.viajar(ciudadSeleccionada);
+    public int viajar(String ciudadSeleccionada) {
+        return this.partida.viajar(ciudadSeleccionada);
     }
 
     public void anotarCualidad(String atributo) {
@@ -62,6 +62,8 @@ public class Juego {
     public List<Ladron> buscarLadrones() {
         return this.partida.buscarLadrones();
     }
+
+    public String getGrado() {return this.partida.obtenerGrado();}
 }
 
 

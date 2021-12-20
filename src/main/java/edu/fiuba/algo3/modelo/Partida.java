@@ -144,16 +144,16 @@ public class Partida {
         return nombreCiudades;
     }
 
-    public void viajar(String ciudadSeleccionada){
+    public int viajar(String ciudadSeleccionada){
 
         Ciudad ciudad = this.ciudades.get(ciudadSeleccionada);
-
+        int tiempoDeAccion = this.tiempo.tiempoTranscurrido();
         this.policia.viajar(ciudad, this.mapa, new Cronometro(this.tiempo), rutaLadron.obtenerCiudadActual());
         this.cantidadDePaisesVisitados++;
         this.rutaLadron.verificarSiEligioElDestinoCorrecto(this.ciudades,ciudadSeleccionada);
-
+        tiempoDeAccion = this.tiempo.tiempoTranscurrido() - tiempoDeAccion;
         this.policia.dormir(new Cronometro(this.tiempo));
-
+        return tiempoDeAccion;
     }
 
     public Pista entrarEdificio(String lugarSeleccionado) {
@@ -190,4 +190,5 @@ public class Partida {
         return (this.tiempo.tiempoFormateado());
     }
 
+    public String obtenerGrado() { return this.policia.obtenerRango();}
 }

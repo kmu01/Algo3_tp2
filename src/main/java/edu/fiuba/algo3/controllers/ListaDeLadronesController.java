@@ -4,14 +4,14 @@ import edu.fiuba.algo3.modelo.Ladron;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ListaDeLadronesController implements Initializable {
-    @FXML AnchorPane PanelLista;
+    @FXML Pane PanelLista;
     @FXML private Label LabelLadrones;
 
     @Override
