@@ -3,10 +3,6 @@ title Detective toma un caso y realiza la investigación completa
 
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
-participant ":Detective" as Grado
-participant ":Mapa" as Mapa
-participant ":Cronometro" as Cronometro
-participant ":Tiempo" as Tiempo
 participant ":Sospechoso" as Sospechoso
 participant "OrdenDeArresto" as Orden
 
