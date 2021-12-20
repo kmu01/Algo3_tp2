@@ -1,0 +1,53 @@
+@startuml
+title Método de nuevo caso de un Policía
+
+actor "Jugador" as AlgoThief
+participant ":Partida" as Partida
+participant "GradoDePolicia" as Grado
+participant "ObjetoRobado" as Objeto
+participant ":Sospechoso" as Sospechoso
+participant ":Policia" as Policia
+participant ":OrdenSinEmitir" as Orden
+participant ":Ladron" as Ladron
+AlgoThief ->> Partida : nuevoCaso(cantidadDeArrestos)
+activate Partida
+    Partida ->> Partida : asignarGradoDePolicia(cantidadDeArrestos)
+    activate Partida
+        Partida ->> Grado : new()
+        return[grado]
+
+    Partida ->> Partida : seleccionarObjetoRobado(grado)
+    activate Partida
+        Partida ->> Grado : elegirObjetos([ObjetoRobado], dado)
+        return[objeto]
+
+    Partida ->> Partida : inicializarPolicia(objeto, grado)
+    activate Partida
+        Partida ->> Objeto : crearPoliciaConCiudadInicial(grado)
+        activate Objeto
+            Objeto ->> Sospechoso : new()
+            Sospechoso --> Objeto : [sospechoso]
+            Objeto ->> Policia : new(sospechoso, grado)
+            activate Policia
+                Policia ->> Orden : new()
+                Orden --> Policia : [orden]
+            deactivate Policia
+            Policia --> Objeto : [policia]
+        deactivate Objeto
+        Objeto --> Partida : [policia]
+    Partida --> Partida : [policia]
+    deactivate Partida
+
+    Partida ->> Partida : seleccionarLadron()
+    activate Partida
+        Partida ->> Partida : [ladron]
+        Partida ->> Ladron : asignarObjetoRobado(objeto)
+        Partida ->> Partida : establecerRutaLadron(objeto)
+        Partida --> Partida : [ladron]
+    deactivate Partida
+    Partida ->> Partida : cargarPistasDescripcionLadron()
+    Partida ->> Partida : cargarPistasLugares();
+deactivate Partida
+
+note across: Si bien este método inicializador no se identifica en los casos de uso, está presente en el código de muchos de ellos y se consideró fundamental añadir un diagrama correspondiente
+@enduml
