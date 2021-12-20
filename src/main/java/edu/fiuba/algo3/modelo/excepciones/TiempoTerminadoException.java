@@ -1,16 +1,13 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
-import javafx.scene.image.Image;
 
-public class TiempoTerminadoException extends RuntimeException {
-    private static final String descripcion = "Has perdido el juego!";
-    private static final Image imagen = new Image("/fotos/avisos/perdio.png");
+public class TiempoTerminadoException extends JuegoException {
+    //private String descripcion = "Has perdido el juego!";
+    //private String imagen = "file:src/main/resources/fotos/avisos/perdio.png";
 
-    public String descripcion() {
-        return this.descripcion;
+    public TiempoTerminadoException(){
+        imagen = "file:src/main/resources/fotos/avisos/perdio.png";
+        descripcion = "Has perdido el juego!";
     }
 
-    public Image imagen(){
-        return this.imagen;
-    }
 }

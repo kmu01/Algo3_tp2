@@ -54,7 +54,7 @@ public class PartidaTests
 
     @Test
     public void entraAEdificioYEsAcuchillado(){
-        when(mockDado.nextInt(11)).thenReturn(5);
+        when(mockDado.nextInt(15)).thenReturn(5);
         try {
             Partida partida = new Partida(inicializadorDeArchivos,mockDado,new RutaLadron());
             partida.nuevoCaso(6);

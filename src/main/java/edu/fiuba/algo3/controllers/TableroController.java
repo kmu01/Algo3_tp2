@@ -51,6 +51,7 @@ public class TableroController implements Initializable{
             this.cargarImagen();
             this.cargarLadrones();
             this.cargarListarLadrones();
+            this.cargarExcepcion();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,7 +117,18 @@ public class TableroController implements Initializable{
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
-    public void mostrarPista(Button boton) throws IOException {
+    public void cargarExcepcion () throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
+        Parent mainNode = loader.load();
+        exceptionControlador = loader.getController();
+        Pane seccion = new Pane(mainNode);
+        GridPanePrincipal.add(seccion, 0, 0);
+        exceptionControlador.ocultar();
+
+    }
+
+    public void mostrarPista(Button boton) {
         try {
             Pista pista = Juego.obtenerInstancia().entrarEdificio(boton.getText());
             PanelAcciones.setVisible(false);
@@ -125,46 +137,10 @@ public class TableroController implements Initializable{
             pistaControlador.mostrar();
             buscarLadronesControlador.ocultar();
             pistaControlador.mostrarPista(pista);
-        } catch (HasSidoAcuchilladoException e) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
-            Parent mainNode = loader.load();
-            exceptionControlador = loader.getController();
-            Pane seccion = new Pane(mainNode);
-            GridPanePrincipal.add(seccion, 0, 0);
+        } catch (JuegoException e) {
             exceptionControlador.mostrar(e.descripcion(), e.imagen());
             PanelAcciones.setVisible(false);
-        } catch (HasSidoBaleadoException e) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
-            Parent mainNode = loader.load();
-            exceptionControlador = loader.getController();
-            Pane seccion = new Pane(mainNode);
-            GridPanePrincipal.add(seccion, 0, 0);
-            exceptionControlador.mostrar(e.descripcion(), e.imagen());
-            PanelAcciones.setVisible(false);
-        } catch (TiempoTerminadoException e) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
-            Parent mainNode = loader.load();
-            exceptionControlador = loader.getController();
-            Pane seccion = new Pane(mainNode);
-            GridPanePrincipal.add(seccion, 0, 0);
-            exceptionControlador.mostrar(e.descripcion(), e.imagen());
-            PanelAcciones.setVisible(false);
-        } catch (JuegoGanadoException e) {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
-             Parent mainNode = loader.load();
-             exceptionControlador = loader.getController();
-             Pane seccion = new Pane(mainNode);
-             GridPanePrincipal.add(seccion, 0, 0);
-             exceptionControlador.mostrar(e.descripcion(), e.imagen());
-             PanelAcciones.setVisible(false);
-        } catch (NoTieneOrdenDeArrestoException e){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mostrarExcepciones.fxml"));
-            Parent mainNode = loader.load();
-            exceptionControlador = loader.getController();
-            Pane seccion = new Pane(mainNode);
-            GridPanePrincipal.add(seccion, 0, 0);
-            exceptionControlador.mostrar(e.descripcion(), e.imagen());
-            PanelAcciones.setVisible(false);
+
         }
 
 

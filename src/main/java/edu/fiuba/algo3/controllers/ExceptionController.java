@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.controllers;
 
-import edu.fiuba.algo3.App;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,7 +14,9 @@ import java.util.ResourceBundle;
 public class ExceptionController implements Initializable {
     @FXML private Label LabelAviso;
     @FXML private ImageView ImagenAviso;
-    private String URL_AVISOS = "file:src/main/resources/fotos/avisos/";
+    @FXML private Pane PanelAviso;
+    @FXML private Button BotonAviso;
+    //private String URL_AVISOS = "file:src/main/resources/fotos/avisos/";
     private Image img;
 
     @Override
@@ -24,11 +24,18 @@ public class ExceptionController implements Initializable {
 
     }
 
-    public void mostrar(String descripcion, Image aviso) {
+    public void mostrar(String descripcion, String aviso) {
+        System.out.println(aviso);
+        img = new Image(aviso);
+        ImagenAviso.setImage(img);
         this.LabelAviso.setText(descripcion);
-        ImagenAviso.setImage(aviso);
+        this.PanelAviso.setVisible(true);
     }
     public void aceptar() {
-        CargadorDeEscena.cargarEscena("/fxml/mostrarTablero.fxml", App.devolverEscena(),"AlgoThief");
+        this.ocultar();
+    }
+
+    public void ocultar() {
+        PanelAviso.setVisible(false);
     }
 }

@@ -155,7 +155,7 @@ public class CasosDeUsoTests {
         Random mockDado = mock(Random.class);
         Policia policia = new Policia(new Sospechoso(), new Detective());
         try {
-            when(mockDado.nextInt(11)).thenReturn(5);
+            when(mockDado.nextInt(15)).thenReturn(5);
             assertThrows(HasSidoAcuchilladoException.class, () -> {policia.entrarEdificio(new Lugar("Banco"), cronometro, mockDado,ciudadSiguiente);
                 });
         } catch (TiempoTerminadoException e) {

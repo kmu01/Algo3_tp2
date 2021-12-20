@@ -1,18 +1,14 @@
 package edu.fiuba.algo3.modelo.excepciones;
 
+public class JuegoGanadoException extends JuegoException {
 
-import javafx.scene.image.Image;
+    //private String descripcion = "Has ganado el juego!";
+    //private String imagen = "file:src/main/resources/fotos/avisos/trofeo.png";
 
-public class JuegoGanadoException extends RuntimeException {
-    private static final String descripcion = "Has ganado el juego!";
-    private static final Image imagen = new Image("file:src/main/resources/fotos/avisos/trofeo.png");
-
-    public String descripcion() {
-        return this.descripcion;
+    public JuegoGanadoException(){
+        imagen = "file:src/main/resources/fotos/avisos/trofeo.png";
+        descripcion = "Has ganado el juego!";
     }
 
-    public Image imagen(){
-        return this.imagen;
-    }
 
 }

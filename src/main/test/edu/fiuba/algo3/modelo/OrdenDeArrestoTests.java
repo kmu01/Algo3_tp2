@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.NoHayLadronesException;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenEmitida;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;

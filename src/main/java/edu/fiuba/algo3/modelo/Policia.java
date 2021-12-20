@@ -48,7 +48,7 @@ public class Policia {
     }
 
     private void recibirCuchillazo(Cronometro cronometro,Random dado) {
-        int numero = dado.nextInt(11);
+        int numero = dado.nextInt(15);
         if(numero == 5){
         cronometro.calcularTiempoDeCuchillazo(++this.cantidadDeVecesAcuchillado);
         throw new HasSidoAcuchilladoException();}

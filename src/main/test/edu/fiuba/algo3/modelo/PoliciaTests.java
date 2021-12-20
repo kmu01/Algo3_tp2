@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
-import edu.fiuba.algo3.modelo.excepciones.NoHayLadronesException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Sargento;
 import org.junit.jupiter.api.Test;
@@ -73,14 +72,6 @@ public class PoliciaTests {
 
         assertEquals(1,policia.buscarLadrones(comisaria).size());
 
-    }
-
-    @Test
-    public void buscaLadronesYDevuelveExcepcion(){
-        Comisaria comisaria = new Comisaria(new ArrayList<Ladron>());
-
-        Policia policia = new Policia(new Sospechoso(),new Sargento());
-        assertThrows(NoHayLadronesException.class,()->{policia.buscarLadrones(comisaria);});
     }
 
 }

@@ -74,7 +74,7 @@ public class CasosDeUsoTests {
         Ciudad ciudad = new Ciudad("jamaica");
         Policia policia = new Policia(new Sospechoso(), new Detective());
 
-        when(dado.nextInt(11)).thenReturn(5);
+        when(dado.nextInt(15)).thenReturn(5);
         assertThrows(HasSidoAcuchilladoException.class, () -> policia.entrarEdificio(new Lugar("Banco"), cronometro, dado, ciudadDeMexico));
 
         assertEquals(2, tiempo.tiempoTranscurrido());
