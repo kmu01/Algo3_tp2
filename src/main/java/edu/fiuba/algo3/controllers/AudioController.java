@@ -19,6 +19,18 @@ public class AudioController {
     private AudioController(){
         reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/simuladores.mp3")).toString())));
         reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/12monos.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego1.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego2.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego3.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego4.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego5.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego6.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego7.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/codbo1.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/codbo2.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/codbo3.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/codbo4.mp3")).toString())));
+        reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/codbo5.mp3")).toString())));
 
 
         /*Le seteo a cada media player la proxima cancion*/
