@@ -32,7 +32,6 @@ public class PoliciaTests {
             policia.entrarEdificio(new Lugar("banco"),cronometro,dado, destino);
         });
         policia.viajar(destino,mapa,cronometro, actual);
-
         assertEquals(5,tiempo.tiempoTranscurrido());
     }
     @Test
@@ -51,6 +50,8 @@ public class PoliciaTests {
         cualidadesDiego.add(new Cualidad("Cicatriz"));
         cualidadesDiego.add(new Cualidad("Limusina"));
 
+        Tiempo tiempo = new Tiempo();
+        Cronometro cronometro = new Cronometro(tiempo);
 
         List<Ladron> ladrones = new ArrayList<>();
         ladrones.add(new Ladron("Nicolas",cualidadesNicolas));
@@ -62,16 +63,15 @@ public class PoliciaTests {
         policia.anotarCualidad(new Cualidad("Masculino"));
         policia.anotarCualidad(new Cualidad("Futbol"));
 
-        assertEquals(2,policia.buscarLadrones(comisaria).size());
-
+        assertEquals(2,policia.buscarLadrones(comisaria,cronometro).size());
 
         policia.anotarCualidad(new Cualidad("Tatuaje"));
         policia.anotarCualidad(new Cualidad("Deportivo"));
         policia.anotarCualidad(new Cualidad("Rubio"));
 
 
-        assertEquals(1,policia.buscarLadrones(comisaria).size());
-
+        assertEquals(1,policia.buscarLadrones(comisaria,cronometro).size());
+        assertEquals(3,tiempo.tiempoTranscurrido());
     }
 
 }

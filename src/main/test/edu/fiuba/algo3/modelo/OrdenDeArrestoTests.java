@@ -36,7 +36,7 @@ public class OrdenDeArrestoTests {
         OrdenDeArresto ordenDeArresto = new OrdenSinEmitir();
 
 
-        ordenDeArresto = ordenDeArresto.emitir(ladrones);
+        ordenDeArresto = ordenDeArresto.emitir(ladrones, new Cronometro(new Tiempo()));
 
         assertFalse(ordenDeArresto.emitida());
 
@@ -48,7 +48,7 @@ public class OrdenDeArrestoTests {
         OrdenDeArresto ordenDeArresto = new OrdenSinEmitir();
 
 
-        ordenDeArresto = ordenDeArresto.emitir(ladrones);
+        ordenDeArresto = ordenDeArresto.emitir(ladrones, new Cronometro(new Tiempo()));
 
         assertTrue(ordenDeArresto.emitida());
     }
@@ -61,7 +61,7 @@ public class OrdenDeArrestoTests {
         assertTrue(ordenDeArresto.emitida());
 
 
-        ordenDeArresto = ordenDeArresto.emitir(ladrones);
+        ordenDeArresto = ordenDeArresto.emitir(ladrones, new Cronometro(new Tiempo()));
 
 
         assertTrue(ordenDeArresto.emitida());

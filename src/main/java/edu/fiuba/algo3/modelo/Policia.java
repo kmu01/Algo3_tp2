@@ -65,14 +65,14 @@ public class Policia {
         this.grado.calcularTiempoDurmiendo(cronometro);
     }
 
-    public List<Ladron> buscarLadrones(Comisaria comisaria) {
+    public List<Ladron> buscarLadrones(Comisaria comisaria,Cronometro cronometro) {
         List<Ladron> ladrones = comisaria.buscarLadrones(this.sospechoso);
-        this.emitirOrden(ladrones);
+        this.emitirOrden(ladrones,cronometro);
         return ladrones;
     }
 
-    private void emitirOrden(List<Ladron> ladrones) {
-        this.ordenDeArresto = ordenDeArresto.emitir(ladrones);
+    private void emitirOrden(List<Ladron> ladrones,Cronometro cronometro) {
+        this.ordenDeArresto = ordenDeArresto.emitir(ladrones,cronometro);
     }
 
     public String obtenerRango() {return this.grado.getClass().getSimpleName();}

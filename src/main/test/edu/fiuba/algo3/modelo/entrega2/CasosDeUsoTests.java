@@ -110,7 +110,7 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Investigador());
         policia.anotarCualidad(new Cualidad("Femenino"));
 
-        assertEquals(Arrays.asList(marcela), policia.buscarLadrones(comisaria));
+        assertEquals(Arrays.asList(marcela), policia.buscarLadrones(comisaria, cronometro));
 
 
     }
@@ -130,7 +130,7 @@ public class CasosDeUsoTests {
         Policia policia = new Policia(new Sospechoso(), new Investigador());
         policia.anotarCualidad(new Cualidad("Masculino"));
 
-        List<Ladron> ladronesObtenidos = policia.buscarLadrones(comisaria);
+        List<Ladron> ladronesObtenidos = policia.buscarLadrones(comisaria,cronometro);
 
 
         assertEquals(Arrays.asList(nicokai,jorgeCaicedo),ladronesObtenidos);
@@ -162,7 +162,7 @@ public class CasosDeUsoTests {
         pistaObtenidaDelBanco = policia.entrarEdificio(new Lugar("banco"), cronometro, dado, lima);
         policia.viajar(montreal, mapa, cronometro,lima);
         policia.anotarCualidad(new Cualidad("Femenino"));
-        policia.buscarLadrones(comisaria);
+        policia.buscarLadrones(comisaria,cronometro);
 
 
         assertThrows(JuegoGanadoException.class,()->{policia.comprobarVictoria(new RutaLadron());});

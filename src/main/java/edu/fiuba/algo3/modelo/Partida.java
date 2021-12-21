@@ -183,7 +183,7 @@ public class Partida {
         this.policia.anotarCualidad(cualidad);
     }
     public List<Ladron> buscarLadrones(){
-        return this.policia.buscarLadrones(this.comisaria);
+        return this.policia.buscarLadrones(this.comisaria,new Cronometro(this.tiempo));
     }
 
     public String hora() {

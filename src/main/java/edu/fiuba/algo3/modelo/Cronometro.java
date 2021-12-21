@@ -27,6 +27,10 @@ public class Cronometro {
         this.tiempo.debeDormir(tiempoDeDescanso);
     }
 
+    public void calcularTiempoEnGenerarOrdenDeArresto(int tiempoDeDemora){
+        this.tiempo.agregarHoras(tiempoDeDemora);
+    }
+
     public void calcularTiempoEnObtenerLaPista(int cantidadDeVisitas) {
         switch (cantidadDeVisitas){
             case 1:
