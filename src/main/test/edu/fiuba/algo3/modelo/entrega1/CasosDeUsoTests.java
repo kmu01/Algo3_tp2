@@ -1,10 +1,15 @@
 package edu.fiuba.algo3.modelo.entrega1;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.comisaria.Cualidad;
+import edu.fiuba.algo3.modelo.comisaria.Policia;
+import edu.fiuba.algo3.modelo.comisaria.Sospechoso;
 import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
+import edu.fiuba.algo3.modelo.tablero.Dificultad;
+import edu.fiuba.algo3.modelo.tablero.Pista;
+import edu.fiuba.algo3.modelo.ubicacion.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

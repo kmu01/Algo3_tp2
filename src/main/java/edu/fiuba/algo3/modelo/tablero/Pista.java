@@ -1,6 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
 
-import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
+import edu.fiuba.algo3.modelo.ubicacion.Cronometro;
 
 public class Pista {
 

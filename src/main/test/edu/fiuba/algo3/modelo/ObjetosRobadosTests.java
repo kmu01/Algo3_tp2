@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoMuyValioso;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
+import edu.fiuba.algo3.modelo.ubicacion.Ciudad;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
 
+import edu.fiuba.algo3.modelo.comisaria.Cualidad;
+import edu.fiuba.algo3.modelo.comisaria.Ladron;
 import edu.fiuba.algo3.modelo.objetos.*;
+import edu.fiuba.algo3.modelo.ubicacion.Ciudad;
+import edu.fiuba.algo3.modelo.ubicacion.Mapa;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
@@ -43,7 +47,7 @@ public class InicializadorDeArchivos {
         return ladrones;
     }
 
-    public Map<String ,Ciudad> cargarCiudades() throws IOException {
+    public Map<String , Ciudad> cargarCiudades() throws IOException {
         Map<String, Ciudad> ciudades = new HashMap<>();
 
         Reader in = new FileReader(RUTA_CIUDADES);

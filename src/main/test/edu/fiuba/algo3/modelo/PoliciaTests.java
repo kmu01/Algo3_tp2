@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.comisaria.*;
 import edu.fiuba.algo3.modelo.excepciones.HasSidoBaleadoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
 import edu.fiuba.algo3.modelo.grados.Sargento;
+import edu.fiuba.algo3.modelo.ubicacion.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

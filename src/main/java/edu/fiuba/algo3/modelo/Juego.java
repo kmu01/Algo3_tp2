@@ -1,5 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.comisaria.Ladron;
+import edu.fiuba.algo3.modelo.tablero.InicializadorDeArchivos;
+import edu.fiuba.algo3.modelo.tablero.Partida;
+import edu.fiuba.algo3.modelo.tablero.Pista;
+import edu.fiuba.algo3.modelo.tablero.RutaLadron;
+import edu.fiuba.algo3.modelo.ubicacion.Ciudad;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;

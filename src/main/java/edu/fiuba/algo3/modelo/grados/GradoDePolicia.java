@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo.grados;
 
-import edu.fiuba.algo3.modelo.Cronometro;
-import edu.fiuba.algo3.modelo.Dificultad;
-import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
+import edu.fiuba.algo3.modelo.ubicacion.Cronometro;
+import edu.fiuba.algo3.modelo.tablero.Dificultad;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
-import edu.fiuba.algo3.modelo.Pista;
+import edu.fiuba.algo3.modelo.tablero.Pista;
 
 import java.util.List;
 import java.util.Random;

@@ -1,12 +1,15 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
 
 import java.io.IOException;
 import java.util.*;
 
-import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
+import edu.fiuba.algo3.modelo.comisaria.Comisaria;
+import edu.fiuba.algo3.modelo.comisaria.Cualidad;
+import edu.fiuba.algo3.modelo.comisaria.Ladron;
+import edu.fiuba.algo3.modelo.comisaria.Policia;
 import edu.fiuba.algo3.modelo.grados.*;
 import edu.fiuba.algo3.modelo.objetos.*;
-import javafx.scene.control.RadioMenuItem;
+import edu.fiuba.algo3.modelo.ubicacion.*;
 
 public class Partida {
     private Random dado;
@@ -18,7 +21,7 @@ public class Partida {
     private Mapa mapa;
     private RutaLadron rutaLadron;
     private List<Ladron> ladrones;
-    private Map<String,Ciudad> ciudades;
+    private Map<String, Ciudad> ciudades;
     private List<String> pistasDelLadron;
     private List<ObjetoRobado> objetosRobados;
     private int cantidadDePaisesVisitados = 1;

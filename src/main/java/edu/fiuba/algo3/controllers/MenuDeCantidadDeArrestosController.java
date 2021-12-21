@@ -1,19 +1,13 @@
 package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.App;
-import edu.fiuba.algo3.modelo.InicializadorDeArchivos;
 import edu.fiuba.algo3.modelo.Juego;
-import edu.fiuba.algo3.modelo.Partida;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MenuDeCantidadDeArrestosController implements Initializable {

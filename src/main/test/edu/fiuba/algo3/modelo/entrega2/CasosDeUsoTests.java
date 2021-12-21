@@ -1,13 +1,16 @@
 package edu.fiuba.algo3.modelo.entrega2;
 
-import edu.fiuba.algo3.modelo.*;
-
+import edu.fiuba.algo3.modelo.comisaria.*;
 import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
 import edu.fiuba.algo3.modelo.excepciones.JuegoGanadoException;
 import edu.fiuba.algo3.modelo.excepciones.NoTieneOrdenDeArrestoException;
 import edu.fiuba.algo3.modelo.grados.Detective;
 import edu.fiuba.algo3.modelo.grados.Investigador;
 import edu.fiuba.algo3.modelo.objetos.ObjetoValioso;
+import edu.fiuba.algo3.modelo.tablero.Dificultad;
+import edu.fiuba.algo3.modelo.tablero.Pista;
+import edu.fiuba.algo3.modelo.tablero.RutaLadron;
+import edu.fiuba.algo3.modelo.ubicacion.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.*;
@@ -21,7 +24,7 @@ public class CasosDeUsoTests {
     List<Cualidad> cualidadesPrimerLadron = new ArrayList<>();
     List<Cualidad> cualidadesSegundoLadron = new ArrayList<>();
     List<Cualidad> cualidadesTercerLadron = new ArrayList<>();
-    Map<String,Ciudad> ciudades = new HashMap<>();
+    Map<String, Ciudad> ciudades = new HashMap<>();
     Tiempo tiempo;
     Cronometro cronometro;
     Mapa mapa;

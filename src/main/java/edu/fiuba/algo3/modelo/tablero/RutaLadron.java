@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.tablero;
 
+import edu.fiuba.algo3.modelo.ubicacion.Ciudad;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RutaLadron {
     private Queue<Ciudad> rutaLadron;

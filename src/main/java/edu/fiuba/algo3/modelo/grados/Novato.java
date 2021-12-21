@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.grados;
 
-import edu.fiuba.algo3.modelo.Dificultad;
+import edu.fiuba.algo3.modelo.tablero.Dificultad;
 
 public class Novato extends GradoDePolicia {
 

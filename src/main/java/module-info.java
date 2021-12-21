@@ -12,4 +12,7 @@ module edu.fiuba.algo3 {
     opens edu.fiuba.algo3.modelo.excepciones;
     opens edu.fiuba.algo3.controllers to javafx.fxml;
     exports edu.fiuba.algo3.controllers;
+    opens edu.fiuba.algo3.modelo.tablero;
+    opens edu.fiuba.algo3.modelo.comisaria;
+    opens edu.fiuba.algo3.modelo.ubicacion;
 }

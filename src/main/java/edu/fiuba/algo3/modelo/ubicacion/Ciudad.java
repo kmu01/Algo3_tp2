@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.ubicacion;
 
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
+import edu.fiuba.algo3.modelo.tablero.Dificultad;
+import edu.fiuba.algo3.modelo.tablero.Pista;
 
 import java.util.*;
 

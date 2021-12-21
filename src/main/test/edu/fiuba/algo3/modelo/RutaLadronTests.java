@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.objetos.ObjetoComun;
 import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.tablero.RutaLadron;
+import edu.fiuba.algo3.modelo.ubicacion.Ciudad;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class RutaLadronTests {
-    Map<String,Ciudad> ciudades;
+    Map<String, Ciudad> ciudades;
     List<String> nombresDeCiudades;
     Random mockDado;
     ObjetoRobado objetoRobado;

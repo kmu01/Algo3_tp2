@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.HasSidoAcuchilladoException;
-import edu.fiuba.algo3.modelo.excepciones.NoTieneOrdenDeArrestoException;
 import edu.fiuba.algo3.modelo.excepciones.TiempoTerminadoException;
-import edu.fiuba.algo3.modelo.objetos.ObjetoRobado;
+import edu.fiuba.algo3.modelo.tablero.InicializadorDeArchivos;
+import edu.fiuba.algo3.modelo.tablero.Partida;
+import edu.fiuba.algo3.modelo.tablero.Pista;
+import edu.fiuba.algo3.modelo.tablero.RutaLadron;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

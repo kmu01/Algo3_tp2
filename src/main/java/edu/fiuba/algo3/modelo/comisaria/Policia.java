@@ -1,9 +1,15 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.comisaria;
 
+import edu.fiuba.algo3.modelo.ubicacion.Ciudad;
+import edu.fiuba.algo3.modelo.ubicacion.Cronometro;
+import edu.fiuba.algo3.modelo.ubicacion.Lugar;
+import edu.fiuba.algo3.modelo.ubicacion.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.grados.GradoDePolicia;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
+import edu.fiuba.algo3.modelo.tablero.Pista;
+import edu.fiuba.algo3.modelo.tablero.RutaLadron;
 
 import java.util.List;
 import java.util.Random;
@@ -34,7 +40,7 @@ public class Policia {
         }
     }
 
-    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado,Ciudad ciudadSiguiente) {
+    public Pista entrarEdificio(Lugar lugarSeleccionado, Cronometro cronometro, Random dado, Ciudad ciudadSiguiente) {
         this.dormir(cronometro);
         this.recibirCuchillazo(cronometro,dado);
         this.recibirHeridaDeBala(cronometro,dado);

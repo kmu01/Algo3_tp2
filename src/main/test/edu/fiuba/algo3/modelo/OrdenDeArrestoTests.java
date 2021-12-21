@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.comisaria.Cualidad;
+import edu.fiuba.algo3.modelo.comisaria.Ladron;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenDeArresto;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenEmitida;
 import edu.fiuba.algo3.modelo.ordenDeArresto.OrdenSinEmitir;
+import edu.fiuba.algo3.modelo.ubicacion.Cronometro;
+import edu.fiuba.algo3.modelo.ubicacion.Tiempo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
