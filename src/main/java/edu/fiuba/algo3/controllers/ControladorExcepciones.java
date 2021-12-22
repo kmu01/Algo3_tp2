@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ExceptionController implements Initializable {
+public class ControladorExcepciones implements Initializable {
     @FXML private Label LabelAviso;
     @FXML private ImageView ImagenAviso;
     @FXML private Pane PanelAviso;

@@ -8,15 +8,15 @@ import edu.fiuba.algo3.App;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class AudioController {
+public class ControladorAudio {
 
-    private static AudioController controladorAudio;
+    private static ControladorAudio controladorAudio;
     private final List<MediaPlayer> reproductores = new ArrayList<>();
     private MediaPlayer repActual;
     private boolean reproduciendo;
 
 
-    private AudioController(){
+    private ControladorAudio(){
         reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/simuladores.mp3")).toString())));
         reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/12monos.mp3")).toString())));
         reproductores.add(new MediaPlayer(new Media(Objects.requireNonNull(App.class.getResource("/musica/carmenSanDiego1.mp3")).toString())));
@@ -49,9 +49,9 @@ public class AudioController {
         reproduciendo = true;
     }
 
-    public static AudioController getInstance(){
+    public static ControladorAudio getInstance(){
         if(controladorAudio == null){
-            controladorAudio = new AudioController();
+            controladorAudio = new ControladorAudio();
         }
         return  controladorAudio;
     }

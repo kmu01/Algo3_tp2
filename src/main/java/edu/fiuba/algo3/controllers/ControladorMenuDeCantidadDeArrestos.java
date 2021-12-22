@@ -10,10 +10,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuDeCantidadDeArrestosController implements Initializable {
+public class ControladorMenuDeCantidadDeArrestos implements Initializable {
     @FXML private TextField cantidadDeArrestos;
 
-    public MenuDeCantidadDeArrestosController() {
+    public ControladorMenuDeCantidadDeArrestos() {
     }
 
     @Override

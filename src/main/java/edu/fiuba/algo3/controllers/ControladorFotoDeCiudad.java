@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FotoDeCiudadController implements Initializable {
+public class ControladorFotoDeCiudad implements Initializable {
     @FXML private Pane PanelImagen;
     @FXML private ImageView ImagenPais;
     private String URL_PAISES = "file:src/main/resources/fotos/paises/";

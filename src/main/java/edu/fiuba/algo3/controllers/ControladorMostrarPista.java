@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MostrarPistaController implements Initializable {
+public class ControladorMostrarPista implements Initializable {
     @FXML private Label LabelPista;
     @FXML private Pane PanelPista;
 

@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TableroController implements Initializable{
+public class ControladorTablero implements Initializable{
     @FXML private Pane PanelAcciones;
     @FXML private GridPane GridPanePrincipal;
     @FXML private HBox CajaViaje;
@@ -38,11 +38,11 @@ public class TableroController implements Initializable{
     @FXML private Label LabelCiudad;
     @FXML private Label LabelBienvenida;
 
-    private MostrarPistaController pistaControlador;
-    private FotoDeCiudadController fotoDeCiudadControlador;
-    private BuscarLadronesController buscarLadronesControlador;
-    private ListaDeLadronesController listarLadronesControlador;
-    private ExceptionController exceptionControlador;
+    private ControladorMostrarPista pistaControlador;
+    private ControladorFotoDeCiudad fotoDeCiudadControlador;
+    private ControladorBuscarLadrones buscarLadronesControlador;
+    private ControladorListaDeLadrones listarLadronesControlador;
+    private ControladorExcepciones exceptionControlador;
     private final String URL_ICONOS = "file:src/main/resources/fotos/iconos/";
 
     @Override

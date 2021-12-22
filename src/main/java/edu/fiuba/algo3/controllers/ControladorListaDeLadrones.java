@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ListaDeLadronesController implements Initializable {
+public class ControladorListaDeLadrones implements Initializable {
     @FXML Pane PanelLista;
     @FXML private Label LabelLadrones;
 

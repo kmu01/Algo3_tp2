@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="PanelAviso" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="474.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ExceptionController">
+<Pane fx:id="PanelAviso" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-insets: 5; -fx-border-radius: 5; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.ControladorExcepciones">
    <children>
-      <Button fx:id="BotonAviso" layoutX="137.0" layoutY="547.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: #101010; -fx-border-radius: 5;" text="Aceptar" textFill="WHITE">
+      <Button fx:id="BotonAviso" layoutX="172.0" layoutY="534.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-border-color: white; -fx-background-color: #101010; -fx-border-radius: 5;" text="Aceptar" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font></Button>
-      <Label fx:id="LabelAviso" alignment="CENTER" contentDisplay="CENTER" layoutY="56.0" prefHeight="107.0" prefWidth="474.0" textFill="WHITE">
+      <Label fx:id="LabelAviso" alignment="CENTER" contentDisplay="CENTER" layoutY="56.0" prefHeight="107.0" prefWidth="544.0" textFill="WHITE">
          <font>
             <Font name="Cascadia Mono Italic" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="ImagenAviso" fitHeight="250.0" fitWidth="250.0" layoutX="112.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="ImagenAviso" fitHeight="250.0" fitWidth="250.0" layoutX="147.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

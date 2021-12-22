@@ -19,7 +19,7 @@ import javafx.scene.layout.Pane;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
-public class BuscarLadronesController implements Initializable {
+public class ControladorBuscarLadrones implements Initializable {
     private final String RUTA_LADRONES = "src/main/java/edu/fiuba/algo3/modelo/archivos/ladrones.csv";
     @FXML private Pane PanelLadrones;
     @FXML private ComboBox<String> CajaSexo;
@@ -29,7 +29,7 @@ public class BuscarLadronesController implements Initializable {
     @FXML private ComboBox<String> CajaVehiculo;
     @FXML private Button BotonBuscarLadrones;
     private List<String> listaDeAtributos;
-    private ListaDeLadronesController listaDeLadronesController;
+    private ControladorListaDeLadrones controladorListaDeLadrones;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -57,9 +57,9 @@ public class BuscarLadronesController implements Initializable {
     public void ocultar(){
         this.PanelLadrones.setVisible(false);
     }
-    public void mostrar(ListaDeLadronesController listarLadronesControlador, Label labelTiempo){
+    public void mostrar(ControladorListaDeLadrones listarLadronesControlador, Label labelTiempo){
         this.PanelLadrones.setVisible(true);
-        this.listaDeLadronesController = listarLadronesControlador;
+        this.controladorListaDeLadrones = listarLadronesControlador;
         labelTiempo.setText(Juego.obtenerInstancia().hora());
     }
 
@@ -75,7 +75,7 @@ public class BuscarLadronesController implements Initializable {
             }
         }
         List<Ladron> sospechosos = Juego.obtenerInstancia().buscarLadrones();
-        listaDeLadronesController.mostrarLista(sospechosos);
+        controladorListaDeLadrones.mostrarLista(sospechosos);
 
 
     }

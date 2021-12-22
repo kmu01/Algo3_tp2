@@ -2,11 +2,9 @@ package edu.fiuba.algo3.controllers;
 
 import edu.fiuba.algo3.App;
 import javafx.application.HostServices;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -14,7 +12,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuDeInicioController implements Initializable {
+public class ControladorMenuInicio implements Initializable {
     @FXML public AnchorPane bc;
     public void comenzar(){
         CargadorDeEscena.cargarEscena("/fxml/pedirCantidadDeArrestos.fxml", App.devolverEscena(),"AlgoThief");
@@ -26,11 +24,11 @@ public class MenuDeInicioController implements Initializable {
     }
     public void salir(){ App.devolverEscena().close(); }
 
-    public void backMusic() { AudioController.getInstance().back(); }
+    public void backMusic() { ControladorAudio.getInstance().back(); }
 
-    public void playMusic() { AudioController.getInstance().play(); }
+    public void playMusic() { ControladorAudio.getInstance().play(); }
 
-    public void skipMusic() { AudioController.getInstance().skip(); }
+    public void skipMusic() { ControladorAudio.getInstance().skip(); }
 
     public void abrirReglas() throws URISyntaxException {
         URL url = getClass().getResource("/archivos/reglas.pdf");
