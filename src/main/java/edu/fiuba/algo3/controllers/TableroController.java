@@ -133,7 +133,7 @@ public class TableroController implements Initializable{
         Parent mainNode = loader.load();
         exceptionControlador = loader.getController();
         Pane seccion = new Pane(mainNode);
-        GridPanePrincipal.add(seccion, 1, 0);
+        GridPanePrincipal.add(seccion, 0, 0);
         exceptionControlador.ocultar();
 
     }

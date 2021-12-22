@@ -50,11 +50,11 @@
         </HBox>
       <HBox layoutX="427.0" layoutY="437.0" prefHeight="43.0" prefWidth="170.0" spacing="20.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acercaDe" text="Acerca de" textAlignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="80.0" minHeight="25.0" minWidth="80.0" mnemonicParsing="false" onAction="#acercaDe" prefHeight="25.0" prefWidth="80.0" text="Acerca de" textAlignment="CENTER">
                <font>
                   <Font name="Times New Roman" size="14.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirReglas" prefWidth="75.0" text="Reglas">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirReglas" prefHeight="25.0" prefWidth="75.0" text="Reglas">
                <font>
                   <Font name="Times New Roman" size="14.0" />
                </font></Button>

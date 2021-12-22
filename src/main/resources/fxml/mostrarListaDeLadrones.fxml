@@ -8,7 +8,7 @@
    <children>
       <Label fx:id="LabelLadrones" alignment="TOP_LEFT" layoutX="19.0" layoutY="18.0" lineSpacing="1.0" prefHeight="612.0" prefWidth="510.0" text="Label" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="Courier New" size="22.0" />
+            <Font name="Courier New" size="20.0" />
          </font>
       </Label>
    </children>
