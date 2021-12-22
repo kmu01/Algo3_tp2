@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="PanelImagen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.FotoDeCiudadController">
+<Pane fx:id="PanelImagen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="550.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.FotoDeCiudadController">
    <children>
-      <ImageView fx:id="ImagenPais" fitHeight="280.0" fitWidth="280.0" layoutX="10.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-      <BorderPane prefHeight="320.0" prefWidth="300.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 5; -fx-border-width: 2;" />
+      <BorderPane prefHeight="650.0" prefWidth="550.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 5; -fx-border-width: 2;" />
+      <ImageView fx:id="ImagenPais" fitHeight="637.0" fitWidth="538.0" layoutX="6.0" layoutY="7.0" pickOnBounds="true" />
    </children>
 </Pane>

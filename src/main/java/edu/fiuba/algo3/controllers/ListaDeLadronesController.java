@@ -21,7 +21,7 @@ public class ListaDeLadronesController implements Initializable {
 
     public void mostrarLista(List<Ladron> ladrones){
         this.mostrar();
-        String textoAMostrar = "";
+        String textoAMostrar = "Sospechosos posibles:\n\n";
         for (Ladron ladron:ladrones) {
             textoAMostrar += ladron.nombreLadron()+"\n";
         }

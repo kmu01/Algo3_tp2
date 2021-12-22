@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.MenuDeInicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.MenuDeInicioController">
     <children>
-        <ImageView id="LabelInicial" fitHeight="480.0" fitWidth="720.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView id="LabelInicial" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../fotos/Carmen%20San%20Diego.jpeg" />
+                <Image url="@../fotos/CarmenSanDiego.jpeg" />
             </image>
         </ImageView>
-        <Button id="BotonComenzar" layoutX="311.0" layoutY="205.0" mnemonicParsing="false" onAction="#comenzar" text="Comenzar">
+      <Label id="LabelBienvenidos" alignment="CENTER" layoutX="3.0" layoutY="129.0" prefHeight="115.0" prefWidth="1024.0" style="-fx-font-weight: bold; -fx-region-border: bl;" text="Bienvenidos a AlgoThief!" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+        <Label id="LabelBienvenidos" alignment="CENTER" layoutY="126.0" prefHeight="115.0" prefWidth="1024.0" style="-fx-font-weight: bold; -fx-region-border: bl;" text="Bienvenidos a AlgoThief!" textAlignment="CENTER" textFill="#ffbf00">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <Button id="BotonComenzar" layoutX="473.0" layoutY="324.0" mnemonicParsing="false" onAction="#comenzar" text="Comenzar">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font></Button>
-        <Label id="LabelBienvenidos" layoutX="200.0" layoutY="73.0" prefHeight="115.0" prefWidth="352.0" text="Bienvenidos a AlgoThief!" textAlignment="CENTER" textFill="#f1c232">
-            <font>
-                <Font name="Cascadia Code PL Italic" size="24.0" />
-            </font>
-        </Label>
-        <HBox alignment="CENTER" layoutX="290.0" layoutY="260.0" prefHeight="30.0" prefWidth="118.0">
+        <HBox alignment="CENTER" layoutX="452.0" layoutY="379.0" prefHeight="30.0" prefWidth="118.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#backMusic" prefHeight="20.0" prefWidth="35.0" text="⏮">
                     <font>
@@ -40,19 +48,19 @@
                 </Button>
             </children>
         </HBox>
-      <HBox layoutX="275.0" layoutY="320.0" prefHeight="43.0" prefWidth="170.0" spacing="20.0">
+      <HBox layoutX="427.0" layoutY="437.0" prefHeight="43.0" prefWidth="170.0" spacing="20.0">
          <children>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#acercaDe" text="Acerca de" textAlignment="CENTER">
                <font>
                   <Font name="Times New Roman" size="14.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirReglas" text="Reglas">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#abrirReglas" prefWidth="75.0" text="Reglas">
                <font>
                   <Font name="Times New Roman" size="14.0" />
                </font></Button>
          </children>
       </HBox>
-        <Button layoutX="327.0" layoutY="380.0" mnemonicParsing="false" onAction="#salir" text="Salir">
+        <Button layoutX="489.0" layoutY="499.0" mnemonicParsing="false" onAction="#salir" text="Salir">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font></Button>

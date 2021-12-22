@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TableroController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fiuba.algo3.controllers.TableroController">
    <children>
-      <GridPane fx:id="GridPanePrincipal" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;">
+      <GridPane fx:id="GridPanePrincipal" alignment="CENTER" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: black;">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="603.0" minWidth="10.0" prefWidth="336.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="345.0" minWidth="10.0" prefWidth="334.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="550.0" minWidth="550.0" prefWidth="550.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="474.0" minWidth="474.0" prefWidth="438.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="320.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="650.0" minHeight="650.0" prefHeight="650.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="118.0" minHeight="118.0" prefHeight="118.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="320.0" prefWidth="300.0" style="-fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" />
+            <Pane prefHeight="259.0" prefWidth="544.0" style="-fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" />
             <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 2; -fx-border-insets: 5;" GridPane.rowIndex="1">
                <children>
                   <Label fx:id="LabelCiudad" alignment="CENTER" contentDisplay="TOP" prefHeight="20.0" prefWidth="357.0" text="Lugar" textFill="WHITE">
@@ -26,7 +33,7 @@
                         <Font name="Times New Roman" size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets left="80.0" top="15.0" />
                      </VBox.margin>
                   </Label>
                   <Label fx:id="LabelTiempo" alignment="CENTER" contentDisplay="TOP" prefHeight="36.0" prefWidth="356.0" style="-fx-font-weight: bold;" text="Time" textFill="WHITE">
@@ -34,137 +41,137 @@
                         <Font name="Times New Roman" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="5.0" />
+                        <Insets left="80.0" top="10.0" />
                      </VBox.margin>
                   </Label>
                </children>
             </VBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 5; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox prefHeight="100.0" prefWidth="474.0" style="-fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 5; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="BotonEntrarEdificio" mnemonicParsing="false" onAction="#entrarAEdificio" text="Entrar a edificio">
+                  <Button fx:id="BotonEntrarEdificio" mnemonicParsing="false" onAction="#entrarAEdificio" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #101010; -fx-border-color: white; -fx-border-radius: 5;" text="Entrar a edificio" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="8.0" top="20.0" />
+                        <Insets left="17.0" top="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Times New Roman" size="13.0" />
+                        <Font name="Times New Roman" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BotonViajar" mnemonicParsing="false" onAction="#viajar" text="Viajar">
+                  <Button fx:id="BotonViajar" mnemonicParsing="false" onAction="#viajar" prefHeight="50.0" prefWidth="125.0" style="-fx-border-radius: 5; -fx-background-color: #101010; -fx-border-color: white;" text="Viajar" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="30.0" top="20.0" />
+                        <Insets left="25.0" top="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Times New Roman" size="13.0" />
+                        <Font name="Times New Roman" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BotonBuscar" mnemonicParsing="false" onAction="#entrarAComisaria" text="Buscar">
+                  <Button fx:id="BotonBuscar" mnemonicParsing="false" onAction="#entrarAComisaria" prefHeight="50.0" prefWidth="125.0" style="-fx-background-color: #101010; -fx-border-color: white; -fx-border-radius: 5;" text="Buscar" textFill="WHITE">
                      <HBox.margin>
-                        <Insets left="30.0" top="20.0" />
+                        <Insets left="25.0" top="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Times New Roman" size="13.0" />
+                        <Font name="Times New Roman" size="15.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
             <Pane prefHeight="320.0" prefWidth="300.0" style="-fx-border-color: white; -fx-border-insets: 5; -fx-border-width: 2; -fx-border-radius: 5;" GridPane.columnIndex="1">
                <children>
-                  <Label fx:id="LabelBienvenida" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="104.0" prefWidth="276.0" text="Bienvenido" textFill="WHITE" wrapText="true">
+                  <Label fx:id="LabelBienvenida" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="19.0" layoutY="18.0" prefHeight="609.0" prefWidth="437.0" text="Bienvenido" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Times New Roman" size="20.0" />
+                        <Font name="Times New Roman" size="24.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
          </children>
       </GridPane>
-      <Pane fx:id="PanelAcciones" layoutX="35.0" layoutY="68.0" prefHeight="252.0" prefWidth="523.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 4; -fx-border-width: 3; -fx-background-radius: 5;" visible="false">
+      <Pane fx:id="PanelAcciones" layoutX="168.0" layoutY="162.0" prefHeight="363.0" prefWidth="705.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 5; -fx-border-insets: 4; -fx-border-width: 3; -fx-background-radius: 5;" visible="false">
          <children>
-            <HBox fx:id="CajaVisita" prefHeight="252.0" prefWidth="517.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+            <HBox fx:id="CajaVisita" prefHeight="366.0" prefWidth="705.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                <children>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fx:id="ImagenLugar1" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImagenLugar1" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="60.0" />
                            </VBox.margin>
                         </ImageView>
-                        <Button fx:id="BotonLugar1" mnemonicParsing="false" onAction="#mostrarPistaLugar1" prefWidth="120.0" text="Button">
+                        <Button fx:id="BotonLugar1" mnemonicParsing="false" onAction="#mostrarPistaLugar1" prefHeight="30.0" prefWidth="150.0" text="Button">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="50.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Times New Roman" size="14.0" />
+                              <Font name="Times New Roman" size="15.0" />
                            </font>
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="35.0" />
+                        <Insets left="60.0" />
                      </HBox.margin>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fx:id="ImagenLugar3" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImagenLugar3" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="60.0" />
                            </VBox.margin>
                         </ImageView>
-                        <Button fx:id="BotonLugar3" mnemonicParsing="false" onAction="#mostrarPistaLugar3" prefWidth="125.0" text="Button">
+                        <Button fx:id="BotonLugar3" mnemonicParsing="false" onAction="#mostrarPistaLugar3" prefHeight="30.0" prefWidth="150.0" text="Button">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="50.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Times New Roman" size="14.0" />
+                              <Font name="Times New Roman" size="15.0" />
                            </font>
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="35.0" />
+                        <Insets left="65.0" />
                      </HBox.margin>
                   </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <ImageView fx:id="ImagenLugar2" fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="ImagenLugar2" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="60.0" />
                            </VBox.margin>
                         </ImageView>
-                        <Button fx:id="BotonLugar2" mnemonicParsing="false" onAction="#mostrarPistaLugar2" prefWidth="125.0" text="Button">
+                        <Button fx:id="BotonLugar2" mnemonicParsing="false" onAction="#mostrarPistaLugar2" prefHeight="30.0" prefWidth="150.0" text="Button">
                            <VBox.margin>
-                              <Insets top="30.0" />
+                              <Insets top="50.0" />
                            </VBox.margin>
                            <font>
-                              <Font name="Times New Roman" size="14.0" />
+                              <Font name="Times New Roman" size="15.0" />
                            </font>
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets left="35.0" />
+                        <Insets left="65.0" />
                      </HBox.margin>
                   </VBox>
                </children>
             </HBox>
-            <HBox fx:id="CajaViaje" prefHeight="240.0" prefWidth="517.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
+            <HBox fx:id="CajaViaje" prefHeight="363.0" prefWidth="705.0" style="-fx-background-color: rgba(0, 0, 0, 0);" visible="false">
                <children>
-                  <Button fx:id="BotonViajar2" mnemonicParsing="false" onAction="#viajarDestino2" prefWidth="125.0" text="Button">
+                  <Button fx:id="BotonViajar2" mnemonicParsing="false" onAction="#viajarDestino2" prefHeight="30.0" prefWidth="150.0" text="Button">
                      <HBox.margin>
-                        <Insets left="35.0" top="150.0" />
+                        <Insets left="60.0" top="175.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BotonViajar3" mnemonicParsing="false" onAction="#viajarDestino3" prefWidth="125.0" text="Button">
+                  <Button fx:id="BotonViajar3" mnemonicParsing="false" onAction="#viajarDestino3" prefHeight="30.0" prefWidth="150.0" text="Button">
                      <HBox.margin>
-                        <Insets left="35.0" top="150.0" />
+                        <Insets left="60.0" top="175.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BotonViajar1" mnemonicParsing="false" onAction="#viajarDestino1" prefWidth="125.0" text="Button">
+                  <Button fx:id="BotonViajar1" mnemonicParsing="false" onAction="#viajarDestino1" prefHeight="30.0" prefWidth="150.0" text="Button">
                      <HBox.margin>
-                        <Insets left="35.0" top="150.0" />
+                        <Insets left="60.0" top="175.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Times New Roman" size="14.0" />
