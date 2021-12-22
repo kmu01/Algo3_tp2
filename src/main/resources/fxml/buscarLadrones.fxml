@@ -18,7 +18,7 @@
       <ComboBox fx:id="CajaPelo" layoutX="131.0" layoutY="275.0" prefHeight="30.0" prefWidth="200.0" promptText="PELO" visibleRowCount="5" />
       <ComboBox fx:id="CajaSenia" layoutX="130.0" layoutY="345.0" prefHeight="30.0" prefWidth="200.0" promptText="SEÑA" visibleRowCount="4" />
       <ComboBox fx:id="CajaVehiculo" layoutX="131.0" layoutY="416.0" prefHeight="30.0" prefWidth="200.0" promptText="VEHÍCULO" visibleRowCount="4" />
-      <Button fx:id="BotonBuscarLadrones" layoutX="131.0" layoutY="526.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#enviarDatos" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #101010; -fx-border-color: white; -fx-border-radius: 5; -fx-font-weight: bold;" text="Buscar" textFill="WHITE">
+      <Button fx:id="BotonBuscarLadrones" layoutX="131.0" layoutY="526.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#enviarDatos" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #101010; -fx-border-color: white; -fx-border-radius: 5;" text="Buscar" textFill="WHITE">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font></Button>

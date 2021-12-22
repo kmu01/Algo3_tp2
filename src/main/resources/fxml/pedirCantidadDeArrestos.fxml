@@ -27,7 +27,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button id="BotonIniciar" layoutX="280.0" layoutY="272.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="50.0" prefWidth="200.0" style="-fx-font-weight: bold; -fx-border-width: 0.5; -fx-border-color: black;" text="Iniciar">
+      <Button id="BotonIniciar" layoutX="280.0" layoutY="272.0" mnemonicParsing="false" onAction="#iniciarJuego" prefHeight="50.0" prefWidth="200.0" style="-fx-border-width: 0.5; -fx-border-color: black;" text="Iniciar">
          <font>
             <Font name="Times New Roman" size="20.0" />
          </font></Button>
