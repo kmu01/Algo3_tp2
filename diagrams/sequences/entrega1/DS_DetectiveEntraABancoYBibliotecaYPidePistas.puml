@@ -3,30 +3,31 @@ title El detective comienza en Montreal, entra a banco y pide una pista, entra a
 
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
-participant "Montreal:Ciudad" as Ciudad
-participant ":Detective" as Grado
-participant "sospechoso:Ladron" as Ladron
+participant ":Pista" as Pista
+participant ":Tiempo" as Tiempo
+loop entra 2 veces al banco
+AlgoThief ->> Policia : entrarEdificio(banco, cronometro, dado, ciudadSiguiente)
+return[pistaObtenida]
 
+AlgoThief ->> Pista : descripcion()
+return[descripcionObtenida]
 
-AlgoThief ->> Policia : registroPolicia("Tesoro nacional de Montreal", cantidadArrestos, Montreal, mapa)
-activate Policia
-Policia ->> Grado : new()
-Policia ->> Ladron : new("Tesoro Nacional de Montreal")
-deactivate Policia
-AlgoThief ->> Policia : anotarGenero("Femenino")
-loop entra dos veces al banco
-AlgoThief ->> Policia : entrarEdificio("banco")
-activate Policia
-Policia ->> Ciudad : visitar("banco", Detective)
-return [1]
+AlgoThief ->> AlgoThief : assertEquals("Se despliega la pista de banco", descripcionObtenida)
 end
-deactivate Policia
-AlgoThief ->> AlgoThief : assertEquals(2, tiempoEsperado)
-AlgoThief ->> Policia : entrarEdificio("biblioteca")
-activate Policia
-Policia ->> Ciudad : visitar("biblioteca", Detective)
-return [3]
-deactivate Policia
-AlgoThief ->> AlgoThief : assertEquals(3, tiempoEsperado)
-note across: El resultado es el tiempo medido en horas
+AlgoThief ->> Tiempo : tiempoTranscurrido()
+return[tiempoObtenido]
+
+AlgoThief ->> AlgoThief : assertEquals(3, tiempoObtenido)
+AlgoThief ->> Policia : entrarEdificio(biblioteca, cronometro, dado, ciudadSiguiente)
+return[pistaObtenida]
+
+AlgoThief ->> Pista : descripcion()
+return[descripcionObtenida]
+AlgoThief ->> AlgoThief : assertEquals("Se despliega la pista de biblioteca", descripcionObtenida)
+AlgoThief ->> Tiempo : tiempoTranscurrido()
+return[tiempoObtenido]
+
+AlgoThief ->> AlgoThief : assertEquals(4, tiempoObtenido)
+note across: La interacción del método "entrarEdificio" se puede observar en otro diagrama
+
 @enduml

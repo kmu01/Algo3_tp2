@@ -3,21 +3,18 @@ title El detective comienza en Montreal, entra al banco y pide una pista
 
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
-participant "Montreal:Ciudad" as Ciudad
-participant ":Detective" as Grado
-participant "sospechoso:Ladron" as Ladron
+participant ":Pista" as Pista
+participant ":Tiempo" as Tiempo
+AlgoThief ->> Policia : entrarEdificio(banco, cronometro, dado, ciudadSiguiente)
+return[pistaObtenida]
 
-AlgoThief ->> Policia : registroPolicia("Tesoro nacional de Montreal", cantidadArrestos, Montreal, mapa)
-activate Policia
-Policia ->> Grado : new()
-Policia ->> Ladron : new("Tesoro Nacional de Montreal")
-deactivate Policia
-AlgoThief ->> Policia : anotarGenero("Femenino")
-AlgoThief ->> Policia : entrarEdificio("banco")
-activate Policia
-Policia ->> Ciudad : visitar("banco", Detective)
-return [1]
-deactivate Policia
-AlgoThief ->> AlgoThief : assertEquals(1, tiempoDeEntrarEdificio)
-note across: El resultado es el tiempo medido en horas
+AlgoThief ->> Pista : descripcion()
+return[descripcionObtenida]
+
+AlgoThief ->> Tiempo : tiempoTranscurrido()
+return[tiempoObtenido]
+
+AlgoThief ->> AlgoThief : assertEquals("Se despliega la pista de banco", descripcionObtenida)
+AlgoThief ->> AlgoThief : assertEquals(1, tiempoObtenido)
+note across: La interacción del método "entrarEdificio" se puede observar en otro diagrama
 @enduml

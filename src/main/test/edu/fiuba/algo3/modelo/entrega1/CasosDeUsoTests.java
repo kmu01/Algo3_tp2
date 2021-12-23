@@ -60,7 +60,7 @@ public class CasosDeUsoTests {
     public void elDetectiveComienzaEnMontrealYEntraAlBancoYPideUnaPista() {
         Random mockDado = mock(Random.class);
         when( mockDado.nextInt(3)).thenReturn(1);
-        Policia policia = new Policia(new Sospechoso(), new Investigador());
+        Policia policia = new Policia(new Sospechoso(), new Detective());
 
         policia.anotarCualidad(new Cualidad("Femenino"));
 
