@@ -29,9 +29,9 @@ class Cualidad{
 
 
 /'  '/
-Ladron --o ObjetoRobado
-Ladron "1" --* "1..*" Cualidad
-Sospechoso "1" --o "1..*" Cualidad
+Ladron "1" o-- "1" ObjetoRobado
+Ladron "1" *-- "5" Cualidad
+Sospechoso "1" o-- "0..*" Cualidad
 
 
 

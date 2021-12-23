@@ -106,28 +106,28 @@ class Mapa{
 }
 /' Parte de arriba '/
 Sospechoso <- Policia
-Policia -> Mapa
-Sospechoso "1..*" o-- "1" Partida
-Policia *-- Partida
+Policia .> Mapa
+Sospechoso "1..*" --o "1" Partida
+Policia "1" --* "1"Partida
 Mapa <-- Partida
 
 /' Lado Izquierdo y abajo '/
-Tiempo o- Partida
+Tiempo "1" -* "1" Partida
 Partida --> Cronometro
 Tiempo <. Cronometro
 
 /' Lado derecho y abajo'/
-Partida "1" -* "1..*" Ciudad
-Mapa "1..*" -o "1..*" Ciudad
-Partida "1" --* "1..*" RutaLadron
-Ciudad "1..*" o-- "1..*" RutaLadron
+Partida "1" *- "1..*" Ciudad
+Mapa "1" o- "1..*" Ciudad
+Partida "1" *-- "1" RutaLadron
+Ciudad "1..*" --o "1" RutaLadron
 
 /' Segundo nivel inferior '/
 Partida ---> Comisaria
-Partida "1" ---o "1..*" Ladron
-Partida "1" ---o "1..*" ObjetoRobado
+Partida "1" o--- "1..*" Ladron
+Partida "1" o--- "1..*" ObjetoRobado
 Comisaria -> "1..*" Ladron
-Ladron -o ObjetoRobado
+Ladron "1" o- "1" ObjetoRobado
 
 
 
