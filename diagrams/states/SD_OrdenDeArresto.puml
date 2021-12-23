@@ -1,0 +1,11 @@
+
+@startuml
+
+[*] --> OrdenDeArresto: Emitir
+OrdenDeArresto--> OrdenSinEmitir :Emitir
+OrdenSinEmitir-->OrdenEmitida: Es emitida
+OrdenDeArresto->OrdenEmitida: Emitir
+OrdenEmitida-->[*]: Puede arrestar y ganar el juego
+OrdenSinEmitir-->OrdenDeArresto: No fue emitida
+
+@enduml
