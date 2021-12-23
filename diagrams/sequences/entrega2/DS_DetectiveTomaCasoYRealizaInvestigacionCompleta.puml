@@ -4,36 +4,40 @@ title Detective toma un caso y realiza la investigación completa
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
 participant ":Sospechoso" as Sospechoso
-participant "OrdenDeArresto" as Orden
-
+participant ":RutaLadron" as Ruta
+participant ":OrdenEmitida" as Orden
+participant ":Pista" as Pista
 
 AlgoThief ->> Policia : entrarEdificio(Banco, cronometro, dado)
-note across : La interacción de este método se detalla en otro diagrama aparte
 
 Policia --> AlgoThief : [pistaObtenidaDelBanco]
 
 
 AlgoThief ->> Policia : viajar(Montreal, mapa, cronometro)
-note across : La interacción de este método se detalla en otro diagrama aparte
 
 AlgoThief ->> Policia : anotarCualidad(femenino)
 activate Policia
     Policia ->> Sospechoso : anotarCualidad(femenino)
 deactivate Policia
 AlgoThief ->> Policia : buscarLadrones(comisaria)
-note across : La interacción de este método se detalla en otro diagrama aparte
-return[List<Ladron>]
 
-AlgoThief ->> Policia : atrapar()
+return[List<Ladron>]
+AlgoThief ->> Ruta : new()
+return[ruta]
+
+AlgoThief ->> AlgoThief : assertThrows(JuegoGanadoException, policia.comprobarVictoria(ruta))
+AlgoThief ->> Policia : comprobarVictoria(ruta)
 activate Policia
     Policia ->> Orden : emitida()
-    Orden --> Policia : [resultado]
+    Orden --> Policia : [true]
+    Policia ->> Ruta : estamosEnUltimaCiudad()
+    Ruta --> Policia : [true]
 deactivate Policia
-Policia --> AlgoThief : [resultado]
-AlgoThief ->> AlgoThief : assertTrue(resultado)
-AlgoThief ->> AlgoThief : assertEquals(pistaEsperada, pistaObtenidaDelBanco)
 
+AlgoThief ->> Pista : descripcion()
+return[descripcion]
+AlgoThief ->> AlgoThief : assertTrue("Pista Media .Tiene el pelo rubio", descripcion)
 note across: Los datos pueden variar, en este caso se decidio filtrar sospechosos con genero femenino
-
+note across : La interacción de los métodos entrarEdificio, viajar y buscarLadrones se detalla en otro diagrama aparte
 
 @enduml

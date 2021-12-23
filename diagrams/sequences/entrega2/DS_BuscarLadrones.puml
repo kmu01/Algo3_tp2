@@ -22,9 +22,9 @@ activate Policia
     deactivate Comisaria
     Comisaria ->> Policia : [List<Ladron>]
 deactivate Policia
-    Policia ->> Policia : emitirOrden(List<Ladron>)
+    Policia ->> Policia : emitirOrden(List<Ladron>, cronometro)
 activate Policia
-    Policia ->> Orden : emitir(List<Ladron>)
+    Policia ->> Orden : emitir(List<Ladron>, cronometro)
     Orden --> Policia : [OrdenDeArresto]
 deactivate Policia
 Policia --> AlgoThief : List<Ladron>

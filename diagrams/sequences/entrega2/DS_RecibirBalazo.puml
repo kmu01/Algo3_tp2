@@ -1,0 +1,17 @@
+@startuml
+title Policia recibe un balazo
+actor ":Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant "GradoDePolicia" as Grado
+participant ":Cronometro" as Cronometro
+participant ":Tiempo" as Tiempo
+AlgoThief ->> Policia : recibirHeridaDeBala(cronometro, dado)
+    alt dado == 8
+        Policia ->> Grado : calcularTiempoDeBalazo(cronometro)
+        Grado ->> Cronometro : calcularTiempoDeBalazo(tiempoDeHeridaDeBala)
+        Cronometro ->> Tiempo : agregarHoras(tiempoDeHeridaDeBala)
+    end
+
+note across: Se decidió realizar este diagrama dado que se usa frecuentemente en los casos de uso
+
+@enduml

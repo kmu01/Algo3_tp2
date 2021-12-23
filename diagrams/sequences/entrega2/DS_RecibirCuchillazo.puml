@@ -1,0 +1,15 @@
+@startuml
+title Policia recibe un cuchillazo
+actor ":Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant ":Cronometro" as Cronometro
+participant ":Tiempo" as Tiempo
+AlgoThief ->> Policia : recibirCuchillazo(cronometro, dado)
+    alt dado == 5
+        Policia ->> Cronometro : calcularTiempoDeCuchillazo(cantidadDeVecesAcuchillado)
+        Cronometro ->> Tiempo : agregarHoras(cantidadDeVecesAcuchillado)
+    end
+
+note across: Se decidió realizar este diagrama dado que se usa frecuentemente en los casos de uso
+
+@enduml

@@ -7,6 +7,9 @@ participant ":Lugar" as Lugar
 participant "GradoDePolicia" as Grado
 AlgoThief ->> Policia : entrarEdificio(Lugar, cronometro, dado)
 activate Policia
+    Policia ->> Policia : dormir(cronometro)
+    Policia ->> Policia : recibirCuchillazo(cronometro, dado)
+    Policia ->> Policia : recibirHeridaDeBala(cronometro, dado)
     Policia ->> Ciudad : visitar(Lugar, Grado, cronometro, dado)
     activate Ciudad
         Ciudad ->> Lugar : visitar(Grado, List<Pista>, cronometro, dado)

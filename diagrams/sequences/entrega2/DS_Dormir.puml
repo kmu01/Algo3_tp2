@@ -1,0 +1,17 @@
+@startuml
+title Policia duerme
+actor ":Jugador" as AlgoThief
+participant ":Policia" as Policia
+participant "GradoDePolicia" as Grado
+participant ":Cronometro" as Cronometro
+participant ":Tiempo" as Tiempo
+    AlgoThief ->> Policia : dormir(cronometro)
+    Policia ->> Grado : calcularTiempoDurmiendo(cronometro)
+    Grado ->> Cronometro : calcularTiempoDurmiendo(tiempoDeDescanso)
+    Cronometro ->> Tiempo : debeDormir(tiempoDeDescanso)
+    alt horaActual > 20
+        Tiempo ->> Tiempo : agregarHoras(tiempoDeDescanso)
+    end
+note across: Se decidió realizar este diagrama dado que se usa frecuentemente en los casos de uso
+
+@enduml
