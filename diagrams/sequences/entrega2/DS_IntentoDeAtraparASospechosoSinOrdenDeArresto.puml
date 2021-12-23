@@ -4,7 +4,7 @@ title Policia intenta atrapar a un sospechoso sin emitir orden de arresto
 actor "Jugador" as AlgoThief
 participant ":Policia" as Policia
 participant ":Sospechoso" as Sospechoso
-participant "OrdenDeArresto" as Orden
+participant ":OrdenSinEmitir" as Orden
 AlgoThief ->> Policia : anotarCualidad(masculino)
 activate Policia
     Policia ->> Sospechoso : anotarCualidad()
@@ -12,12 +12,18 @@ deactivate Policia
 AlgoThief ->> Policia : buscarLadrones(comisaria)
 return[ladronesObtenidos]
 AlgoThief ->> AlgoThief : assertEquals(ladronesEsperados, ladronesObtenidos)
-AlgoThief ->> Policia : atrapar()
+
+AlgoThief ->> Ruta : new()
+return[ruta]
+AlgoThief ->> Policia : comprobarVictoria(ruta)
 activate Policia
     Policia ->> Orden : emitida()
-    Orden --> Policia : [resultado]
+    Orden --> Policia : [false]
+    Policia ->> Ruta : estamosEnUltimaCiudad()
+    Ruta --> Policia : [true]
+    return[resultado]
 deactivate Policia
-Policia --> AlgoThief : [resultado]
 
 AlgoThief ->> AlgoThief : assertFalse(resultado)
+note across: En el caso mostrado, el jugador pierde ya que no tenía un solo ladron en su lista
 @enduml
