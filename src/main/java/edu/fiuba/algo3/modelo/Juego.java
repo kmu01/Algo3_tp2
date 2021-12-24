@@ -38,6 +38,10 @@ public class Juego {
         juego = null;
     }
 
+    public String obtenerNombreTesoro(){
+        return this.partida.obtenerNombreDeTesoro();
+    }
+
     public Pista entrarEdificio(String lugarSeleccionado){
         return this.partida.entrarEdificio(lugarSeleccionado);
     }

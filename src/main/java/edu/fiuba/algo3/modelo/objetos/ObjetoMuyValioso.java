@@ -46,6 +46,11 @@ public class ObjetoMuyValioso implements ObjetoRobado {
     }
 
     @Override
+    public String nombreTesoro() {
+        return this.nombre;
+    }
+
+    @Override
     public String rareza(){
         return this.rareza;
     }

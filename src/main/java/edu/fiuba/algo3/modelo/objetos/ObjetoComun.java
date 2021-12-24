@@ -51,4 +51,9 @@ public class ObjetoComun implements ObjetoRobado{
     public boolean verificarLimitePaises(int cantidadDePaisesVisitados){
         return (cantidadDePaisesVisitados == this.cantidadPaises);
     }
+
+    @Override
+    public String nombreTesoro() {
+        return this.nombre;
+    }
 }

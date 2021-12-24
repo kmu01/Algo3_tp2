@@ -23,4 +23,5 @@ public interface ObjetoRobado {
 
     Queue<Ciudad> setearRutaLadron(List<String> nombresDeCiudades, Map<String, Ciudad> ciudades, Random dado, Queue<Ciudad> rutaLadron);
 
+    String nombreTesoro();
 }

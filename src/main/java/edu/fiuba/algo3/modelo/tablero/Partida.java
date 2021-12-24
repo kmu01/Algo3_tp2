@@ -129,6 +129,10 @@ public class Partida {
 
     }
 
+    public String obtenerNombreDeTesoro(){
+        return ladron.obtenerObjetoRobado().nombreTesoro();
+    }
+
     public List<String> getListaDestinos(){
         List<String> destinos = this.rutaLadron.obtenerCiudadActual().getListaDestinos();
         return this.rutaLadron.verificarDestinos(destinos,this.dado);

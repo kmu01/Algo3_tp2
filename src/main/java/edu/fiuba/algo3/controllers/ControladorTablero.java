@@ -49,9 +49,10 @@ public class ControladorTablero implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelTiempo.setText(Juego.obtenerInstancia().hora());
         String ciudadInicio = Juego.obtenerInstancia().getCiudadActual().ciudad();
+        String nombreTesoro = Juego.obtenerInstancia().obtenerNombreTesoro();
         LabelCiudad.setText(ciudadInicio);
         LabelBienvenida.setText("Bienvenido "+Juego.obtenerInstancia().getGrado()+"." +
-                " Su objetivo es capturar al ladrón que se robó el tesoro de "+ ciudadInicio +".");
+                " Su objetivo es capturar al ladrón que se robó el/la "+nombreTesoro+" en la ciudad "+ ciudadInicio +".");
         try {
             this.cargarPistas();
             this.cargarImagen();

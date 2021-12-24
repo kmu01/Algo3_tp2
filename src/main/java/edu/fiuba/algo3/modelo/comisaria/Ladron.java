@@ -23,6 +23,10 @@ public class Ladron{
 
     }
 
+    public ObjetoRobado obtenerObjetoRobado(){
+        return this.objetoRobado;
+    }
+
 
     public int esIgual(Sospechoso sospechoso) {
         return sospechoso.esIgual(this.cualidades);
